@@ -1,0 +1,102 @@
+﻿@model EblueWorkPlan.Models.Fund
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Fund</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salaries)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salaries)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Wages)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Wages)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Benefits)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Benefits)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Assistant)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Assistant)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Materials)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Materials)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Equipment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Travel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Travel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Abroad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Abroad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subcontracts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subcontracts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Others)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Others)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ufisaccount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ufisaccount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IndirectCosts)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IndirectCosts)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Location.LocationId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Project)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Project.ProjectId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.FundId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

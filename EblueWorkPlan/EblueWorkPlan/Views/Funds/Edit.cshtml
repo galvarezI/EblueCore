@@ -1,0 +1,99 @@
+﻿@model EblueWorkPlan.Models.Fund
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fund</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FundId" />
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label"></label>
+                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                <span asp-validation-for="LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salaries" class="control-label"></label>
+                <input asp-for="Salaries" class="form-control" />
+                <span asp-validation-for="Salaries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wages" class="control-label"></label>
+                <input asp-for="Wages" class="form-control" />
+                <span asp-validation-for="Wages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Benefits" class="control-label"></label>
+                <input asp-for="Benefits" class="form-control" />
+                <span asp-validation-for="Benefits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assistant" class="control-label"></label>
+                <input asp-for="Assistant" class="form-control" />
+                <span asp-validation-for="Assistant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Materials" class="control-label"></label>
+                <input asp-for="Materials" class="form-control" />
+                <span asp-validation-for="Materials" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Equipment" class="control-label"></label>
+                <input asp-for="Equipment" class="form-control" />
+                <span asp-validation-for="Equipment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Travel" class="control-label"></label>
+                <input asp-for="Travel" class="form-control" />
+                <span asp-validation-for="Travel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Abroad" class="control-label"></label>
+                <input asp-for="Abroad" class="form-control" />
+                <span asp-validation-for="Abroad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subcontracts" class="control-label"></label>
+                <input asp-for="Subcontracts" class="form-control" />
+                <span asp-validation-for="Subcontracts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Others" class="control-label"></label>
+                <input asp-for="Others" class="form-control" />
+                <span asp-validation-for="Others" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ufisaccount" class="control-label"></label>
+                <input asp-for="Ufisaccount" class="form-control" />
+                <span asp-validation-for="Ufisaccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndirectCosts" class="control-label"></label>
+                <input asp-for="IndirectCosts" class="form-control" />
+                <span asp-validation-for="IndirectCosts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
