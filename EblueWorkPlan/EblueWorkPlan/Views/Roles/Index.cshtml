@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsResearchDirector)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsExecutiveOfficer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAdministrativeOfficer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsExternalResources)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsResearchDirector)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsExecutiveOfficer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdministrativeOfficer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsExternalResources)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roster.RosterId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RolesId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RolesId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RolesId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

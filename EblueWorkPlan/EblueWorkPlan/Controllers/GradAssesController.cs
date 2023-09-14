@@ -21,6 +21,9 @@ namespace EblueWorkPlan.Controllers
         // GET: GradAsses
         public async Task<IActionResult> Index()
         {
+
+            ViewBag.ProjectsItem = new SelectList(_context.Projects, "ProjectId", "ProjectName");
+            ViewBag.RosterItem = new SelectList(_context.Rosters, "RosterId", "RosterName");
             var workplandbContext = _context.GradAsses.Include(g => g.Project);
             return View(await workplandbContext.ToListAsync());
         }

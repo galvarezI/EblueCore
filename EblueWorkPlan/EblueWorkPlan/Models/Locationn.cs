@@ -18,4 +18,6 @@ public partial class Locationn
     public virtual ICollection<Fund> Funds { get; set; } = new List<Fund>();
 
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
+
+    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 }

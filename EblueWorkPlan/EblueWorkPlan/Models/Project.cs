@@ -11,8 +11,6 @@ public partial class Project
 
     public string? ProjectTitle { get; set; }
 
-    public Guid? ProjectPi { get; set; }
-
     public int? DepartmentId { get; set; }
 
     public int? CommId { get; set; }
@@ -89,6 +87,14 @@ public partial class Project
 
     public int? PorganizationsId { get; set; }
 
+    public int? LocationId { get; set; }
+
+    public string? ProjectPi { get; set; }
+
+    public int? RosterId { get; set; }
+
+    public virtual ICollection<Analytical> Analyticals { get; set; } = new List<Analytical>();
+
     public virtual Commodity? Comm { get; set; }
 
     public virtual Department? Department { get; set; }
@@ -97,13 +103,23 @@ public partial class Project
 
     public virtual FiscalYear? FiscalYear { get; set; }
 
+    public virtual FundType? FundType { get; set; }
+
     public virtual ICollection<Fund> Funds { get; set; } = new List<Fund>();
 
     public virtual ICollection<GradAss> GradAsses { get; set; } = new List<GradAss>();
 
     public virtual ICollection<Laboratory> Laboratories { get; set; } = new List<Laboratory>();
 
+    public virtual Locationn? Location { get; set; }
+
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
 
+    public virtual Porganization? Porganizations { get; set; }
+
     public virtual ProgramArea? ProgramArea { get; set; }
+
+    public virtual Roster? Roster { get; set; }
+
+    public virtual Substacion? SubStation { get; set; }
 }

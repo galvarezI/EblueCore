@@ -24,6 +24,8 @@ namespace EblueWorkPlan.Controllers
               return _context.Rosters != null ? 
                           View(await _context.Rosters.ToListAsync()) :
                           Problem("Entity set 'WorkplandbContext.Rosters'  is null.");
+           
+
         }
 
         // GET: Rosters/Details/5
@@ -47,6 +49,10 @@ namespace EblueWorkPlan.Controllers
         // GET: Rosters/Create
         public IActionResult Create()
         {
+
+            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.RoleItem = new SelectList(_context.Roles, "RolesId", "Rname");
             return View();
         }
 
@@ -63,6 +69,9 @@ namespace EblueWorkPlan.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            
+
             return View(roster);
         }
 

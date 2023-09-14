@@ -23,6 +23,8 @@ namespace EblueWorkPlan.Controllers
         {
             var workplandbContext = _context.FieldWorks.Include(f => f.Location).Include(f => f.Project);
             return View(await workplandbContext.ToListAsync());
+
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
         }
 
         // GET: FieldWorks/Details/5
@@ -50,6 +52,9 @@ namespace EblueWorkPlan.Controllers
         {
             ViewData["LocationId"] = new SelectList(_context.Locationns, "LocationId", "LocationId");
             ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "ProjectId");
+
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.ProjectItem = new SelectList(_context.Projects, "ProjectId", "ProjectNumber");
             return View();
         }
 
@@ -169,5 +174,42 @@ namespace EblueWorkPlan.Controllers
         {
           return (_context.FieldWorks?.Any(e => e.FieldWorkId == id)).GetValueOrDefault();
         }
+
+
+
+
+        public IActionResult Page3()
+        {
+            ViewData["LocationId"] = new SelectList(_context.Locationns, "LocationId", "LocationId");
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "ProjectId");
+
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.ProjectItem = new SelectList(_context.Projects, "ProjectId", "ProjectNumber");
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Page3([Bind("FieldWorkId,ProjectId,LocationId,DateStarted,DateEnded,InProgress,ToBeInitiated")] FieldWork fieldWork)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(fieldWork);
+                await _context.SaveChangesAsync();
+                RedirectTo("", "");
+            }
+            ViewData["LocationId"] = new SelectList(_context.Locationns, "LocationId", "LocationId", fieldWork.LocationId);
+            ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "ProjectId", fieldWork.ProjectId);
+            return View(fieldWork);
+        }
+
+
+
+        public ActionResult RedirectTo(string action, string controller)
+        {
+            return RedirectToAction(action, controller);
+        }
+
     }
 }

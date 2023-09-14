@@ -21,6 +21,9 @@ namespace EblueWorkPlan.Controllers
         // GET: Funds
         public async Task<IActionResult> Index()
         {
+
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.ProjectsItem = new SelectList(_context.Projects, "ProjectId", "ProjectName");
             var workplandbContext = _context.Funds.Include(f => f.Location).Include(f => f.Project);
             return View(await workplandbContext.ToListAsync());
         }

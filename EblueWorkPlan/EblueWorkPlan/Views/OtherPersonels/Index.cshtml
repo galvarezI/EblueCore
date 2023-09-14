@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.OtherPersonel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonnelManAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleManAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonnelManAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleManAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roster.RosterId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Opid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Opid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Opid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,6 +1,7 @@
 ﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using EblueWorkPlan.Models.ViewModels;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -27,6 +28,24 @@ namespace EblueWorkPlan.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+
+        public IActionResult Signin()
+        {
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Signin(User user) 
+        {
+            UserViewModel userViewModel= new UserViewModel();
+
+
+            return View();
         }
     }
 }

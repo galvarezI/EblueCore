@@ -1,0 +1,61 @@
+﻿@model EblueWorkPlan.Models.FieldWork
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FieldWork</h4>
+<hr />
+
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="card">
+
+        <div class="card-header">WorkPlan - FieldWork </div>
+
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="form-group">
+                    <label asp-for="ProjectId" class="control-label"></label>
+                    <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectNumber"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LocationId" class="control-label"></label>
+                    <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationName"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateStarted" class="control-label"></label>
+                    <input asp-for="DateStarted" class="form-control" />
+                    <span asp-validation-for="DateStarted" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateEnded" class="control-label"></label>
+                    <input asp-for="DateEnded" class="form-control" />
+                    <span asp-validation-for="DateEnded" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</form>

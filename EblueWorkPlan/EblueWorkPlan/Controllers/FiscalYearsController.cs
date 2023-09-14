@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EblueWorkPlan.Models;
+using EblueWorkPlan.Models.ViewModels;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -47,7 +48,7 @@ namespace EblueWorkPlan.Controllers
         // GET: FiscalYears/Create
         public IActionResult Create()
         {
-            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusId");
+            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusName");
             return View();
         }
 
@@ -56,16 +57,25 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FiscalYearId,FiscalYearName,FiscalYearNumber,LastUpdate,FiscalYearStatusId")] FiscalYear fiscalYear)
+        public async Task<IActionResult> Create(/*Bind("FiscalYearId,FiscalYearName,FiscalYearNumber,LastUpdate,FiscalYearStatusId")] FiscalYear fiscalYear*/ FiscalYearViewModel fiscalYear)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(fiscalYear);
+                var fiscalyear = new FiscalYear()
+                {
+                    FiscalYearName = fiscalYear.FiscalYearName,
+                    FiscalYearNumber = fiscalYear.FiscalYearNumber,
+                    FiscalYearStatusId = fiscalYear.FiscalYearStatusId,
+                    LastUpdate = fiscalYear.LastUpdate
+                    
+                };
+
+                _context.Add(fiscalyear);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusId", fiscalYear.FiscalYearStatusId);
-            return View(fiscalYear);
+            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusId" );
+            return View();
         }
 
         // GET: FiscalYears/Edit/5

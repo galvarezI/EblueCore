@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.Laboratory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Areq)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoSamples)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SamplesDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Areq)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoSamples)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SamplesDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LabId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LabId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LabId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

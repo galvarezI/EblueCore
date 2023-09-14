@@ -15,6 +15,8 @@ public partial class WorkplandbContext : DbContext
     {
     }
 
+    public virtual DbSet<Analytical> Analyticals { get; set; }
+
     public virtual DbSet<Commodity> Commodities { get; set; }
 
     public virtual DbSet<Department> Departments { get; set; }
@@ -55,14 +57,39 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<SciProject> SciProjects { get; set; }
 
+    public virtual DbSet<Substacion> Substacions { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True; TrustServerCertificate=True ");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True ");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Analytical>(entity =>
+        {
+            entity.HasKey(e => e.AnalyticalId).HasName("PK__Analytic__B1E78B77D97F9138");
+
+            entity.ToTable("Analytical");
+
+            entity.Property(e => e.AnalyticalId).HasColumnName("AnalyticalID");
+            entity.Property(e => e.AnalysisRequired)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("analysisRequired");
+            entity.Property(e => e.NumSamples)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("numSamples");
+            entity.Property(e => e.ProbableDate).HasColumnType("datetime");
+            entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+
+            entity.HasOne(d => d.Project).WithMany(p => p.Analyticals)
+                .HasForeignKey(d => d.ProjectId)
+                .HasConstraintName("FK__Analytica__Proje__2B0A656D");
+        });
+
         modelBuilder.Entity<Commodity>(entity =>
         {
             entity.HasKey(e => e.CommId).HasName("PK__commodit__AF8CE2B9D73102EF");
@@ -343,6 +370,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Impact).HasColumnType("text");
             entity.Property(e => e.IndirectCosts).HasColumnType("text");
             entity.Property(e => e.LastUpdate).HasColumnType("datetime");
+            entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.Materials).HasColumnType("text");
             entity.Property(e => e.ObjWorkPlan).HasColumnType("text");
             entity.Property(e => e.Objectives).HasColumnType("text");
@@ -354,12 +382,16 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.PresentOutlook).HasColumnType("text");
             entity.Property(e => e.ProcessProjectWayId).HasColumnName("ProcessProjectWayID");
             entity.Property(e => e.ProgramAreaId).HasColumnName("ProgramAreaID");
-            entity.Property(e => e.ProjectPi).HasColumnName("ProjectPI");
+            entity.Property(e => e.ProjectPi)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("ProjectPI");
             entity.Property(e => e.ProjectStatusId).HasColumnName("ProjectStatusID");
             entity.Property(e => e.ProjectTitle)
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.ResultsAvailable).HasMaxLength(255);
+            entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.Salaries).HasColumnType("text");
             entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.SubStationId).HasColumnName("SubStationID");
@@ -390,9 +422,29 @@ public partial class WorkplandbContext : DbContext
                 .HasForeignKey(d => d.FiscalYearId)
                 .HasConstraintName("FK__projects__Fiscal__787EE5A0");
 
+            entity.HasOne(d => d.FundType).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.FundTypeId)
+                .HasConstraintName("FK__projects__FundTy__160F4887");
+
+            entity.HasOne(d => d.Location).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.LocationId)
+                .HasConstraintName("FK__projects__Locati__14270015");
+
+            entity.HasOne(d => d.Porganizations).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.PorganizationsId)
+                .HasConstraintName("FK__projects__POrgan__151B244E");
+
             entity.HasOne(d => d.ProgramArea).WithMany(p => p.Projects)
                 .HasForeignKey(d => d.ProgramAreaId)
                 .HasConstraintName("FK__projects__Progra__76969D2E");
+
+            entity.HasOne(d => d.Roster).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.RosterId)
+                .HasConstraintName("FK__projects__Roster__3D2915A8");
+
+            entity.HasOne(d => d.SubStation).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.SubStationId)
+                .HasConstraintName("FK__projects__SubSta__3C34F16F");
         });
 
         modelBuilder.Entity<ProjectAssent>(entity =>
@@ -481,6 +533,18 @@ public partial class WorkplandbContext : DbContext
                 .HasForeignKey(d => d.RosterId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__sciProjec__Roste__5070F446");
+        });
+
+        modelBuilder.Entity<Substacion>(entity =>
+        {
+            entity.HasKey(e => e.SubstationId).HasName("PK__Substaci__BB479C6F556A2D47");
+
+            entity.ToTable("Substacion");
+
+            entity.Property(e => e.SubstationId).HasColumnName("SubstationID");
+            entity.Property(e => e.SubStationName)
+                .HasMaxLength(250)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<User>(entity =>

@@ -12,4 +12,6 @@ public partial class FundType
     public bool? IsFederal { get; set; }
 
     public bool? IsState { get; set; }
+
+    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 }

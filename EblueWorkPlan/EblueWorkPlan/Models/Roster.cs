@@ -21,6 +21,8 @@ public partial class Roster
 
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
 
+    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
+
     public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
 
     public virtual ICollection<SciProject> SciProjectProjects { get; set; } = new List<SciProject>();

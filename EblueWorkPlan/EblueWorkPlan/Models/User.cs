@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 
 namespace EblueWorkPlan.Models;
@@ -16,4 +17,13 @@ public partial class User
     public bool? IsEnabled { get; set; }
 
     public virtual Roster? Roster { get; set; }
+
+    public List<User> users { get; set; } = new List<User>();
 }
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.FundType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FundTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFederal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsState)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FundTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFederal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsState)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FundTypeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FundTypeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FundTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,66 @@
+﻿@model EblueWorkPlan.Models.SciProject
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SciProject</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Roles)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Credits)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Credits)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ca)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ca)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ah)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ah)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AdHonorem)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdHonorem)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Project)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Project.RosterId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Roster)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Roster.RosterId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.SciId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
