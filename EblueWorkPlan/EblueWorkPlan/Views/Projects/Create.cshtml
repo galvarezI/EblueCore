@@ -46,7 +46,8 @@
 
                     <div class="col-6">
                         <label asp-for="RosterId" class="control-label"></label>
-                        @Html.DropDownList("selectedProjectPI", ViewBag.rosterItems as List<SelectListItem>, new {@class = "form-control" })
+                       
+                        <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
                        
                     </div>
                 </div>
@@ -55,19 +56,19 @@
 
                 <div class="form-group">
                     <label asp-for="DepartmentId" class="control-label"></label>
-                    @Html.DropDownList("selectedDepartment", ViewBag.departmentItems as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.departmentItems"></select>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="CommId" class="control-label"></label>
-                    @Html.DropDownList("selectedCommodity", ViewBag.commodityItems as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="CommId" class="form-control" asp-items="ViewBag.commodityItems"></select>
 
                 </div>
 
                 <div class="form-group">
                     <label asp-for="ProgramAreaId" class="control-label"></label>
-                    
-                        @Html.DropDownList("selectedProgramA", ViewBag.programAreaItems as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="ProgramAreaId" class="form-control" asp-items="ViewBag.programAreaItems"></select>
+                        
 
                     
 
@@ -75,13 +76,15 @@
 
                 <div class="form-group">
                     <label asp-for="SubStationId" class="control-label"></label>
-                    @Html.DropDownList("selectedSubStation", ViewBag.substationItems as List<SelectListItem>, new {@class = "form-control" })
+                   
+                    <select asp-for="SubStationId" class="form-control" asp-items="ViewBag.substationItems"></select>
 
                 </div>
 
                 <div class="form-group">
                     <label asp-for="FiscalYearId" class="control-label"></label>
-                    @Html.DropDownList("selectedFiscalYear", ViewBag.fiscalyearItems as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.fiscalyearItems"></select>
+                    
 
 
                 </div>
@@ -99,7 +102,8 @@
 
                 <div class="form-group">
                     <label asp-for="FundTypeId" class="control-label"></label>
-                    @Html.DropDownList("selectedFundtype", ViewBag.fundtypeItems as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="FundTypeId" class="form-control" asp-items="ViewBag.fundtypeItems"></select>
+
 
                 </div>
 
@@ -107,7 +111,8 @@
                 <div class="form-group">
                     <label asp-for="PorganizationsId" class="control-label"></label>
   
-                    @Html.DropDownList("selectedPOrganization", ViewBag.porganizationItem as List<SelectListItem>, new {@class = "form-control" })
+                    <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.porganizationItem"></select>
+
                 </div>
 
 

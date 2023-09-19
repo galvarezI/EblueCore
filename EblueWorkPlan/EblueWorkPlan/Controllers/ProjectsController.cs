@@ -78,6 +78,7 @@ namespace EblueWorkPlan.Controllers
                 });
             }
             ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
 
             var departments = _context.Departments.ToList();
             _departmentsItems = new List<SelectListItem>();
@@ -170,21 +171,7 @@ namespace EblueWorkPlan.Controllers
             return View();
 
 
-            //ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
-            //ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
-            //ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
-
-            //ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
-            //ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
-            //ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
-            //ViewBag.Roster = new SelectList(_context.Rosters, "RosterID", "RosterName");
-            //Linq for Rosters PI:
-
-
-            //var RostersPI = new List<Roster>();
-            //var RosterPI = from r in RostersPI
-            //               where r.CanBePi == true
-            //               select r.RosterId,r.RosterName;
+            
 
 
 
@@ -267,7 +254,7 @@ namespace EblueWorkPlan.Controllers
 
             }
 
-
+            ViewData["selectedProjectPI"] = _rosterItems;
             ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
             ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
             ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
