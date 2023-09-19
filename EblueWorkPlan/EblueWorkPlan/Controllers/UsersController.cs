@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -47,7 +43,8 @@ namespace EblueWorkPlan.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterName");
+            ViewData["RosterName"] = new SelectList(_context.Rosters, "RosterId", "RosterName");
             return View();
         }
 
@@ -65,6 +62,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
+            ViewData["RosterName"] = new SelectList(_context.Rosters, "RosterId", "RosterName");
             return View(user);
         }
 
@@ -82,6 +80,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
             ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
+            ViewData["RosterName"] = new SelectList(_context.Rosters, "RosterId", "RosterName");
             return View(user);
         }
 
@@ -154,14 +153,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Users.Remove(user);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(int id)
         {
-          return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
         }
     }
 }

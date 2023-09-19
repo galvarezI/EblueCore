@@ -1,8 +1,4 @@
-﻿using Microsoft.Build.Framework;
-using Microsoft.CodeAnalysis.CSharp;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models.ViewModels
 {
@@ -70,18 +66,35 @@ namespace EblueWorkPlan.Models.ViewModels
         public Department department { get; set; }
         public Locationn locationn { get; set; }
         public Porganization porganization { get; set; }
-        public FiscalYear fiscalYear { get; set; } 
+        public FiscalYear fiscalYear { get; set; }
         public FundType fundType { get; set; }
         public Commodity Commodity { get; set; }
-        public ProgramArea programArea { get; set;}
-        public Substacion substacion { get; set; } 
-        
+        public ProgramArea programArea { get; set; }
+        public Substacion substacion { get; set; }
+
+
+
+        public int FieldWorkId { get; set; }
+
+
+
+
+
+        public DateTime DateStarted { get; set; }
+
+        public DateTime DateEnded { get; set; }
+
+        public bool InProgress { get; set; }
+
+        public bool ToBeInitiated { get; set; }
+
+
 
     }
-   
-
-    
 
 
-    
+
+
+
+
 }

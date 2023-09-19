@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: Commodities
         public async Task<IActionResult> Index()
         {
-              return _context.Commodities != null ? 
-                          View(await _context.Commodities.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.Commodities'  is null.");
+            return _context.Commodities != null ?
+                        View(await _context.Commodities.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.Commodities'  is null.");
         }
 
         // GET: Commodities/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Commodities.Remove(commodity);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CommodityExists(int id)
         {
-          return (_context.Commodities?.Any(e => e.CommId == id)).GetValueOrDefault();
+            return (_context.Commodities?.Any(e => e.CommId == id)).GetValueOrDefault();
         }
     }
 }

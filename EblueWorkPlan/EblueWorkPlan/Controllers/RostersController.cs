@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,10 +17,10 @@ namespace EblueWorkPlan.Controllers
         // GET: Rosters
         public async Task<IActionResult> Index()
         {
-              return _context.Rosters != null ? 
-                          View(await _context.Rosters.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.Rosters'  is null.");
-           
+            return _context.Rosters != null ?
+                        View(await _context.Rosters.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.Rosters'  is null.");
+
 
         }
 
@@ -70,7 +66,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            
+
 
             return View(roster);
         }
@@ -158,14 +154,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Rosters.Remove(roster);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RosterExists(int id)
         {
-          return (_context.Rosters?.Any(e => e.RosterId == id)).GetValueOrDefault();
+            return (_context.Rosters?.Any(e => e.RosterId == id)).GetValueOrDefault();
         }
     }
 }

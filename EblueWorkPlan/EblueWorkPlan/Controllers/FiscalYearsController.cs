@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
+using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
-using EblueWorkPlan.Models.ViewModels;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -66,15 +62,15 @@ namespace EblueWorkPlan.Controllers
                     FiscalYearName = fiscalYear.FiscalYearName,
                     FiscalYearNumber = fiscalYear.FiscalYearNumber,
                     FiscalYearStatusId = fiscalYear.FiscalYearStatusId,
-                    LastUpdate = fiscalYear.LastUpdate
-                    
+
+
                 };
 
                 _context.Add(fiscalyear);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusId" );
+            ViewData["FiscalYearStatusId"] = new SelectList(_context.FiscalYearStatuses, "FiscalYearStatusId", "FiscalYearStatusId");
             return View();
         }
 
@@ -164,14 +160,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.FiscalYears.Remove(fiscalYear);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FiscalYearExists(int id)
         {
-          return (_context.FiscalYears?.Any(e => e.FiscalYearId == id)).GetValueOrDefault();
+            return (_context.FiscalYears?.Any(e => e.FiscalYearId == id)).GetValueOrDefault();
         }
     }
 }

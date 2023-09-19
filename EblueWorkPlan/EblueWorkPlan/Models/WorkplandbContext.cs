@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EblueWorkPlan.Models;
 
@@ -117,12 +115,16 @@ public partial class WorkplandbContext : DbContext
             entity.ToTable("FieldWork");
 
             entity.Property(e => e.FieldWorkId).HasColumnName("FieldWorkID");
+            entity.Property(e => e.Area).IsUnicode(false);
             entity.Property(e => e.DateEnded)
                 .HasColumnType("datetime")
                 .HasColumnName("dateEnded");
             entity.Property(e => e.DateStarted)
                 .HasColumnType("datetime")
                 .HasColumnName("dateStarted");
+            entity.Property(e => e.FieldWork1)
+                .IsUnicode(false)
+                .HasColumnName("FieldWork");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
 
@@ -147,7 +149,6 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.FiscalYearName).HasMaxLength(100);
             entity.Property(e => e.FiscalYearNumber).HasMaxLength(20);
             entity.Property(e => e.FiscalYearStatusId).HasColumnName("FiscalYearStatusID");
-            entity.Property(e => e.LastUpdate).HasColumnType("datetime");
 
             entity.HasOne(d => d.FiscalYearStatus).WithMany(p => p.FiscalYears)
                 .HasForeignKey(d => d.FiscalYearStatusId)

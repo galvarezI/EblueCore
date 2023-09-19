@@ -1,10 +1,8 @@
 ﻿using EblueWorkPlan.Models;
+using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using EblueWorkPlan.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Components.Routing;
+
 
 namespace EblueWorkPlan.Controllers
 {
@@ -47,12 +45,12 @@ namespace EblueWorkPlan.Controllers
         public IActionResult Signin(User user, UserViewModel _User)
         {
 
-           
+
             //List<User> users = new List<User>();
             //List<User> validateuser = new List<User>();
             //foreach (var item in users)
             //{
-                
+
 
 
             //}
@@ -69,7 +67,7 @@ namespace EblueWorkPlan.Controllers
 
             //}
 
-            //var _user = ValidateUser(user.Email, user.Password);
+
 
             if (_User.Email == user.Email && _User.Password == user.Password)
             {
@@ -83,7 +81,13 @@ namespace EblueWorkPlan.Controllers
                 return View();
 
             }
+            return View();
+        }
 
+
+        public IActionResult Logout()
+        {
+            return RedirectToAction("Signin", "Home");
         }
     }
 }

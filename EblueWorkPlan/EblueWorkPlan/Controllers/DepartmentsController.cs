@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-              return _context.Departments != null ? 
-                          View(await _context.Departments.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.Departments'  is null.");
+            return _context.Departments != null ?
+                        View(await _context.Departments.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.Departments'  is null.");
         }
 
         // GET: Departments/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Departments.Remove(department);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DepartmentExists(int id)
         {
-          return (_context.Departments?.Any(e => e.DepartmentId == id)).GetValueOrDefault();
+            return (_context.Departments?.Any(e => e.DepartmentId == id)).GetValueOrDefault();
         }
     }
 }

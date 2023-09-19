@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EblueWorkPlan.Models;
+﻿namespace EblueWorkPlan.Models;
 
 public partial class FieldWork
 {
@@ -18,6 +15,10 @@ public partial class FieldWork
     public bool InProgress { get; set; }
 
     public bool ToBeInitiated { get; set; }
+
+    public string? FieldWork1 { get; set; }
+
+    public string? Area { get; set; }
 
     public virtual Locationn Location { get; set; } = null!;
 

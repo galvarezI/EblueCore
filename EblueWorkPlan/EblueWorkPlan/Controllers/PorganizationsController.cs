@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: Porganizations
         public async Task<IActionResult> Index()
         {
-              return _context.Porganizations != null ? 
-                          View(await _context.Porganizations.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.Porganizations'  is null.");
+            return _context.Porganizations != null ?
+                        View(await _context.Porganizations.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.Porganizations'  is null.");
         }
 
         // GET: Porganizations/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Porganizations.Remove(porganization);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PorganizationExists(int id)
         {
-          return (_context.Porganizations?.Any(e => e.PorganizationId == id)).GetValueOrDefault();
+            return (_context.Porganizations?.Any(e => e.PorganizationId == id)).GetValueOrDefault();
         }
     }
 }

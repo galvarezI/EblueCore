@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: FiscalYearStatus
         public async Task<IActionResult> Index()
         {
-              return _context.FiscalYearStatuses != null ? 
-                          View(await _context.FiscalYearStatuses.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.FiscalYearStatuses'  is null.");
+            return _context.FiscalYearStatuses != null ?
+                        View(await _context.FiscalYearStatuses.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.FiscalYearStatuses'  is null.");
         }
 
         // GET: FiscalYearStatus/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.FiscalYearStatuses.Remove(fiscalYearStatus);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FiscalYearStatusExists(int id)
         {
-          return (_context.FiscalYearStatuses?.Any(e => e.FiscalYearStatusId == id)).GetValueOrDefault();
+            return (_context.FiscalYearStatuses?.Any(e => e.FiscalYearStatusId == id)).GetValueOrDefault();
         }
     }
 }

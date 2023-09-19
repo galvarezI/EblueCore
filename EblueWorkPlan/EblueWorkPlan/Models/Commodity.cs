@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EblueWorkPlan.Models;
+﻿namespace EblueWorkPlan.Models;
 
 public partial class Commodity
 {

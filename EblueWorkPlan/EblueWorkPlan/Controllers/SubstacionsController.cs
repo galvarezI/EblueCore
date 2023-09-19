@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: Substacions
         public async Task<IActionResult> Index()
         {
-              return _context.Substacions != null ? 
-                          View(await _context.Substacions.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.Substacions'  is null.");
+            return _context.Substacions != null ?
+                        View(await _context.Substacions.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.Substacions'  is null.");
         }
 
         // GET: Substacions/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Substacions.Remove(substacion);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SubstacionExists(int id)
         {
-          return (_context.Substacions?.Any(e => e.SubstationId == id)).GetValueOrDefault();
+            return (_context.Substacions?.Any(e => e.SubstationId == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -155,14 +151,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Laboratories.Remove(laboratory);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LaboratoryExists(int id)
         {
-          return (_context.Laboratories?.Any(e => e.LabId == id)).GetValueOrDefault();
+            return (_context.Laboratories?.Any(e => e.LabId == id)).GetValueOrDefault();
         }
     }
 }

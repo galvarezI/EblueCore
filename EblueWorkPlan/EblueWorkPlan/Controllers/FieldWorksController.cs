@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -165,14 +161,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.FieldWorks.Remove(fieldWork);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FieldWorkExists(int id)
         {
-          return (_context.FieldWorks?.Any(e => e.FieldWorkId == id)).GetValueOrDefault();
+            return (_context.FieldWorks?.Any(e => e.FieldWorkId == id)).GetValueOrDefault();
         }
 
 

@@ -67,6 +67,9 @@
                 <div class="form-group">
                     <label asp-for="ProgramAreaId" class="control-label"></label>
                     
+                        @Html.DropDownList("selectedProgramA", ViewBag.programAreaItems as List<SelectListItem>, new {@class = "form-control" })
+
+                    
 
                 </div>
 
@@ -78,7 +81,8 @@
 
                 <div class="form-group">
                     <label asp-for="FiscalYearId" class="control-label"></label>
-                   
+                    @Html.DropDownList("selectedFiscalYear", ViewBag.fiscalyearItems as List<SelectListItem>, new {@class = "form-control" })
+
 
                 </div>
 

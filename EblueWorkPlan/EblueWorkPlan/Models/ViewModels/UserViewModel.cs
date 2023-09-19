@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace EblueWorkPlan.Models.ViewModels
+﻿namespace EblueWorkPlan.Models.ViewModels
 {
     public class UserViewModel
     {
@@ -11,6 +9,6 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-       
+
     }
 }

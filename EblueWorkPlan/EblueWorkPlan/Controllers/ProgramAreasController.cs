@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: ProgramAreas
         public async Task<IActionResult> Index()
         {
-              return _context.ProgramAreas != null ? 
-                          View(await _context.ProgramAreas.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.ProgramAreas'  is null.");
+            return _context.ProgramAreas != null ?
+                        View(await _context.ProgramAreas.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.ProgramAreas'  is null.");
         }
 
         // GET: ProgramAreas/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.ProgramAreas.Remove(programArea);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProgramAreaExists(int id)
         {
-          return (_context.ProgramAreas?.Any(e => e.ProgramAreaId == id)).GetValueOrDefault();
+            return (_context.ProgramAreas?.Any(e => e.ProgramAreaId == id)).GetValueOrDefault();
         }
     }
 }

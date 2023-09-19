@@ -1,6 +1,5 @@
 using EblueWorkPlan.Models;
 using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,7 +12,18 @@ builder.Services.AddDbContext<WorkplandbContext>(options =>
 
 });
 
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(option => {
+//        option.LoginPath = "Home/Signin";
+//        option.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+//        option.AccessDeniedPath = "Home/Privacy";
+//    });
+
 var app = builder.Build();
+
+
+
+
 
 
 
@@ -30,6 +40,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

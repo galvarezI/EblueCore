@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
+using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
-using EblueWorkPlan.Models.ViewModels;
-using System.Security.Cryptography;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -17,7 +12,7 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _rosterItems;
         private List<SelectListItem> _departmentsItems;
         private List<SelectListItem> _porganizationsItems;
-      
+
         private List<SelectListItem> _fundtypeItems;
         private List<SelectListItem> _commodityItems;
         private List<SelectListItem> _fiscalYearItems;
@@ -29,8 +24,8 @@ namespace EblueWorkPlan.Controllers
         }
 
         // GET: Projects
-        
-            public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index()
         {
             var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea);
             return View(await workplandbContext.ToListAsync());
@@ -61,9 +56,9 @@ namespace EblueWorkPlan.Controllers
         }
 
         // GET: Projects/Create
-        public async Task <IActionResult> Create()
+        public async Task<IActionResult> Create()
         {
-              
+
             ProjectViewModel projects = new ProjectViewModel();
 
             // ViewBag Area:
@@ -73,16 +68,16 @@ namespace EblueWorkPlan.Controllers
 
             // CARGAMOS EL DropDownList 
             var rosters = _context.Rosters.ToList();
-                _rosterItems = new List<SelectListItem>();
-                foreach (var item in rosters)
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
                 {
-                    _rosterItems.Add(new SelectListItem
-                    {
-                        Text = item.RosterName,
-                        Value = item.RosterId.ToString()
-                    });
-                }
-                ViewBag.rosterItems = _rosterItems;
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
 
             var departments = _context.Departments.ToList();
             _departmentsItems = new List<SelectListItem>();
@@ -95,9 +90,9 @@ namespace EblueWorkPlan.Controllers
                 });
             }
             ViewBag.departmentItems = _departmentsItems;
-            
+
             var porganizations = _context.Porganizations.ToList();
-            _porganizationsItems= new List<SelectListItem>();
+            _porganizationsItems = new List<SelectListItem>();
             foreach (var item in porganizations)
             {
                 _porganizationsItems.Add(new SelectListItem
@@ -109,8 +104,8 @@ namespace EblueWorkPlan.Controllers
             }
 
             var commodity = _context.Commodities.ToList();
-            _commodityItems= new List<SelectListItem>();
-            foreach(var item in commodity)
+            _commodityItems = new List<SelectListItem>();
+            foreach (var item in commodity)
             {
                 _commodityItems.Add(new SelectListItem
                 {
@@ -120,24 +115,24 @@ namespace EblueWorkPlan.Controllers
                 ViewBag.commodityItems = _commodityItems;
             }
 
-            
+
 
 
             var fundtype = _context.FundTypes.ToList();
             _fundtypeItems = new List<SelectListItem>();
-            foreach(var item in fundtype)
+            foreach (var item in fundtype)
             {
                 _fundtypeItems.Add(new SelectListItem
                 {
                     Text = item.FundTypeName,
-                    Value= item.FundTypeId.ToString()
+                    Value = item.FundTypeId.ToString()
                 });
                 ViewBag.fundtypeItems = _fundtypeItems;
             }
 
             var fiscalYear = _context.FiscalYears.ToList();
-            _fiscalYearItems= new List<SelectListItem>();
-            foreach(var item in fiscalYear)
+            _fiscalYearItems = new List<SelectListItem>();
+            foreach (var item in fiscalYear)
             {
                 _fiscalYearItems.Add(new SelectListItem
                 {
@@ -148,8 +143,8 @@ namespace EblueWorkPlan.Controllers
             }
 
             var substation = _context.Substacions.ToList();
-            _substationItems= new List<SelectListItem>();
-            foreach(var item in substation)
+            _substationItems = new List<SelectListItem>();
+            foreach (var item in substation)
             {
                 _substationItems.Add(new SelectListItem
                 {
@@ -159,7 +154,7 @@ namespace EblueWorkPlan.Controllers
                 ViewBag.substationItems = _substationItems;
             }
             var programAreas = _context.ProgramAreas.ToList();
-            _programAreaItems= new List<SelectListItem>();
+            _programAreaItems = new List<SelectListItem>();
             foreach (var item in programAreas)
             {
                 _programAreaItems.Add(new SelectListItem
@@ -169,7 +164,7 @@ namespace EblueWorkPlan.Controllers
                 });
                 ViewBag.programAreaItems = _programAreaItems;
             }
-            
+
             #endregion
 
             return View();
@@ -178,7 +173,7 @@ namespace EblueWorkPlan.Controllers
             //ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
             //ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
             //ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
-           
+
             //ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
             //ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
             //ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
@@ -190,16 +185,16 @@ namespace EblueWorkPlan.Controllers
             //var RosterPI = from r in RostersPI
             //               where r.CanBePi == true
             //               select r.RosterId,r.RosterName;
-            
-            
+
+
 
             //ViewBag.Roster = new SelectList(_context.Rosters.Where(r => r.CanBePi == true),"RosterID","RosterName");
             //ViewBag.Roster2 = new SelectList(_context.Rosters, "RosterID", "RosterName");
 
             ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommName");
-            ViewData["Department"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName" );
-            ViewData["FiscalYear"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName " );
-            
+            ViewData["Department"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewData["FiscalYear"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName ");
+
             ViewData["Roster"] = new SelectList(_context.Rosters, "RosterID", "RosterName");
             ViewData["Location"] = new SelectList(_context.Locationns, "LocationId", "LocationName");
             ViewData["FundType"] = new SelectList(_context.FundTypes, "FundTyoeId", "FundTypeName");
@@ -242,7 +237,7 @@ namespace EblueWorkPlan.Controllers
 
             ProjectViewModel projects = new ProjectViewModel();
 
-            
+
 
             if (ModelState.IsValid)
             {
@@ -258,9 +253,9 @@ namespace EblueWorkPlan.Controllers
                     ContractNumber = template.ContractNumber,
                     Orcid = template.Orcid,
                     PorganizationsId = template.PorganizationsId,
-                    LocationId = template.LocationId,
 
-
+                    RosterId = template.RosterId,
+                    FiscalYearId = template.FiscalYearId,
 
 
                 };
@@ -269,7 +264,7 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(template);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-                
+
             }
 
 
@@ -281,13 +276,13 @@ namespace EblueWorkPlan.Controllers
             ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
             ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
 
-           
-       
+
+
             return View(template);
         }
-         
-         
-         
+
+
+
 
         // GET: Projects/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -384,14 +379,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.Projects.Remove(project);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProjectExists(int id)
         {
-          return (_context.Projects?.Any(e => e.ProjectId == id)).GetValueOrDefault();
+            return (_context.Projects?.Any(e => e.ProjectId == id)).GetValueOrDefault();
         }
 
 
@@ -399,7 +394,8 @@ namespace EblueWorkPlan.Controllers
         //GET WORKPLAN PAGE 1:
 
 
-        public async Task<IActionResult> ProjectDetails(int? id) {
+        public async Task<IActionResult> ProjectDetails(int? id)
+        {
 
 
             if (id == null || _context.Projects == null)
@@ -428,7 +424,8 @@ namespace EblueWorkPlan.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> ProjectDetails(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,DepartmentId,CommId,ProgramAreaId,SubStationId,ProjectStatusId,FiscalYearId,ProjectPi")] Project project) {
+        public async Task<IActionResult> ProjectDetails(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,DepartmentId,CommId,ProgramAreaId,SubStationId,ProjectStatusId,FiscalYearId,ProjectPi")] Project project)
+        {
 
 
             if (id != project.ProjectId)
@@ -469,7 +466,7 @@ namespace EblueWorkPlan.Controllers
             return View(project);
 
 
-            
+
         }
 
 
@@ -534,7 +531,7 @@ namespace EblueWorkPlan.Controllers
                     }
                 }
                 return RedirectToAction("Page3", "FieldWorksController");
-                
+
             }
             ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommId", project.CommId);
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", project.DepartmentId);
@@ -547,12 +544,12 @@ namespace EblueWorkPlan.Controllers
         }
 
 
-       
 
 
 
 
-        public ActionResult RedirectTo(string action , string controller)
+
+        public ActionResult RedirectTo(string action, string controller)
         {
             return RedirectToAction(action, controller);
         }

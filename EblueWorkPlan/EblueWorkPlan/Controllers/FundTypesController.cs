@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using EblueWorkPlan.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -21,9 +16,9 @@ namespace EblueWorkPlan.Controllers
         // GET: FundTypes
         public async Task<IActionResult> Index()
         {
-              return _context.FundTypes != null ? 
-                          View(await _context.FundTypes.ToListAsync()) :
-                          Problem("Entity set 'WorkplandbContext.FundTypes'  is null.");
+            return _context.FundTypes != null ?
+                        View(await _context.FundTypes.ToListAsync()) :
+                        Problem("Entity set 'WorkplandbContext.FundTypes'  is null.");
         }
 
         // GET: FundTypes/Details/5
@@ -149,14 +144,14 @@ namespace EblueWorkPlan.Controllers
             {
                 _context.FundTypes.Remove(fundType);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool FundTypeExists(int id)
         {
-          return (_context.FundTypes?.Any(e => e.FundTypeId == id)).GetValueOrDefault();
+            return (_context.FundTypes?.Any(e => e.FundTypeId == id)).GetValueOrDefault();
         }
     }
 }
