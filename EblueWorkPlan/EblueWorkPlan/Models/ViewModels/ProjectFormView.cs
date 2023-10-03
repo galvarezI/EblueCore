@@ -81,5 +81,19 @@ namespace EblueWorkPlan.Models.ViewModels
         public string? Area { get; set; }
 
 
+
+        public int FieldWorkId { get; set; }
+
+
+
+
+
+        public DateTime DateStarted { get; set; }
+
+        public DateTime DateEnded { get; set; }
+
+        public bool InProgress { get; set; }
+
+        public bool ToBeInitiated { get; set; }
     }
 }

@@ -212,8 +212,8 @@ namespace EblueWorkPlan.Controllers
         //    return View(project);
         //}
 
-
         [HttpPost]
+
         [ValidateAntiForgeryToken]
 
         //[Bind("ProjectId,ProjectNumber,ProjectTitle,ProjectPi,DepartmentId,CommId,ProgramAreaId,SubStationId,DateRegister,Salaries,Materials,Equipment,Travel,Abroad,Others,Wfsid,Wfupdate,StartDate,TerminationDate,FundTypeId,ContractNumber,Orcid,PorganizationsId,LocationId")] Project project
@@ -248,7 +248,7 @@ namespace EblueWorkPlan.Controllers
                 };
 
 
-                _context.Add(template);
+                _context.Add(Project);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
 

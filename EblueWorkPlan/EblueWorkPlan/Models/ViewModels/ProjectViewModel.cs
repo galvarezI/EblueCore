@@ -4,7 +4,7 @@ namespace EblueWorkPlan.Models.ViewModels
 {
     public class ProjectViewModel
     {
-        public int ProjectId { get; set; }
+        //public int ProjectId { get; set; }
 
 
 
@@ -46,9 +46,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int? PorganizationsId { get; set; }
 
-        [Display(Name = "Location")]
-
-        public int? LocationId { get; set; }
+        
 
 
         public string? ProjectPi { get; set; }
@@ -62,31 +60,11 @@ namespace EblueWorkPlan.Models.ViewModels
         public int? FiscalYearId { get; set; }
 
 
-        public Roster roster { get; set; }
-        public Department department { get; set; }
-        public Locationn locationn { get; set; }
-        public Porganization porganization { get; set; }
-        public FiscalYear fiscalYear { get; set; }
-        public FundType fundType { get; set; }
-        public Commodity Commodity { get; set; }
-        public ProgramArea programArea { get; set; }
-        public Substacion substacion { get; set; }
+    
 
 
 
-        public int FieldWorkId { get; set; }
-
-
-
-
-
-        public DateTime DateStarted { get; set; }
-
-        public DateTime DateEnded { get; set; }
-
-        public bool InProgress { get; set; }
-
-        public bool ToBeInitiated { get; set; }
+       
 
 
 
