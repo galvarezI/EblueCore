@@ -1,4 +1,7 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class Fund
 {
@@ -28,11 +31,11 @@ public partial class Fund
 
     public int ProjectId { get; set; }
 
-    public string? Ufisaccount { get; set; }
+    public string Ufisaccount { get; set; }
 
     public decimal? IndirectCosts { get; set; }
 
-    public virtual Locationn Location { get; set; } = null!;
+    public virtual Locationn Location { get; set; }
 
-    public virtual Project Project { get; set; } = null!;
+    public virtual Project Project { get; set; }
 }

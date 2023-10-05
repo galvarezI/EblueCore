@@ -1,10 +1,13 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class OtherPersonel
 {
     public int Opid { get; set; }
 
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     public int? PerTime { get; set; }
 
@@ -14,13 +17,13 @@ public partial class OtherPersonel
 
     public int? RosterId { get; set; }
 
-    public string? PersonnelManAdded { get; set; }
+    public string PersonnelManAdded { get; set; }
 
-    public string? RoleManAdded { get; set; }
+    public string RoleManAdded { get; set; }
 
-    public virtual Locationn? Location { get; set; }
+    public virtual Locationn Location { get; set; }
 
-    public virtual Project? Project { get; set; }
+    public virtual Project Project { get; set; }
 
-    public virtual Roster? Roster { get; set; }
+    public virtual Roster Roster { get; set; }
 }

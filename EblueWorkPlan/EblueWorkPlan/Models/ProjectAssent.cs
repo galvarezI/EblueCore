@@ -1,4 +1,7 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class ProjectAssent
 {
@@ -10,9 +13,9 @@ public partial class ProjectAssent
 
     public int? RoleId { get; set; }
 
-    public string? SignData { get; set; }
+    public string SignData { get; set; }
 
     public DateTime SignDate { get; set; }
 
-    public string? RosterData { get; set; }
+    public string RosterData { get; set; }
 }

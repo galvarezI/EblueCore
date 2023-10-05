@@ -4,6 +4,7 @@ namespace EblueWorkPlan.Models.ViewModels
 {
     public class ProjectFormView
     {
+        public Project oProject { get; set; }
         public int ProjectId { get; set; }
 
 

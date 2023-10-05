@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace EblueWorkPlan.Models;
 
@@ -61,7 +63,7 @@ public partial class WorkplandbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True ");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True; TrustServerCertificate=True ");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -95,7 +97,9 @@ public partial class WorkplandbContext : DbContext
             entity.ToTable("commodity");
 
             entity.Property(e => e.CommId).HasColumnName("CommID");
-            entity.Property(e => e.CommName).HasMaxLength(210);
+            entity.Property(e => e.CommName)
+                .IsRequired()
+                .HasMaxLength(210);
         });
 
         modelBuilder.Entity<Department>(entity =>
@@ -103,8 +107,12 @@ public partial class WorkplandbContext : DbContext
             entity.HasKey(e => e.DepartmentId).HasName("PK__Departme__B2079BCD83D4441F");
 
             entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
-            entity.Property(e => e.DepartmentCode).HasMaxLength(100);
-            entity.Property(e => e.DepartmentName).HasMaxLength(100);
+            entity.Property(e => e.DepartmentCode)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.DepartmentName)
+                .IsRequired()
+                .HasMaxLength(100);
             entity.Property(e => e.DepartmentOldId).HasColumnName("DepartmentOldID");
         });
 
@@ -146,8 +154,12 @@ public partial class WorkplandbContext : DbContext
             entity.ToTable("fiscalYear");
 
             entity.Property(e => e.FiscalYearId).HasColumnName("FiscalYearID");
-            entity.Property(e => e.FiscalYearName).HasMaxLength(100);
-            entity.Property(e => e.FiscalYearNumber).HasMaxLength(20);
+            entity.Property(e => e.FiscalYearName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.FiscalYearNumber)
+                .IsRequired()
+                .HasMaxLength(20);
             entity.Property(e => e.FiscalYearStatusId).HasColumnName("FiscalYearStatusID");
 
             entity.HasOne(d => d.FiscalYearStatus).WithMany(p => p.FiscalYears)
@@ -165,7 +177,9 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.FiscalYearStatusId)
                 .ValueGeneratedNever()
                 .HasColumnName("FiscalYearStatusID");
-            entity.Property(e => e.FiscalYearStatusName).HasMaxLength(50);
+            entity.Property(e => e.FiscalYearStatusName)
+                .IsRequired()
+                .HasMaxLength(50);
         });
 
         modelBuilder.Entity<Fund>(entity =>
@@ -264,7 +278,9 @@ public partial class WorkplandbContext : DbContext
 
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.FundsVar).HasMaxLength(10);
-            entity.Property(e => e.LocationName).HasMaxLength(200);
+            entity.Property(e => e.LocationName)
+                .IsRequired()
+                .HasMaxLength(200);
             entity.Property(e => e.LocationOldId).HasColumnName("LocationOldID");
         });
 
@@ -307,6 +323,7 @@ public partial class WorkplandbContext : DbContext
 
             entity.Property(e => e.PorganizationId).HasColumnName("POrganizationID");
             entity.Property(e => e.PorganizationName)
+                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("POrganizationName");

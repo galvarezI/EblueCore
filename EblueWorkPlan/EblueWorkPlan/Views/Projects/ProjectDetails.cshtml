@@ -1,27 +1,10 @@
-﻿@model EblueWorkPlan.Models.Project
-
-
-@{
-
-}
-
-
-<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+﻿@model EblueWorkPlan.Models.Project;
 
 
 
-    </div>
-</nav>
+
+
+
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
         <div class="row g-3">
@@ -32,7 +15,7 @@
                 <input type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
-                    <div class="card-header">Create Project</div>
+                    <div class="card-header">Project Template</div>
 
 
                     <div class="card-body">
@@ -60,9 +43,8 @@
 
 
                             <div class="col-6">
-                                <label asp-for="ProjectPi" class="control-label"></label>
-                                <input asp-for="ProjectPi" class="form-control" readonly />
-                                <span asp-validation-for="ProjectPi" class="text-danger"></span>
+                                <label asp-for="RosterId" class="control-label"></label>
+                                <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems" readonly></select>
                             </div>
                         </div>
 
@@ -85,8 +67,7 @@
 
                         <div class="form-group">
                             <label asp-for="SubStationId" class="control-label"></label>
-                            <input asp-for="SubStationId" class="form-control" readonly />
-                            <span asp-validation-for="SubStationId" class="text-danger"></span>
+                            <select asp-for="SubStationId" class="form-control" asp-items="ViewBag.ProgramAreaItem" disabled></select>
                         </div>
 
                         <div class="form-group">
@@ -107,15 +88,13 @@
 
                         <div class="form-group">
                             <label asp-for="FundTypeId" class="control-label"></label>
-                            <input asp-for="FundTypeId" class="form-control" readonly />
-                            <span asp-validation-for="FundTypeId" class="text-danger"></span>
+                            <select asp-for="FundTypeId" class="form-control" asp-items="ViewBag.FundTypeItem" readonly></select>
                         </div>
 
 
                         <div class="form-group">
                             <label asp-for="PorganizationsId" class="control-label"></label>
-                            <input asp-for="PorganizationsId" class="form-control" readonly />
-                            <span asp-validation-for="PorganizationsId" class="text-danger"></span>
+                            <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.POrganizationItem" readonly></select>
                         </div>
 
 
@@ -180,7 +159,7 @@
 
 
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a class="btn btn-success" asp-action="ProjectList"  asp-route-id ="@Model.ProjectId">Next</a>
                 </div>
 
 
@@ -188,58 +167,7 @@
         </form>
     </div>
 </div>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-   @* <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="card">
-
-            <div class="card-header">WorkPlan - FieldWork </div>
 
 
-            <div class="card-body">
-
-                <div class="row">
-
-                    <div class="form-group">
-                        <label asp-for="ProjectId" class="control-label"></label>
-                        <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectNumber"></select>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="LocationId" class="control-label"></label>
-                        <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationName"></select>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DateStarted" class="control-label"></label>
-                        <input asp-for="DateStarted" class="form-control" />
-                        <span asp-validation-for="DateStarted" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DateEnded" class="control-label"></label>
-                        <input asp-for="DateEnded" class="form-control" />
-                        <span asp-validation-for="DateEnded" class="text-danger"></span>
-                    </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
-                        </label>
-                    </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-
-
-                </div>*@
-
-        @*    </div>
-        </div>
-    </form>*@
-</div>
-    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
-</div>
 
 

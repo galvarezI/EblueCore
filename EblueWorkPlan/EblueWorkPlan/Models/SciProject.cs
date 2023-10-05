@@ -1,4 +1,7 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class SciProject
 {
@@ -20,7 +23,7 @@ public partial class SciProject
 
     public int? ProjectId { get; set; }
 
-    public virtual Roster? Project { get; set; }
+    public virtual Roster Project { get; set; }
 
-    public virtual Roster Roster { get; set; } = null!;
+    public virtual Roster Roster { get; set; }
 }

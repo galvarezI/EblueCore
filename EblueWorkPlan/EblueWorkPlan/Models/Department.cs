@@ -1,12 +1,15 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class Department
 {
     public int DepartmentId { get; set; }
 
-    public string DepartmentName { get; set; } = null!;
+    public string DepartmentName { get; set; }
 
-    public string DepartmentCode { get; set; } = null!;
+    public string DepartmentCode { get; set; }
 
     public int? DepartmentOf { get; set; }
 

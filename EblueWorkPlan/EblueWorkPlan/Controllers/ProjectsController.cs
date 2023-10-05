@@ -3,7 +3,7 @@ using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using System.Diagnostics;
 namespace EblueWorkPlan.Controllers
 {
     public class ProjectsController : Controller
@@ -25,9 +25,13 @@ namespace EblueWorkPlan.Controllers
 
         // GET: Projects
 
-        public async Task<IActionResult> Index()
+        public async Task< IActionResult> Index()
         {
-            var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea);
+            List<Project> projectlist = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(p => p.Porganizations).Include(p => p.Roster).ToList();
+
+            var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(r => r.Roster);
+            //await workplandbContext.ToListAsync())
+
             return View(await workplandbContext.ToListAsync());
         }
 
@@ -253,8 +257,9 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-
             ViewData["selectedProjectPI"] = _rosterItems;
+            ViewBag.rosterPI = _rosterItems;
+            
             ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
             ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
             ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
@@ -383,6 +388,18 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> ProjectDetails(int? id)
         {
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
 
 
             if (id == null || _context.Projects == null)
@@ -395,11 +412,24 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommId", project.CommId);
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", project.DepartmentId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearId", project.FiscalYearId);
-            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaId", project.ProgramAreaId);
 
+            ViewBag.rosterPI = _rosterItems;
+
+            ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
+            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
+            ViewBag.ProgramAreaItem = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName");
+            ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
+            ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+
+
+
+            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommName", project.CommId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName", project.DepartmentId);
+            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName", project.FiscalYearId);
+            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName", project.ProgramAreaId);
+            ViewData["SubstationId"] = new SelectList(_context.Substacions, "SubStationId", "SubStationName", project.SubStationId);
 
 
 
@@ -440,7 +470,7 @@ namespace EblueWorkPlan.Controllers
                 }
                 // return RedirectToAction(nameof(Page2));
 
-                return RedirectToAction("Page2", new
+                return RedirectToAction("ProjectList", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -540,5 +570,22 @@ namespace EblueWorkPlan.Controllers
         {
             return RedirectToAction(action, controller);
         }
+
+
+
+
+
+
+
+        public IActionResult ProjectList(int? id)
+        {
+
+
+
+            return View();
+        }
     }
+
+
+    
 }

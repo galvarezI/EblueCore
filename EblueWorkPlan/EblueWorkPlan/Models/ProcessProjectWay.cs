@@ -1,4 +1,7 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class ProcessProjectWay
 {
@@ -10,5 +13,5 @@ public partial class ProcessProjectWay
 
     public int EstatusId { get; set; }
 
-    public virtual Project Project { get; set; } = null!;
+    public virtual Project Project { get; set; }
 }

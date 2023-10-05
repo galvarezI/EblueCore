@@ -1,4 +1,7 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class FieldWork
 {
@@ -16,11 +19,11 @@ public partial class FieldWork
 
     public bool ToBeInitiated { get; set; }
 
-    public string? FieldWork1 { get; set; }
+    public string FieldWork1 { get; set; }
 
-    public string? Area { get; set; }
+    public string Area { get; set; }
 
-    public virtual Locationn Location { get; set; } = null!;
+    public virtual Locationn Location { get; set; }
 
-    public virtual Project Project { get; set; } = null!;
+    public virtual Project Project { get; set; }
 }

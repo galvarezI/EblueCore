@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProjectNumber)
+                
             </th>
           
             <th>
@@ -29,7 +29,9 @@
                 @Html.DisplayNameFor(model => model.Orcid) 
             </th>
 
-            
+            <th>
+                @Html.DisplayNameFor(model => model.RosterId)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -45,13 +47,16 @@
                 
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.ContractNumber)
+                    @item.ContractNumber
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelitem => item.Orcid)
+                    @item.Orcid
                 </td>
 
+                <td>
+                   @item.RosterId
+                </td>
 
                 <td>
                     <a asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Access</a> |

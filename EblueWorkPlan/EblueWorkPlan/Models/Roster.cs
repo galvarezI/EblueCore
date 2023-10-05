@@ -1,12 +1,15 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class Roster
 {
     public int RosterId { get; set; }
 
-    public string? RosterSegSoc { get; set; }
+    public string RosterSegSoc { get; set; }
 
-    public string? RosterName { get; set; }
+    public string RosterName { get; set; }
 
     public int DepartmentId { get; set; }
 

@@ -1,10 +1,13 @@
-﻿namespace EblueWorkPlan.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace EblueWorkPlan.Models;
 
 public partial class Role
 {
     public int RolesId { get; set; }
 
-    public string? Rname { get; set; }
+    public string Rname { get; set; }
 
     public bool? IsResearchDirector { get; set; }
 
@@ -16,5 +19,5 @@ public partial class Role
 
     public int? RosterId { get; set; }
 
-    public virtual Roster? Roster { get; set; }
+    public virtual Roster Roster { get; set; }
 }
