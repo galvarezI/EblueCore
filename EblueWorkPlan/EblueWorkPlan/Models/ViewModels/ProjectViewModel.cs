@@ -46,8 +46,8 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int? PorganizationsId { get; set; }
 
-        
 
+        public string? OtherFundtype { get; set; }
 
         public string? ProjectPi { get; set; }
 

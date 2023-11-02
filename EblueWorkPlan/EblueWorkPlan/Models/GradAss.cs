@@ -7,7 +7,7 @@ public partial class GradAss
 {
     public int Gaid { get; set; }
 
-    public string Name { get; set; }
+    public string Gname { get; set; }
 
     public string Thesis { get; set; }
 

@@ -102,11 +102,15 @@
 
                 <div class="form-group">
                     <label asp-for="FundTypeId" class="control-label"></label>
-                    <select asp-for="FundTypeId" class="form-control" asp-items="ViewBag.fundtypeItems"></select>
+                    <select asp-for="FundTypeId" class="form-control" id="selectfund" asp-items="ViewBag.fundtypeItems"></select>
 
+                    <label asp-for ="OtherFundtype" class="control-label">
+                        If you select "OTHER"
+                    </label>
 
+                    <input asp-for="OtherFundtype" type="text" id="otherfundtype" class="form-control" />
                 </div>
-
+              
 
                 <div class="form-group">
                     <label asp-for="PorganizationsId" class="control-label"></label>
@@ -428,7 +432,23 @@
 
 @section Scripts {
 
+   <script>
+        document.getElementById("selectfund").addEventListener("change", function(){
+            const selectedId = this.value;
 
+            if(selectedId === 2 || selectedId === 9 ){
+                var labelElement = document.createElement("label")
+                var inputElement = document.createElement("input")
+
+                labelElement.className = "control-label";
+                inputElement.className = "form-control";
+
+
+            }
+        
+        
+        })
+   </script>
         
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

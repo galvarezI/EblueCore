@@ -18,6 +18,7 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _fiscalYearItems;
         private List<SelectListItem> _substationItems;
         private List<SelectListItem> _programAreaItems;
+        private List<SelectListItem> _locationsItems;
         public ProjectsController(WorkplandbContext context)
         {
             _context = context;
@@ -170,6 +171,19 @@ namespace EblueWorkPlan.Controllers
                 ViewBag.programAreaItems = _programAreaItems;
             }
 
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location) {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+            
+            
+            }
             #endregion
 
             return View();
@@ -250,12 +264,20 @@ namespace EblueWorkPlan.Controllers
 
 
                 };
+                var Fundtype = new FundType()
+                {
+                    FundTypeName = template.OtherFundtype
 
+                };
 
                 _context.Add(Project);
+                _context.Add(Fundtype);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
 
+
+
+                
             }
             ViewData["selectedProjectPI"] = _rosterItems;
             ViewBag.rosterPI = _rosterItems;
@@ -450,9 +472,9 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
+            /*
+             * 
+             *  try
                 {
                     _context.Update(project);
                     await _context.SaveChangesAsync();
@@ -468,6 +490,12 @@ namespace EblueWorkPlan.Controllers
                         throw;
                     }
                 }
+             
+             */
+
+            if (ModelState.IsValid)
+            {
+               
                 // return RedirectToAction(nameof(Page2));
 
                 return RedirectToAction("ProjectList", new
@@ -520,9 +548,15 @@ namespace EblueWorkPlan.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Page2(int id, [Bind("Objectives,ObjWorkPlan,PresentOutlook")] Project project)
+        public async Task<IActionResult> Page2(int id, [Bind("Objectives,ObjWorkPlan,PresentOutlook")] Project project, ProjectFormView template)
         {
+            ProjectFormView projectTemplate = new ProjectFormView();
 
+            if (template.ProjectId == 0) {
+               // _context.Projects.Update();
+            
+            
+            }
 
             if (id != project.ProjectId)
             {
@@ -584,6 +618,8 @@ namespace EblueWorkPlan.Controllers
 
             return View();
         }
+
+     
     }
 
 

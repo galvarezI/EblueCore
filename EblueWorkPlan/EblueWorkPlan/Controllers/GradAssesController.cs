@@ -55,7 +55,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Gaid,Name,Thesis,ProjectId,StudentId,Amount,RoleId,StudentName,IsGraduated,IsUndergraduated")] GradAss gradAss)
+        public async Task<IActionResult> Create([Bind("Gaid,Gname,Thesis,ProjectId,StudentId,Amount,RoleId,StudentName,IsGraduated,IsUndergraduated")] GradAss gradAss)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Gaid,Name,Thesis,ProjectId,StudentId,Amount,RoleId,StudentName,IsGraduated,IsUndergraduated")] GradAss gradAss)
+        public async Task<IActionResult> Edit(int id, [Bind("Gaid,Gname,Thesis,ProjectId,StudentId,Amount,RoleId,StudentName,IsGraduated,IsUndergraduated")] GradAss gradAss)
         {
             if (id != gradAss.Gaid)
             {

@@ -63,7 +63,7 @@ public partial class WorkplandbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True; TrustServerCertificate=True ");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=workplandb; Trusted_Connection=True ");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -235,9 +235,9 @@ public partial class WorkplandbContext : DbContext
 
             entity.Property(e => e.Gaid).HasColumnName("GAID");
             entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Gname).HasMaxLength(255);
             entity.Property(e => e.IsGraduated).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsUndergraduated).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.StudentId).HasColumnName("StudentID");
