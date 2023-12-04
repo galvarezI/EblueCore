@@ -1,0 +1,143 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+@{
+    ViewData["Title"] = "Page7";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    /* Content...
+    <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+
+
+
+        </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+
+
+
+
+                </div>
+    */
+
+}
+
+
+<h1>Page7</h1>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link active" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+
+
+
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="nav-gradass" role="tabpanel" aria-labelledby="nav-gradass-tab" tabindex="0">
+        <div class="row g-3">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card">
+
+                    <div class="card-header">Add Graduates </div>
+
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <input type="hidden" asp-for="ProjectId" />
+
+                            <div class="form-group">
+                                <label asp-for="Gname" class="control-label"></label>
+                                <input asp-for="Gname" class="form-control" />
+                                <span asp-validation-for="Gname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Thesis" class="control-label"></label>
+                                <input asp-for="Thesis" class="form-control" />
+                                <span asp-validation-for="Thesis" class="text-danger"></span>
+                            </div>
+                          
+                            <div class="form-group">
+                                <label asp-for="StudentId" class="control-label"></label>
+                                <input asp-for="StudentId" class="form-control" />
+                                <span asp-validation-for="StudentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Amount" class="control-label"></label>
+                                <input asp-for="Amount" class="form-control" />
+                                <span asp-validation-for="Amount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="RoleId" class="control-label"></label>
+                                <input asp-for="RoleId" class="form-control" />
+                                <span asp-validation-for="RoleId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StudentName" class="control-label"></label>
+                                <input asp-for="StudentName" class="form-control" />
+                                <span asp-validation-for="StudentName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="IsGraduated" /> @Html.DisplayNameFor(model => model.IsGraduated)
+                                </label>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="IsUndergraduated" /> @Html.DisplayNameFor(model => model.IsUndergraduated)
+                                </label>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+
+        <div class="card-footer">
+
+                                <div class="btn btn-primary col align-content-center"><a asp-action="Page6" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
+
+
+
+
+                                <div class="btn btn-primary col align-content-end"><a  asp-action="Page8" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
+
+                            </div>
+                    
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+
+</div>

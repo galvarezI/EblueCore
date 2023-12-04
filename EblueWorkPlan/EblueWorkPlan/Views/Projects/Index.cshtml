@@ -7,10 +7,14 @@
 <h1>Project Area </h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create" style="text-decoration:none;">Create New</a>
 </p>
 
+@{
+   
 
+
+}
 
 
 
@@ -30,7 +34,11 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.RosterId)
+                @Html.DisplayNameFor(model => model.Roster.RosterName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectStatusId)
             </th>
         </tr>
     </thead>
@@ -58,6 +66,9 @@
                    @item.RosterId
                 </td>
 
+                <td>
+                    @item.ProjectStatusId
+                </td>
                 <td>
                     <a asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Access</a> |
                     <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |

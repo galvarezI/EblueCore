@@ -1,68 +1,129 @@
-﻿@model EblueWorkPlan.Models.Project
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
 
 @{
     ViewData["Title"] = "Page2";
 }
 
 @{
-}
+    /* Content...
+    <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
 
-
-
-<div class="row g-3">
-
-
-    <form asp-action="Page2">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="ProjectId" />
-        <div class="card">
-
-            <div class="card-header">Create Project: @Html.DisplayFor(modelItem => Model.ProjectNumber)</div>
-
-
-            <div class="card-body">
-
-                <div class="row">
-                    <div class="col-12">
-                        <label asp-for="Objectives" class="control-label"></label>
-                        <input asp-for="Objectives" class="form-control" />
-                        <span asp-validation-for="Objectives" class="text-danger"></span>
-                    </div>
-                </div>
-
-
-                 <div class="row">
-                    <div class="col-12">
-                        <label asp-for="ObjWorkPlan" class="control-label"></label>
-                        <input asp-for="ObjWorkPlan" class="form-control" />
-                        <span asp-validation-for="ObjWorkPlan" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <label asp-for="PresentOutlook" class="control-label"></label>
-                        <input asp-for="PresentOutlook" class="form-control" />
-                        <span asp-validation-for="PresentOutlook" class="text-danger"></span>
-                    </div>
-                </div>
-
-               
-           
-            
-                
-                
 
 
             </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
 
 
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
 
 
         </div>
-    </form>
+    */
+
+}
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="ProjectList" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" asp-action="Page2" asp-controller="Projects"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false" asp-action="Page3" asp-controller="Projects"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false" asp-action="Page4" asp-controller="Projects"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false" asp-action="Page5" asp-controller="Projects"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false" asp-action="Page6" asp-controller="Projects"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false" asp-action="Page7" asp-controller="Projects"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false" asp-action="Page8" asp-controller="Projects"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+
+
+
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div class="row g-3">
+            <form asp-action="Page2">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProjectId" />
+
+                <div class="card">
+
+                    <div class="card-header">WorkPlan - FieldWork </div>
+
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Area" class="control-label"></label>
+                                <input asp-for="Area" class="form-control" />
+                                <span asp-validation-for="Area" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label asp-for="LocationId" class="control-label"></label>
+                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateStarted" class="control-label"></label>
+                                <input asp-for="DateStarted" class="form-control" />
+                                <span asp-validation-for="DateStarted" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateEnded" class="control-label"></label>
+                                <input asp-for="DateEnded" class="form-control" />
+                                <span asp-validation-for="DateEnded" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
+                                </label>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                            <div class="card-footer">
+
+                                <div class="btn btn-primary col align-content-center"><a asp-action="ProjectList" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
+
+
+
+
+                                <div class="btn btn-primary col align-content-end"><a  asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
+
+                            </div>
+                    
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
 </div>
+

@@ -4,6 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
+using System.Data.SqlClient;
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.CodeAnalysis;
+using Microsoft.Build.Execution;
+
 namespace EblueWorkPlan.Controllers
 {
     public class ProjectsController : Controller
@@ -26,14 +32,91 @@ namespace EblueWorkPlan.Controllers
 
         // GET: Projects
 
-        public async Task< IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
-            List<Project> projectlist = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(p => p.Porganizations).Include(p => p.Roster).ToList();
+            
 
-            var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(r => r.Roster);
+            var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(p => p.Roster)/*.Include(ps => ps.ProjectStatus)*/;
             //await workplandbContext.ToListAsync())
 
+
+            
+
+
+
             return View(await workplandbContext.ToListAsync());
+        }
+
+        public IActionResult IndexVM()
+        {
+
+
+            ViewModelIndex viewModelIndex = new ViewModelIndex();
+            //IndexViewModel indexViewModel = new IndexViewModel();
+
+            //var projectlist = (from p in _context.Projects
+            //                   join r in _context.Rosters on p.RosterId equals r.RosterId
+            //                   join ps in _context.ProjectStatuses on p.ProjectStatusId equals ps.ProjectstatusId
+            //                   select new IndexViewModel
+            //                   {
+            //                      projectId= p.ProjectId,
+            //                      projectNumber= p.ProjectNumber,
+            //                      projectTitle= p.ProjectTitle,
+            //                      accountNumber = p.Orcid,
+            //                      contractNumber= p.ContractNumber,
+            //                      ProjectstatusId= ps.ProjectstatusId,
+            //                      StatusName= ps.StatusName,
+            //                      RosterId = r.RosterId,
+            //                      RosterName = r.RosterName,
+            //                      projectPI = r.RosterName
+                                 
+                                  
+                                  
+                                  
+                                    
+
+                              
+            //                   }).ToList();
+
+            //IndexViewModel modelo = _context.Projects.Include(ps => ps.ProjectStatus).Include(r => r.Roster)
+            //.Select(p => new IndexViewModel()
+            //{
+
+            //    ProjectId = p.ProjectId,
+            //    projectNumber = p.ProjectNumber,
+            //    accountNumber = p.Orcid,
+            //    projectTitle = p.ProjectTitle,
+            //    contractNumber = p.ContractNumber,
+            //    projectstatus = p.ProjectStatus.Select(ps => new ProjectStatusViewModel()
+            //    {
+
+            //        ProjectstatusId = ps.ProyectStatusId,
+            //        StatusName = ps.StatusName,
+
+
+
+
+            //    }).ToList(),
+            //    rosterPI = p.Roster.Select(r => new RosterViewModel()
+            //    {
+
+
+
+            //    })
+
+            //})
+
+
+
+
+
+
+
+
+
+
+
+            return View(viewModelIndex);
         }
 
 
@@ -181,15 +264,15 @@ namespace EblueWorkPlan.Controllers
                     Value = item.LocationId.ToString()
                 });
                 ViewBag.locationsItems = _locationsItems;
-            
-            
+
+
             }
             #endregion
 
             return View();
 
 
-            
+
 
 
 
@@ -246,7 +329,7 @@ namespace EblueWorkPlan.Controllers
 
             if (ModelState.IsValid)
             {
-                var Project = new Project()
+                var Project = new Models.Project()
                 {
                     ProjectNumber = template.ProjectNumber,
                     ProjectTitle = template.ProjectTitle,
@@ -277,11 +360,11 @@ namespace EblueWorkPlan.Controllers
 
 
 
-                
+
             }
             ViewData["selectedProjectPI"] = _rosterItems;
             ViewBag.rosterPI = _rosterItems;
-            
+
             ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
             ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
             ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
@@ -323,7 +406,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,ProjectPi,DepartmentId,CommId,ProgramAreaId,SubStationId,DateRegister,LastUpdate,ProjectStatusId,FiscalYearId,Objectives,ObjWorkPlan,PresentOutlook,Wp1fieldWork,Wp2id,Workplan2Desc,ResultsAvailable,Facilities,Impact,Salaries,Materials,Equipment,Travel,Abroad,Others,Wfsid,Wfupdate,StartDate,TerminationDate,FundTypeId,WorkPlan2,Wages,Benefits,Assistant,Subcontracts,IndirectCosts,ContractNumber,Orcid,ProcessProjectWayId,PorganizationsId,LocationId")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,ProjectPi,DepartmentId,CommId,ProgramAreaId,SubStationId,DateRegister,LastUpdate,ProjectStatusId,FiscalYearId,Objectives,ObjWorkPlan,PresentOutlook,Wp1fieldWork,Wp2id,Workplan2Desc,ResultsAvailable,Facilities,Impact,Salaries,Materials,Equipment,Travel,Abroad,Others,Wfsid,Wfupdate,StartDate,TerminationDate,FundTypeId,WorkPlan2,Wages,Benefits,Assistant,Subcontracts,IndirectCosts,ContractNumber,Orcid,ProcessProjectWayId,PorganizationsId,LocationId")] Models.Project project)
         {
             if (id != project.ProjectId)
             {
@@ -423,6 +506,18 @@ namespace EblueWorkPlan.Controllers
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;
 
+            var substation = _context.Substacions.ToList();
+            _substationItems = new List<SelectListItem>();
+            foreach (var item in substation)
+            {
+                _substationItems.Add(new SelectListItem
+                {
+                    Text = item.SubStationName,
+                    Value = item.SubstationId.ToString()
+                });
+                ViewBag.substationItems = _substationItems;
+            }
+
 
             if (id == null || _context.Projects == null)
             {
@@ -463,7 +558,7 @@ namespace EblueWorkPlan.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> ProjectDetails(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,DepartmentId,CommId,ProgramAreaId,SubStationId,ProjectStatusId,FiscalYearId,ProjectPi")] Project project)
+        public async Task<IActionResult> ProjectDetails(int id, [Bind("ProjectId,ProjectNumber,ProjectTitle,DepartmentId,CommId,ProgramAreaId,SubStationId,ProjectStatusId,FiscalYearId,ProjectPi")] Models.Project project)
         {
 
 
@@ -471,7 +566,7 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-
+            #region depreceated
             /*
              * 
              *  try
@@ -492,10 +587,11 @@ namespace EblueWorkPlan.Controllers
                 }
              
              */
+            #endregion
 
             if (ModelState.IsValid)
             {
-               
+
                 // return RedirectToAction(nameof(Page2));
 
                 return RedirectToAction("ProjectList", new
@@ -504,11 +600,8 @@ namespace EblueWorkPlan.Controllers
                     projectName = project.ProjectTitle
                 });
             }
-            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommId", project.CommId);
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", project.DepartmentId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearId", project.FiscalYearId);
-            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaId", project.ProgramAreaId);
-            return View(project);
+           
+            return View();
 
 
 
@@ -516,11 +609,11 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        //Project : WorkPlan Page 2
+        //Project : WorkPlan Page 2, Process 1>
 
-        public async Task<IActionResult> Page2(int? id)
+        public async Task<IActionResult> Page2(int? id, FieldWork fieldwork)
         {
-
+            ProjectFormView template= new ProjectFormView();
 
             if (id == null || _context.Projects == null)
             {
@@ -528,6 +621,7 @@ namespace EblueWorkPlan.Controllers
             }
 
             var project = await _context.Projects.FindAsync(id);
+            template.ProjectId = project.ProjectId;
             if (project == null)
             {
                 return NotFound();
@@ -538,57 +632,82 @@ namespace EblueWorkPlan.Controllers
             ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaId", project.ProgramAreaId);
 
 
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
 
 
+            }
 
-            return View(project);
+
+            return View(template);
         }
 
 
+        //Project : WorkPlan Page 2, Process 1>
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> Page2(int id, [Bind("Objectives,ObjWorkPlan,PresentOutlook")] Project project, ProjectFormView template)
+        //[Bind("Objectives,ObjWorkPlan,PresentOutlook")] in case to use it.
+        public async Task<IActionResult> Page2(int id,  ProjectFormView template, Models.Project project  )
         {
             ProjectFormView projectTemplate = new ProjectFormView();
 
-            if (template.ProjectId == 0) {
-               // _context.Projects.Update();
-            
-            
-            }
 
-            if (id != project.ProjectId)
-            {
-                return NotFound();
-            }
+            //var query = (from f in _context.FieldWorks
+            //             select f
+            //             ).FirstOrDefault();
 
-            if (ModelState.IsValid)
-            {
-                try
+            //query.LocationId = (int)projectTemplate.LocationId;
+            //query.DateStarted = projectTemplate.DateStarted;
+            //query.DateEnded = projectTemplate.DateEnded;
+            //query.InProgress = projectTemplate.InProgress;
+            //query.ToBeInitiated = projectTemplate.ToBeInitiated;
+
+
+            if (ModelState.IsValid) {
+
+
+
+                //Esta parte ocasiona un error....
+                 FieldWork fieldwork = new FieldWork()
                 {
-                    _context.Update(project);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProjectExists(project.ProjectId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Page3", "FieldWorksController");
+                    LocationId = (int)template.LocationId,
+                    DateStarted = template.DateStarted,
+                    DateEnded = template.DateEnded,
+                    InProgress = template.InProgress,
+                    ToBeInitiated = template.ToBeInitiated,
+                    Area = template.Area,
+                    ProjectId = project.ProjectId
+                    
 
+
+
+
+
+                     };
+                _context.Add(fieldwork);
+                await _context.SaveChangesAsync();
+
+                template.ProjectId = project.ProjectId;
+                template.ProjectTitle = project.ProjectTitle;
+                return RedirectToAction("Page3", new
+                {
+                    ID = template.ProjectId,
+                    projectName = template.ProjectTitle
+                });
             }
-            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommId", project.CommId);
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentId", project.DepartmentId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearId", project.FiscalYearId);
-            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaId", project.ProgramAreaId);
-            return View(project);
+
+           
+            return View();
 
 
 
@@ -611,17 +730,623 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        public IActionResult ProjectList(int? id)
+        public async Task<IActionResult> ProjectList(int? id, Models.Project project)
         {
+            ProjectFormView projectTemplate = new ProjectFormView();
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var projects = await _context.Projects.FindAsync(id);
+            if (projects == null)
+            {
+                return NotFound();
+            }
+
+            projectTemplate.ProjectId = id.Value;
+            return View(projectTemplate);
+        }
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProjectList( Models.   Project project, int id) {
+
+            
+
+            
+
+           
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    var query = (from p in _context.Projects
+                                 where p.ProjectId == project.ProjectId
+                                 select
+                                 p).FirstOrDefault();
+
+                    query.Objectives = project.Objectives;
+                    query.ObjWorkPlan = project.ObjWorkPlan;
+                    query.PresentOutlook = project.PresentOutlook;
+
+                    _context.SaveChanges();
+                   
+                 
+
+
+                    //var result = _context.Projects
+                    //    .FromSqlInterpolated($"EXEC ActualizarPag1 @ProjectId = {projectTemplate.ProjectId} ,@Objectives = {projectTemplate.Objectives},@ObjWorkPlan = {projectTemplate.ObjWorkPlan},@PresentOutlook = {projectTemplate.PresentOutlook}").AsAsyncEnumerable();
+
+
+
+                      
+                    //_context.Update(project);
+                    //await _context.SaveChangesAsync();
+
+
+
+                    return RedirectToAction("Page2", new
+                    {
+                        ID = project.ProjectId,
+                        projectName = project.ProjectTitle
+                    });
+
+
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProjectExists(project.ProjectId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return View();
+
+            }
+
+            return View();
+        }
+
+
+
+
+
+        // Page 3:
+        public async Task<IActionResult> Page3(int? id, ProjectFormView projectTemplate) {
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+
+            projectTemplate.ProjectId = id.Value;
+
+            return View(projectTemplate);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Page3(int? id, Models.Project project, ProjectFormView projectTemplate) {
+            if (ModelState.IsValid)
+            {
+                Laboratory laboratory = new Laboratory()
+                {
+
+
+                    
+                    WorkPlanned = projectTemplate.WorkPlanned,
+                    Descriptions = projectTemplate.Descriptions,
+                    EstimatedTime = projectTemplate.EstimatedTime,
+                    FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
+                    ProjectId = projectTemplate.ProjectId
+
+
+
+
+                };
+                _context.Add(laboratory);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Page4", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+
+
+
+            }
+
+           
+            return View();
+        }
+
+
+
+        //Page 4> Analitical
+
+        public async Task<IActionResult> Page4(int? id, ProjectFormView projectTemplate) {
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+            projectTemplate.ProjectId = id.Value;
+
+
+
+
+            return View(projectTemplate);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page4(int? id, Models.Project project, ProjectFormView projectTemplate) {
+            
+            if (ModelState.IsValid) {
+                Analytical analytical = new Analytical()
+                {
+                        AnalysisRequired= projectTemplate.AnalysisRequired,
+                        NumSamples= projectTemplate.NumSamples,
+                        ProbableDate= projectTemplate.ProbableDate,
+                        ProjectId= projectTemplate.ProjectId
+
+                };
+                _context.Add(analytical);
+                await _context.SaveChangesAsync();
+
+               
+                return RedirectToAction("Page5", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+            }
+        
+        
+        
+        
+        
+            return View();
+        }
+
+
+
+
+
+        public async Task<IActionResult> Page5(int? id, ProjectFormView projectTemplate) {
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+            projectTemplate.ProjectId = id.Value;
+
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
+            return View(projectTemplate);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page5(int? id,     Models.Project project, ProjectFormView projectTemplate) {
+            
+            if (ModelState.IsValid) {
+                SciProject sciProject = new SciProject() { 
+                
+                    RosterId = (int)projectTemplate.RosterId,
+                    Roles= projectTemplate.Roles,
+                    Credits= projectTemplate.Credits,
+                    Tr = projectTemplate.Tr,
+                    Ca = projectTemplate.Ca,
+                    Ah= projectTemplate.Ah,
+                    AdHonorem= projectTemplate.AdHonorem,
+                    ProjectId= project.ProjectId
+                
+                
+                
+                
+                };
+                _context.Add(sciProject);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Page6", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+
+            }
+        
+        
+        
+        
+        
+            return View();
+        }
+
+
+
+        public async Task<IActionResult> Page6(int? id, ProjectFormView projectTemplate) {
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            projectTemplate.ProjectId = id.Value;
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+
+
+            }
+
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
+            return View(projectTemplate);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Page6(int? id, Models.Project project, ProjectFormView projectTemplate) {
+            if (ModelState.IsValid) {
+
+                OtherPersonel otherPersonel = new OtherPersonel() {
+
+                    Name = projectTemplate.Name,
+                    PerTime= projectTemplate.PerTime,
+                    LocationId= projectTemplate.LocationId,
+                    RosterId = projectTemplate.RosterId,
+                    PersonnelManAdded= projectTemplate.PersonnelManAdded,
+                    RoleManAdded= projectTemplate.RoleManAdded,
+                    ProjectId= projectTemplate.ProjectId
+                
+                
+                
+                
+                
+                
+                
+                };
+                _context.Add(otherPersonel);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Page7", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+
+
+            }
+
+            return View();
+
+
+
+        }
+
+        public async Task<IActionResult> Page7(int? id, ProjectFormView projectTemplate) {
+
+
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+
+            projectTemplate.ProjectId = id.Value;
+            return View(projectTemplate);
+
+
+
+
+
+
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page7(int? id, Models.Project project, ProjectFormView projectTemplate) {
+            
+
+            if(ModelState.IsValid)
+            {
+                GradAss gradAss = new GradAss() { 
+                
+                    Gname = projectTemplate.Gname,
+                    Thesis = projectTemplate.Thesis,
+                    StudentId= projectTemplate.StudentId,
+                    Amount= projectTemplate.Amount,
+                    RoleId= projectTemplate.RoleId,
+                    StudentName= projectTemplate.StudentName,
+                    IsGraduated= projectTemplate.IsGraduated,
+                    IsUndergraduated= projectTemplate.IsUndergraduated,
+                    ProjectId= project.ProjectId
+                
+                
+                
+                
+                
+                
+                
+                };
+                _context.Add(gradAss);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Page8", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+
+            }
+        
+        
+            return View();
+        }
+
+
+
+
+
+
+        public async Task<IActionResult> Page8(int? id, ProjectFormView projectTemplate) {
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+
+
+            }
+
+
+            projectTemplate.ProjectId = id.Value;
+            return View(projectTemplate);
+
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page8(int? id, Models.Project project, ProjectFormView projectTemplate) {
+            if(ModelState.IsValid)
+            {
+                
+                Fund fund = new Fund()
+                {
+                  LocationId = (int)projectTemplate.LocationId,
+                  Salaries= projectTemplate.Salaries,
+                  Wages = projectTemplate.Wages,
+                  Subcontracts= projectTemplate.Subcontracts,
+                  Benefits= projectTemplate.Benefits,
+                  Assistant= projectTemplate.Assistant,
+                  Materials= projectTemplate.Materials,
+                  Equipment= projectTemplate.Equipment,
+                  Travel = projectTemplate.Travel,
+                  Abroad= projectTemplate.Abroad,
+                  Others= projectTemplate.Others,
+                  Ufisaccount= projectTemplate.Ufisaccount,
+                  IndirectCosts= projectTemplate.IndirectCosts,
+                  ProjectId= project.ProjectId
+
+
+
+
+                };
+                _context.Add(fund);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Page9", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+
+            }
+
+
 
 
 
             return View();
         }
 
-     
-    }
+        // Workplan Page 9>
 
+        public async Task<IActionResult> Page9(int? id, ProjectFormView projectTemplate, ProjectViewModel projectViewModel)
+        {
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+
+            projectViewModel.ProjectId = id.Value;
+
+            return View(projectViewModel);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page9(int? id , Models.Project project, ProjectViewModel projectTemplate)
+        {
+            
+            if (ModelState.IsValid) {
+
+                try
+                {
+                    var query = (from p in _context.Projects
+                                 where p.ProjectId == id
+                                 select
+                                 p
+
+                                 ).FirstOrDefault();
+                    
+                    query.Facilities= projectTemplate.Facilities;
+                    query.Impact = projectTemplate.Impact;
+                    query.Salaries = projectTemplate.Salaries;
+                    query.Materials = projectTemplate.Materials;
+                    query.Equipment = projectTemplate.Equipment;
+                    query.Travel = projectTemplate.Travel;
+                    query.Abroad= projectTemplate.Abroad;
+                    query.Others= projectTemplate.Others;
+                    query.Wages= projectTemplate.Wages;
+                    query.Benefits= projectTemplate.Benefits;
+                    query.Assistant= projectTemplate.Assistant;
+                    query.Subcontracts = projectTemplate.Subcontracts;
+                    query.IndirectCosts = projectTemplate.IndirectCosts;
+
+                    
+                    await _context.SaveChangesAsync();
+
+
+
+                    return RedirectToAction(nameof(Index));
+
+
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProjectExists(project.ProjectId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return View();
+
+
+
+
+
+
+
+            }
+
+
+
+            return View();
+        }
+    }
+    
 
     
 }

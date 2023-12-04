@@ -51,6 +51,8 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<ProjectAssent> ProjectAssents { get; set; }
 
+    public virtual DbSet<ProjectStatus> ProjectStatuses { get; set; }
+
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<Roster> Rosters { get; set; }
@@ -261,9 +263,13 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Areq)
                 .HasMaxLength(255)
                 .HasColumnName("AReq");
+            entity.Property(e => e.Descriptions).HasColumnType("text");
+            entity.Property(e => e.EstimatedTime).HasColumnType("text");
+            entity.Property(e => e.FacilitiesNeeded).HasColumnType("text");
             entity.Property(e => e.NoSamples).HasMaxLength(70);
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.SamplesDate).HasColumnType("datetime");
+            entity.Property(e => e.WorkPlanned).HasColumnType("text");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Laboratories)
                 .HasForeignKey(d => d.ProjectId)
@@ -479,6 +485,18 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.SignDate)
                 .HasColumnType("datetime")
                 .HasColumnName("signDate");
+        });
+
+        modelBuilder.Entity<ProjectStatus>(entity =>
+        {
+            entity.HasKey(e => e.ProjectstatusId).HasName("PK__ProjectS__5D285B23212BDFA7");
+
+            entity.ToTable("ProjectStatus");
+
+            entity.Property(e => e.ProjectstatusId).HasColumnName("projectstatusId");
+            entity.Property(e => e.StatusName)
+                .HasMaxLength(250)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Role>(entity =>

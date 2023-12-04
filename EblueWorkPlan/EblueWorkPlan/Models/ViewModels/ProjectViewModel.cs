@@ -6,7 +6,8 @@ namespace EblueWorkPlan.Models.ViewModels
     {
         //public int ProjectId { get; set; }
 
-
+        public Project oProject { get; set; }
+        public int ProjectId { get; set; }
 
         [Display(Name = "Project Number")]
         public int ProjectNumber { get; set; }
@@ -60,11 +61,35 @@ namespace EblueWorkPlan.Models.ViewModels
         public int? FiscalYearId { get; set; }
 
 
-    
+
+        public string Facilities { get; set; }
+
+        public string Impact { get; set; }
+
+        public string Salaries { get; set; }
+
+        public string Materials { get; set; }
+
+        public string Equipment { get; set; }
+
+        public string Travel { get; set; }
+
+        public string Abroad { get; set; }
+
+        public string Others { get; set; }
+
+        public string Wages { get; set; }
+
+        public string Benefits { get; set; }
+
+        public string Assistant { get; set; }
+
+        public string Subcontracts { get; set; }
+
+        public string IndirectCosts { get; set; }
 
 
 
-       
 
 
 

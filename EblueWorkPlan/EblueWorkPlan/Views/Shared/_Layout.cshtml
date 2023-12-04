@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white my-sm-1 my-2 text-center text-sm-start" aria-current="page">
+                    <a  asp-action="Index" asp-controller ="Home" class="nav-link text-white my-sm-1 my-2 text-center text-sm-start" aria-current="page">
                         <i class="fa fa-house"></i>
                         <span class="ms-2 d-none d-sm-inline">Home</span>
 
@@ -98,6 +98,15 @@
 
                         <li class="nav-item ">
                             <a class="nav-link text-white" asp-action="Index" asp-controller="FundTypes">Type of Funds</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="FieldWorks">FieldWorks</a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="ProjectStatus">Project Status</a>
                         </li>
 
                     </ul>

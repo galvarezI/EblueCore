@@ -15,5 +15,13 @@ public partial class Laboratory
 
     public int? ProjectId { get; set; }
 
+    public string WorkPlanned { get; set; }
+
+    public string Descriptions { get; set; }
+
+    public string EstimatedTime { get; set; }
+
+    public string FacilitiesNeeded { get; set; }
+
     public virtual Project Project { get; set; }
 }

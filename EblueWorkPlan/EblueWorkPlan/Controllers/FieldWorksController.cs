@@ -8,7 +8,8 @@ namespace EblueWorkPlan.Controllers
     public class FieldWorksController : Controller
     {
         private readonly WorkplandbContext _context;
-
+        private List<SelectListItem> _locationsItems;
+        private List<SelectListItem> _projectsItems;
         public FieldWorksController(WorkplandbContext context)
         {
             _context = context;
@@ -46,6 +47,48 @@ namespace EblueWorkPlan.Controllers
         // GET: FieldWorks/Create
         public IActionResult Create()
         {
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+            }
+
+
+            var proyect = _context.Projects.ToList();
+            _projectsItems = new List<SelectListItem>();
+            foreach (var item in  proyect)
+            {
+
+                _projectsItems.Add(new SelectListItem
+                {
+                    Text = item.ProjectTitle,
+                    Value = item.ProjectId.ToString()
+                });
+                ViewBag.projectsItems = _projectsItems;
+
+              
+            }
+
+
+
+
+
+
+
             ViewData["LocationId"] = new SelectList(_context.Locationns, "LocationId", "LocationId");
             ViewData["ProjectId"] = new SelectList(_context.Projects, "ProjectId", "ProjectId");
 

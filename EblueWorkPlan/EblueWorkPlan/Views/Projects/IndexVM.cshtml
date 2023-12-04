@@ -1,0 +1,105 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.ViewModels.ViewModelIndex>
+
+
+@{
+    ViewData["Title"] = "IndexVM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>IndexVM</h1>
+
+
+<h1>Project Area </h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create" style="text-decoration:none;">Create New</a>
+</p>
+
+@{
+
+
+
+}
+
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.projects.ContractNumber)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.projects.Orcid)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Roster.RosterName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.projectStatus.StatusName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="ProjectDetails" asp-route-id="@item.projects.ProjectId">
+                        @Html.DisplayFor(modelItem => item.projects.ContractNumber)
+                    </a>
+
+                </td>
+
+
+                <td>
+                    @item.projects.ContractNumber
+                </td>
+
+                <td>
+                    @item.projects.Orcid
+                </td>
+
+                
+                    @{
+                        if (item.projects.RosterId == item.Roster.RosterId)
+                        {
+                            <td>@item.Roster.RosterName</td>
+                        
+                        
+                        }
+
+                    
+                    }
+
+
+
+
+
+                @{
+                    if (item.projects.ProjectStatusId == item.projectStatus.ProjectstatusId)
+                    {
+                        <td>@item.projectStatus.StatusName</td>
+
+
+                    }
+
+
+                }
+                <td>
+                    <a asp-action="ProjectDetails" asp-route-id="@item.projects.ProjectId">Access</a> |
+                    <a asp-action="Details" asp-route-id="@item.projects.ProjectId">Details</a> |
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -75,11 +75,11 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         [Display(Name = " Work Planned (Field Work)")]
-        public string? FieldWork1 { get; set; }
+        public string FieldWork1 { get; set; }
 
 
         [Display(Name = " Area(Acres)")]
-        public string? Area { get; set; }
+        public string Area { get; set; }
 
 
 
@@ -109,6 +109,14 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public DateTime? SamplesDate { get; set; }
 
+        public string WorkPlanned { get; set; }
+
+        public string Descriptions { get; set; }
+
+        public string EstimatedTime { get; set; }
+
+        public string FacilitiesNeeded { get; set; }
+
 
 
         //From Analytical:
@@ -128,7 +136,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int SciId { get; set; }
 
-      
+
 
         public int Roles { get; set; }
 
@@ -155,7 +163,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int? PerTime { get; set; }
 
-       
+
 
         public string PersonnelManAdded { get; set; }
 
@@ -172,7 +180,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Thesis { get; set; }
 
-        
+
 
         public int? StudentId { get; set; }
 
@@ -199,17 +207,17 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Impact { get; set; }
 
-      
 
-        public string Materials { get; set; }
 
-        public string Equipment { get; set; }
+        public decimal? Materials { get; set; }
 
-        public string Travel { get; set; }
+        public decimal? Equipment { get; set; }
 
-        public string Abroad { get; set; }
+        public decimal? Travel { get; set; }
 
-        public string Others { get; set; }
+        public decimal? Abroad { get; set; }
+
+        public decimal? Others { get; set; }
 
         public int? Wfsid { get; set; }
 
@@ -219,32 +227,46 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public DateTime? TerminationDate { get; set; }
 
-    
+
 
         public string WorkPlan2 { get; set; }
 
-        public string Wages { get; set; }
+        public decimal? Wages { get; set; }
 
 
         public decimal? Salaries { get; set; }
 
-      
+
 
         public decimal? Benefits { get; set; }
 
         public decimal? Assistant { get; set; }
 
-      
+
 
         public decimal? Subcontracts { get; set; }
 
- 
 
-      
+
+
 
         public string Ufisaccount { get; set; }
 
         public decimal? IndirectCosts { get; set; }
 
+
+        //from Project Status
+
+        public int ProjectstatusId { get; set; }
+
+        public int? StatusNumber { get; set; }
+
+        public string StatusName { get; set; }
+
+
+
+        //Lista de Proyectos Custom
+
+        public IList<ProjectFormView> ProjectItem {get; set;}
     }
 }

@@ -1,0 +1,142 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectViewModel
+@{
+    ViewData["Title"] = "Page9";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Page9</h1>
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link active" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="true"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+
+
+
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+
+
+    <div class="tab-pane fade show active" id="nav-budget" role="tabpanel" aria-labelledby="nav-budget-tab" tabindex="0">
+
+        <div class="row g-3">
+            <form asp-action="Page9">
+
+                <div class="card">
+                    <div class="card-header">Budget for: </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label asp-for="Facilities" class="control-label"></label>
+                                <input asp-for="Facilities" class="form-control" />
+                                <span asp-validation-for="Facilities" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Impact" class="control-label"></label>
+                                <input asp-for="Impact" class="form-control" />
+                                <span asp-validation-for="Impact" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Salaries" class="control-label"></label>
+                                <input asp-for="Salaries" class="form-control" />
+                                <span asp-validation-for="Salaries" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Materials" class="control-label"></label>
+                                <input asp-for="Materials" class="form-control" />
+                                <span asp-validation-for="Materials" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Equipment" class="control-label"></label>
+                                <input asp-for="Equipment" class="form-control" />
+                                <span asp-validation-for="Equipment" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Travel" class="control-label"></label>
+                                <input asp-for="Travel" class="form-control" />
+                                <span asp-validation-for="Travel" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Abroad" class="control-label"></label>
+                                <input asp-for="Abroad" class="form-control" />
+                                <span asp-validation-for="Abroad" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Others" class="control-label"></label>
+                                <input asp-for="Others" class="form-control" />
+                                <span asp-validation-for="Others" class="text-danger"></span>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label asp-for="Wages" class="control-label"></label>
+                                <input asp-for="Wages" class="form-control" />
+                                <span asp-validation-for="Wages" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Benefits" class="control-label"></label>
+                                <input asp-for="Benefits" class="form-control" />
+                                <span asp-validation-for="Benefits" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Assistant" class="control-label"></label>
+                                <input asp-for="Assistant" class="form-control" />
+                                <span asp-validation-for="Assistant" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Subcontracts" class="control-label"></label>
+                                <input asp-for="Subcontracts" class="form-control" />
+                                <span asp-validation-for="Subcontracts" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IndirectCosts" class="control-label"></label>
+                                <input asp-for="IndirectCosts" class="form-control" />
+                                <span asp-validation-for="IndirectCosts" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <div class="btn btn-primary"><a asp-action="Page8" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white">Back</a></div>
+
+                        </div>
+
+                        
+                    </div>
+
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>

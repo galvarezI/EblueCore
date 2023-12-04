@@ -122,4 +122,8 @@ public partial class Project
     public virtual Roster Roster { get; set; }
 
     public virtual Substacion SubStation { get; set; }
+
+    public virtual ProjectStatus ProjectStatus { get; set; }
+
+    public virtual ICollection<ProjectStatus> ProjectStatuss { get; set; } = new List<ProjectStatus>();
 }
