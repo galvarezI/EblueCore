@@ -398,6 +398,11 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Materials).HasColumnType("text");
             entity.Property(e => e.ObjWorkPlan).HasColumnType("text");
             entity.Property(e => e.Objectives).HasColumnType("text");
+            entity.Property(e => e.Objectives2).HasColumnType("text");
+            entity.Property(e => e.Objectives3).HasColumnType("text");
+            entity.Property(e => e.Objectives4).HasColumnType("text");
+            entity.Property(e => e.Objectives5).HasColumnType("text");
+            entity.Property(e => e.Objectives6).HasColumnType("text");
             entity.Property(e => e.Orcid)
                 .HasMaxLength(50)
                 .HasColumnName("ORCID");
@@ -406,6 +411,9 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.PresentOutlook).HasColumnType("text");
             entity.Property(e => e.ProcessProjectWayId).HasColumnName("ProcessProjectWayID");
             entity.Property(e => e.ProgramAreaId).HasColumnName("ProgramAreaID");
+            entity.Property(e => e.ProjectNumber)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.ProjectPi)
                 .HasMaxLength(200)
                 .IsUnicode(false)

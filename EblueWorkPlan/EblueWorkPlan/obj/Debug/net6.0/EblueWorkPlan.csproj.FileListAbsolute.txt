@@ -273,3 +273,5 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\o
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.pdb
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.genruntimeconfig.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\ref\EblueWorkPlan.dll
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Rotativa.AspNetCore.dll
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.MvcApplicationPartsAssemblyInfo.cs

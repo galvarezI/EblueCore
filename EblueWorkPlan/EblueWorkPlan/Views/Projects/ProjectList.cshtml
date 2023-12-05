@@ -30,7 +30,7 @@
                 <input type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
-                    <div class="card-header">Create Project: @Html.DisplayFor(modelItem => Model.ProjectNumber)</div>
+                    <div class="card-header"> Project: @Html.DisplayFor(modelItem => Model.ProjectId)</div>
 
 
                     <div class="card-body">
@@ -46,11 +46,56 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <label asp-for="Objectives2" class="control-label"></label>
+                                <input asp-for="Objectives2" class="form-control" />
+                                <span asp-validation-for="Objectives2" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Objectives3" class="control-label"></label>
+                                <input asp-for="Objectives3" class="form-control" />
+                                <span asp-validation-for="Objectives3" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Objectives4" class="control-label"></label>
+                                <input asp-for="Objectives4" class="form-control" />
+                                <span asp-validation-for="Objectives4" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Objectives5" class="control-label"></label>
+                                <input asp-for="Objectives5" class="form-control" />
+                                <span asp-validation-for="Objectives5" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Objectives6" class="control-label"></label>
+                                <input asp-for="Objectives6" class="form-control" />
+                                <span asp-validation-for="Objectives6" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
                                 <label asp-for="ObjWorkPlan" class="control-label"></label>
                                 <input asp-for="ObjWorkPlan" class="form-control" />
                                 <span asp-validation-for="ObjWorkPlan" class="text-danger"></span>
                             </div>
                         </div>
+
+                       
+
+
+
 
                         <div class="row">
                             <div class="col-12">

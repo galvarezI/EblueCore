@@ -7,7 +7,7 @@ public partial class Project
 {
     public int ProjectId { get; set; }
 
-    public int ProjectNumber { get; set; }
+    public string ProjectNumber { get; set; }
 
     public string ProjectTitle { get; set; }
 
@@ -93,6 +93,16 @@ public partial class Project
 
     public int? RosterId { get; set; }
 
+    public string Objectives2 { get; set; }
+
+    public string Objectives3 { get; set; }
+
+    public string Objectives4 { get; set; }
+
+    public string Objectives5 { get; set; }
+
+    public string Objectives6 { get; set; }
+
     public virtual ICollection<Analytical> Analyticals { get; set; } = new List<Analytical>();
 
     public virtual Commodity Comm { get; set; }
@@ -122,8 +132,4 @@ public partial class Project
     public virtual Roster Roster { get; set; }
 
     public virtual Substacion SubStation { get; set; }
-
-    public virtual ProjectStatus ProjectStatus { get; set; }
-
-    public virtual ICollection<ProjectStatus> ProjectStatuss { get; set; } = new List<ProjectStatus>();
 }

@@ -66,6 +66,26 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "Project Objective(s)")]
         public string? Objectives { get; set; }
 
+        [Display(Name = "Project Objective(s)")]
+        public string Objectives2 { get; set; }
+
+        [Display(Name = "Project Objective(s)")]
+        public string Objectives3 { get; set; }
+
+
+        [Display(Name = "Project Objective(s)")]
+        public string Objectives4 { get; set; }
+
+        [Display(Name = "Project Objective(s)")]
+
+        public string Objectives5 { get; set; }
+
+
+        [Display(Name = "Project Objective(s)")]
+        public string Objectives6 { get; set; }
+
+
+
 
         [Display(Name = "Objective of Work Planned for the Year")]
         public string? ObjWorkPlan { get; set; }

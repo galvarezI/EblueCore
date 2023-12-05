@@ -48,4 +48,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Signin}/{id?}");
 
+IWebHostEnvironment env = app.Environment;
+
 app.Run();
