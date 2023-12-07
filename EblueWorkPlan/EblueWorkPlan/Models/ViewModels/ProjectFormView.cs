@@ -210,9 +210,9 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string StudentName { get; set; }
 
-        public bool? IsGraduated { get; set; }
+        public bool IsGraduated { get; set; }
 
-        public bool? IsUndergraduated { get; set; }
+        public bool IsUndergraduated { get; set; }
 
 
 

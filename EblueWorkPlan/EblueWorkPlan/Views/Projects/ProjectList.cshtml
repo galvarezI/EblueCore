@@ -8,6 +8,7 @@
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link" id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
@@ -120,7 +121,7 @@
 
                     
                             <div class="card-footer">
-                             
+                                <div class="btn btn-primary col align-content-center"><a asp-action="Page0" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
                                
                                 <div class="btn btn-primary col align-content-end"><a  asp-action="Page2" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
 

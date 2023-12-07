@@ -34,13 +34,13 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Index()
         {
-            
+
 
             var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(p => p.Roster)/*.Include(ps => ps.ProjectStatus)*/;
             //await workplandbContext.ToListAsync())
 
 
-            
+
 
 
 
@@ -69,13 +69,13 @@ namespace EblueWorkPlan.Controllers
             //                      RosterId = r.RosterId,
             //                      RosterName = r.RosterName,
             //                      projectPI = r.RosterName
-                                 
-                                  
-                                  
-                                  
-                                    
 
-                              
+
+
+
+
+
+
             //                   }).ToList();
 
             //IndexViewModel modelo = _context.Projects.Include(ps => ps.ProjectStatus).Include(r => r.Roster)
@@ -488,7 +488,103 @@ namespace EblueWorkPlan.Controllers
 
 
 
+        //PAGE 0:
+
+        public async Task<IActionResult> Page0(int? id) {
+
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
+            var substation = _context.Substacions.ToList();
+            _substationItems = new List<SelectListItem>();
+            foreach (var item in substation)
+            {
+                _substationItems.Add(new SelectListItem
+                {
+                    Text = item.SubStationName,
+                    Value = item.SubstationId.ToString()
+                });
+                ViewBag.substationItems = _substationItems;
+            }
+
+
+
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+
+
+            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommName", project.CommId);
+            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName", project.DepartmentId);
+            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName", project.FiscalYearId);
+            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName", project.ProgramAreaId);
+            ViewData["SubstationId"] = new SelectList(_context.Substacions, "SubStationId", "SubStationName", project.SubStationId);
+
+            ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
+            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
+            ViewBag.ProgramAreaItem = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName");
+            ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
+            ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            return View(project);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page0(int id,Models.Project project) {
+
+            if (ModelState.IsValid) {
+                var query = (from p in _context.Projects
+                             where p.ProjectId == project.ProjectId
+                             select
+                             p).FirstOrDefault();
+
+                query.ContractNumber = project.ContractNumber;
+                query.Orcid= project.Orcid;
+
+                _context.SaveChanges();
+
+                return RedirectToAction("ProjectList", new
+                {
+                    ID = project.ProjectId,
+                    projectName = project.ProjectTitle
+                });
+            }
+
+
+
+
+
+            return View();
+        }
+
         //GET WORKPLAN PAGE 1:
+
+
+
+
+
 
 
         public async Task<IActionResult> ProjectDetails(int? id)
