@@ -861,11 +861,7 @@ namespace EblueWorkPlan.Controllers
                                  p).FirstOrDefault();
 
                     query.Objectives = project.Objectives;
-                    query.Objectives2= project.Objectives2;
-                    query.Objectives3= project.Objectives3;
-                    query.Objectives4= project.Objectives4;
-                    query.Objectives5= project.Objectives5;
-                    query.Objectives6= project.Objectives6;
+                 
                     query.ObjWorkPlan = project.ObjWorkPlan;
                     query.PresentOutlook = project.PresentOutlook;
 
