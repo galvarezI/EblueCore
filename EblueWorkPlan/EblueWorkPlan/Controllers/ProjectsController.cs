@@ -768,6 +768,7 @@ namespace EblueWorkPlan.Controllers
                 //Esta parte ocasiona un error....
                  FieldWork fieldwork = new FieldWork()
                 {
+                    FieldWork1 = template.FieldWork1,
                     LocationId = (int)template.LocationId,
                     DateStarted = template.DateStarted,
                     DateEnded = template.DateEnded,
@@ -783,6 +784,14 @@ namespace EblueWorkPlan.Controllers
 
                      };
                 _context.Add(fieldwork);
+
+                var query = (from p in _context.Projects
+                             where p.ProjectId == project.ProjectId
+                             select
+                             p).FirstOrDefault();
+
+                query.Wp1fieldWork = project.Wp1fieldWork;
+
                 await _context.SaveChangesAsync();
 
                 template.ProjectId = project.ProjectId;

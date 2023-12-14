@@ -133,7 +133,7 @@ public partial class WorkplandbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("dateStarted");
             entity.Property(e => e.FieldWork1)
-                .IsUnicode(false)
+                .HasColumnType("text")
                 .HasColumnName("FieldWork");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
@@ -384,7 +384,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Assistant).HasColumnType("text");
             entity.Property(e => e.Benefits).HasColumnType("text");
             entity.Property(e => e.CommId).HasColumnName("CommID");
-            entity.Property(e => e.ContractNumber).HasMaxLength(50);
+            entity.Property(e => e.ContractNumber).HasColumnType("text");
             entity.Property(e => e.DateRegister).HasColumnType("datetime");
             entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
             entity.Property(e => e.Equipment).HasColumnType("text");
@@ -404,7 +404,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Objectives5).HasColumnType("text");
             entity.Property(e => e.Objectives6).HasColumnType("text");
             entity.Property(e => e.Orcid)
-                .HasMaxLength(50)
+                .HasColumnType("text")
                 .HasColumnName("ORCID");
             entity.Property(e => e.Others).HasColumnType("text");
             entity.Property(e => e.PorganizationsId).HasColumnName("POrganizationsId");
