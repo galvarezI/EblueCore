@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.CodeAnalysis;
 using Microsoft.Build.Execution;
+using Rotativa.AspNetCore;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -49,62 +50,21 @@ namespace EblueWorkPlan.Controllers
 
         public IActionResult IndexVM()
         {
+        //    ProjectFormView template = new ProjectFormView();
+        //    var queryRport = from p in _context.Projects
+        //                     join rs in _context.Rosters on p.RosterId equals rs.RosterId
 
-
-            ViewModelIndex viewModelIndex = new ViewModelIndex();
-            //IndexViewModel indexViewModel = new IndexViewModel();
-
-            //var projectlist = (from p in _context.Projects
-            //                   join r in _context.Rosters on p.RosterId equals r.RosterId
-            //                   join ps in _context.ProjectStatuses on p.ProjectStatusId equals ps.ProjectstatusId
-            //                   select new IndexViewModel
-            //                   {
-            //                      projectId= p.ProjectId,
-            //                      projectNumber= p.ProjectNumber,
-            //                      projectTitle= p.ProjectTitle,
-            //                      accountNumber = p.Orcid,
-            //                      contractNumber= p.ContractNumber,
-            //                      ProjectstatusId= ps.ProjectstatusId,
-            //                      StatusName= ps.StatusName,
-            //                      RosterId = r.RosterId,
-            //                      RosterName = r.RosterName,
-            //                      projectPI = r.RosterName
+        //                     select new
+        //                     {
+        //                         RosterName = rs.RosterName,
 
 
 
+        //                     };
 
+        
 
-
-
-            //                   }).ToList();
-
-            //IndexViewModel modelo = _context.Projects.Include(ps => ps.ProjectStatus).Include(r => r.Roster)
-            //.Select(p => new IndexViewModel()
-            //{
-
-            //    ProjectId = p.ProjectId,
-            //    projectNumber = p.ProjectNumber,
-            //    accountNumber = p.Orcid,
-            //    projectTitle = p.ProjectTitle,
-            //    contractNumber = p.ContractNumber,
-            //    projectstatus = p.ProjectStatus.Select(ps => new ProjectStatusViewModel()
-            //    {
-
-            //        ProjectstatusId = ps.ProyectStatusId,
-            //        StatusName = ps.StatusName,
-
-
-
-
-            //    }).ToList(),
-            //    rosterPI = p.Roster.Select(r => new RosterViewModel()
-            //    {
-
-
-
-            //    })
-
-            //})
+            
 
 
 
@@ -115,8 +75,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-
-            return View(viewModelIndex);
+            return View();
         }
 
 
@@ -768,7 +727,7 @@ namespace EblueWorkPlan.Controllers
                 //Esta parte ocasiona un error....
                  FieldWork fieldwork = new FieldWork()
                 {
-                    FieldWork1 = template.FieldWork1,
+                     Wfieldwork = template.Wfieldwork,
                     LocationId = (int)template.LocationId,
                     DateStarted = template.DateStarted,
                     DateEnded = template.DateEnded,
@@ -785,12 +744,12 @@ namespace EblueWorkPlan.Controllers
                      };
                 _context.Add(fieldwork);
 
-                var query = (from p in _context.Projects
-                             where p.ProjectId == project.ProjectId
-                             select
-                             p).FirstOrDefault();
+                //var query = (from p in _context.Projects
+                //             where p.ProjectId == project.ProjectId
+                //             select
+                //             p).FirstOrDefault();
 
-                query.Wp1fieldWork = project.Wp1fieldWork;
+                //query.Wp1fieldWork = project.Wp1fieldWork;
 
                 await _context.SaveChangesAsync();
 
@@ -1444,6 +1403,173 @@ namespace EblueWorkPlan.Controllers
 
             return View();
         }
+
+
+
+
+
+
+        public async Task<IActionResult>  ReportView(int? id, Models.Project project)
+        {
+            #region dropdownlist
+            // CARGAMOS EL DropDownList 
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
+            var departments = _context.Departments.ToList();
+            _departmentsItems = new List<SelectListItem>();
+            foreach (var item in departments)
+            {
+                _departmentsItems.Add(new SelectListItem
+                {
+                    Text = item.DepartmentName,
+                    Value = item.DepartmentId.ToString()
+                });
+            }
+            ViewBag.departmentItems = _departmentsItems;
+
+            var porganizations = _context.Porganizations.ToList();
+            _porganizationsItems = new List<SelectListItem>();
+            foreach (var item in porganizations)
+            {
+                _porganizationsItems.Add(new SelectListItem
+                {
+                    Text = item.PorganizationName,
+                    Value = item.PorganizationId.ToString()
+                });
+                ViewBag.porganizationItem = _porganizationsItems;
+            }
+
+            var commodity = _context.Commodities.ToList();
+            _commodityItems = new List<SelectListItem>();
+            foreach (var item in commodity)
+            {
+                _commodityItems.Add(new SelectListItem
+                {
+                    Text = item.CommName,
+                    Value = item.CommId.ToString()
+                });
+                ViewBag.commodityItems = _commodityItems;
+            }
+
+
+
+
+            var fundtype = _context.FundTypes.ToList();
+            _fundtypeItems = new List<SelectListItem>();
+            foreach (var item in fundtype)
+            {
+                _fundtypeItems.Add(new SelectListItem
+                {
+                    Text = item.FundTypeName,
+                    Value = item.FundTypeId.ToString()
+                });
+                ViewBag.fundtypeItems = _fundtypeItems;
+            }
+
+            var fiscalYear = _context.FiscalYears.ToList();
+            _fiscalYearItems = new List<SelectListItem>();
+            foreach (var item in fiscalYear)
+            {
+                _fiscalYearItems.Add(new SelectListItem
+                {
+                    Text = item.FiscalYearName,
+                    Value = item.FiscalYearId.ToString()
+                });
+                ViewBag.fiscalyearItems = _fiscalYearItems;
+            }
+
+            var substation = _context.Substacions.ToList();
+            _substationItems = new List<SelectListItem>();
+            foreach (var item in substation)
+            {
+                _substationItems.Add(new SelectListItem
+                {
+                    Text = item.SubStationName,
+                    Value = item.SubstationId.ToString()
+                });
+                ViewBag.substationItems = _substationItems;
+            }
+            var programAreas = _context.ProgramAreas.ToList();
+            _programAreaItems = new List<SelectListItem>();
+            foreach (var item in programAreas)
+            {
+                _programAreaItems.Add(new SelectListItem
+                {
+                    Text = item.ProgramAreaName,
+                    Value = item.ProgramAreaId.ToString()
+                });
+                ViewBag.programAreaItems = _programAreaItems;
+            }
+
+            var location = _context.Locationns.ToList();
+            _locationsItems = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+
+                _locationsItems.Add(new SelectListItem
+                {
+                    Text = item.LocationName,
+                    Value = item.LocationId.ToString()
+                });
+                ViewBag.locationsItems = _locationsItems;
+
+
+            }
+
+
+            #endregion
+
+
+
+
+
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+             project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            ProjectFormView template = new ProjectFormView();
+            var queryRport = from p in _context.Projects
+                             join rs in _context.Rosters on p.RosterId equals rs.RosterId
+                             where p.ProjectId == id
+                             select new
+                             {
+                                 RosterName = rs.RosterName,
+
+
+
+                             };
+
+
+            return new ViewAsPdf("ReportView",project)
+            {
+
+
+
+            };
+        }
+
+
+
+
     }
     
 

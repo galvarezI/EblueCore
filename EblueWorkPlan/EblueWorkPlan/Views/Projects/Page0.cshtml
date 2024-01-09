@@ -136,6 +136,8 @@
                     <div class="form-group">
                         <input type="submit" value="Next" class="btn btn-primary " asp-route-ProjectId="ProjectId" />
                     </div>
+
+                    <a asp-action="ReportView" asp-controller="Projects" class="btn btn-success" asp-route-id="@Model.ProjectId">Report View</a>
                 </div>
 
             </div>

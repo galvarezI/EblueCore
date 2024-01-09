@@ -2,9 +2,7 @@
 {
     public class ViewModelIndex
     {
-        public Project projects { get; set; }
-        public ProjectStatus projectStatus { get; set; }
-        public Roster Roster { get; set; }
-
+        public IEnumerable<ProjectFormView> projectView { get; set; }
+      
     }
 }

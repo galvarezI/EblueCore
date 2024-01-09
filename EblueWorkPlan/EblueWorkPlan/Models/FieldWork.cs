@@ -19,7 +19,7 @@ public partial class FieldWork
 
     public bool ToBeInitiated { get; set; }
 
-    public string FieldWork1 { get; set; }
+    public string Wfieldwork { get; set; }
 
     public string Area { get; set; }
 

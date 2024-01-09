@@ -40,31 +40,37 @@
                         <div class="row">
                             <input type="hidden" asp-for="ProjectId" />
 
-                            <div class="form-group">
+                            <div class="col-12">
                                 <label asp-for="WorkPlanned" class="control-label"></label>
-                                <input asp-for="WorkPlanned" class="form-control" />
+                                <textarea asp-for="WorkPlanned" rows="3" class="form-control"></textarea>
                                 <span asp-validation-for="WorkPlanned" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="Descriptions" class="control-label"></label>
-                                <input asp-for="Descriptions" class="form-control" />
-                                <span asp-validation-for="Descriptions" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="EstimatedTime" class="control-label"></label>
-                                <input asp-for="EstimatedTime" class="form-control" />
-                                <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+
+
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <label asp-for="Descriptions" class="control-label"></label>
+                                    <input asp-for="Descriptions" class="form-control" />
+                                    <span asp-validation-for="Descriptions" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label asp-for="EstimatedTime" class="control-label"></label>
+                                    <input asp-for="EstimatedTime" class="form-control" />
+                                    <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="form-group col-4">
+                                    <label asp-for="FacilitiesNeeded" class="control-label"></label>
+                                    <input asp-for="FacilitiesNeeded" class="form-control" />
+                                    <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
+                                </div>
+
                             </div>
 
-                     
-
-                            <div class="form-group">
-                                <label asp-for="FacilitiesNeeded" class="control-label"></label>
-                                <input asp-for="FacilitiesNeeded" class="form-control" />
-                                <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
-                            </div>
-                            
-                            <div class="form-group">
+                            <br>
+                            <div class="form-group" style="padding-top:20px;">
                                 <input type="submit" value="Create" class="btn btn-primary"  />
                             </div>
 

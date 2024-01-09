@@ -132,4 +132,14 @@ public partial class Project
     public virtual Roster Roster { get; set; }
 
     public virtual Substacion SubStation { get; set; }
+
+    //public virtual FieldWork FieldWorkS { get; set; }
+    //public virtual Analytical AnalyticalS { get; set; }
+    //public virtual Fund FundS { get; set; }
+
+    //public virtual Laboratory LaboratoryS { get; set; }
+
+    //public virtual GradAss GradAsS { get; set; }
+
+    //public virtual OtherPersonel OtherPersonelS { get; set; }
 }

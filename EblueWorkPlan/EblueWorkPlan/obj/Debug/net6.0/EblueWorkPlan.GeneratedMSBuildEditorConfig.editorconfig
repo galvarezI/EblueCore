@@ -400,6 +400,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GGJEANZS/Desktop/Proyects/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUmVwb3J0Vmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GGJEANZS/Desktop/Proyects/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -470,6 +474,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/GGJEANZS/Desktop/Proyects/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNpZGVCYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/Proyects/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_RotativaLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Sb3RhdGl2YUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/GGJEANZS/Desktop/Proyects/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_ValidationScriptsPartial.cshtml]

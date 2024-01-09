@@ -95,7 +95,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         [Display(Name = " Work Planned (Field Work)")]
-        public string FieldWork1 { get; set; }
+        public string Wfieldwork { get; set; }
 
 
         [Display(Name = " Area(Acres)")]

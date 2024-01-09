@@ -132,11 +132,11 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.DateStarted)
                 .HasColumnType("datetime")
                 .HasColumnName("dateStarted");
-            entity.Property(e => e.FieldWork1)
-                .HasColumnType("text")
-                .HasColumnName("FieldWork");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+            entity.Property(e => e.Wfieldwork)
+                .HasColumnType("text")
+                .HasColumnName("WFieldwork");
 
             entity.HasOne(d => d.Location).WithMany(p => p.FieldWorks)
                 .HasForeignKey(d => d.LocationId)
