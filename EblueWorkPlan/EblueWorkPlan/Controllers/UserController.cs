@@ -8,7 +8,17 @@ namespace EblueWorkPlan.Controllers
     public class UserController : Controller
     {
         private readonly WorkplandbContext _context;
+       
+        private List<SelectListItem> _rosterItems;
+        private List<SelectListItem> _departmentsItems;
+        private List<SelectListItem> _porganizationsItems;
 
+        private List<SelectListItem> _fundtypeItems;
+        private List<SelectListItem> _commodityItems;
+        private List<SelectListItem> _fiscalYearItems;
+        private List<SelectListItem> _substationItems;
+        private List<SelectListItem> _programAreaItems;
+        private List<SelectListItem> _locationsItems;
         public UserController(WorkplandbContext context)
         {
             _context = context;
@@ -45,6 +55,18 @@ namespace EblueWorkPlan.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
             ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
             return View();
         }
@@ -68,7 +90,22 @@ namespace EblueWorkPlan.Controllers
 
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
+
+
         {
+
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+
             if (id == null || _context.Users == null)
             {
                 return NotFound();

@@ -74,6 +74,7 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\b
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Rotativa.AspNetCore.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\System.CodeDom.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\System.Composition.Convention.dll
@@ -254,6 +255,7 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\o
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.AssemblyInfoInputs.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.AssemblyInfo.cs
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.csproj.CoreCompileInputs.cache
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.RazorAssemblyInfo.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.RazorAssemblyInfo.cs
@@ -273,5 +275,3 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\o
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.pdb
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.genruntimeconfig.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\ref\EblueWorkPlan.dll
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Rotativa.AspNetCore.dll
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.MvcApplicationPartsAssemblyInfo.cs

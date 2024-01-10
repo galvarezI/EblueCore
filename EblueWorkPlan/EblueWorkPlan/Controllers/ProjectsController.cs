@@ -303,7 +303,7 @@ namespace EblueWorkPlan.Controllers
 
                     RosterId = template.RosterId,
                     FiscalYearId = template.FiscalYearId,
-
+                    ProjectStatusId = 1
 
                 };
                 var Fundtype = new FundType()
@@ -1367,7 +1367,7 @@ namespace EblueWorkPlan.Controllers
                     query.Assistant= projectTemplate.Assistant;
                     query.Subcontracts = projectTemplate.Subcontracts;
                     query.IndirectCosts = projectTemplate.IndirectCosts;
-
+                    query.ProjectStatusId = 9;
                     
                     await _context.SaveChangesAsync();
 

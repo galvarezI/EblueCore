@@ -42,8 +42,36 @@ namespace EblueWorkPlan.Controllers
         }
 
         [HttpPost]
-        public IActionResult Signin(User user, UserViewModel _User)
+        public IActionResult Signin( UserViewModel _User)
         {
+            List<User> Users = new List<User>();
+            var db = new WorkplandbContext();
+            string Email = "";
+            string Pass = "";
+            bool isLogin = false;
+
+            var  Validacion = (from u in db.Users
+                              
+                              select u);
+            
+
+            
+            foreach (var item in Validacion)
+            {
+                if (_User.Email == item.Email && _User.Password == item.Password)
+                {
+
+                    Email = item.Email;
+                    Pass = item.Password;
+                    isLogin = true;
+                }
+                else
+                {
+
+                    isLogin = false;
+                }
+            }
+
 
 
             //List<User> users = new List<User>();
@@ -67,21 +95,30 @@ namespace EblueWorkPlan.Controllers
 
             //}
 
-
-
-            if (_User.Email == user.Email && _User.Password == user.Password)
+            if (_User.Email == Email && _User.Password == Pass)
             {
 
-
+               
                 return RedirectToAction("Index", "Home");
             }
             else
             {
 
                 return View();
-
             }
-            
+            //if (isLogin == true)
+            //{
+
+
+            //    return RedirectToAction("Index", "Home");
+            //}
+            //else
+            //{
+
+            //    return View();
+
+            //}
+
         }
 
 
