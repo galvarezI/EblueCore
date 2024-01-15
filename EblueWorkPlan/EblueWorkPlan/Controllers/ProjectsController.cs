@@ -527,7 +527,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("ProjectList", new
                 {
                     ID = project.ProjectId,
-                    projectName = project.ProjectTitle
+                    projectName = project.ProjectNumber
                 });
             }
 
@@ -677,6 +677,7 @@ namespace EblueWorkPlan.Controllers
 
             var project = await _context.Projects.FindAsync(id);
             template.ProjectId = project.ProjectId;
+            template.ProjectNumber = project.ProjectNumber;
             if (project == null)
             {
                 return NotFound();
@@ -800,8 +801,12 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-
+            var query = (from p in _context.Projects
+                         where p.ProjectId == project.ProjectId
+                         select
+                         p).FirstOrDefault();
             projectTemplate.ProjectId = id.Value;
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             return View(projectTemplate);
         }
 
@@ -839,14 +844,7 @@ namespace EblueWorkPlan.Controllers
                  
 
 
-                    //var result = _context.Projects
-                    //    .FromSqlInterpolated($"EXEC ActualizarPag1 @ProjectId = {projectTemplate.ProjectId} ,@Objectives = {projectTemplate.Objectives},@ObjWorkPlan = {projectTemplate.ObjWorkPlan},@PresentOutlook = {projectTemplate.PresentOutlook}").AsAsyncEnumerable();
-
-
-
-                      
-                    //_context.Update(project);
-                    //await _context.SaveChangesAsync();
+                  
 
 
 
@@ -897,7 +895,7 @@ namespace EblueWorkPlan.Controllers
 
 
             projectTemplate.ProjectId = id.Value;
-
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             return View(projectTemplate);
         }
 
@@ -958,7 +956,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
             projectTemplate.ProjectId = id.Value;
-
+            projectTemplate.ProjectNumber = project.ProjectNumber;
 
 
 
@@ -989,7 +987,8 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("Page5", new
                 {
                     ID = project.ProjectId,
-                    projectName = project.ProjectTitle
+                    projectName = project.ProjectNumber
+                    
                 });
 
             }
@@ -1018,7 +1017,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
             projectTemplate.ProjectId = id.Value;
-
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             var rosters = _context.Rosters.ToList();
             _rosterItems = new List<SelectListItem>();
             foreach (var item in rosters)
@@ -1089,6 +1088,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
 
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             projectTemplate.ProjectId = id.Value;
             var location = _context.Locationns.ToList();
             _locationsItems = new List<SelectListItem>();
@@ -1177,7 +1177,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
 
-
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             projectTemplate.ProjectId = id.Value;
             return View(projectTemplate);
 
@@ -1263,7 +1263,7 @@ namespace EblueWorkPlan.Controllers
 
             }
 
-
+            projectTemplate.ProjectNumber = project.ProjectNumber;
             projectTemplate.ProjectId = id.Value;
             return View(projectTemplate);
 
@@ -1331,7 +1331,7 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
 
-
+            projectViewModel.ProjectNumber = project.ProjectNumber;
             projectViewModel.ProjectId = id.Value;
 
             return View(projectViewModel);

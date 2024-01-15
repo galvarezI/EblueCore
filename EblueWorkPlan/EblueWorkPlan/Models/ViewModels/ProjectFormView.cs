@@ -10,7 +10,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         [Display(Name = "Project Number")]
-        public int ProjectNumber { get; set; }
+        public string ProjectNumber { get; set; }
 
         [Display(Name = "Project Short Title")]
         public string? ProjectTitle { get; set; }

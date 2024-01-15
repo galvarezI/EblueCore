@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EblueWorkPlan.Models.SciProject>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ah)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdHonorem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ah)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdHonorem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.RosterId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roster.RosterName)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

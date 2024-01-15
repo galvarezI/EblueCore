@@ -43,16 +43,20 @@
         </tr>
     </thead>
     <tbody>
+
+        
         @foreach (var item in Model)
         {
+            
+
             <tr>
                 <td>
-                    <a asp-action="Page0" asp-route-id ="@item.ProjectId">
+                    <a asp-action="Page0" asp-route-id="@item.ProjectId">
                         @Html.DisplayFor(modelItem => item.ProjectNumber)
                     </a>
-                    
+
                 </td>
-                
+
 
                 <td>
                     @item.ContractNumber
@@ -63,19 +67,20 @@
                 </td>
 
                 <td>
-                   @item.RosterId
+                    @item.RosterId
                 </td>
 
                 <td>
                     @item.ProjectStatusId
                 </td>
                 <td>
-                    <a asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Access</a> |
+                    <a asp-action="Page0" asp-route-id="@item.ProjectId">Access</a> |
                     <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                    
-                    
+
+
                 </td>
             </tr>
+            
         }
     </tbody>
 </table>

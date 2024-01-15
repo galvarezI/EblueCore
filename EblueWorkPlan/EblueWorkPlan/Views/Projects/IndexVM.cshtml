@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EblueWorkPlan.Models.ViewModels.ViewModelIndex>
+﻿@model IEnumerable<EblueWorkPlan.Models.Project>
 
 
 @{
@@ -21,7 +21,7 @@
 
 }
 
-@*
+
 
 <table class="table table-bordered">
     <thead>
@@ -31,11 +31,11 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.projects.ContractNumber)
+                @Html.DisplayNameFor(model => model.ContractNumber)
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.projects.Orcid)
+                @Html.DisplayNameFor(model => model.Orcid)
             </th>
 
             <th>
@@ -43,63 +43,51 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.projectStatus.StatusName)
+                @Html.DisplayNameFor(model => model.ProjectStatusId)
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <a asp-action="ProjectDetails" asp-route-id="@item.projects.ProjectId">
-                        @Html.DisplayFor(modelItem => item.projects.ContractNumber)
-                    </a>
 
-                </td>
+            if (item.ProjectStatusId == 1 || item.ProjectStatusId == 9 )
+            
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Page0" asp-route-id="@item.ProjectId">
+                            @Html.DisplayFor(modelItem => item.ProjectNumber)
+                        </a>
 
-
-                <td>
-                    @item.projects.ContractNumber
-                </td>
-
-                <td>
-                    @item.projects.Orcid
-                </td>
-
-                
-                    @{
-                        if (item.projects.RosterId == item.Roster.RosterId)
-                        {
-                            <td>@item.Roster.RosterName</td>
-                        
-                        
-                        }
-
-                    
-                    }
+                    </td>
 
 
+                    <td>
+                        @item.ContractNumber
+                    </td>
+
+                    <td>
+                        @item.Orcid
+                    </td>
+
+                    <td>
+                        @item.RosterId
+                    </td>
+
+                    <td>
+                        @item.ProjectStatusId
+                    </td>
+                    <td>
+                        <a asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Access</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
 
 
-
-                @{
-                    if (item.projects.ProjectStatusId == item.projectStatus.ProjectstatusId)
-                    {
-                        <td>@item.projectStatus.StatusName</td>
-
-
-                    }
-
-
-                }
-                <td>
-                    <a asp-action="ProjectDetails" asp-route-id="@item.projects.ProjectId">Access</a> |
-                    <a asp-action="Details" asp-route-id="@item.projects.ProjectId">Details</a> |
-
-
-                </td>
-            </tr>
-        }*@
+                    </td>
+                </tr>
+            
+            }
+            
+        }
     </tbody>
 </table>

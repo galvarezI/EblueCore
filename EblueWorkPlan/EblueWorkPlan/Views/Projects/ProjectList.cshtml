@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ProjectList</h1>
+<h1>ProjectList for: @Model.ProjectNumber </h1>
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -31,7 +31,7 @@
                 <input type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
-                    <div class="card-header"> Project: @Html.DisplayFor(modelItem => Model.ProjectId)</div>
+                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => Model.ProjectNumber) , @Html.DisplayFor(modelItem => Model.ProjectId)</div>
 
 
                     <div class="card-body">
