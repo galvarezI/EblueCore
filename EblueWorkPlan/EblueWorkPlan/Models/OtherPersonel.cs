@@ -9,7 +9,7 @@ public partial class OtherPersonel
 
     public string Name { get; set; }
 
-    public int? PerTime { get; set; }
+    public decimal? PerTime { get; set; }
 
     public int? ProjectId { get; set; }
 

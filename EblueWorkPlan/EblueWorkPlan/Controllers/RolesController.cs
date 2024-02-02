@@ -17,7 +17,7 @@ namespace EblueWorkPlan.Controllers
         // GET: Roles
         public async Task<IActionResult> Index()
         {
-            var workplandbContext = _context.Roles.Include(r => r.Roster);
+            var workplandbContext = _context.Roles;
             return View(await workplandbContext.ToListAsync());
         }
 
@@ -30,7 +30,7 @@ namespace EblueWorkPlan.Controllers
             }
 
             var role = await _context.Roles
-                .Include(r => r.Roster)
+               
                 .FirstOrDefaultAsync(m => m.RolesId == id);
             if (role == null)
             {
@@ -65,7 +65,7 @@ namespace EblueWorkPlan.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", role.RosterId);
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
 
 
 
@@ -85,7 +85,7 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", role.RosterId);
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
             return View(role);
         }
 
@@ -121,7 +121,7 @@ namespace EblueWorkPlan.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", role.RosterId);
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
             return View(role);
         }
 
@@ -134,7 +134,7 @@ namespace EblueWorkPlan.Controllers
             }
 
             var role = await _context.Roles
-                .Include(r => r.Roster)
+                
                 .FirstOrDefaultAsync(m => m.RolesId == id);
             if (role == null)
             {

@@ -27,9 +27,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsExternalResources)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Roster)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -51,9 +49,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsExternalResources)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roster.RosterId)
-            </td>
+          
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RolesId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.RolesId">Details</a> |

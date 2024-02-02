@@ -1,0 +1,71 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+
+
+<div id="showModal">
+    @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="you">Open modal for you</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="tu">Open modal for tu</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="el">Open modal for el</button>*@
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Laboratory ID : @Model.LabId</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Page3Modal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProjectId" />
+                        <input type="hidden" asp-for="LabId" />
+
+                        <div class="mb-3">
+                            <label asp-for="WorkPlanned" class="control-label"></label>
+                            <textarea asp-for="WorkPlanned" rows="3" class="form-control txt-w"></textarea>
+                            <span asp-validation-for="WorkPlanned" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="EstimatedTime" class="control-label"></label>
+                            <input asp-for="EstimatedTime" class="form-control txt-est" />
+                            <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label asp-for="FacilitiesNeeded" class="control-label"></label>
+                            <input asp-for="FacilitiesNeeded" class="form-control txt-fn" />
+                            <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
+                        </div>
+
+
+                        
+
+                        
+
+
+
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-success">Save</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

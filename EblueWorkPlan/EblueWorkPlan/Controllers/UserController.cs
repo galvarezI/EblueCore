@@ -14,11 +14,12 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _porganizationsItems;
 
         private List<SelectListItem> _fundtypeItems;
-        private List<SelectListItem> _commodityItems;
+        private List<SelectListItem> _roleItems;
         private List<SelectListItem> _fiscalYearItems;
         private List<SelectListItem> _substationItems;
         private List<SelectListItem> _programAreaItems;
         private List<SelectListItem> _locationsItems;
+        private List<SelectListItem> _userItems;
         public UserController(WorkplandbContext context)
         {
             _context = context;
@@ -64,6 +65,18 @@ namespace EblueWorkPlan.Controllers
                     Text = item.RosterName,
                     Value = item.RosterId.ToString()
                 });
+            }
+
+            var roles = _context.Roles.ToList();
+            _roleItems = new List<SelectListItem>();
+            foreach (var item in roles)
+            {
+                _roleItems.Add(new SelectListItem
+                {
+                    Text = item.Rname,
+                    Value = item.RolesId.ToString()
+                });
+                ViewBag.rolesItems = _roleItems;
             }
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;

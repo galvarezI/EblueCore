@@ -21,13 +21,13 @@ public partial class Roster
 
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
 
+    public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
+
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 
     public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
 
-    public virtual ICollection<SciProject> SciProjectProjects { get; set; } = new List<SciProject>();
-
-    public virtual ICollection<SciProject> SciProjectRosters { get; set; } = new List<SciProject>();
+    public virtual ICollection<SciProject> SciProjects { get; set; } = new List<SciProject>();
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

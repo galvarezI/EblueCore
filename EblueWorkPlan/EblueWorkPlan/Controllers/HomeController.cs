@@ -18,6 +18,8 @@ namespace EblueWorkPlan.Controllers
 
         public IActionResult Index()
         {
+
+            ViewData["Logo"] = "../img/uprpng.png";
             return View();
         }
 
@@ -99,7 +101,7 @@ namespace EblueWorkPlan.Controllers
             {
 
                
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Projects");
             }
             else
             {

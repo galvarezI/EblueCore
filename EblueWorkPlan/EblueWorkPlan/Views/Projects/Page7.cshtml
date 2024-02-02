@@ -32,10 +32,12 @@
     */
 
 }
+<partial name="_Sidebar2" />
 
+<h1>Research Project for: @Model.ProjectNumber</h1>
 
-<h1>Page7</h1>
-
+<h3>Graduates Page</h3>
+<br />
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
@@ -48,7 +50,7 @@
         <button class="nav-link active" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
-
+         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
 
 
     </div>
@@ -58,7 +60,7 @@
 
     <div class="tab-pane fade show active" id="nav-gradass" role="tabpanel" aria-labelledby="nav-gradass-tab" tabindex="0">
         <div class="row g-3">
-            <form asp-action="Create">
+            <form asp-action="Page7">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="card">
 
@@ -91,11 +93,7 @@
                                 <input asp-for="Amount" class="form-control" />
                                 <span asp-validation-for="Amount" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="RoleId" class="control-label"></label>
-                                <input asp-for="RoleId" class="form-control" />
-                                <span asp-validation-for="RoleId" class="text-danger"></span>
-                            </div>
+                          
                             <div class="form-group">
                                 <label asp-for="StudentName" class="control-label"></label>
                                 <input asp-for="StudentName" class="form-control" />
@@ -117,7 +115,7 @@
 
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <input type="submit" value="Add" class="btn btn-primary" />
                         </div>
 
                     </div>
@@ -142,73 +140,92 @@
     <br />
 
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>
-                    @Html.DisplayNameFor(model => model.Gname)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.Thesis)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.StudentId)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.RoleId)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.StudentName)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.IsGraduated)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.IsUndergraduated)
-            </th>
-            <th>
-                    @Html.DisplayNameFor(model => model.ProjectId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-           
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.Gname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.Thesis)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.StudentId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.RoleId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.StudentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.IsGraduated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.IsUndergraduated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.ProjectId)
-                </td>
-                
+                <th>
+                    @Html.DisplayNameFor(model => model.Gname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Thesis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsGraduated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsUndergraduated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project)
+                </th>
+                <th></th>
             </tr>
-            
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.gradAsses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thesis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsGraduated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsUndergraduated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class=" btn  btn-success" style="padding:0,2px;">Modify</div>
+
+                            </div>
+                            <div class="col-4">
+
+                                <div class="btn btn-danger" style="padding:0,2px;">Delete </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    
+
+
+
 
 </div>

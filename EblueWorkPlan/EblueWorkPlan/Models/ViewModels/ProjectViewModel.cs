@@ -89,7 +89,21 @@ namespace EblueWorkPlan.Models.ViewModels
         public string IndirectCosts { get; set; }
 
 
+        public virtual Project Projects { get; set; }
+        public virtual Roster Rosters { get; set; }
+        public virtual FieldWork Fieldworks { get; set; }
 
+        public virtual Fund Funds { get; set; }
+
+        public virtual GradAss GradAss { get; set; }
+
+        public virtual Laboratory Laboratorys { get; set; }
+
+        public virtual Analytical Analyticals { get; set; }
+
+        public virtual OtherPersonel OtherPersonels { get; set; }
+
+        public virtual SciProject SciProjects { get; set; }
 
 
 

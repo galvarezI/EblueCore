@@ -1,0 +1,768 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+
+
+<partial name="_Sidebar2" />
+
+
+
+<h1>Report View for </h1>
+
+<div class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab" tabindex="0">
+    <div class="row g-3">
+
+
+        <form asp-action="Page0">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProjectId" />
+            <div class="card">
+
+                <div class="card-header">Project Template</div>
+
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label asp-for="ProjectTitle" class="control-label"></label>
+                            <input asp-for="ProjectTitle" class="form-control" disabled />
+                            <span asp-validation-for="ProjectTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-6">
+                            <label asp-for="ProjectNumber" class="control-label"></label>
+                            <input asp-for="ProjectNumber" class="form-control" disabled />
+                            <span asp-validation-for="ProjectNumber" class="text-danger"></span>
+
+
+
+                        </div>
+
+                        <div class="col-6">
+                            <label asp-for="RosterId" class="control-label"></label>
+                            <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems" disabled></select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+
+                        <div class="col-6">
+                            <label asp-for="DepartmentId" class="control-label"></label>
+                            <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentItem" disabled></select>
+                        </div>
+
+                        <div class="col-6">
+                            <label asp-for="CommId" class="control-label"></label>
+                            <select asp-for="CommId" class="form-control" asp-items="ViewBag.CommoditiesItem" disabled></select>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProgramAreaId" class="control-label"></label>
+                        <select asp-for="ProgramAreaId" class="form-control" asp-items="ViewBag.ProgramAreaItem" disabled></select>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-6">
+                            <label asp-for="SubStationId" class="control-label"></label>
+                            <select asp-for="SubStationId" class="form-control" asp-items="ViewBag.substationItems" disabled></select>
+                        </div>
+
+                        <div class="col-6">
+                            <label asp-for="FiscalYearId" class="control-label"></label>
+                            <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.FiscalYearItem" disabled></select>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label asp-for="ContractNumber" class="control-label"></label>
+                            <input asp-for="ContractNumber" class="form-control"  />
+                            <span asp-validation-for="ContractNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="Orcid" class="control-label"></label>
+                            <input asp-for="Orcid" class="form-control"  />
+                            <span asp-validation-for="Orcid" class="text-danger"></span>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label asp-for="FundTypeId" class="control-label"></label>
+                        <select asp-for="FundTypeId" class="form-control" asp-items="ViewBag.FundTypeItem" disabled>@Model.FundTypeId</select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="PorganizationsId" class="control-label"></label>
+                        <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.POrganizationItem" disabled></select>
+                    </div>
+
+
+                </div>
+
+                
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <h1>Section 2</h1>
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+        <div class="row g-3">
+            <form asp-action="ProjectList">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProjectId" />
+                <div class="card">
+
+                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
+
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Objectives" class="control-label"></label>
+                                <textarea  rows="3" class="form-control">@Model.Objectives</textarea>
+                                
+                            </div>
+                        </div>
+
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="ObjWorkPlan" class="control-label"></label>
+                                <textarea  rows="3" class="form-control">@Model.ObjWorkPlan</textarea>
+                               
+                            </div>
+                        </div>
+
+
+                        <br>
+
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="PresentOutlook" class="control-label"></label>
+                                <textarea asp-for="PresentOutlook" rows="3" class="form-control"><@Model.PresentOutlook</textarea>
+                                <span asp-validation-for="PresentOutlook" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br>
+                     
+
+
+
+                </div>
+
+            </form>
+
+            <h1>Section 3</h1>
+
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Areq)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NoSamples)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SamplesDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Project)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.laboratories)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Areq)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NoSamples)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SamplesDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+ <h1>Section 4</h1>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                @Html.DisplayNameFor(model => model.AnalysisRequired)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.NumSamples)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.ProbableDate)
+                        </th>
+                        <th>
+                @Html.DisplayNameFor(model => model.Project)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        @foreach (var item in Model.analyticals)
+        {
+                            <tr>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.AnalysisRequired)
+                                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.NumSamples)
+                                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.ProbableDate)
+                                </td>
+                                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                                </td>
+                                
+                            
+                            </tr>
+        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+<h1>Section 5</h1>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Roles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ah)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.sciProjects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ah)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+<h1>Section 6</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonnelManAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleManAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.otherPersonels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PerTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonnelManAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleManAdded)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<h1>Section 7</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thesis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsGraduated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsUndergraduated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.gradAsses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thesis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsGraduated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsUndergraduated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                </td>
+                <td>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>Section 8</h1>
+
+<table class="table  table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Salaries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Benefits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assistant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materials)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Travel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abroad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subcontracts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Others)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ufisaccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IndirectCosts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fundss)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salaries)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Benefits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assistant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Materials)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Travel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abroad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subcontracts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Others)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ufisaccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndirectCosts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                </td>
+                <td>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>Section 9</h1>
+
+
+
+    <div class="tab-pane fade show active" id="nav-budget" role="tabpanel" aria-labelledby="nav-budget-tab" tabindex="0">
+
+        <div class="row g-3">
+            <form asp-action="Page9">
+
+                <div class="card">
+                    <div class="card-header">Budget for: </div>
+
+                    <div class="card-body">
+                        <div class="row">
+
+
+                            <div class="form-group col-12">
+                                <label asp-for="Impact" class="control-label"></label>
+                                <textarea asp-for="Impact" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="Impact" class="text-danger"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label asp-for="Salaries" class="control-label"></label>
+                                    <textarea asp-for="Salaries" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Salaries" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Wages" class="control-label"></label>
+                                    <textarea asp-for="Wages" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Wages" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group col-12">
+                                <label asp-for="Benefits" class="control-label"></label>
+                                <textarea asp-for="Benefits" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="Benefits" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label asp-for="Assistant" class="control-label"></label>
+                                    <textarea asp-for="Assistant" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Assistant" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Materials" class="control-label"></label>
+                                    <textarea asp-for="Materials" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Materials" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Equipment" class="control-label"></label>
+                                    <textarea asp-for="Equipment" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Equipment" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label asp-for="Travel" class="control-label"></label>
+                                    <textarea asp-for="Travel" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Travel" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Abroad" class="control-label"></label>
+                                    <textarea asp-for="Abroad" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Abroad" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Subcontracts" class="control-label"></label>
+                                    <textarea asp-for="Subcontracts" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Subcontracts" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="form-group col-6">
+                                    <label asp-for="IndirectCosts" class="control-label"></label>
+                                    <textarea asp-for="IndirectCosts" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="IndirectCosts" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label asp-for="Others" class="control-label"></label>
+                                    <textarea asp-for="Others" rows="3" class="form-control"></textarea>
+                                    <span asp-validation-for="Others" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="col-12">
+                                <label asp-for="Facilities" class="control-label"></label>
+                                <textarea asp-for="Facilities" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="Facilities" class="text-danger"></span>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                         
+
+
+
+                        </div>
+
+                    </div>
+                   
+
+
+                    
+
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <h1>Section 10</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.projectNotes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

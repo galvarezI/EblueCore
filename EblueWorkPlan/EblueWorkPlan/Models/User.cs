@@ -15,5 +15,11 @@ public partial class User
 
     public bool? IsEnabled { get; set; }
 
+    public int? RolesId { get; set; }
+
+    public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
+
+    public virtual Role Roles { get; set; }
+
     public virtual Roster Roster { get; set; }
 }

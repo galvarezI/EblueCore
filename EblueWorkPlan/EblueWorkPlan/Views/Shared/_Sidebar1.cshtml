@@ -1,0 +1,141 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+ <div id="sidebar" class="bg-dark">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/UPR_Logo.svg/2560px-UPR_Logo.svg.png" width="100" height="100" style="padding-bottom:10px;" />
+            <a class="text-white d-none d-sm-inline text-decoration-none d-flex align-items-center ms-4" role="button" asp-action="Index" asp-controller="Home" asp-area="">
+
+                <span class="fs-5">WorkPlan</span>
+            </a>
+
+            <hr class="text-white d-none d-sm-block">
+        </div>
+
+
+
+
+
+
+        <ul class="list-unstyled components">
+
+            <ul class="nav nav-pills flex-column mt-4 mt-sm-0  " id="menu">
+
+                <div class="dropdown open">
+                    <a class="btn border-none outline-none text-white dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class=" fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">User</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item " asp-action="Logout" asp-controller="Home">Logout</a>
+                    </div>
+                </div>
+
+                <hr class="text-white d-none d-sm-block">
+
+                <li class="nav-item">
+                    <a class="nav-link text-white text-center text-sm-start " aria-current="page" asp-action="Index" asp-controller="Projects" asp-area="">
+                        <i class="fa fa-gauge"></i>
+                        <span class="ms-2 d-none d-sm-inline">Proyects</span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a  asp-action="Index" asp-controller ="Home" class="nav-link text-white my-sm-1 my-2 text-center text-sm-start" aria-current="page">
+                        <i class="fa fa-house"></i>
+                        <span class="ms-2 d-none d-sm-inline">Home</span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sidemenu" data-bs-toggle="collapse" class="nav-link text-white my-sm-1  my-2 text-center text-sm-start" aria-current="page">
+                        <i class="fa fa-table"></i>
+                        <span class="ms-2 d-none d-sm-inline">Admin</span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="nav collapse ms-1  flex-column" id="sidemenu" data-bs-parent="#menu">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller ="Rosters" aria-current="page">Roster</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Departments">Departments</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Commodities">Commodity</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="FiscalYears">Fiscal Year</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Substacions">SubStation</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="ProgramAreas">Programatic Area</a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Porganizations">Performing Organizations</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="Locationns">Locations</a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="FundTypes">Type of Funds</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="FieldWorks">FieldWorks</a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="ProjectStatus">Project Status</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            <li class="nav-item">
+                <a href="#sidemenu2" data-bs-toggle="collapse" class="nav-link text-white my-sm-1 my-2 text-center text-sm-start" aria-current="page">
+                    <i class="fa fa-users"></i>
+                    <span class="ms-2 d-none d-sm-inline">Services</span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="nav collapse ms-1  flex-column" id="sidemenu2" data-bs-parent="#menu">
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-action="Index" asp-controller="User">User</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white"asp-action="Page0" asp-controller="Projects">Link2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Link3 </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+
+
+
+    <header class="d-flex flex-wrap justify-content-start  border-bottom">
+        <img src="https://upload.wikimedia.org/wikipedia/en/2/29/University_of_Puerto_Rico_Logo.png" width="100" height="100" style="margin: 0; padding:20px" />
+
+        <ul class="nav nav-pills">
+            <button type="button" id="sidebarCollapse" class="">
+                <i class="fa fa-solid fa-bars"></i>
+            </button>
+
+        </ul>
+        <h6 class="justify-content-center align-content-center">Estacion Experimental Agricola</h6>
+    </header>

@@ -51,6 +51,8 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<ProjectAssent> ProjectAssents { get; set; }
 
+    public virtual DbSet<ProjectNote> ProjectNotes { get; set; }
+
     public virtual DbSet<ProjectStatus> ProjectStatuses { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -299,6 +301,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Opid).HasColumnName("OPID");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.PerTime).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.PersonnelManAdded)
                 .HasMaxLength(150)
                 .IsUnicode(false);
@@ -495,6 +498,30 @@ public partial class WorkplandbContext : DbContext
                 .HasColumnName("signDate");
         });
 
+        modelBuilder.Entity<ProjectNote>(entity =>
+        {
+            entity.HasKey(e => e.ProjectNotesId).HasName("PK__ProjectN__5DBF9709C49AD096");
+
+            entity.Property(e => e.Comment).HasColumnType("text");
+            entity.Property(e => e.LastUpdate).HasColumnType("datetime");
+            entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+            entity.Property(e => e.RosterId).HasColumnName("RosterID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Username).HasColumnType("text");
+
+            entity.HasOne(d => d.Project).WithMany(p => p.ProjectNotes)
+                .HasForeignKey(d => d.ProjectId)
+                .HasConstraintName("FK__ProjectNo__Proje__214BF109");
+
+            entity.HasOne(d => d.Roster).WithMany(p => p.ProjectNotes)
+                .HasForeignKey(d => d.RosterId)
+                .HasConstraintName("FK__ProjectNo__Roste__22401542");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ProjectNotes)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__ProjectNo__UserI__2057CCD0");
+        });
+
         modelBuilder.Entity<ProjectStatus>(entity =>
         {
             entity.HasKey(e => e.ProjectstatusId).HasName("PK__ProjectS__5D285B23212BDFA7");
@@ -563,20 +590,21 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Ca)
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("CA");
+            entity.Property(e => e.Credits).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.Tr)
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("TR");
 
-            entity.HasOne(d => d.Project).WithMany(p => p.SciProjectProjects)
+            entity.HasOne(d => d.Project).WithMany(p => p.SciProjects)
                 .HasForeignKey(d => d.ProjectId)
-                .HasConstraintName("FK__sciProjec__Proje__5165187F");
+                .HasConstraintName("FK__sciProjec__Proje__1E6F845E");
 
-            entity.HasOne(d => d.Roster).WithMany(p => p.SciProjectRosters)
+            entity.HasOne(d => d.Roster).WithMany(p => p.SciProjects)
                 .HasForeignKey(d => d.RosterId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__sciProjec__Roste__5070F446");
+                .HasConstraintName("FK__sciProjec__Roste__1F63A897");
         });
 
         modelBuilder.Entity<Substacion>(entity =>
@@ -601,7 +629,12 @@ public partial class WorkplandbContext : DbContext
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("isEnabled");
             entity.Property(e => e.Password).HasMaxLength(250);
+            entity.Property(e => e.RolesId).HasColumnName("RolesID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
+
+            entity.HasOne(d => d.Roles).WithMany(p => p.Users)
+                .HasForeignKey(d => d.RolesId)
+                .HasConstraintName("FK__Users__RolesID__0697FACD");
 
             entity.HasOne(d => d.Roster).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RosterId)

@@ -1,0 +1,86 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+
+
+<div id="showModal">
+   @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="you">Open modal for you</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="tu">Open modal for tu</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="el">Open modal for el</button>
+*@
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Field Work Id : @Model.FieldWorkId</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Page2Modal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProjectId" />
+                        <input type="hidden" asp-for="FieldWorkId" />
+
+                        <div class="mb-3">
+                              <label asp-for="Wfieldwork" class="control-label"></label>
+                                <textarea id="wfieldwork" asp-for="Wfieldwork" rows="3" class="form-control txt-wfieldwork"></textarea>
+                                <span asp-validation-for="Wfieldwork" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Area" class="control-label"></label>
+                            <input asp-for="Area" class="form-control txt-area" />
+                            <span asp-validation-for="Area" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label asp-for="LocationId" class="control-label"></label>
+                            <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label asp-for="DateStarted" class="control-label"></label>
+                            <input asp-for="DateStarted" class="form-control" />
+                            <span asp-validation-for="DateStarted" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DateEnded" class="control-label"></label>
+                            <input asp-for="DateEnded" class="form-control" />
+                            <span asp-validation-for="DateEnded" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3">
+                          <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
+                                </label>
+                        </div>
+
+
+
+                        <div class="mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
+                            </label>
+                        </div>
+
+
+
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-success">Save</button>
+                        </div>
+
+                    </form>
+                    
+                </div>
+
+               
+            </div>
+           
+        </div>
+    </div>
+</div>

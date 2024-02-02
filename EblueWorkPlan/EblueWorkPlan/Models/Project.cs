@@ -129,17 +129,11 @@ public partial class Project
 
     public virtual ProgramArea ProgramArea { get; set; }
 
+    public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
+
     public virtual Roster Roster { get; set; }
 
+    public virtual ICollection<SciProject> SciProjects { get; set; } = new List<SciProject>();
+
     public virtual Substacion SubStation { get; set; }
-
-    //public virtual FieldWork FieldWorkS { get; set; }
-    //public virtual Analytical AnalyticalS { get; set; }
-    //public virtual Fund FundS { get; set; }
-
-    //public virtual Laboratory LaboratoryS { get; set; }
-
-    //public virtual GradAss GradAsS { get; set; }
-
-    //public virtual OtherPersonel OtherPersonelS { get; set; }
 }

@@ -11,7 +11,7 @@ public partial class SciProject
 
     public int Roles { get; set; }
 
-    public int? Credits { get; set; }
+    public decimal? Credits { get; set; }
 
     public decimal? Tr { get; set; }
 
@@ -23,7 +23,7 @@ public partial class SciProject
 
     public int? ProjectId { get; set; }
 
-    public virtual Roster Project { get; set; }
+    public virtual Project Project { get; set; }
 
     public virtual Roster Roster { get; set; }
 }

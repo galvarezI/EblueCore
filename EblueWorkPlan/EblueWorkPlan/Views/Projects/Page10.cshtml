@@ -1,0 +1,143 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+@{
+    ViewData["Title"] = "Page10";
+}
+
+<partial name="_Sidebar2" />
+
+
+<h1>Research Project for: @Model.ProjectNumber</h1>
+
+<h3>Project Notes Page</h3>
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
+        <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="ProjectList" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" asp-action="Page2" asp-controller="Projects"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false" asp-action="Page3" asp-controller="Projects"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
+        <button class="nav-link " id="nav-analytical-tab" data-bs-toggle="tab" data-bs-target="#nav-analytical" type="button" role="tab" aria-controls="nav-analytical" aria-selected="false" asp-action="Page4" asp-controller="Projects"><i class="fa-solid fa-4" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-sciproject-tab" data-bs-toggle="tab" data-bs-target="#nav-sciproject" type="button" role="tab" aria-controls="nav-sciproject" aria-selected="false" asp-action="Page5" asp-controller="Projects"><i class="fa-solid fa-5" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-otherpersonel-tab" data-bs-toggle="tab" data-bs-target="#nav-otherpersonel" type="button" role="tab" aria-controls="nav-otherpersonel" aria-selected="false" asp-action="Page6" asp-controller="Projects"><i class="fa-solid fa-6" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false" asp-action="Page7" asp-controller="Projects"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false" asp-action="Page8" asp-controller="Projects"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
+        <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
+        <button class="nav-link active" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
+
+
+
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+        <div class="row g-3">
+            <form asp-action="Page10">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProjectId" />
+                <div class="card">
+
+                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
+
+
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="Comment" class="control-label"></label>
+                                <textarea asp-for="Comment" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="Comment" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="RosterId" class="control-label"></label>
+                                    <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br>
+
+
+
+                      
+                        <div class="form-group">
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+                    <div class="card-footer">
+                        <div class="btn btn-primary col align-content-center"><a asp-action="Page9" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
+
+                        <div class="btn btn-primary col align-content-end"><a asp-action="ReportViewList" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.projectNotes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+              
+                
+            </tr>
+        }
+    </tbody>
+</table>

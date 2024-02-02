@@ -1,0 +1,64 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+
+
+<div id="showModal">
+    @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="you">Open modal for you</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="tu">Open modal for tu</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="el">Open modal for el</button>*@
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Analytical ID : @Model.AnalyticalId</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Page3Modal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProjectId" />
+                        
+
+                        <div class="mb-3">
+                            <label asp-for="AnalysisRequired" class="control-label"></label>
+                            <input asp-for="AnalysisRequired" class="form-control txt-anR" />
+                            <span asp-validation-for="AnalysisRequired" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NumSamples" class="control-label"></label>
+                                <input asp-for="NumSamples" class="form-control txt-Num" />
+                                <span asp-validation-for="NumSamples" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mb-3">
+                           <label asp-for="ProbableDate" class="control-label"></label>
+                                <input asp-for="ProbableDate" class="form-control txt-pd" />
+                                <span asp-validation-for="ProbableDate" class="text-danger"></span>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-success">Save</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

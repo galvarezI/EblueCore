@@ -20,4 +20,6 @@ public partial class Role
     public int? RosterId { get; set; }
 
     public virtual Roster Roster { get; set; }
+
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

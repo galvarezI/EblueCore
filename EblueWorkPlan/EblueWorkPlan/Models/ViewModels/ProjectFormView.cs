@@ -6,7 +6,7 @@ namespace EblueWorkPlan.Models.ViewModels
     {
         public Project oProject { get; set; }
         public int ProjectId { get; set; }
-
+        public int idParameter { get; set; }
 
 
         [Display(Name = "Project Number")]
@@ -131,6 +131,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string WorkPlanned { get; set; }
 
+        [Display]
         public string Descriptions { get; set; }
 
         public string EstimatedTime { get; set; }
@@ -143,8 +144,10 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int AnalyticalId { get; set; }
 
+        [Display(Name= " Analysis ")]
         public string AnalysisRequired { get; set; }
 
+        [Display (Name =" # of Samples")]
         public string NumSamples { get; set; }
 
         public DateTime? ProbableDate { get; set; }
@@ -160,12 +163,13 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int Roles { get; set; }
 
-        public int? Credits { get; set; }
+        public decimal? Credits { get; set; }
 
+        [Display(Name ="TR")]
         public decimal? Tr { get; set; }
-
+        [Display(Name ="CA")]
         public decimal? Ca { get; set; }
-
+        [Display(Name ="AH")]
         public decimal? Ah { get; set; }
 
         public bool? AdHonorem { get; set; }
@@ -180,13 +184,14 @@ namespace EblueWorkPlan.Models.ViewModels
         public int Opid { get; set; }
 
         public string Name { get; set; }
+        [Display(Name ="% of Time")]
+        public decimal? PerTime { get; set; }
 
-        public int? PerTime { get; set; }
 
-
-
+        [Display(Name = "Personnel  Added ")]
         public string PersonnelManAdded { get; set; }
 
+        [Display(Name ="Role Added")]
         public string RoleManAdded { get; set; }
 
 
@@ -196,6 +201,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int Gaid { get; set; }
 
+        [Display(Name ="Name")]
         public string Gname { get; set; }
 
         public string Thesis { get; set; }
@@ -210,8 +216,10 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string StudentName { get; set; }
 
+        [Display(Name="Graduated")]
         public bool IsGraduated { get; set; }
 
+        [Display(Name="Undergraduated")]
         public bool IsUndergraduated { get; set; }
 
 
@@ -242,6 +250,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public int? Wfsid { get; set; }
 
         public DateTime? Wfupdate { get; set; }
+
 
         public DateTime? StartDate { get; set; }
 
@@ -285,8 +294,72 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-        //Lista de Proyectos Custom
+        //From Project Notes
 
+        public int ProjectNotesId { get; set; }
+
+        [Display (Name="Description")]
+        public string Comment { get; set; }
+
+        [Display(Name =" last Update")]
+        public DateTime? LastUpdate { get; set; }
+
+        public int? UserId { get; set; }
+
+       
+
+        public string Username { get; set; }
+
+       
+
+
+
+        public virtual User User { get; set; }
+
+
+        public virtual Project Projects { get; set; }
+        public virtual Roster Rosters { get; set; }
+        public virtual FieldWork Fieldworks { get; set; }
+
+        public virtual Fund Funds { get; set; }
+
+        public virtual GradAss GradAss { get; set; }
+
+        public virtual Laboratory Laboratorys { get; set; }
+
+        public virtual Analytical Analyticals { get; set; }
+
+        public virtual OtherPersonel OtherPersonels { get; set; }
+
+        public virtual SciProject SciProjects { get; set; }
+        public virtual Project Project { get; set; }
+        public virtual Roster Roster { get; set; }
+        public virtual FieldWork Fieldwork { get; set; }
+
+        public virtual Fund Fund { get; set; }
+
+        public virtual GradAss GradAs { get; set; }
+
+        public virtual Laboratory Laboratory { get; set; }
+
+        public virtual Analytical Analytical { get; set; }
+
+        public virtual OtherPersonel OtherPersonel { get; set; }
+
+        public virtual SciProject SciProject { get; set; }
+
+        public virtual Locationn Location { get; set; }
+
+        //Lista de Proyectos Custom
+        public IEnumerable<Fund>Fundss { get; set; }
+        public IEnumerable<Laboratory> laboratories { get; set; }
+        public IEnumerable<Analytical> analyticals { get; set; }
+        public IEnumerable<SciProject>sciProjects { get; set; }
+        public IEnumerable<OtherPersonel> otherPersonels { get; set; }
+        public IEnumerable<GradAss> gradAsses { get; set; }
+        public IEnumerable<FieldWork> fieldsWork { get; set; }
+        public IEnumerable<Project> projects { get; set; }
+        public IEnumerable<ProjectNote> projectNotes { get; set; }
         public IList<ProjectFormView> ProjectItem {get; set;}
     }
 }

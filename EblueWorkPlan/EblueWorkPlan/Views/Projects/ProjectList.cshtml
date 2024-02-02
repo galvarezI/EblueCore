@@ -3,8 +3,12 @@
     ViewData["Title"] = "ProjectList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<partial name="_Sidebar2" />
 
-<h1>ProjectList for: @Model.ProjectNumber </h1>
+
+<h1>Research Project for: @Model.ProjectNumber</h1>
+
+<h2>ProjectList Page </h2>
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -18,7 +22,7 @@
         <button class="nav-link" id="nav-gradass-tab" data-bs-toggle="tab" data-bs-target="#nav-gradass" type="button" role="tab" aria-controls="nav-gradass" aria-selected="false"><i class="fa-solid fa-7" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
-
+         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
 
 
     </div>
@@ -31,7 +35,7 @@
                 <input type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
-                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => Model.ProjectNumber) , @Html.DisplayFor(modelItem => Model.ProjectId)</div>
+                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
 
 
                     <div class="card-body">
@@ -40,7 +44,7 @@
                             <div class="col-12">
                                 <label asp-for="Objectives" class="control-label"></label>
                                 <textarea asp-for="Objectives" rows="3"  class="form-control" ></textarea>
-                                <span asp-validation-for="Objectives" class="text-danger"></span>
+                                @*<select  asp-validation-for="Objectives" class="text-danger"></select>*@
                             </div>
                         </div>
 
@@ -70,7 +74,8 @@
 
                         <br>
                         <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <input type="submit" value="Add" class="btn btn-primary" />
+                            
                         </div>
 
 
@@ -96,578 +101,51 @@
                 
             </form>
 
-        </div>
-    </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-        <div class="row g-3">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="card">
-
-                    <div class="card-header">WorkPlan - FieldWork </div>
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-
-                            <div class="form-group">
-                                <label asp-for="ProjectId" class="control-label"></label>
-                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectNumber"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="DateStarted" class="control-label"></label>
-                                <input asp-for="DateStarted" class="form-control" />
-                                <span asp-validation-for="DateStarted" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="DateEnded" class="control-label"></label>
-                                <input asp-for="DateEnded" class="form-control" />
-                                <span asp-validation-for="DateEnded" class="text-danger"></span>
-                            </div>
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
-                                </label>
-                            </div>
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </form>
-        </div>
-       
-    </div>
-  
-    <div class="tab-pane fade" id="nav-laboratory" role="tabpanel" aria-labelledby="nav-laboratory-tab" tabindex="0">
-        <div class="row g-3">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="card">
-
-                    <div class="card-header">Laboratory </div>
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-
-                            <div class="form-group">
-                                <label asp-for="Areq" class="control-label"></label>
-                                <input asp-for="Areq" class="form-control" />
-                                <span asp-validation-for="Areq" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="NoSamples" class="control-label"></label>
-                                <input asp-for="NoSamples" class="form-control" />
-                                <span asp-validation-for="NoSamples" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="SamplesDate" class="control-label"></label>
-                                <input asp-for="SamplesDate" class="form-control" />
-                                <span asp-validation-for="SamplesDate" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ProjectId" class="control-label"></label>
-                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" asp-controller="Funds" asp-action="Create" />
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-     <div class="tab-pane fade" id="nav-analytical" role="tabpanel" aria-labelledby="nav-analytical-tab" tabindex="0">
-             <div class="row g-3">
-            
-                    <form asp-action="Analytical">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        
-                        <div class="card">
-                            <div class="card-header">
-                                Analytical
-                            </div>
-
-                            <div class="card-body">
-
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Objectives)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ObjWorkPlan)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PresentOutlook)
+                        </th>
+                        
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        <tr>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.Objectives)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.ObjWorkPlan)
+                            </td>
+                            <td>
+                            @Html.DisplayFor(modelItem => modelItem.PresentOutlook)
+                            </td>
+                            
+                            <td>
                                 <div class="row">
+                                    <div class="col-4">
+                                        <div class=" btn  btn-success" style="padding:0,2px;">Modify</div>
 
-
-
-                                    <div class="form-group">
-                                        <label asp-for="AnalysisRequired" class="control-label"></label>
-                                        <input asp-for="AnalysisRequired" class="form-control" />
-                                        <span asp-validation-for="AnalysisRequired" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="NumSamples" class="control-label"></label>
-                                        <input asp-for="NumSamples" class="form-control" />
-                                        <span asp-validation-for="NumSamples" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="ProbableDate" class="control-label"></label>
-                                        <input asp-for="ProbableDate" class="form-control" />
-                                        <span asp-validation-for="ProbableDate" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="ProjectId" class="control-label"></label>
-                                        <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" value="Create" class="btn btn-primary" />
-                                    </div>
-
-
+                                    
                                 </div>
-
-                             </div>
-
-
-                         </div>
+                            </td>
+                        </tr>
                     
-                    </form>
-                
-             </div>
-     </div>
-
-
-
-
-    <div class="tab-pane fade" id="nav-sciproject" role="tabpanel" aria-labelledby="nav-sciproject-tab" tabindex="0">
-        <div class="row g-3">
-
-            
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="card">
-
-                        <div class="card-header">Scientist Working for Project  </div>
-
-
-                        <div class="card-body">
-
-                            <div class="row">
-
-
-                                <div class="form-group">
-                                    <label asp-for="RosterId" class="control-label"></label>
-                                    <select asp-for="RosterId" class="form-control" asp-items="ViewBag.Roster"></select>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Roles" class="control-label"></label>
-                                    <input asp-for="Roles" class="form-control" />
-                                    <span asp-validation-for="Roles" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Credits" class="control-label"></label>
-                                    <input asp-for="Credits" class="form-control" />
-                                    <span asp-validation-for="Credits" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Tr" class="control-label"></label>
-                                    <input asp-for="Tr" class="form-control" />
-                                    <span asp-validation-for="Tr" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Ca" class="control-label"></label>
-                                    <input asp-for="Ca" class="form-control" />
-                                    <span asp-validation-for="Ca" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Ah" class="control-label"></label>
-                                    <input asp-for="Ah" class="form-control" />
-                                    <span asp-validation-for="Ah" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="AdHonorem" class="control-label"></label>
-                                    <input asp-for="AdHonorem" class="form-control" />
-                                    <span asp-validation-for="AdHonorem" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="ProjectId" class="control-label"></label>
-                                    <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.Project"></select>
-                                </div>
-
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-                        </div>
-
-                    </div>
-                </form>
-          
+                </tbody>
+            </table>
 
         </div>
     </div>
-
-
-
-    <div class="tab-pane fade" id="nav-otherpersonel" role="tabpanel" aria-labelledby="nav-otherpersonel-tab" tabindex="0">
-
-        <div class=" row g-3">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="card">
-
-                    <div class="card-header">Other Personel </div>
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-
-
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="Name" class="control-label"></label>
-                                <input asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="PerTime" class="control-label"></label>
-                                <input asp-for="PerTime" class="form-control" />
-                                <span asp-validation-for="PerTime" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ProjectId" class="control-label"></label>
-                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectsItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="RosterId" class="control-label"></label>
-                                <select asp-for="RosterId" class="form-control" asp-items="ViewBag.RosterItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="PersonnelManAdded" class="control-label"></label>
-                                <input asp-for="PersonnelManAdded" class="form-control" />
-                                <span asp-validation-for="PersonnelManAdded" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="RoleManAdded" class="control-label"></label>
-                                <input asp-for="RoleManAdded" class="form-control" />
-                                <span asp-validation-for="RoleManAdded" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </form>
-        </div>
-
-
-
-
-
-
-    </div>
-
-
-
-    <div class="tab-pane fade" id="nav-gradass" role="tabpanel" aria-labelledby="nav-gradass-tab" tabindex="0">
-            <div class="row g-3">
-                <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="card">
-
-                    <div class="card-header">Add Graduates </div>
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-
-                            <div class="form-group">
-                                <label asp-for="Gname" class="control-label"></label>
-                                <input asp-for="Gname" class="form-control" />
-                                <span asp-validation-for="Gname" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Thesis" class="control-label"></label>
-                                <input asp-for="Thesis" class="form-control" />
-                                <span asp-validation-for="Thesis" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ProjectId" class="control-label"></label>
-                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectsItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="StudentId" class="control-label"></label>
-                                <input asp-for="StudentId" class="form-control" />
-                                <span asp-validation-for="StudentId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Amount" class="control-label"></label>
-                                <input asp-for="Amount" class="form-control" />
-                                <span asp-validation-for="Amount" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="RoleId" class="control-label"></label>
-                                <input asp-for="RoleId" class="form-control" />
-                                <span asp-validation-for="RoleId" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="StudentName" class="control-label"></label>
-                                <input asp-for="StudentName" class="form-control" />
-                                <span asp-validation-for="StudentName" class="text-danger"></span>
-                            </div>
-
-
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
-                        </div>
-
-                    </div>
-                    </div>
-                </form>
-
-               
-            </div>
-    </div>
-    
-
-
-    <div class="tab-pane fade" id="nav-fund" role="tabpanel" aria-labelledby="nav-fund-tab" tabindex="0" >
-
-        <div class="row g-3">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="card">
-
-                    <div class="card-header">Funds </div>
-
-
-                    <div class="card-body">
-
-                        <div class="row">
-
-
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group">
-                                <label asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.LocationItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Salaries" class="control-label"></label>
-                                <input asp-for="Salaries" class="form-control" />
-                                <span asp-validation-for="Salaries" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Wages" class="control-label"></label>
-                                <input asp-for="Wages" class="form-control" />
-                                <span asp-validation-for="Wages" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Benefits" class="control-label"></label>
-                                <input asp-for="Benefits" class="form-control" />
-                                <span asp-validation-for="Benefits" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Assistant" class="control-label"></label>
-                                <input asp-for="Assistant" class="form-control" />
-                                <span asp-validation-for="Assistant" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Materials" class="control-label"></label>
-                                <input asp-for="Materials" class="form-control" />
-                                <span asp-validation-for="Materials" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Equipment" class="control-label"></label>
-                                <input asp-for="Equipment" class="form-control" />
-                                <span asp-validation-for="Equipment" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Travel" class="control-label"></label>
-                                <input asp-for="Travel" class="form-control" />
-                                <span asp-validation-for="Travel" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Abroad" class="control-label"></label>
-                                <input asp-for="Abroad" class="form-control" />
-                                <span asp-validation-for="Abroad" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Subcontracts" class="control-label"></label>
-                                <input asp-for="Subcontracts" class="form-control" />
-                                <span asp-validation-for="Subcontracts" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Others" class="control-label"></label>
-                                <input asp-for="Others" class="form-control" />
-                                <span asp-validation-for="Others" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ProjectId" class="control-label"></label>
-                                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectsItem"></select>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Ufisaccount" class="control-label"></label>
-                                <input asp-for="Ufisaccount" class="form-control" />
-                                <span asp-validation-for="Ufisaccount" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="IndirectCosts" class="control-label"></label>
-                                <input asp-for="IndirectCosts" class="form-control" />
-                                <span asp-validation-for="IndirectCosts" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </form>
-                
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-    <div class="tab-pane fade" id="nav-budget" role="tabpanel" aria-labelledby="nav-budget-tab" tabindex="0">
-
-        <div class="row g-3">
-            <form asp-action="Create">
-
-                <div class="card">
-                    <div class="card-header">Budget for: </div>
-
-                    <div class="card-body">
-                       <div class="row">
-                            <div class="form-group">
-                                <label asp-for="Facilities" class="control-label"></label>
-                                <input asp-for="Facilities" class="form-control" />
-                                <span asp-validation-for="Facilities" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Impact" class="control-label"></label>
-                                <input asp-for="Impact" class="form-control" />
-                                <span asp-validation-for="Impact" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Salaries" class="control-label"></label>
-                                <input asp-for="Salaries" class="form-control" />
-                                <span asp-validation-for="Salaries" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Materials" class="control-label"></label>
-                                <input asp-for="Materials" class="form-control" />
-                                <span asp-validation-for="Materials" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Equipment" class="control-label"></label>
-                                <input asp-for="Equipment" class="form-control" />
-                                <span asp-validation-for="Equipment" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Travel" class="control-label"></label>
-                                <input asp-for="Travel" class="form-control" />
-                                <span asp-validation-for="Travel" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Abroad" class="control-label"></label>
-                                <input asp-for="Abroad" class="form-control" />
-                                <span asp-validation-for="Abroad" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Others" class="control-label"></label>
-                                <input asp-for="Others" class="form-control" />
-                                <span asp-validation-for="Others" class="text-danger"></span>
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label asp-for="Wages" class="control-label"></label>
-                                <input asp-for="Wages" class="form-control" />
-                                <span asp-validation-for="Wages" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Benefits" class="control-label"></label>
-                                <input asp-for="Benefits" class="form-control" />
-                                <span asp-validation-for="Benefits" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Assistant" class="control-label"></label>
-                                <input asp-for="Assistant" class="form-control" />
-                                <span asp-validation-for="Assistant" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Subcontracts" class="control-label"></label>
-                                <input asp-for="Subcontracts" class="form-control" />
-                                <span asp-validation-for="Subcontracts" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="IndirectCosts" class="control-label"></label>
-                                <input asp-for="IndirectCosts" class="form-control" />
-                                <span asp-validation-for="IndirectCosts" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="submit" value="Create" class="btn btn-primary" />
-                            </div>
-
-
-
-                       </div>
-
-                    </div>
-
-
-                </div>
-
-
-            </form>
-
-
-
-        </div>
-
-
-
-    </div>
-
     
  </div>
 
