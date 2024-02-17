@@ -301,7 +301,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Opid).HasColumnName("OPID");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.Name).HasMaxLength(255);
-            entity.Property(e => e.PerTime).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.PerTime).HasColumnType("decimal(18, 4)");
             entity.Property(e => e.PersonnelManAdded)
                 .HasMaxLength(150)
                 .IsUnicode(false);
@@ -585,16 +585,16 @@ public partial class WorkplandbContext : DbContext
 
             entity.Property(e => e.SciId).HasColumnName("SciID");
             entity.Property(e => e.Ah)
-                .HasColumnType("decimal(18, 0)")
+                .HasColumnType("money")
                 .HasColumnName("AH");
             entity.Property(e => e.Ca)
-                .HasColumnType("decimal(18, 0)")
+                .HasColumnType("money")
                 .HasColumnName("CA");
-            entity.Property(e => e.Credits).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Credits).HasColumnType("money");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.Tr)
-                .HasColumnType("decimal(18, 0)")
+                .HasColumnType("money")
                 .HasColumnName("TR");
 
             entity.HasOne(d => d.Project).WithMany(p => p.SciProjects)

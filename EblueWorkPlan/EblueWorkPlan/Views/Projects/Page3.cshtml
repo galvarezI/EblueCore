@@ -45,11 +45,11 @@
                     <div class="card-body">
 
                         <div class="row">
-                            <input type="hidden" asp-for="ProjectId" />
-                            <input type="hidden" asp-for="LabId" />
+                            <input id="projectId" type="hidden" asp-for="ProjectId" />
+                            <input id="labId" type="hidden" asp-for="LabId" />
                             <div class="col-12">
                                 <label asp-for="WorkPlanned" class="control-label"></label>
-                                <textarea asp-for="WorkPlanned" rows="3" class="form-control txt-w"></textarea>
+                                <textarea id="workplanned" asp-for="WorkPlanned" rows="3" class="form-control txt-w"></textarea>
                                 <span asp-validation-for="WorkPlanned" class="text-danger"></span>
                             </div>
 
@@ -57,12 +57,12 @@
                             <div class="row">
                                 <div class="form-group col-4">
                                     <label asp-for="Descriptions" class="control-label"></label>
-                                    <input asp-for="Descriptions" class="form-control txt-d" />
+                                    <input id="descriptions" asp-for="Descriptions" class="form-control txt-d" />
                                     <span asp-validation-for="Descriptions" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-4">
                                     <label asp-for="EstimatedTime" class="control-label"></label>
-                                    <input asp-for="EstimatedTime" class="form-control txt-est" />
+                                    <input id="estimatedtime" asp-for="EstimatedTime" class="form-control txt-est" />
                                     <span asp-validation-for="EstimatedTime" class="text-danger"></span>
                                 </div>
 
@@ -70,7 +70,7 @@
 
                                 <div class="form-group col-4">
                                     <label asp-for="FacilitiesNeeded" class="control-label"></label>
-                                    <input asp-for="FacilitiesNeeded" class="form-control txt-fn" />
+                                    <input id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn" />
                                     <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
                                 </div>
 
@@ -79,7 +79,7 @@
                             <br>
                             <div class="form-group" style="padding-top:20px;">
                                 <input type="submit" value="Add" class="btn btn-primary"  />
-                                <input type="button" value="Save" class="btn btn-success btn-save" style="display: none" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                             </div>
 
 
@@ -153,14 +153,16 @@
                             </td>
                             <td>
                                 <div class="row">
-                                    <div class="col-4">
-                                        <div class=" btn  btn-success modify" style="padding:0,2px;" data-bs-toggle="modal" data-bs-target="#exampleModal">Modify</div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.EstimatedTime|@item.FacilitiesNeeded|@item.ProjectId"
+                                                class="btn  btn-success modify">
+                                                Modify
+                                            </button>
+                                        </div>
 
                                     </div>
-                                    @*<div class="col-4">
-
-                                        <div class="btn btn-danger" style="padding:0,2px;">Delete </div>
-                                    </div>*@
+                                    
                                 </div>
                             </td>
                         </tr>
@@ -178,49 +180,62 @@
 
 @section scripts{
     <script>
-        $(".modify").click(function () {
-            $(this).prop("disabled", "disabled")
-            $(".hide").hide();
-            $("#labTable tbody tr").each(function () {
-                // Dentro de este bucle, 'this' se refiere a cada fila individual
 
-                // Capturar el valor de la Columna 1 en la fila actual
-                var id = $(this).find("td.labId").text();
+        $(function () {
 
-                // Convertir el valor a entero utilizando parseInt
-                var LabId = parseInt(id, 10);
+           
 
-                // Imprimir el valor entero en la consola
-                console.log("Valor de la Columna 1 como entero: " + LabId);
 
-                var url = "@Url.Action("Page3Modal","Projects")";
 
-                $.get(url, { id: LabId }).done(function (data) {
-                    $("#showModal").append(data);
-                    $("#exampleModal").addClass("show");
+            $(".modify").click(function () {
 
-                })
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 6);
+
+               
+
+                $('#labId').val(campos[0]);
+                $('#workplanned').val(campos[1]);
+                $('#descriptions').val(campos[2]);
+                $('#estimatedtime').val(campos[3]);
+                $('#facilitiesNeeded').val(campos[4]);
+                $('#projectId').val(campos[5]);
 
             });
 
 
 
-            //data-bs-toggle="modal" data-bs-target="#exampleModal
+            $('#btnSave').click(function () {
 
 
+                const params = {
+                    labId: $('#labId').val(),
+                    projectId: $('#projectId').val(),
+                    workplanned: $('#workplanned').val(),
+                    descriptions: $('#descriptions').val(),
+                    estimatedtime: $('#estimatedtime').val(),
+                    facilitiesNeeded: $('#facilitiesNeeded').val(),
+                    
+                };
 
 
+                console.log(params);
 
 
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage3Data',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+                    },
+                    dataType: 'json'
+                });
 
-
-
-
-
+            });
 
         });
-
-
 
 
     </script>

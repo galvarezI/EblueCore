@@ -43,78 +43,80 @@
 
                         <div class="row">
 
-                            <input type="hidden" asp-for="ProjectId" />
+                            <input id="projectId" type="hidden" asp-for="ProjectId" />
+                            <input id="fundId" type="hidden" />
 
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label asp-for="LocationId" class="control-label"></label>
+                                <label id="locationId" asp-for="LocationId" class="control-label"></label>
                                 <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Salaries" class="control-label"></label>
-                                <input asp-for="Salaries" class="form-control" />
+                                <input id="salaries" asp-for="Salaries" class="form-control" />
                                 <span asp-validation-for="Salaries" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Wages" class="control-label"></label>
-                                <input asp-for="Wages" class="form-control" />
+                                <input id="wages" asp-for="Wages" class="form-control" />
                                 <span asp-validation-for="Wages" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Benefits" class="control-label"></label>
-                                <input asp-for="Benefits" class="form-control" />
+                                <input id="benefit" asp-for="Benefits" class="form-control" />
                                 <span asp-validation-for="Benefits" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Assistant" class="control-label"></label>
-                                <input asp-for="Assistant" class="form-control" />
+                                <input id="assistant" asp-for="Assistant" class="form-control" />
                                 <span asp-validation-for="Assistant" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Materials" class="control-label"></label>
-                                <input asp-for="Materials" class="form-control" />
+                                <input id="materials" asp-for="Materials" class="form-control" />
                                 <span asp-validation-for="Materials" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Equipment" class="control-label"></label>
-                                <input asp-for="Equipment" class="form-control" />
+                                <input id="equipment" asp-for="Equipment" class="form-control" />
                                 <span asp-validation-for="Equipment" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Travel" class="control-label"></label>
-                                <input asp-for="Travel" class="form-control" />
+                                <input id="travel" asp-for="Travel" class="form-control" />
                                 <span asp-validation-for="Travel" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Abroad" class="control-label"></label>
-                                <input asp-for="Abroad" class="form-control" />
+                                <input id="abroad" asp-for="Abroad" class="form-control" />
                                 <span asp-validation-for="Abroad" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Subcontracts" class="control-label"></label>
-                                <input asp-for="Subcontracts" class="form-control" />
+                                <input id="subcontract" asp-for="Subcontracts" class="form-control" />
                                 <span asp-validation-for="Subcontracts" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Others" class="control-label"></label>
-                                <input asp-for="Others" class="form-control" />
+                                <input id="others" asp-for="Others" class="form-control" />
                                 <span asp-validation-for="Others" class="text-danger"></span>
                             </div>
                             
                             <div class="form-group">
                                 <label asp-for="Ufisaccount" class="control-label"></label>
-                                <input asp-for="Ufisaccount" class="form-control" />
+                                <input id="ufisaccount" asp-for="Ufisaccount" class="form-control" />
                                 <span asp-validation-for="Ufisaccount" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="IndirectCosts" class="control-label"></label>
-                                <input asp-for="IndirectCosts" class="form-control" />
+                                <input id="indirectcosts" asp-for="IndirectCosts" class="form-control" />
                                 <span asp-validation-for="IndirectCosts" class="text-danger"></span>
                             </div>
 
 
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                             </div>
 
                         </div>
@@ -151,6 +153,10 @@
     <table class="table  table-bordered">
         <thead>
             <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FundId)
+                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Salaries)
                 </th>
@@ -201,6 +207,9 @@
             {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.FundId)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Salaries)
                     </td>
                     <td>
@@ -245,13 +254,10 @@
                     <td>
                             <div class="row">
                             <div class="col-4">
-                                <div class=" btn  btn-success" style="padding:0,2px;">Modify</div>
-
-                             </div>
-                                 @*<div class="col-4">
-
-                                    <div class="btn btn-danger" style="padding:0,2px;">Delete </div>
-                                 </div>*@
+                                <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.Ufisaccount |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
+                                    class="btn  btn-success modify">
+                                    Modify
+                                </button>
                             </div>
                             </td>
                 </tr>
@@ -260,3 +266,97 @@
     </table>
 
 </div>
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+
+
+
+
+
+
+
+        $(function () {
+
+            
+
+
+            $(".modify").click(function () {
+
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 15);
+
+
+
+                $('#fundId').val(campos[0]);
+                $('#salaries').val(campos[1]);
+                $('#wages').val(campos[2]);
+                $('#benefit').val(campos[3]);
+                $('#assistant').val(campos[4]);
+                $('#materials').val(campos[5]);
+                $('#equipment').val(campos[6]);
+                $('#travel').val(campos[7]);
+                $('#abroad').val(campos[8]);
+                $('#subcontract').val(campos[9]);
+                $('#others').val(campos[10]);
+                $('#ufisaccount').val(campos[11]);
+                $('#indirectcosts').val(campos[12]);
+                $('#projectId').val(campos[14]);
+                $('#locationId').val(campos[13]);
+
+            });
+
+
+
+            $('#btnSave').click(function () {
+
+
+                const params = {
+
+
+                    fundId: $('#fundId').val(),
+                    salaries:  $('#salaries').val(),
+                    wages:     $('#wages').val(),
+                    benefit:   $('#benefit').val(),
+                    assistant:  $('#assistant').val(),
+                    materials:  $('#materials').val(),
+                    equipment:  $('#equipment').val(),
+                    travel:     $('#travel').val(),
+                    abroad:     $('#abroad').val(),
+                    subcontract: $('#subcontract').val(),
+                    others:        $('#others').val(),
+                    ufisaccount:   $('#ufisaccount').val(),
+                    indirectcosts: $('#indirectcosts').val(),
+                    projectId:     $('#projectId').val(),
+                    locationId:    $('#locationId').val(),
+                };
+
+
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage8Data',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+                    },
+                    dataType: 'json'
+                });
+
+            });
+
+        });
+
+
+
+    </script>
+
+
+}

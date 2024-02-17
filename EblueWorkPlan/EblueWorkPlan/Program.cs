@@ -4,13 +4,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<WorkplandbContext>(options =>
-{
+
+//var constring = builder.Configuration.GetConnectionString("WorkPlanContext");
+
+builder.Services.AddDbContext<WorkplandbContext>(
+      options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
 
 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext"));
+//builder.Services.AddDbContext<WorkplandbContext>(options =>
+//{
 
-});
+
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext"));
+
+//});
 
 //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 //    .AddCookie(option => {

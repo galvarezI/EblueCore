@@ -39,8 +39,8 @@
                         <div class="card">
 
                             <div class="card-header">Scientist Working for Project  </div>
-                            <input type="hidden" asp-for="ProjectId" />
-
+                    <input id="projectId" type="hidden" asp-for="ProjectId" />
+                            <input id="sciPId" type="hidden" />
 
                             <div class="card-body">
 
@@ -49,27 +49,27 @@
 
                                     <div class="form-group">
                                         <label asp-for="RosterId" class="control-label"></label>
-                                <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                                        <select id="rosterId" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
                                     </div>
                                     
                                     <div class="form-group">
                                         <label asp-for="Credits" class="control-label"></label>
-                                <input asp-for="Credits" class="form-control" type="number" min="0.0000" step="0.0001" />
+                                <input id="credit" asp-for="Credits" class="form-control"  min="0.0000" step="0.0001" />
                                         <span asp-validation-for="Credits" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Tr" class="control-label"></label>
-                                <input asp-for="Tr" class="form-control" min="0.0000" step="0.0001"  />
+                                <input id="tr" asp-for="Tr" class="form-control" min="0.0000" step="0.0001"  />
                                         <span asp-validation-for="Tr" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Ca" class="control-label"></label>
-                                <input asp-for="Ca" class="form-control" min="0.0000" step="0.0001"  />
+                                <input id="ca" asp-for="Ca" class="form-control" min="0.0000" step="0.0001"  />
                                         <span asp-validation-for="Ca" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Ah" class="control-label"></label>
-                                <input asp-for="Ah" class="form-control" min="0.0000" step="0.0001"  />
+                                    <input id="ah" asp-for="Ah" class="form-control" min="0.0000" step="0.0001"  />
                                         <span asp-validation-for="Ah" class="text-danger"></span>
                                     </div>
                                    
@@ -78,6 +78,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Add" class="btn btn-primary" />
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                                 </div>
 
                             </div>
@@ -106,8 +107,17 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Roles)
+                    @Html.DisplayNameFor(model => model.SciId)
                 </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ProjectId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Roster)
+                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Credits)
                 </th>
@@ -122,9 +132,7 @@
                 </th>
                 
              
-                <th>
-                    @Html.DisplayNameFor(model => model.Roster)
-                </th>
+                
                 <th>Actions</th>
             </tr>
         </thead>
@@ -133,8 +141,15 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Roles)
+                        @Html.DisplayFor(modelItem => item.SciId)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Credits)
                     </td>
@@ -149,19 +164,17 @@
                     </td>
                     
                     
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Roster.RosterId)
-                    </td>
+                    
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <div class=" btn  btn-success" style="padding:0,2px;">Modify</div>
+                                <button data-id="@item.SciId| @item.Project.ProjectId| @item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah"
+                                    class="btn  btn-success modify">
+                                    Modify
+                                </button>
 
                             </div>
-                            <div class="col-4">
-
-                                <div class="btn btn-danger" style="padding:0,2px;">Delete </div>
-                            </div>
+                            
                         </div>
                     </td>
                 </tr>
@@ -175,3 +188,69 @@
 
 
 
+
+@section scripts{
+    <script>
+
+        $(function () {
+
+            
+
+
+
+            $(".modify").click(function () {
+
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 7);
+
+
+
+                $('#sciPId').val(campos[0]);
+                $('#rosterId').val(campos[2]);
+                $('#credit').val(campos[3]);
+                $('#tr').val(campos[4]);
+                $('#ca').val(campos[5]);
+                $('#ah').val(campos[6]);
+                $('#projectId').val(campos[1]);
+            });
+
+
+
+            $('#btnSave').click(function () {
+
+
+                const params = {
+                    sciPId: $('#sciPId').val(),
+                    rosterId: $('#rosterId').val(),
+                    credit: $('#credit').val(),
+                    tr: $('#tr').val(),
+                    ca: $('#ca').val(),
+                    ah: $('#ah').val(),
+                    projectId: $('#projectId').val(),
+
+                };
+
+
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage5Data',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+                    },
+                    dataType: 'json'
+                });
+
+            });
+
+        });
+
+
+
+    </script>
+
+}

@@ -48,38 +48,40 @@
 
 
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <input type="hidden" asp-for="ProjectId" />
+                            <input id="projectId" type="hidden" asp-for="ProjectId" />
+                            <input id="Opid" type="hidden" />
                             <div class="form-group">
                                 <label asp-for="Name" class="control-label"></label>
-                                <input asp-for="Name" class="form-control" />
+                                <input id="perName" asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="PerTime" class="control-label"></label>
-                                <input asp-for="PerTime" class="form-control" min="0.0000" step="0.0001" max="1" />
+                                <input id="pertime" asp-for="PerTime" class="form-control" min="0.0000" step="0.0001" max="1" />
                                 <span asp-validation-for="PerTime" class="text-danger"></span>
                             </div>
                            
                             <div class="form-group">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
                             <div class="form-group">
                                 <label asp-for="RosterId" class="control-label"></label>
-                                <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                                <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
                             </div>
                             <div class="form-group">
                                 <label asp-for="PersonnelManAdded" class="control-label"></label>
-                                <input asp-for="PersonnelManAdded" class="form-control" />
+                                <input id="personnelman" asp-for="PersonnelManAdded" class="form-control" />
                                 <span asp-validation-for="PersonnelManAdded" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="RoleManAdded" class="control-label"></label>
-                                <input asp-for="RoleManAdded" class="form-control" />
+                                <input id="roleman" asp-for="RoleManAdded" class="form-control" />
                                 <span asp-validation-for="RoleManAdded" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                             </div>
 
                         </div>
@@ -110,6 +112,10 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.Opid)
+                    </th>
+
+                    <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
                     <th>
@@ -125,10 +131,10 @@
                         @Html.DisplayNameFor(model => model.Location)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Project)
+                        @Html.DisplayNameFor(model => model.ProjectId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Roster)
+                        @Html.DisplayNameFor(model => model.RosterId)
                     </th>
                     <th></th>
                 </tr>
@@ -137,6 +143,9 @@
                 @foreach (var item in Model.otherPersonels)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Opid)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -150,25 +159,23 @@
                             @Html.DisplayFor(modelItem => item.RoleManAdded)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Location.LocationId)
+                            @Html.DisplayFor(modelItem => item.LocationId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                            @Html.DisplayFor(modelItem => item.ProjectId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                            @Html.DisplayFor(modelItem => item.RosterId)
                         </td>
                         <td>
                             <div class="row">
                                 <div class="col-4">
-                                    <div class=" btn  btn-success" style="padding:0,2px;">Modify</div>
+                                    <button data-id="@item.Opid|@item.Name|@item.PerTime|@item.PersonnelManAdded|@item.RoleManAdded|@item.LocationId|@item.ProjectId|@item.RosterId"
+                                        class="btn  btn-success modify">
+                                        Modify
+                                    </button>
 
                                 </div>
-@*                                <div class="col-4">
-
-                                    <div class="btn btn-danger" style="padding:0,2px;">Delete </div>
-                                </div>*@
-                            </div>
                         </td>
                     </tr>
                 }
@@ -180,5 +187,74 @@
 
 
 
+
+
+    @section scripts{
+        <script>
+
+            $(function () {
+
+                $("#dateEnded").datepicker();
+                $("#dateStarted").datepicker();
+
+
+
+                $(".modify").click(function () {
+
+                    let item = $(this).attr("data-id");
+
+                    let campos = item.split("|", 9);
+
+                  
+
+                    $('#Opid').val(campos[0]);
+                    $('#perName').val(campos[1]);
+                    $('#pertime').val(campos[2]);
+                    $('#locationid').val(campos[5]);
+                    $('#rosterid').val(campos[7]);
+                    $('#personnelman').val(campos[3]);
+                    $('#roleman').val(campos[4])
+                    $('#projectId').val(campos[6]);
+
+                });
+
+
+
+                $('#btnSave').click(function () {
+
+
+                    const params = {
+                        Opid: $('#Opid').val(),
+                        perName: $('#perName').val(),
+                        pertime: $('#pertime').val(),
+                        locationid: $('#locationid').val(),
+                        rosterid: $('#rosterid').val(),
+                        personnelman: $('#personnelman').val(),
+                        roleman: $('#roleman').val(),
+                        projectId: $('#projectId').val(),
+                     
+                    };
+
+
+                    console.log(params);
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/PostPage6Data',
+                        data: params,
+                        success: function () {
+                            alert('Entre');
+                        },
+                        dataType: 'json'
+                    });
+
+                });
+
+            });
+
+        </script>
+
+    }
 
    

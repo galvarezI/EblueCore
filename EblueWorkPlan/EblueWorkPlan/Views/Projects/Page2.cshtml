@@ -20,7 +20,7 @@
 
 
 
-            </div>
+        </div>
         </nav>
 
         <div class="tab-content" id="nav-tabContent">
@@ -28,7 +28,7 @@
 
 
 
-        </div>
+                        </div>
     */
 
     <partial name="_Sidebar2" />
@@ -63,8 +63,9 @@
         <div class="row g-3">
             <form asp-action="Page2">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ProjectId" />
-                <input type="hidden" asp-for="idParameter" id="idParameter" />
+                <input id="projectId" type="hidden" asp-for="ProjectId" />
+                <input id="fieldWorkId" type="hidden" />
+                
 
                 <div class="card">
 
@@ -84,39 +85,39 @@
 
                             <div class="col-6">
                                 <label asp-for="Area" class="control-label"></label>
-                                <input asp-for="Area" class="form-control txt-area" />
+                                <input id="area" asp-for="Area" class="form-control txt-area" />
                                 <span asp-validation-for="Area" class="text-danger"></span>
                             </div>
-                            
+
                             <div class="col-6">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <select id="locaionId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
                             <div class="col6">
                                 <label asp-for="DateStarted" class="control-label"></label>
-                                <input asp-for="DateStarted" class="form-control dateStr" />
+                                <input id="dateStarted" class="form-control dateStr" />
                                 <span asp-validation-for="DateStarted" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="DateEnded" class="control-label"></label>
-                                <input asp-for="DateEnded" class="form-control dateEnd" />
+                                <input id="dateEnded" class="form-control dateEnd" />
                                 <span asp-validation-for="DateEnded" class="text-danger"></span>
                             </div>
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input checkIn" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
+                                    <input id="inProgress" class="form-check-input checkIn" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
                                 </label>
                             </div>
 
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input  class="form-check-input checkToBe" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
+                                    <input id="toBeInitiated" class="form-check-input checkToBe" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
                                 </label>
                             </div>
 
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
-                                <input type="button" value="Save" class="btn btn-success btn-save" style="display: none" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                             </div>
 
 
@@ -124,33 +125,33 @@
 
                     </div>
 
-                            <div class="card-footer">
+                    <div class="card-footer">
 
-                                <div class="btn btn-primary col align-content-center"><a asp-action="ProjectList" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
-
-
+                        <div class="btn btn-primary col align-content-center"><a asp-action="ProjectList" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
 
 
-                                <div class="btn btn-primary col align-content-end"><a  asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
 
-                            </div>
-                    
+
+                        <div class="btn btn-primary col align-content-end"><a asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
+
+                    </div>
+
                 </div>
             </form>
         </div>
 
     </div>
 
-   
+
 
     <br />
 
 
-    <table class="table table-bordered" id ="fieldTable">
+    <table class="table table-bordered" id="fieldTable">
         <thead>
             <h1 class="fieldId" style="display:none" class="field-id">@Model.FieldWorkId </h1>
             <tr>
-                
+
                 <th>
                     @Html.DisplayNameFor(model => model.FieldWorkId)
                 </th>
@@ -222,13 +223,12 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <div class=" btn  btn-success modify" style="padding:0,2px; " data-bs-toggle="modal" data-bs-target="#exampleModal" >Modify</div>
-
+                                <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.ToBeInitiated|@item.InProgress|@item.ProjectId|@item.LocationId"
+                                    class="btn  btn-success modify">
+                                    Modify
+                                </button>
                             </div>
-@*                            <div class="col-4">
 
-                                <div class="btn btn-danger hide" style="padding:0,2px;">Delete </div>
-                            </div>*@
                         </div>
                     </td>
                 </tr>
@@ -243,37 +243,78 @@
 @section scripts{
     <script type="text/javascript">
 
+
+
+
         
 
 
-        const table = document.getElementById('fieldTable');
-        const textarea = document.querySelector('textarea');
-        const select = document.querySelector('select');
-        const dateStr = document.getElementsByClassName('dateStr');
-        const dateEnd = document.getElementsByClassName('dateEnd');
-        const checkIn = document.getElementsByClassName('checkIn');
-        const checkToBe = document.getElementsByClassName('checkToBe');
-        const saveBtn = document.getElementsByClassName('saveBtn');
-        const idParameter = document.getElementsByClassName('idParameter');
-        table.addEventListener('click',(e) =>{
+
+        $(function () {
+
+            $("#dateEnded").datepicker();
+            $("#dateStarted").datepicker();
+
+
+
+            $(".modify").click(function () {
+
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 9);
+
+                const dateStarted = new Date(campos[3]).toLocaleDateString('en-GB');
+                const dateEnded = new Date(campos[4]).toLocaleDateString('en-GB');
+
+             
+                let isProgress = campos[6] === 'True' ? true : false;
+                let toBeInitiated = campos[5] === 'True' ? true : false;
+
+                $('#fieldWorkId').val(campos[0]);
+                $('#wfieldwork').val(campos[1]);
+                $('#area').val(campos[2]);
+                $('#dateStarted').val('12/02/2024');
+                $('#dateEnded').val(dateEnded);
+                $('#inProgress').prop('checked',isProgress);
+                $('#toBeInitiated').prop('checked', toBeInitiated)
+                $('#locaionId').val(campos[8]);
+
+            });
 
            
-            const id = e.target.parentElement.parentElement.parentElement.parentElement.children[0].textContent
-            const datafield = parseInt(id,10);
-            console.log(id)
 
-        })
-        
-        const fillData = (data) => {
-            
+            $('#btnSave').click(function() {
+                             
 
-        }
+                const params = {
+                    fieldWorkId: $('#fieldWorkId').val(),
+                    projectId: $('#projectId').val(),
+                    wfieldwork: $('#wfieldwork').val(),
+                    area: $('#area').val(),
+                    dateStarted: $('#dateStarted').val(),
+                    dateEnded: $('#dateEnded').val(),
+                    inProgress: $('#inProgress').is(":checked"),
+                    toBeInitiated: $('#toBeInitiated').is(":checked"),
+                    locaionId: $('#locaionId').val()
+                };
 
 
-       
-       
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostFieldWorkData',
+                    data: params,
+                    success: function(){
+                        alert('Entre');
+                    },
+                    dataType: 'json'
+                });
                 
+            });
 
+        });
 
 
 
@@ -281,4 +322,3 @@
 
 
 }
-                            

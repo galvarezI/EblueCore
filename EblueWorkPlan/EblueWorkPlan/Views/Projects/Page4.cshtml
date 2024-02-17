@@ -43,26 +43,27 @@
 
                         <div class="row">
                             
-                            <input type="hidden" asp-for="ProjectId" />
-                            <input type="hidden" asp-for="AnalyticalId" />
+                            <input id="projectId" type="hidden" asp-for="ProjectId" />
+                            <input id="analitycalId" type="hidden"  />
                             <div class="form-group">
                                 <label asp-for="AnalysisRequired" class="control-label"></label>
-                                <input asp-for="AnalysisRequired" class="form-control txt-anR" />
+                                <input id="analysis" asp-for="AnalysisRequired" class="form-control txt-anR" />
                                 <span asp-validation-for="AnalysisRequired" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="NumSamples" class="control-label"></label>
-                                <input asp-for="NumSamples" class="form-control txt-Num" />
+                                <input id="numSamples" asp-for="NumSamples" class="form-control txt-Num" />
                                 <span asp-validation-for="NumSamples" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="ProbableDate" class="control-label"></label>
-                                <input asp-for="ProbableDate" class="form-control txt-pd" />
+                                <input id="pblDate"  class="form-control txt-pd" />
                                 <span asp-validation-for="ProbableDate" class="text-danger"></span>
                             </div>
                             
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
                             </div>
 
 
@@ -88,10 +89,7 @@
             <br />
 
 
-            <div id="showModal">
-
-
-            </div>
+            
 
             <table class="table table-bordered" id="analyticTable">
                 <thead>
@@ -110,9 +108,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.ProbableDate)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Project)
-                        </th>
+                        
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -133,20 +129,17 @@
                             <td class="pDate">
                                 @Html.DisplayFor(modelItem => item.ProbableDate)
                             </td>
-                            <td class="pID">
-                                @Html.DisplayFor(modelItem => item.Project.ProjectId)
-                            </td>
+                            
                             <td>
                                 <div class="row">
                             <div class="col-4">
-                                        <div class=" btn  btn-success modify" style="padding:0,2px;" data-bs-toggle="modal" data-bs-target="#exampleModal" >Modify</div>
+                                        <button data-id="@item.AnalyticalId|@item.AnalysisRequired|@item.NumSamples|@item.ProbableDate|@item.Project.ProjectId"
+                                            class="btn  btn-success modify">
+                                            Modify
+                                        </button>
 
                                     </div>
-                            <div class="col-4">
-
-                                <div class="btn btn-danger hide" style="padding:0,2px;">Delete </div>
-                            </div>
-                        </div>
+                            
                             </td>
                         </tr>
                     }
@@ -163,50 +156,61 @@
 @section scripts{
     <script>
 
+        $(function () {
 
-        $(".modify").click(function () {
-            $(this).prop("disabled", "disabled")
-            $(".hide").hide();
-            $("#analyticTable tbody tr").each(function () {
-               
-                var id = $(this).find("td .anID).text();
+            $("#pblDate").datepicker();
 
+
+
+            $(".modify").click(function () {
+
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 5);
+                const probableDate = new Date(campos[3]).toLocaleDateString('en-GB');
+
+
+                $('#analitycalId').val(campos[0]);
+                $('#analysis').val(campos[1]);
+                $('#numSamples').val(campos[2]);
+                $('#pblDate').val(probableDate[3]);
                 
-                        var anID = parseInt(id, 10);
-
-                console.log("Valor de la Columna 1 como entero: " + anID);
-
-                var url = "@Url.Action("Page4Modal","Projects")";
-
-                $.get(url, { id: anID }).done(function (data) {
-                    $("#showModal").append(data);
-                    $("#exampleModal").addClass("show");
-
-                })
+                $('#projectId').val(campos[4]);
 
             });
 
 
 
-            //data-bs-toggle="modal" data-bs-target="#exampleModal
+            $('#btnSave').click(function () {
 
 
+                const params = {
+                    analitycalId: $('#analitycalId').val(),
+                    analysis: $('#analysis').val(),
+                    numSamples: $('#numSamples').val(),
+                    pblDate: $('#pblDate').val(),
+
+                    projectId: $('#projectId').val(),
+
+                };
 
 
+                console.log(params);
 
 
-
-
-
-
-
-
-        });
-
-
-
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage4Data',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+                    },
+                    dataType: 'json'
                 });
 
+            });
+
+        });
 
 
 

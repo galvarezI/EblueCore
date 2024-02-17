@@ -163,7 +163,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int Roles { get; set; }
 
-        public decimal? Credits { get; set; }
+        public Double? Credits { get; set; }
 
         [Display(Name ="TR")]
         public decimal? Tr { get; set; }

@@ -101,24 +101,17 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.LastUpdate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Username)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Roster)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Comment)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -126,9 +119,7 @@
         @foreach (var item in Model.projectNotes)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.LastUpdate)
                 </td>
@@ -136,7 +127,9 @@
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
               
-                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
             </tr>
         }
     </tbody>

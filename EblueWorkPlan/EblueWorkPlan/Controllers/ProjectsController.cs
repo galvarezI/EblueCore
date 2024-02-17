@@ -38,7 +38,12 @@ namespace EblueWorkPlan.Controllers
         {
 
 
-            var workplandbContext = _context.Projects.Include(p => p.Comm).Include(p => p.Department).Include(p => p.FiscalYear).Include(p => p.ProgramArea).Include(p => p.Roster)/*.Include(ps => ps.ProjectStatus)*/;
+            var projects = await _context.Projects.Include(p => p.Comm)
+                .Include(p => p.Department)
+                .Include(p => p.FiscalYear)
+                .Include(p => p.ProgramArea).Include(p => p.Roster).ToListAsync();
+                
+                /*.Include(ps => ps.ProjectStatus)*/;
             //await workplandbContext.ToListAsync())
 
 
@@ -46,7 +51,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-            return View(await workplandbContext.ToListAsync());
+            return View(projects);
         }
 
         public IActionResult IndexVM()
@@ -488,7 +493,7 @@ namespace EblueWorkPlan.Controllers
             return View(project);
         }
 
-
+        //GET WORKPLAN PAGE 1:
 
         [HttpPost]
         public async Task<IActionResult> Page0(int id,Models.Project project) {
@@ -518,7 +523,7 @@ namespace EblueWorkPlan.Controllers
             return View();
         }
 
-        //GET WORKPLAN PAGE 1:
+        
 
 
 
@@ -706,10 +711,36 @@ namespace EblueWorkPlan.Controllers
             return View(template);
         }
 
-
-        //Project : WorkPlan Page 2, Process 1>
-
         [HttpPost]
+        public async Task<IActionResult> PostFieldWorkData(FieldWorkView fieldWork)
+        {
+            var datos = fieldWork;
+            var query = (from f in _context.FieldWorks
+                         where f.FieldWorkId == fieldWork.fieldWorkId
+                         select f).FirstOrDefault();
+            try {
+                query.FieldWorkId = fieldWork.fieldWorkId;
+                query.Wfieldwork = fieldWork.wfieldwork;
+                query.LocationId = fieldWork.locaionId;
+                query.Area = fieldWork.area;
+                query.DateStarted = DateTime.Parse(fieldWork.dateStarted);
+                query.DateEnded = DateTime.Parse(fieldWork.dateEnded);
+                query.InProgress = fieldWork.inProgress;
+                query.ToBeInitiated = fieldWork.toBeInitiated;
+                _context.SaveChanges();
+
+            }
+            catch{
+            }
+
+           
+            return Ok();
+        }
+
+
+            //Project : WorkPlan Page 2, Process 1>
+
+            [HttpPost]
         [ValidateAntiForgeryToken]
         //[Bind("Objectives,ObjWorkPlan,PresentOutlook")] in case to use it.
         public async Task<IActionResult> Page2(int id,  ProjectFormView template, Models.Project project  )
@@ -765,20 +796,15 @@ namespace EblueWorkPlan.Controllers
         }
 
 
+     
 
 
 
-
-
-        public ActionResult RedirectTo(string action, string controller)
+     
+        public IActionResult GetFieldWork(int fieldWorkId) 
         {
-            return RedirectToAction(action, controller);
+            return Ok(fieldWorkId);
         }
-
-
-
-
-
 
 
         public async Task<IActionResult> ProjectList(int? id, Models.Project project)
@@ -921,6 +947,13 @@ namespace EblueWorkPlan.Controllers
 
 
 
+
+
+
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Page3(int? id, Models.Project project, ProjectFormView projectTemplate) {
@@ -959,6 +992,31 @@ namespace EblueWorkPlan.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostPage3Data(LaboratoryVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.Laboratories
+                         where f.LabId == projectTemplate.LabId
+                         select f).FirstOrDefault();
+            try
+            {
+                query.LabId = projectTemplate.LabId;
+                query.WorkPlanned = projectTemplate.WorkPlanned;
+                query.Descriptions = projectTemplate.Descriptions;
+                query.EstimatedTime = projectTemplate.EstimatedTime;
+                query.FacilitiesNeeded = projectTemplate.FacilitiesNeeded;
+                query.ProjectId = projectTemplate.ProjectId;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
 
 
         //Page 4> Analitical
@@ -1032,7 +1090,31 @@ namespace EblueWorkPlan.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostPage4Data(AnalyticalVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.Analyticals
+                         where f.AnalyticalId == projectTemplate.analitycalId
+                         select f).FirstOrDefault();
+            try
+            {
+                query.AnalyticalId = projectTemplate.analitycalId;
+                query.AnalysisRequired = projectTemplate.analysis;
+                query.NumSamples = projectTemplate.numSamples;
+                query.ProbableDate = DateTime.Parse(projectTemplate.pblDate);
+                
+                query.ProjectId = projectTemplate.ProjectId;
+                _context.SaveChanges();
 
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
 
 
 
@@ -1119,7 +1201,39 @@ namespace EblueWorkPlan.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostPage5Data(SciProjectVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.SciProjects
+                         where f.SciId == projectTemplate.sciPId
+                         select f).FirstOrDefault();
 
+            string creditFormaat;
+            string trFormat;
+            string caFormat;
+            string ahFormat;
+
+            try
+            {
+                query.SciId = projectTemplate.sciPId;
+                query.RosterId = projectTemplate.rosterId;
+                
+                query.Tr = projectTemplate.tr;
+                query.Ca = projectTemplate.ca;
+                query.Ah = projectTemplate.ah;
+                query.Credits = query.Tr + query.Ca +query.Ah;
+                query.ProjectId = projectTemplate.projectId;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
 
         public async Task<IActionResult> Page6(int? id ) {
             if (id == null || _context.Projects == null)
@@ -1218,6 +1332,36 @@ namespace EblueWorkPlan.Controllers
 
         }
 
+
+
+        [HttpPost]
+        public async Task<IActionResult> PostPage6Data(OtherPersonnelVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.OtherPersonels
+                         where f.Opid == projectTemplate.Opid
+                         select f).FirstOrDefault();
+            try
+            {
+                query.Opid = projectTemplate.Opid;
+                query.Name = projectTemplate.perName;
+
+                query.LocationId = projectTemplate.locationid;
+                query.RosterId = projectTemplate.rosterid;
+                query.PerTime = projectTemplate.pertime;
+                query.PersonnelManAdded = projectTemplate.personnelman;
+                query.RoleManAdded = projectTemplate.roleman;
+                query.ProjectId = projectTemplate.projectId;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
         public async Task<IActionResult> Page7(int? id) {
 
 
@@ -1297,6 +1441,35 @@ namespace EblueWorkPlan.Controllers
 
 
 
+        [HttpPost]
+        public async Task<IActionResult> PostPage7Data(GradassVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.GradAsses
+                         where f.Gaid == projectTemplate.gradId
+                         select f).FirstOrDefault();
+            try
+            {
+                query.Gaid = projectTemplate.gradId;
+                query.Gname = projectTemplate.gname;
+
+                query.Thesis = projectTemplate.thesis;
+                query.StudentId = projectTemplate.student;
+                query.Amount = projectTemplate.amount;
+                query.StudentName = projectTemplate.studentName;
+                query.IsGraduated = projectTemplate.isGraduated;
+                query.IsUndergraduated = projectTemplate.isUndergraduated;
+                query.ProjectId = projectTemplate.projectId;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
 
 
 
@@ -1388,6 +1561,43 @@ namespace EblueWorkPlan.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostPage8Data(FundVM projectTemplate)
+        {
+            var datos = projectTemplate;
+            var query = (from f in _context.Funds
+                         where f.FundId == projectTemplate.fundId
+                         select f).FirstOrDefault();
+            try
+            {
+                query.FundId = projectTemplate.fundId;
+                query.LocationId = projectTemplate.locationId;
+
+                query.Salaries = projectTemplate.salaries;
+                query.Wages = projectTemplate.wages;
+                query.Benefits = projectTemplate.benefit;
+                query.Assistant = projectTemplate.assistant;
+                query.Materials = projectTemplate.materials;
+                query.Equipment = projectTemplate.equipment;
+                query.Travel = projectTemplate.travel;
+                query.Abroad= projectTemplate.abroad;
+                query.Subcontracts = projectTemplate.subcontract;
+                query.Others = projectTemplate.others;
+                query.Ufisaccount= projectTemplate.ufisaccount;
+                query.IndirectCosts = projectTemplate.indirectcosts;
+                query.ProjectId = projectTemplate.projectId;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
+
 
         // Workplan Page 9>
 

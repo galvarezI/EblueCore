@@ -1,8 +1,9 @@
 ﻿using EblueWorkPlan.Models;
 using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-
+using System.Linq;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -11,9 +12,10 @@ namespace EblueWorkPlan.Controllers
         private readonly ILogger<HomeController> _logger;
         private List<User> _UserItems;
         private readonly WorkplandbContext _context;
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, WorkplandbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -47,32 +49,41 @@ namespace EblueWorkPlan.Controllers
         public IActionResult Signin( UserViewModel _User)
         {
             List<User> Users = new List<User>();
-            var db = new WorkplandbContext();
+            //var db = new WorkplandbContext();
             string Email = "";
             string Pass = "";
             bool isLogin = false;
 
-            var  Validacion = (from u in db.Users
+            //var  Validacion = (from u in _context.Users
                               
-                              select u);
-            
+            //                  select u).ToList();
 
-            
-            foreach (var item in Validacion)
+
+            if (_context.Users.Any(cd => cd.Email == _User.Email.Trim() && cd.Password == _User.Password.Trim()))
             {
-                if (_User.Email == item.Email && _User.Password == item.Password)
-                {
-
-                    Email = item.Email;
-                    Pass = item.Password;
-                    isLogin = true;
-                }
-                else
-                {
-
-                    isLogin = false;
-                }
+                return RedirectToAction("Index", "Projects");
             }
+            else
+            {
+                return View();
+            }
+
+            
+            //foreach (var item in Validacion)
+            //{
+            //    if (_User.Email == item.Email && _User.Password == item.Password)
+            //    {
+
+            //        Email = item.Email;
+            //        Pass = item.Password;
+            //        isLogin = true;
+            //    }
+            //    else
+            //    {
+
+            //        isLogin = false;
+            //    }
+            //}
 
 
 
