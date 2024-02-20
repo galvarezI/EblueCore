@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GGJEANZS\\Desktop\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj": {}
+    "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GGJEANZS\\Desktop\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj": {
+    "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GGJEANZS\\Desktop\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
+        "projectUniqueName": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
         "projectName": "EblueWorkPlan",
-        "projectPath": "C:\\Users\\GGJEANZS\\Desktop\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
+        "projectPath": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
         "packagesPath": "C:\\Users\\GGJEANZS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GGJEANZS\\Desktop\\EblueWorkPlan\\EblueWorkPlan\\obj\\",
+        "outputPath": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

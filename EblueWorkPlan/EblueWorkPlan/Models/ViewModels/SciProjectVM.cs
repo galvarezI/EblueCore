@@ -5,7 +5,7 @@
 
         public int sciPId { get; set; }
 
-        public int rosterId { get; set; }
+        public int? rosterid { get; set; }
 
         //public int Roles { get; set; }
 
@@ -21,8 +21,6 @@
 
         public int? projectId { get; set; }
 
-        public virtual Project Project { get; set; }
-
-        public virtual Roster Roster { get; set; }
+        
     }
 }

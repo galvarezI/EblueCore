@@ -61,9 +61,9 @@
                                     <span asp-validation-for="Descriptions" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-4">
-                                    <label asp-for="EstimatedTime" class="control-label"></label>
-                                    <input id="estimatedtime" asp-for="EstimatedTime" class="form-control txt-est" />
-                                    <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+                                    <label asp-for="TimeEstimated" class="control-label"></label>
+                                    <input id="estimatedtime"  class="form-control txt-est" />
+                                    <span asp-validation-for="TimeEstimated" class="text-danger"></span>
                                 </div>
 
 
@@ -76,7 +76,7 @@
 
                             </div>
 
-                            <br>
+                            <br />
                             <div class="form-group" style="padding-top:20px;">
                                 <input type="submit" value="Add" class="btn btn-primary"  />
                                 <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
@@ -120,7 +120,7 @@
                             @Html.DisplayNameFor(model => model.Descriptions)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EstimatedTime)
+                            @Html.DisplayNameFor(model => model.TimeEstimated)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FacilitiesNeeded)
@@ -146,7 +146,7 @@
                                 @Html.DisplayFor(modelItem => item.Descriptions)
                             </td>
                             <td class="estimated">
-                                @Html.DisplayFor(modelItem => item.EstimatedTime)
+                                @Html.DisplayFor(modelItem => item.TimeEstimated)
                             </td>
                             <td class="facili">
                                 @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
@@ -183,8 +183,8 @@
 
         $(function () {
 
-           
-
+            
+            $('#estimatedtime').datepicker()
 
 
             $(".modify").click(function () {
@@ -193,12 +193,12 @@
 
                 let campos = item.split("|", 6);
 
-               
+                const estimatedtime = new Date(campos[3]).toLocaleDateString('en-GB');
 
                 $('#labId').val(campos[0]);
                 $('#workplanned').val(campos[1]);
                 $('#descriptions').val(campos[2]);
-                $('#estimatedtime').val(campos[3]);
+                $('#estimatedtime').val(estimatedtime);
                 $('#facilitiesNeeded').val(campos[4]);
                 $('#projectId').val(campos[5]);
 

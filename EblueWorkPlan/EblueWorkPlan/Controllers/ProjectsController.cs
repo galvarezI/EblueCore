@@ -966,7 +966,7 @@ namespace EblueWorkPlan.Controllers
                     
                     WorkPlanned = projectTemplate.WorkPlanned,
                     Descriptions = projectTemplate.Descriptions,
-                    EstimatedTime = projectTemplate.EstimatedTime,
+                    TimeEstimated = projectTemplate.TimeEstimated,
                     FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
                     ProjectId = projectTemplate.ProjectId
 
@@ -1004,7 +1004,7 @@ namespace EblueWorkPlan.Controllers
                 query.LabId = projectTemplate.LabId;
                 query.WorkPlanned = projectTemplate.WorkPlanned;
                 query.Descriptions = projectTemplate.Descriptions;
-                query.EstimatedTime = projectTemplate.EstimatedTime;
+                query.TimeEstimated = projectTemplate.TimeEstimated;
                 query.FacilitiesNeeded = projectTemplate.FacilitiesNeeded;
                 query.ProjectId = projectTemplate.ProjectId;
                 _context.SaveChanges();
@@ -1097,12 +1097,14 @@ namespace EblueWorkPlan.Controllers
             var query = (from f in _context.Analyticals
                          where f.AnalyticalId == projectTemplate.analitycalId
                          select f).FirstOrDefault();
+            
             try
             {
+                string dateFormat = string.Format("{0:dd/MM/yyyy}", projectTemplate.pblDate);
                 query.AnalyticalId = projectTemplate.analitycalId;
                 query.AnalysisRequired = projectTemplate.analysis;
                 query.NumSamples = projectTemplate.numSamples;
-                query.ProbableDate = DateTime.Parse(projectTemplate.pblDate);
+                query.ProbableDate = DateTime.Parse(dateFormat);
                 
                 query.ProjectId = projectTemplate.ProjectId;
                 _context.SaveChanges();
@@ -1209,20 +1211,31 @@ namespace EblueWorkPlan.Controllers
                          where f.SciId == projectTemplate.sciPId
                          select f).FirstOrDefault();
 
-            string creditFormaat;
-            string trFormat;
-            string caFormat;
-            string ahFormat;
+            
 
             try
             {
-                query.SciId = projectTemplate.sciPId;
-                query.RosterId = projectTemplate.rosterId;
+
                 
-                query.Tr = projectTemplate.tr;
-                query.Ca = projectTemplate.ca;
-                query.Ah = projectTemplate.ah;
-                query.Credits = query.Tr + query.Ca +query.Ah;
+                string trFormat = string.Format("{0:0.0000}",projectTemplate.tr);
+                string caFormat = string.Format("{0:0.0000}", projectTemplate.ca);
+                string ahFormat = string.Format("{0:0.0000}", projectTemplate.ah);
+
+
+                query.SciId = projectTemplate.sciPId;
+                query.RosterId = (int)projectTemplate.rosterid;
+                
+                query.Tr = decimal.Parse(trFormat);
+                query.Ca = decimal.Parse(caFormat);
+                query.Ah = decimal.Parse(ahFormat);
+
+                
+                ;
+                query.Credits = query.Tr + query.Ca + query.Ah;
+                string creditFormaat = string.Format("{0:0.0000}", query.Credits);
+                query.Credits = decimal.Parse(creditFormaat);
+
+
                 query.ProjectId = projectTemplate.projectId;
                 _context.SaveChanges();
 
@@ -1628,7 +1641,9 @@ namespace EblueWorkPlan.Controllers
             projectViewModel.Equipment= project.Equipment;
             projectViewModel.Abroad = project.Abroad;
             projectViewModel.IndirectCosts= project.IndirectCosts;
-
+            projectViewModel.Benefits= project.Benefits;
+            projectViewModel.Assistant= project.Assistant;
+            projectViewModel.Others= project.Others;
             return View(projectViewModel);
         }
 
@@ -1652,14 +1667,14 @@ namespace EblueWorkPlan.Controllers
                     query.Facilities= projectTemplate.Facilities;
                     query.Impact = projectTemplate.Impact;
                     query.Salaries = projectTemplate.Salaries;
+                    query.Benefits = projectTemplate.Benefits;
+                    query.Assistant = projectTemplate.Assistant;
                     query.Materials = projectTemplate.Materials;
                     query.Equipment = projectTemplate.Equipment;
                     query.Travel = projectTemplate.Travel;
                     query.Abroad= projectTemplate.Abroad;
                     query.Others= projectTemplate.Others;
                     query.Wages= projectTemplate.Wages;
-                    query.Benefits= projectTemplate.Benefits;
-                    query.Assistant= projectTemplate.Assistant;
                     query.Subcontracts = projectTemplate.Subcontracts;
                     query.IndirectCosts = projectTemplate.IndirectCosts;
                     query.ProjectStatusId = 9;
@@ -1668,7 +1683,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-                    return RedirectToAction(nameof(Index));
+                    //return View();
 
 
 
@@ -1762,11 +1777,13 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(notes);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Index", new
-                {
-                    ID = id
-                    
-                });
+                //return RedirectToAction("Index", new
+                //{
+                //    ID = id
+
+                return View();
+
+            
 
 
 
@@ -2010,88 +2027,10 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        [HttpGet]
-        //Jquery GET AND Update Pages
-        public async Task <IActionResult> Page2Get(int? id)
-        {
-            if (id == null || _context.FieldWorks == null)
-            {
-                return NotFound();
-            }
-
-            var fieldWork = await _context.FieldWorks.FindAsync(id);
-            if (fieldWork == null)
-            {
-                return NotFound();
-            }
+      
 
 
-            var fieldatos = (from f in _context.FieldWorks
-                             where f.FieldWorkId == id
-                             select f).FirstOrDefault();
-
-
-
-            ProjectFormView fieldView = new ProjectFormView()
-            {
-                FieldWorkId = id.Value,
-                Wfieldwork = fieldatos.Wfieldwork,
-                Area = fieldatos.Area,
-                DateStarted = fieldatos.DateStarted,
-                DateEnded = fieldatos.DateEnded,
-                InProgress = fieldatos.InProgress,
-                ToBeInitiated = fieldatos.ToBeInitiated,
-                LocationId = fieldatos.LocationId,
-                ProjectId = fieldatos.ProjectId
-
-            };
-
-
-            return Json(fieldView);
-        }
-
-
-        #region partialViews
-        //Partial Views...
-
-        public PartialViewResult Page2Modal(int? id)
-        {
-            var fieldatos = (from f in _context.FieldWorks
-                             where f.FieldWorkId == id
-                             select f).FirstOrDefault();
-
-
-            var location = _context.Locationns.ToList();
-            _locationsItems = new List<SelectListItem>();
-            foreach (var item in location)
-            {
-
-                _locationsItems.Add(new SelectListItem
-                {
-                    Text = item.LocationName,
-                    Value = item.LocationId.ToString()
-                });
-                ViewBag.locationsItems = _locationsItems;
-
-            }
-
-                ProjectFormView fieldView = new ProjectFormView()
-            {
-                FieldWorkId = id.Value,
-                Wfieldwork = fieldatos.Wfieldwork,
-                Area = fieldatos.Area,
-                DateStarted = fieldatos.DateStarted,
-                DateEnded = fieldatos.DateEnded,
-                InProgress = fieldatos.InProgress,
-                ToBeInitiated = fieldatos.ToBeInitiated,
-                LocationId = fieldatos.LocationId,
-                ProjectId = fieldatos.ProjectId
-
-            };
-
-            return PartialView("_Page2Modal",fieldView );
-        }
-
+       
 
 
         [HttpPost]
@@ -2247,7 +2186,7 @@ namespace EblueWorkPlan.Controllers
 
             }
 
-            #endregion
+            
         }
 
 

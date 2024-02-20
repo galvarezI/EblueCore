@@ -18,7 +18,8 @@
 
         public string Descriptions { get; set; }
 
-        public string EstimatedTime { get; set; }
+       
+        public DateTime TimeEstimated { get; set; }
 
         public string FacilitiesNeeded { get; set; }
 

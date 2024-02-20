@@ -47,10 +47,10 @@
                                 <div class="row">
 
 
-                                    <div class="form-group">
-                                        <label asp-for="RosterId" class="control-label"></label>
-                                        <select id="rosterId" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
-                                    </div>
+                            <div class="form-group">
+                                <label asp-for="RosterId" class="control-label"></label>
+                                <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                            </div>
                                     
                                     <div class="form-group">
                                         <label asp-for="Credits" class="control-label"></label>
@@ -76,6 +76,8 @@
                                     
 
                                 </div>
+
+                                <br />
                                 <div class="form-group">
                                     <input type="submit" value="Add" class="btn btn-primary" />
                                     <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
@@ -147,7 +149,7 @@
                         @Html.DisplayFor(modelItem => item.ProjectId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                        @Html.DisplayFor(modelItem => item.Roster.RosterName)
                     </td>
 
                     <td>
@@ -168,7 +170,7 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.SciId| @item.Project.ProjectId| @item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah"
+                                <button data-id="@item.SciId| @item.ProjectId|@item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -207,7 +209,7 @@
 
 
                 $('#sciPId').val(campos[0]);
-                $('#rosterId').val(campos[2]);
+                $('#rosterid').val(campos[2]);
                 $('#credit').val(campos[3]);
                 $('#tr').val(campos[4]);
                 $('#ca').val(campos[5]);
@@ -222,7 +224,7 @@
 
                 const params = {
                     sciPId: $('#sciPId').val(),
-                    rosterId: $('#rosterId').val(),
+                    rosterid: $('#rosterid').val(),
                     credit: $('#credit').val(),
                     tr: $('#tr').val(),
                     ca: $('#ca').val(),

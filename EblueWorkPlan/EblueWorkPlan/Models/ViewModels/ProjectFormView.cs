@@ -131,6 +131,8 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string WorkPlanned { get; set; }
 
+        public DateTime TimeEstimated { get; set; }
+
         [Display]
         public string Descriptions { get; set; }
 

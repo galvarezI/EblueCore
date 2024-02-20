@@ -9,625 +9,625 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EblueWorkPlan
 build_property.RootNamespace = EblueWorkPlan
-build_property.ProjectDir = C:\Users\GGJEANZS\Desktop\EblueWorkPlan\EblueWorkPlan\
+build_property.ProjectDir = C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\GGJEANZS\Desktop\EblueWorkPlan\EblueWorkPlan
+build_property.MSBuildProjectDirectory = C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbW9kaXRpZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbW9kaXRpZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbW9kaXRpZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbW9kaXRpZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Commodities/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbW9kaXRpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Departments/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Departments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Departments/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Departments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Departments/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Departments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Departments/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Departments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Departments/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Departments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Page3.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FieldWorks/Page3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmllbGRXb3Jrc1xQYWdlMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhclN0YXR1c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhclN0YXR1c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhclN0YXR1c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhclN0YXR1c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYearStatus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhclN0YXR1c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FiscalYears/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlzY2FsWWVhcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Funds/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Funds/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Funds/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Funds/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Funds/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Funds/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Funds/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Funds/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Funds/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Funds/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZFR5cGVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZFR5cGVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZFR5cGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZFR5cGVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/FundTypes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuZFR5cGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZEFzc2VzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZEFzc2VzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZEFzc2VzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZEFzc2VzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/GradAsses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZEFzc2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Home/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Home/Privacy.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Home/Signin.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Home/Signin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Laboratories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFib3JhdG9yaWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25uc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25uc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25uc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25uc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Locationns/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJQZXJzb25lbHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJQZXJzb25lbHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJQZXJzb25lbHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJQZXJzb25lbHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/OtherPersonels/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3RoZXJQZXJzb25lbHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/PartialViews/_SciProjectsPV.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/PartialViews/_SciProjectsPV.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFZpZXdzXF9TY2lQcm9qZWN0c1BWLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnMxXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnMxXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnMxXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnMxXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations1/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnMxXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Porganizations/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9yZ2FuaXphdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbUFyZWFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbUFyZWFzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbUFyZWFzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbUFyZWFzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProgramAreas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZ3JhbUFyZWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdE5vdGVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdE5vdGVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdE5vdGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdE5vdGVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectNotes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdE5vdGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFN0YXR1c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFN0YXR1c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFN0YXR1c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFN0YXR1c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ProjectStatus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFN0YXR1c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/IndexVM.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/IndexVM.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXhWTS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page0.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page0.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page10.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page10.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTEwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page2.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page3.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page4.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page5.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page5.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page6.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page6.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page7.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page7.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page8.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page8.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page9.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page9.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/ProjectDetails.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ProjectDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/ProjectList.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ProjectList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportView.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUmVwb3J0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportViewList.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportViewList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUmVwb3J0Vmlld0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page2Modal.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page2Modal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2UyTW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page3Modal.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page3Modal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2UzTW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page4Modal.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page4Modal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2U0TW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Roles/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Roles/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Roles/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Roles/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Roles/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9zdGVyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9zdGVyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9zdGVyc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9zdGVyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Rosters/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9zdGVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NpUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NpUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NpUHJvamVjdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NpUHJvamVjdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/SciProjects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NpUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/Error.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/Navbar.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/Navbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5hdmJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/SideBar.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNpZGVCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Page5Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Page5Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdlNUVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_RotativaLayout.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_RotativaLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Sb3RhdGl2YUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Sidebar1.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Sidebar1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Sidebar2.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Sidebar2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic3RhY2lvbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic3RhY2lvbnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic3RhY2lvbnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic3RhY2lvbnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Substacions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic3RhY2lvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Users/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Users/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Users/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Users/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Users/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/User/Create.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/User/Delete.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/User/Details.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/User/Edit.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/User/Index.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/_ViewImports.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/_ViewStart.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/GGJEANZS/Desktop/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Layout.cshtml]
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-t4cdiwpmlw

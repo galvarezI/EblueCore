@@ -23,5 +23,7 @@ public partial class Laboratory
 
     public string FacilitiesNeeded { get; set; }
 
+    public DateTime? TimeEstimated { get; set; }
+
     public virtual Project Project { get; set; }
 }

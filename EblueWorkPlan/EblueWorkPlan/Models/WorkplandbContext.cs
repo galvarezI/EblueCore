@@ -63,6 +63,8 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<Substacion> Substacions { get; set; }
 
+    public virtual DbSet<ThesisProject> ThesisProjects { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -86,7 +88,7 @@ public partial class WorkplandbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("numSamples");
-            entity.Property(e => e.ProbableDate).HasColumnType("datetime");
+            entity.Property(e => e.ProbableDate).HasColumnType("date");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Analyticals)
@@ -129,10 +131,10 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.FieldWorkId).HasColumnName("FieldWorkID");
             entity.Property(e => e.Area).IsUnicode(false);
             entity.Property(e => e.DateEnded)
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .HasColumnName("dateEnded");
             entity.Property(e => e.DateStarted)
-                .HasColumnType("datetime")
+                .HasColumnType("date")
                 .HasColumnName("dateStarted");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
@@ -271,6 +273,9 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.NoSamples).HasMaxLength(70);
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.SamplesDate).HasColumnType("datetime");
+            entity.Property(e => e.TimeEstimated)
+                .HasColumnType("date")
+                .HasColumnName("timeEstimated");
             entity.Property(e => e.WorkPlanned).HasColumnType("text");
 
             entity.HasOne(d => d.Project).WithMany(p => p.Laboratories)
@@ -593,6 +598,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Credits).HasColumnType("money");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
+            entity.Property(e => e.ThesisProjectId).HasColumnName("thesisProjectId");
             entity.Property(e => e.Tr)
                 .HasColumnType("money")
                 .HasColumnName("TR");
@@ -605,6 +611,10 @@ public partial class WorkplandbContext : DbContext
                 .HasForeignKey(d => d.RosterId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__sciProjec__Roste__1F63A897");
+
+            entity.HasOne(d => d.ThesisProject).WithMany(p => p.SciProjects)
+                .HasForeignKey(d => d.ThesisProjectId)
+                .HasConstraintName("FK__sciProjec__thesi__2EA5EC27");
         });
 
         modelBuilder.Entity<Substacion>(entity =>
@@ -617,6 +627,18 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.SubStationName)
                 .HasMaxLength(250)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<ThesisProject>(entity =>
+        {
+            entity.HasKey(e => e.ThesisProjectId).HasName("PK__thesisPr__9806B82188DB597F");
+
+            entity.ToTable("thesisProject");
+
+            entity.Property(e => e.ThesisProjectId).HasColumnName("thesisProjectId");
+            entity.Property(e => e.OptionName)
+                .HasColumnType("text")
+                .HasColumnName("optionName");
         });
 
         modelBuilder.Entity<User>(entity =>
