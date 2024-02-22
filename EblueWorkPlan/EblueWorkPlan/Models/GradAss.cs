@@ -25,5 +25,9 @@ public partial class GradAss
 
     public bool? IsUndergraduated { get; set; }
 
+    public int? ThesisProjectId { get; set; }
+
     public virtual Project Project { get; set; }
+
+    public virtual ThesisProject ThesisProject { get; set; }
 }

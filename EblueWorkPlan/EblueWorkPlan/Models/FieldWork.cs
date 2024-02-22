@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -11,9 +12,15 @@ public partial class FieldWork
 
     public int LocationId { get; set; }
 
-    public DateTime? DateStarted { get; set; }
 
-    public DateTime? DateEnded { get; set; }
+    
+    
+    public DateTime DateStarted { get; set; }
+
+   
+    
+    
+    public DateTime DateEnded { get; set; }
 
     public bool InProgress { get; set; }
 

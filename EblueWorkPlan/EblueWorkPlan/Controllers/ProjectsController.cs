@@ -27,6 +27,8 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _substationItems;
         private List<SelectListItem> _programAreaItems;
         private List<SelectListItem> _locationsItems;
+        private List<SelectListItem> _thesisItems;
+
         public ProjectsController(WorkplandbContext context)
         {
             _context = context;
@@ -742,8 +744,8 @@ namespace EblueWorkPlan.Controllers
 
             [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Bind("Objectives,ObjWorkPlan,PresentOutlook")] in case to use it.
-        public async Task<IActionResult> Page2(int id,  ProjectFormView template, Models.Project project  )
+       
+        public async Task<IActionResult> Page2(int id,  ProjectFormView template, Models.Project project)
         {
             ProjectFormView projectTemplate = new ProjectFormView();
 
@@ -767,7 +769,7 @@ namespace EblueWorkPlan.Controllers
                     Area = template.Area,
                     ProjectId = project.ProjectId
                     
-
+                        
 
 
 
@@ -937,8 +939,10 @@ namespace EblueWorkPlan.Controllers
             ProjectFormView projectTemplate = new ProjectFormView()
             {
                 ProjectNumber = project.ProjectNumber,
-                laboratories = laboratory
+                laboratories = laboratory,
+                
             };
+
 
             projectTemplate.ProjectId = id.Value;
             projectTemplate.ProjectNumber = project.ProjectNumber;
@@ -1263,13 +1267,16 @@ namespace EblueWorkPlan.Controllers
             var otherPersonel =( from op in _context.OtherPersonels
                                 where op.ProjectId == id
                                 select op).ToList();
+
+           
+
             ProjectFormView projectTemplate = new ProjectFormView()
             {
                otherPersonels= otherPersonel
             };
             projectTemplate.ProjectNumber = project.ProjectNumber;
             projectTemplate.ProjectId = id.Value;
-
+            var porciento = projectTemplate.PerTime * 100;
 
             var location = _context.Locationns.ToList();
             _locationsItems = new List<SelectListItem>();
@@ -1315,8 +1322,9 @@ namespace EblueWorkPlan.Controllers
                     RosterId = projectTemplate.RosterId,
                     PersonnelManAdded= projectTemplate.PersonnelManAdded,
                     RoleManAdded= projectTemplate.RoleManAdded,
-                    ProjectId= projectTemplate.ProjectId
-                
+                    ProjectId= projectTemplate.ProjectId,
+                    
+                    
                 
                 
                 
@@ -1394,6 +1402,19 @@ namespace EblueWorkPlan.Controllers
                            where g.ProjectId == id
                            select g).ToList();
 
+            var thesis = _context.ThesisProjects.ToList();
+            _thesisItems = new List<SelectListItem>();
+            foreach (var item in thesis)
+            {
+                _thesisItems.Add(new SelectListItem
+                {
+                    Text = item.OptionName,
+                    Value = item.ThesisProjectId.ToString()
+                });
+            }
+            ViewBag.thesisItems = _thesisItems;
+
+
             ProjectFormView projectTemplate = new ProjectFormView()
             {
                 gradAsses= Graduas,
@@ -1403,7 +1424,8 @@ namespace EblueWorkPlan.Controllers
             projectTemplate.ProjectId = id.Value;
             return View(projectTemplate);
 
-
+          
+           
 
 
 
@@ -1428,8 +1450,9 @@ namespace EblueWorkPlan.Controllers
                     StudentName= projectTemplate.StudentName,
                     IsGraduated= projectTemplate.IsGraduated,
                     IsUndergraduated= projectTemplate.IsUndergraduated,
-                    ProjectId= project.ProjectId
-                
+                    ProjectId= project.ProjectId,
+                    ThesisProjectId= projectTemplate.ThesisProjectId,
+                    
                 
                 
                 

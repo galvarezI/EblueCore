@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group col-4">
                                     <label asp-for="TimeEstimated" class="control-label"></label>
-                                    <input id="estimatedtime"  class="form-control txt-est" />
+                                    <input id="timeEstimated"  class="form-control txt-est" />
                                     <span asp-validation-for="TimeEstimated" class="text-danger"></span>
                                 </div>
 
@@ -101,8 +101,14 @@
                 </div>
             </form>
 
-            <div id="showModal">
-            </div>
+            @{
+
+                
+
+                //
+
+            }
+           
 
             <br />
 
@@ -155,7 +161,7 @@
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-4">
-                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.EstimatedTime|@item.FacilitiesNeeded|@item.ProjectId"
+                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId"
                                                 class="btn  btn-success modify">
                                                 Modify
                                             </button>
@@ -183,8 +189,8 @@
 
         $(function () {
 
-            
-            $('#estimatedtime').datepicker()
+
+            $('#timeEstimated').datepicker()
 
 
             $(".modify").click(function () {
@@ -193,12 +199,12 @@
 
                 let campos = item.split("|", 6);
 
-                const estimatedtime = new Date(campos[3]).toLocaleDateString('en-GB');
+                const estimateDate = new Date(campos[3]).toLocaleDateString('en-GB');
 
                 $('#labId').val(campos[0]);
                 $('#workplanned').val(campos[1]);
                 $('#descriptions').val(campos[2]);
-                $('#estimatedtime').val(estimatedtime);
+                $('#timeEstimated').val(estimateDate);
                 $('#facilitiesNeeded').val(campos[4]);
                 $('#projectId').val(campos[5]);
 
@@ -214,7 +220,7 @@
                     projectId: $('#projectId').val(),
                     workplanned: $('#workplanned').val(),
                     descriptions: $('#descriptions').val(),
-                    estimatedtime: $('#estimatedtime').val(),
+                    TimeEstimated: $('#timeEstimated').val(),
                     facilitiesNeeded: $('#facilitiesNeeded').val(),
                     
                 };

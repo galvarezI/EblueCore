@@ -251,10 +251,15 @@ public partial class WorkplandbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.Thesis).HasColumnType("text");
+            entity.Property(e => e.ThesisProjectId).HasColumnName("thesisProjectId");
 
             entity.HasOne(d => d.Project).WithMany(p => p.GradAsses)
                 .HasForeignKey(d => d.ProjectId)
                 .HasConstraintName("FK__gradAss__Project__5441852A");
+
+            entity.HasOne(d => d.ThesisProject).WithMany(p => p.GradAsses)
+                .HasForeignKey(d => d.ThesisProjectId)
+                .HasConstraintName("FK__gradAss__thesisP__3FD07829");
         });
 
         modelBuilder.Entity<Laboratory>(entity =>

@@ -100,6 +100,14 @@
                                 <span asp-validation-for="StudentName" class="text-danger"></span>
                             </div>
 
+                            <div class="form-group">
+                                <label asp-for="ThesisProjectId" class="control-label"></label>
+                                <select id="thesisid" asp-for="ThesisProjectId" class="form-control" asp-items="ViewBag.thesisItems "></select>
+                            </div>
+            
+                                    
+
+
                             <div class="form-group form-check">
                                 <label class="form-check-label">
                                     <input id="isGraduated" class="form-check-input" asp-for="IsGraduated" /> @Html.DisplayNameFor(model => model.IsGraduated)

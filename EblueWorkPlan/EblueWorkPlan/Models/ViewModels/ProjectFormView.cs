@@ -108,10 +108,15 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-
+       
         public DateTime DateStarted { get; set; }
 
+        public string DateStartedStr { get; set; }
+
+    
         public DateTime DateEnded { get; set; }
+
+        public string DateEndedStr { get; set; }
 
         public bool InProgress { get; set; }
 
@@ -127,11 +132,16 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string NoSamples { get; set; }
 
+
+      
         public DateTime? SamplesDate { get; set; }
 
         public string WorkPlanned { get; set; }
 
-        public DateTime TimeEstimated { get; set; }
+       
+        public DateTime? TimeEstimated { get; set; }
+
+        public string TimeEstimatedStr { get; set; }
 
         [Display]
         public string Descriptions { get; set; }
@@ -152,8 +162,10 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display (Name =" # of Samples")]
         public string NumSamples { get; set; }
 
+        
         public DateTime? ProbableDate { get; set; }
-
+        
+        public string ProbableDateStr { get; set; }
 
 
 
@@ -207,6 +219,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public string Gname { get; set; }
 
         public string Thesis { get; set; }
+        public int? ThesisProjectId { get; set; }
 
 
 

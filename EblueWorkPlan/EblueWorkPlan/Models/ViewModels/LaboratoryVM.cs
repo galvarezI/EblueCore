@@ -1,4 +1,6 @@
-﻿namespace EblueWorkPlan.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EblueWorkPlan.Models.ViewModels
 {
     public class LaboratoryVM
     {
@@ -10,6 +12,7 @@
 
         public string NoSamples { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime? SamplesDate { get; set; }
 
         public int? ProjectId { get; set; }
@@ -18,8 +21,8 @@
 
         public string Descriptions { get; set; }
 
-       
-        public DateTime TimeEstimated { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? TimeEstimated { get; set; }
 
         public string FacilitiesNeeded { get; set; }
 

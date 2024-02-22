@@ -95,12 +95,12 @@
                             </div>
                             <div class="col6">
                                 <label asp-for="DateStarted" class="control-label"></label>
-                                <input id="dateStarted" class="form-control dateStr" />
+                                <input id="dateStarted"  class="form-control dateStr" />
                                 <span asp-validation-for="DateStarted" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="DateEnded" class="control-label"></label>
-                                <input id="dateEnded" class="form-control dateEnd" />
+                                <input " id="dateEnded"  class="form-control  />
                                 <span asp-validation-for="DateEnded" class="text-danger"></span>
                             </div>
                             <div class="form-group form-check">
@@ -117,8 +117,8 @@
 
                             <br />
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
+                                <input type="submit"  id="btnSubmit" value="Add" class="btn btn-primary" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save"  />
                             </div>
 
 
@@ -141,6 +141,22 @@
             </form>
         </div>
 
+    </div>
+
+            
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="myToast" class="toast">
+            <div class="toast-header bg-success">
+                <strong class="me-auto text-light">Update..</strong>
+                <small>Just Now...</small>
+                <button class="close" data-bs-dismiss="toast"> </button>
+
+
+            </div>
+            <div class="toast-body ">
+                Proceso completado satisfactoriamente
+            </div>
+        </div>
     </div>
 
 
@@ -260,6 +276,7 @@
 
             $(".modify").click(function () {
 
+                $("#btnSave").show();
                 let item = $(this).attr("data-id");
 
                 let campos = item.split("|", 9);
@@ -282,7 +299,6 @@
 
             });
 
-           
 
             $('#btnSave').click(function() {
                              
@@ -301,7 +317,7 @@
 
 
                 console.log(params);
-
+                $('#myToast').show();
 
                 $.ajax({
                     type: "POST",
@@ -309,6 +325,7 @@
                     data: params,
                     success: function(){
                         alert('Entre');
+                        
                     },
                     dataType: 'json'
                 });

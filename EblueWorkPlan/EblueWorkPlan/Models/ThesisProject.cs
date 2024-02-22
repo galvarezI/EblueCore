@@ -9,5 +9,7 @@ public partial class ThesisProject
 
     public string OptionName { get; set; }
 
+    public virtual ICollection<GradAss> GradAsses { get; set; } = new List<GradAss>();
+
     public virtual ICollection<SciProject> SciProjects { get; set; } = new List<SciProject>();
 }
