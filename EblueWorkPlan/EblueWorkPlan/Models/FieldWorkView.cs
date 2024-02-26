@@ -11,5 +11,7 @@
         public bool inProgress { get; set; }
         public bool toBeInitiated { get; set; }
         public int locaionId { get; set; }
+
+        public int fieldoption { get; set; }
     }
 }

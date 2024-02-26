@@ -100,20 +100,17 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="DateEnded" class="control-label"></label>
-                                <input " id="dateEnded"  class="form-control  />
+                                <input  id="dateEnded"  class="form-control  />
                                 <span asp-validation-for="DateEnded" class="text-danger"></span>
                             </div>
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input id="inProgress" class="form-check-input checkIn" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
-                                </label>
+                           
+
+                            <div class="col-12">
+                                <label asp-for="FieldoptionId" class="control-label"></label>
+                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control" asp-items="ViewBag.fieldItems"></select>
                             </div>
 
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input id="toBeInitiated" class="form-check-input checkToBe" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
-                                </label>
-                            </div>
+                            
 
                             <br />
                             <div class="form-group">
@@ -188,11 +185,9 @@
                     @Html.DisplayNameFor(model => model.DateEnded)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.InProgress)
+                    @Html.DisplayNameFor(model => model.FieldoptionId)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ToBeInitiated)
-                </th>
+                
                 <th>
                     Location
                 </th>
@@ -226,11 +221,9 @@
                         @Html.DisplayFor(modelItem => item.DateEnded)
                     </td>
                     <td class="inProgress">
-                        @Html.DisplayFor(modelItem => item.InProgress)
+                        @Html.DisplayFor(modelItem => item.Fieldoption.OptionName)
                     </td>
-                    <td class="tobeIniciated">
-                        @Html.DisplayFor(modelItem => item.ToBeInitiated)
-                    </td>
+                    
                     <td class="location">
                         @Html.DisplayFor(modelItem => item.Location.LocationName)
                     </td>
@@ -240,7 +233,7 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.ToBeInitiated|@item.InProgress|@item.ProjectId|@item.LocationId"
+                                <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.FieldoptionId|@item.ProjectId|@item.LocationId"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -255,6 +248,21 @@
 
 
 </div>
+
+@*
+    depreciated
+
+<div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input id="inProgress" class="form-check-input checkIn" asp-for="InProgress" /> @Html.DisplayNameFor(model => model.InProgress)
+                                </label>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input id="toBeInitiated" class="form-check-input checkToBe" asp-for="ToBeInitiated" /> @Html.DisplayNameFor(model => model.ToBeInitiated)
+                                </label>
+                            </div>*@
 
 
 @section scripts{
@@ -279,23 +287,23 @@
                 $("#btnSave").show();
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 9);
+                let campos = item.split("|", 8);
 
                 const dateStarted = new Date(campos[3]).toLocaleDateString('en-GB');
                 const dateEnded = new Date(campos[4]).toLocaleDateString('en-GB');
 
              
-                let isProgress = campos[6] === 'True' ? true : false;
-                let toBeInitiated = campos[5] === 'True' ? true : false;
+                //let isProgress = campos[6] === 'True' ? true : false;
+                //let toBeInitiated = campos[5] === 'True' ? true : false;
 
                 $('#fieldWorkId').val(campos[0]);
                 $('#wfieldwork').val(campos[1]);
                 $('#area').val(campos[2]);
-                $('#dateStarted').val('12/02/2024');
+                $('#dateStarted').val(dateStarted);
                 $('#dateEnded').val(dateEnded);
-                $('#inProgress').prop('checked',isProgress);
+                $('#fieldoption').val(campos[5]);
                 $('#toBeInitiated').prop('checked', toBeInitiated)
-                $('#locaionId').val(campos[8]);
+                $('#locaionId').val(campos[7]);
 
             });
 
@@ -310,8 +318,8 @@
                     area: $('#area').val(),
                     dateStarted: $('#dateStarted').val(),
                     dateEnded: $('#dateEnded').val(),
-                    inProgress: $('#inProgress').is(":checked"),
-                    toBeInitiated: $('#toBeInitiated').is(":checked"),
+                    //inProgress: $('#inProgress').is(":checked"),
+                    fieldoption: $('#fieldoption').val(),
                     locaionId: $('#locaionId').val()
                 };
 

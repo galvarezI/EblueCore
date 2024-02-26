@@ -28,6 +28,7 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _programAreaItems;
         private List<SelectListItem> _locationsItems;
         private List<SelectListItem> _thesisItems;
+        private List<SelectListItem> _gradItems;
 
         public ProjectsController(WorkplandbContext context)
         {
@@ -665,6 +666,19 @@ namespace EblueWorkPlan.Controllers
             }
 
 
+            var fields = _context.FieldOptions.ToList();
+            _gradItems = new List<SelectListItem>();
+            foreach (var item in fields)
+            {
+                _gradItems.Add(new SelectListItem
+                {
+                    Text = item.OptionName,
+                    Value = item.FieldoptionId.ToString()
+                });
+            }
+            ViewBag.fieldItems = _gradItems;
+
+
             var fieldworks =  (from f in _context.FieldWorks
                                where f.ProjectId == id
                                select f).ToList();
@@ -724,11 +738,13 @@ namespace EblueWorkPlan.Controllers
                 query.FieldWorkId = fieldWork.fieldWorkId;
                 query.Wfieldwork = fieldWork.wfieldwork;
                 query.LocationId = fieldWork.locaionId;
+                query.FieldoptionId = fieldWork.fieldoption;
                 query.Area = fieldWork.area;
+                
                 query.DateStarted = DateTime.Parse(fieldWork.dateStarted);
                 query.DateEnded = DateTime.Parse(fieldWork.dateEnded);
-                query.InProgress = fieldWork.inProgress;
-                query.ToBeInitiated = fieldWork.toBeInitiated;
+                //query.InProgress = fieldWork.inProgress;
+                //query.ToBeInitiated = fieldWork.toBeInitiated;
                 _context.SaveChanges();
 
             }
@@ -764,6 +780,7 @@ namespace EblueWorkPlan.Controllers
                     LocationId = (int)template.LocationId,
                     DateStarted = template.DateStarted,
                     DateEnded = template.DateEnded,
+                    FieldoptionId = template.FieldoptionId,
                     InProgress = template.InProgress,
                     ToBeInitiated = template.ToBeInitiated,
                     Area = template.Area,
@@ -1398,6 +1415,20 @@ namespace EblueWorkPlan.Controllers
                 return NotFound();
             }
 
+
+            var grad = _context.GradOptions.ToList();
+            _gradItems = new List<SelectListItem>();
+            foreach (var item in grad)
+            {
+                _gradItems.Add(new SelectListItem
+                {
+                    Text = item.GradOptionName,
+                    Value = item.GradoptionId.ToString()
+                });
+            }
+            ViewBag.gradItems = _gradItems;
+
+
             var Graduas = (from g in _context.GradAsses
                            where g.ProjectId == id
                            select g).ToList();
@@ -1448,8 +1479,9 @@ namespace EblueWorkPlan.Controllers
                     Amount= projectTemplate.Amount,
                     RoleId= projectTemplate.RoleId,
                     StudentName= projectTemplate.StudentName,
-                    IsGraduated= projectTemplate.IsGraduated,
-                    IsUndergraduated= projectTemplate.IsUndergraduated,
+                    GradoptionId= projectTemplate.GradoptionId,
+                    //IsGraduated= projectTemplate.IsGraduated,
+                    //IsUndergraduated= projectTemplate.IsUndergraduated,
                     ProjectId= project.ProjectId,
                     ThesisProjectId= projectTemplate.ThesisProjectId,
                     
@@ -1493,8 +1525,10 @@ namespace EblueWorkPlan.Controllers
                 query.StudentId = projectTemplate.student;
                 query.Amount = projectTemplate.amount;
                 query.StudentName = projectTemplate.studentName;
-                query.IsGraduated = projectTemplate.isGraduated;
-                query.IsUndergraduated = projectTemplate.isUndergraduated;
+                query.GradoptionId = projectTemplate.gradoption;
+                query.ThesisProjectId = projectTemplate.thesisid;
+                //query.IsGraduated = projectTemplate.isGraduated;
+                //query.IsUndergraduated = projectTemplate.isUndergraduated;
                 query.ProjectId = projectTemplate.projectId;
                 _context.SaveChanges();
 

@@ -83,22 +83,14 @@
                                 <span asp-validation-for="Thesis" class="text-danger"></span>
                             </div>
                           
-                            <div class="form-group">
-                                <label asp-for="StudentId" class="control-label"></label>
-                                <input id="student" asp-for="StudentId" class="form-control" />
-                                <span asp-validation-for="StudentId" class="text-danger"></span>
-                            </div>
+                            
                             <div class="form-group">
                                 <label asp-for="Amount" class="control-label"></label>
                                 <input id="amount" asp-for="Amount" class="form-control" />
                                 <span asp-validation-for="Amount" class="text-danger"></span>
                             </div>
                           
-                            <div class="form-group">
-                                <label asp-for="StudentName" class="control-label"></label>
-                                <input id="studentName" asp-for="StudentName" class="form-control" />
-                                <span asp-validation-for="StudentName" class="text-danger"></span>
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label asp-for="ThesisProjectId" class="control-label"></label>
@@ -106,9 +98,12 @@
                             </div>
             
                                     
+                            <div class="form-group">
+                                <label asp-for="GradoptionId" class="control-label"></label>
+                                <select id="gradoption" asp-for="GradoptionId" class="form-control" asp-items="ViewBag.gradItems "></select>
+                            </div>
 
-
-                            <div class="form-group form-check">
+                          @*  <div class="form-group form-check">
                                 <label class="form-check-label">
                                     <input id="isGraduated" class="form-check-input" asp-for="IsGraduated" /> @Html.DisplayNameFor(model => model.IsGraduated)
                                 </label>
@@ -118,9 +113,9 @@
                                 <label  class="form-check-label">
                                     <input id="isUndergraduated"  class="form-check-input" asp-for="IsUndergraduated" /> @Html.DisplayNameFor(model => model.IsUndergraduated)
                                 </label>
-                            </div>
+                            </div>*@
 
-
+                            <br />
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Add" class="btn btn-primary" />
@@ -161,21 +156,16 @@
                     @Html.DisplayNameFor(model => model.Thesis)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentId)
+                    @Html.DisplayNameFor(model => model.ThesisProjectId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Amount)
                 </th>
               
                 <th>
-                    @Html.DisplayNameFor(model => model.StudentName)
+                    @Html.DisplayNameFor(model => model.GradoptionId)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsGraduated)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsUndergraduated)
-                </th>
+              
                 <th>
                     @Html.DisplayNameFor(model => model.Project)
                 </th>
@@ -197,28 +187,24 @@
                         @Html.DisplayFor(modelItem => item.Thesis)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.StudentId)
+                        @Html.DisplayFor(modelItem => item.ThesisProject.OptionName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Amount)
                     </td>
                    
+                    
                     <td>
-                        @Html.DisplayFor(modelItem => item.StudentName)
+                        @Html.DisplayFor(modelItem => item.Gradoption.GradOptionName)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsGraduated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsUndergraduated)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Project.ProjectId)
                     </td>
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.Gaid|@item.Gname|@item.Thesis|@item.StudentId|@item.Amount|@item.StudentName|@item.IsGraduated|@item.IsUndergraduated|@item.ProjectId"
+                                <button data-id="@item.Gaid|@item.Gname|@item.Thesis|@item.ThesisProjectId|@item.Amount|@item.StudentName|@item.GradoptionId|@item.ProjectId"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -261,23 +247,23 @@
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 9);
+                let campos = item.split("|", 8);
 
 
 
 
-                let isGraduated = campos[6] === 'True' ? true : false;
-                let isUndergraduated = campos[7] === 'True' ? true : false;
+                //let isGraduated = campos[6] === 'True' ? true : false;
+                //let isUndergraduated = campos[7] === 'True' ? true : false;
 
                 $('#gradId').val(campos[0]);
                 $('#gname').val(campos[1]);
                 $('#thesis').val(campos[2]);
                 $('#student').val(campos[3]);
                 $('#amount').val(campos[4]);
-                $('#studentName').val(campos[5]);
-                $('#isUndergraduated').prop('checked', isUndergraduated);
-                $('#isGraduated').prop('checked', isGraduated)
-                $('#projectId').val(campos[8]);
+                $('#thesisid').val(campos[3]);
+                $('#gradoption').val(campos[6]); 
+                //$('#isGraduated').prop('checked', isGraduated)
+                $('#projectId').val(campos[7]);
 
             });
 
@@ -293,8 +279,8 @@
                     student: $('#student').val(),
                     amount: $('#amount').val(),
                     studentName: $('#studentName').val(),
-                    isUndergraduated: $('#isUndergraduated').is(":checked"),
-                    isGraduated: $('#isGraduated').is(":checked"),
+                    gradoption: $('#gradoption').val(),
+                    thesisid: $('#thesisid').val(),
                     projectId: $('#projectId').val()
                 };
 

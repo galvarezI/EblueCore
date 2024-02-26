@@ -12,8 +12,6 @@ public partial class Laboratory
 
     public string NoSamples { get; set; }
 
-
-    [DataType(DataType.Date)]
     public DateTime? SamplesDate { get; set; }
 
     public int? ProjectId { get; set; }
@@ -25,6 +23,7 @@ public partial class Laboratory
     public string EstimatedTime { get; set; }
 
     public string FacilitiesNeeded { get; set; }
+
 
     [DataType(DataType.Date)]
     public DateTime? TimeEstimated { get; set; }

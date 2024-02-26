@@ -108,15 +108,18 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-       
+       [DataType(DataType.Date)]
         public DateTime DateStarted { get; set; }
 
         public string DateStartedStr { get; set; }
 
-    
+        [DataType(DataType.Date)]
         public DateTime DateEnded { get; set; }
 
         public string DateEndedStr { get; set; }
+
+        [Display(Name ="Status")]
+        public int? FieldoptionId { get; set; }
 
         public bool InProgress { get; set; }
 
@@ -221,7 +224,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public string Thesis { get; set; }
         public int? ThesisProjectId { get; set; }
 
-
+        public int? GradoptionId { get; set; }
 
         public int? StudentId { get; set; }
 
@@ -364,6 +367,10 @@ namespace EblueWorkPlan.Models.ViewModels
         public virtual SciProject SciProject { get; set; }
 
         public virtual Locationn Location { get; set; }
+
+        public virtual GradOption Gradoption { get; set; }
+
+        public virtual ThesisProject ThesisProject { get; set; }
 
         //Lista de Proyectos Custom
         public IEnumerable<Fund>Fundss { get; set; }

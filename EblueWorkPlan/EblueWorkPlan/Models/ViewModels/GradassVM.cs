@@ -18,6 +18,10 @@
 
         public string studentName { get; set; }
 
+        public int? gradoption { get; set; }
+
+        public int? thesisid { get; set; }
+
         public bool? isGraduated { get; set; }
 
         public bool? isUndergraduated { get; set; }

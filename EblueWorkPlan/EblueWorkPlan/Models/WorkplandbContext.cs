@@ -21,6 +21,8 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<Department> Departments { get; set; }
 
+    public virtual DbSet<FieldOption> FieldOptions { get; set; }
+
     public virtual DbSet<FieldWork> FieldWorks { get; set; }
 
     public virtual DbSet<FiscalYear> FiscalYears { get; set; }
@@ -32,6 +34,8 @@ public partial class WorkplandbContext : DbContext
     public virtual DbSet<FundType> FundTypes { get; set; }
 
     public virtual DbSet<GradAss> GradAsses { get; set; }
+
+    public virtual DbSet<GradOption> GradOptions { get; set; }
 
     public virtual DbSet<Laboratory> Laboratories { get; set; }
 
@@ -122,6 +126,16 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.DepartmentOldId).HasColumnName("DepartmentOldID");
         });
 
+        modelBuilder.Entity<FieldOption>(entity =>
+        {
+            entity.HasKey(e => e.FieldoptionId).HasName("PK__fieldOpt__07A1D99EA2DE5B4F");
+
+            entity.ToTable("fieldOption");
+
+            entity.Property(e => e.FieldoptionId).HasColumnName("fieldoptionId");
+            entity.Property(e => e.OptionName).HasColumnType("text");
+        });
+
         modelBuilder.Entity<FieldWork>(entity =>
         {
             entity.HasKey(e => e.FieldWorkId).HasName("PK__FieldWor__460E4F22C33E2AF1");
@@ -136,11 +150,16 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.DateStarted)
                 .HasColumnType("date")
                 .HasColumnName("dateStarted");
+            entity.Property(e => e.FieldoptionId).HasColumnName("fieldoptionId");
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.Wfieldwork)
                 .HasColumnType("text")
                 .HasColumnName("WFieldwork");
+
+            entity.HasOne(d => d.Fieldoption).WithMany(p => p.FieldWorks)
+                .HasForeignKey(d => d.FieldoptionId)
+                .HasConstraintName("FK__FieldWork__field__54CB950F");
 
             entity.HasOne(d => d.Location).WithMany(p => p.FieldWorks)
                 .HasForeignKey(d => d.LocationId)
@@ -242,6 +261,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Gaid).HasColumnName("GAID");
             entity.Property(e => e.Amount).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Gname).HasMaxLength(255);
+            entity.Property(e => e.GradoptionId).HasColumnName("gradoptionId");
             entity.Property(e => e.IsGraduated).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsUndergraduated).HasDefaultValueSql("((0))");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
@@ -253,6 +273,10 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Thesis).HasColumnType("text");
             entity.Property(e => e.ThesisProjectId).HasColumnName("thesisProjectId");
 
+            entity.HasOne(d => d.Gradoption).WithMany(p => p.GradAsses)
+                .HasForeignKey(d => d.GradoptionId)
+                .HasConstraintName("FK__gradAss__gradopt__589C25F3");
+
             entity.HasOne(d => d.Project).WithMany(p => p.GradAsses)
                 .HasForeignKey(d => d.ProjectId)
                 .HasConstraintName("FK__gradAss__Project__5441852A");
@@ -260,6 +284,18 @@ public partial class WorkplandbContext : DbContext
             entity.HasOne(d => d.ThesisProject).WithMany(p => p.GradAsses)
                 .HasForeignKey(d => d.ThesisProjectId)
                 .HasConstraintName("FK__gradAss__thesisP__3FD07829");
+        });
+
+        modelBuilder.Entity<GradOption>(entity =>
+        {
+            entity.HasKey(e => e.GradoptionId).HasName("PK__gradOpti__C83A08D1B9826E3F");
+
+            entity.ToTable("gradOption");
+
+            entity.Property(e => e.GradoptionId).HasColumnName("gradoptionId");
+            entity.Property(e => e.GradOptionName)
+                .HasColumnType("text")
+                .HasColumnName("gradOptionName");
         });
 
         modelBuilder.Entity<Laboratory>(entity =>

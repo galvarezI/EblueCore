@@ -13,14 +13,11 @@ public partial class FieldWork
     public int LocationId { get; set; }
 
 
-    
-    
-    public DateTime DateStarted { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime? DateStarted { get; set; }
 
-   
-    
-    
-    public DateTime DateEnded { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime? DateEnded { get; set; }
 
     public bool InProgress { get; set; }
 
@@ -29,6 +26,10 @@ public partial class FieldWork
     public string Wfieldwork { get; set; }
 
     public string Area { get; set; }
+
+    public int? FieldoptionId { get; set; }
+
+    public virtual FieldOption Fieldoption { get; set; }
 
     public virtual Locationn Location { get; set; }
 

@@ -27,6 +27,10 @@ public partial class GradAss
 
     public int? ThesisProjectId { get; set; }
 
+    public int? GradoptionId { get; set; }
+
+    public virtual GradOption Gradoption { get; set; }
+
     public virtual Project Project { get; set; }
 
     public virtual ThesisProject ThesisProject { get; set; }
