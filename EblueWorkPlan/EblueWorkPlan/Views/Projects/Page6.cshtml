@@ -111,7 +111,7 @@
         <br />
 
         @{
-            var porciento = Model.PerTime * 100 + "%";
+           
         
         }
         <table class="table table-bordered">
@@ -159,7 +159,7 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @porciento
+                            @Html.DisplayFor(modelItem => item.PerTime) %
 
                         </td>
                         <td>
@@ -169,13 +169,13 @@
                             @Html.DisplayFor(modelItem => item.RoleManAdded)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.LocationId)
+                            @Html.DisplayFor(modelItem => item.Location.LocationName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProjectId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RosterId)
+                            @Html.DisplayFor(modelItem => item.Roster.RosterName)
                         </td>
                         <td>
                             <div class="row">

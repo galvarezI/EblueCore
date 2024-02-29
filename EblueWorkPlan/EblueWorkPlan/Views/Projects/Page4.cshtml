@@ -168,7 +168,7 @@
                 let item = $(this).attr("data-id");
 
                 let campos = item.split("|", 5);
-                const probableDate = new Date(campos[3]).toLocaleDateString('en-GB');
+                const probableDate = new Date(campos[3]).toLocaleDateString('en-US');
 
 
                 $('#analitycalId').val(campos[0]);

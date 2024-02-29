@@ -108,12 +108,14 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-       [DataType(DataType.Date)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateStarted { get; set; }
 
         public string DateStartedStr { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateEnded { get; set; }
 
         public string DateEndedStr { get; set; }
