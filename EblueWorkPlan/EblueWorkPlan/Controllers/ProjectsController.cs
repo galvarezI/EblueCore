@@ -860,6 +860,27 @@ namespace EblueWorkPlan.Controllers
             projectTemplate.Objectives = projectss.Objectives.ToString();
             projectTemplate.ObjWorkPlan = projectss.ObjWorkPlan.ToString();
             projectTemplate.PresentOutlook = projectss.PresentOutlook.ToString();
+
+            if (projectTemplate.Objectives == null) {
+
+                projectTemplate.Objectives = "";
+            
+            }
+
+            if (projectTemplate.ObjWorkPlan == null)
+            {
+
+                projectTemplate.ObjWorkPlan = "";
+
+            }
+
+            if (projectTemplate.PresentOutlook == null)
+            {
+
+                projectTemplate.PresentOutlook = "";
+
+            }
+
             return View(projectTemplate);
         }
 
