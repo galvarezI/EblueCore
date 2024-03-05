@@ -696,7 +696,13 @@ namespace EblueWorkPlan.Controllers
             };
             
             template.ProjectId = project.ProjectId;
-            template.FieldWorkId= fieldworks1.FieldWorkId;
+           
+            
+               // template.FieldWorkId = fieldworks1.FieldWorkId;
+
+            
+
+            
             
             if (project == null)
             {
@@ -855,31 +861,54 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-           
-            projectTemplate.ProjectId = id.Value;
-            projectTemplate.Objectives = projectss.Objectives.ToString();
-            projectTemplate.ObjWorkPlan = projectss.ObjWorkPlan.ToString();
-            projectTemplate.PresentOutlook = projectss.PresentOutlook.ToString();
 
-            if (projectTemplate.Objectives == null) {
+            if (projectTemplate == null)
+            {
 
-                projectTemplate.Objectives = "";
+
+
+            }
+            else {
+                //if(projectTemplate.Objectives.)
+                if (projectss.Objectives == null)
+                {
+                    projectTemplate.Objectives = "";
+                }
+                else {
+
+                    projectTemplate.Objectives = projectss.Objectives.ToString();
+                }
+
+                if (projectss.ObjWorkPlan == null)
+                {
+                    projectTemplate.ObjWorkPlan = "";
+                }
+                else
+                {
+
+                    projectTemplate.ObjWorkPlan = projectss.ObjWorkPlan.ToString();
+                }
+
+
+                if (projectss.PresentOutlook == null)
+                {
+                    projectTemplate.PresentOutlook = "";
+                }
+                else
+                {
+
+                    projectTemplate.PresentOutlook = projectss.PresentOutlook.ToString();
+                }
+
+                projectTemplate.ProjectId = id.Value;
+                
+                
+                
+
+            }
             
-            }
-
-            if (projectTemplate.ObjWorkPlan == null)
-            {
-
-                projectTemplate.ObjWorkPlan = "";
-
-            }
-
-            if (projectTemplate.PresentOutlook == null)
-            {
-
-                projectTemplate.PresentOutlook = "";
-
-            }
+            
+           
 
             return View(projectTemplate);
         }

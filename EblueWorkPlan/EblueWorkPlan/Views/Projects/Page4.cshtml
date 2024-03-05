@@ -63,8 +63,8 @@
                             
                             <br />
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
+                                <input type="submit" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
 
@@ -164,7 +164,8 @@
 
 
             $(".modify").click(function () {
-
+                $("#btnSubmit").hide();
+                $("#btnSave").show();
                 let item = $(this).attr("data-id");
 
                 let campos = item.split("|", 5);
@@ -183,7 +184,8 @@
 
 
             $('#btnSave').click(function () {
-
+                $("#btnSave").hide();
+                $("#btnSubmit").show();
 
                 const params = {
                     analitycalId: $('#analitycalId').val(),
