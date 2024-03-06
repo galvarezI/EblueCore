@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\EblueWorkPlan.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\css\\Chosen\\chosen-sprite.png",
+      "PackagePath": "staticwebassets\\css\\Chosen\\chosen-sprite.png"
+    },
+    {
+      "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\css\\Chosen\\chosen.min.css",
+      "PackagePath": "staticwebassets\\css\\Chosen\\chosen.min.css"
+    },
+    {
       "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\css\\sidebar.css",
       "PackagePath": "staticwebassets\\css\\sidebar.css"
     },
@@ -199,6 +207,14 @@
     {
       "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\lib\\chosen\\chosen.jquery.js",
+      "PackagePath": "staticwebassets\\lib\\chosen\\chosen.jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\lib\\chosen\\chosen.jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\chosen\\chosen.jquery.min.js"
     },
     {
       "Id": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

@@ -27,7 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\css\Chosen\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\lib\chosen\" />
   </ItemGroup>
 
 </Project>
