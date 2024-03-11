@@ -112,7 +112,7 @@ namespace EblueWorkPlan.Controllers
         }
 
         // GET: Projects/Create
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create( )
         {
 
             ProjectViewModel projects = new ProjectViewModel();
@@ -268,13 +268,33 @@ namespace EblueWorkPlan.Controllers
         public async Task<IActionResult> Create(ProjectViewModel template)
         {
 
-
+            
             ProjectViewModel projects = new ProjectViewModel();
 
 
 
             if (ModelState.IsValid)
             {
+                string[] substacion = new string[template.SubStationSelectedArray.Length];
+                int index = 0;
+                foreach (var item in template.SubStationSelectedArray) {
+
+                    var consult = (from s in _context.Substacions
+                                   where s.SubstationId == item
+                                   select s).FirstOrDefault();
+
+
+                    //var query = (from p in _context.Projects
+                    //             where p.ProjectId == project.ProjectId
+                    //             select
+                    //             p).FirstOrDefault();
+
+                    substacion[index] = consult.SubStationName;
+                    index++;
+                }
+                string substationString = string.Join(",", substacion);
+
+
                 var Project = new Models.Project()
                 {
                     ProjectNumber = template.ProjectNumber,
@@ -287,7 +307,7 @@ namespace EblueWorkPlan.Controllers
                     ContractNumber = template.ContractNumber,
                     Orcid = template.Orcid,
                     PorganizationsId = template.PorganizationsId,
-
+                    Substation = substationString,
                     RosterId = template.RosterId,
                     FiscalYearId = template.FiscalYearId,
                     ProjectStatusId = 1

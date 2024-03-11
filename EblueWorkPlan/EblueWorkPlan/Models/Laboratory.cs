@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -24,8 +23,6 @@ public partial class Laboratory
 
     public string FacilitiesNeeded { get; set; }
 
-
-    [DataType(DataType.Date)]
     public DateTime? TimeEstimated { get; set; }
 
     public virtual Project Project { get; set; }

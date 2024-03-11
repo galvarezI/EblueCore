@@ -103,6 +103,8 @@ public partial class Project
 
     public string Objectives6 { get; set; }
 
+    public string Substation { get; set; }
+
     public virtual ICollection<Analytical> Analyticals { get; set; } = new List<Analytical>();
 
     public virtual Commodity Comm { get; set; }

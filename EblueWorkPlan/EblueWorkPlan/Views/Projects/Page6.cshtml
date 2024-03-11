@@ -151,6 +151,9 @@
             <tbody>
                 @foreach (var item in Model.otherPersonels)
                 {
+                    var porcent =Convert.ToInt32( item.PerTime * 100);
+                    
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Opid)
@@ -173,7 +176,7 @@
                         
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.PerTime) %
+                            @*@Html.DisplayFor(modelItem => item.PerTime)*@ @porcent   %
 
                         </td>
                         <td>

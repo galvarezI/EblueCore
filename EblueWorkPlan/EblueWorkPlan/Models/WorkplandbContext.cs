@@ -477,6 +477,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.SubStationId).HasColumnName("SubStationID");
             entity.Property(e => e.Subcontracts).HasColumnType("text");
+            entity.Property(e => e.Substation).HasColumnType("text");
             entity.Property(e => e.TerminationDate).HasColumnType("datetime");
             entity.Property(e => e.Travel).HasColumnType("text");
             entity.Property(e => e.Wages).HasColumnType("text");

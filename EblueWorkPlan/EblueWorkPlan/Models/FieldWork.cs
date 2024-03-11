@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -12,13 +11,8 @@ public partial class FieldWork
 
     public int LocationId { get; set; }
 
-
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? DateStarted { get; set; }
 
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}",ApplyFormatInEditMode =true)]
     public DateTime? DateEnded { get; set; }
 
     public bool InProgress { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EblueWorkPlan.Models.ViewModels
 {
@@ -30,6 +31,9 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "Substation or Region")]
 
         public int? SubStationId { get; set; }
+
+        [NotMapped]
+        public int[] SubStationSelectedArray { get; set; }
 
         [Display(Name = "Type of Funds")]
 

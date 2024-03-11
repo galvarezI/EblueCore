@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -12,7 +11,6 @@ public partial class Analytical
 
     public string NumSamples { get; set; }
 
-    [DataType(DataType.Date)]
     public DateTime? ProbableDate { get; set; }
 
     public int? ProjectId { get; set; }
