@@ -102,11 +102,11 @@
                                 <span asp-validation-for="Others" class="text-danger"></span>
                             </div>
                             
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label asp-for="Ufisaccount" class="control-label"></label>
                                 <input id="ufisaccount" asp-for="Ufisaccount" class="form-control" />
                                 <span asp-validation-for="Ufisaccount" class="text-danger"></span>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label asp-for="IndirectCosts" class="control-label"></label>
                                 <input id="indirectcosts" asp-for="IndirectCosts" class="form-control" />
@@ -116,7 +116,7 @@
 
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
                         </div>
@@ -153,9 +153,7 @@
     <table class="table  table-bordered">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FundId)
-                </th>
+                
 
                 <th>
                     @Html.DisplayNameFor(model => model.Salaries)
@@ -187,18 +185,20 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Others)
                 </th>
-                <th>
+               @* <th>
                     @Html.DisplayNameFor(model => model.Ufisaccount)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.IndirectCosts)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Location)
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.Project)
+                    @Html.DisplayNameFor(model => model.TotalAmount)
                 </th>
+                
                 <th></th>
             </tr>
         </thead>
@@ -206,9 +206,7 @@
             @foreach (var item in Model.Fundss)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FundId)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Salaries)
                     </td>
@@ -239,18 +237,20 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Others)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Ufisaccount)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.IndirectCosts)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Location.LocationName)
                     </td>
+
                     <td>
-                        @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
                     </td>
+                    
                     <td>
                             <div class="row">
                             <div class="col-4">
@@ -287,6 +287,10 @@
 
             $(".modify").click(function () {
 
+                $("#btnSubmit").hide();
+                $("#btnSave").show();
+
+
                 let item = $(this).attr("data-id");
 
                 let campos = item.split("|", 15);
@@ -314,7 +318,8 @@
 
 
             $('#btnSave').click(function () {
-
+                $("#btnSave").hide();
+                $("#btnSubmit").show();
 
                 const params = {
 

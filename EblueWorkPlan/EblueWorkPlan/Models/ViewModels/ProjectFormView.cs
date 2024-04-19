@@ -98,7 +98,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public string? PresentOutlook { get; set; }
 
 
-        [Display(Name = " Work Planned (Field Work)")]
+        [Display(Name = " Work Planned (1) (Field Work)")]
         public string Wfieldwork { get; set; }
 
 
@@ -124,7 +124,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string DateEndedStr { get; set; }
 
-        [Display(Name ="Status")]
+        [Display(Name = "Status")]
         public int? FieldoptionId { get; set; }
 
         public bool InProgress { get; set; }
@@ -142,12 +142,13 @@ namespace EblueWorkPlan.Models.ViewModels
         public string NoSamples { get; set; }
 
 
-      
+
         public DateTime? SamplesDate { get; set; }
 
+        [Display(Name = " Work Planned (2) ")]
         public string WorkPlanned { get; set; }
 
-       
+        [Display(Name = " \tEstimated Time in Which Results\r\nwill be Available.")]
         public DateTime? TimeEstimated { get; set; }
 
         public string TimeEstimatedStr { get; set; }
@@ -159,21 +160,23 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string FacilitiesNeeded { get; set; }
 
+        [Display(Name = " Services of Central Analytical Laboratory")]
+        public string CentralLaboratory { get; set; }
 
 
         //From Analytical:
 
         public int AnalyticalId { get; set; }
 
-        [Display(Name= " Analysis ")]
+        [Display(Name = " Analysis ")]
         public string AnalysisRequired { get; set; }
 
-        [Display (Name =" # of Samples")]
+        [Display(Name = " # of Samples")]
         public string NumSamples { get; set; }
 
-        
+
         public DateTime? ProbableDate { get; set; }
-        
+
         public string ProbableDateStr { get; set; }
 
 
@@ -188,16 +191,17 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public Double? Credits { get; set; }
 
-        [Display(Name ="TR")]
+        [Display(Name = "TR")]
         public decimal? Tr { get; set; }
-        [Display(Name ="CA")]
+        [Display(Name = "CA")]
         public decimal? Ca { get; set; }
-        [Display(Name ="AH")]
+        [Display(Name = "AH")]
         public decimal? Ah { get; set; }
 
         public bool? AdHonorem { get; set; }
 
-
+        [Display(Name = "Role")]
+        public int? SciRolesId { get; set; }
 
 
 
@@ -207,14 +211,14 @@ namespace EblueWorkPlan.Models.ViewModels
         public int Opid { get; set; }
 
         public string Name { get; set; }
-        [Display(Name ="% of Time")]
+        [Display(Name = "% of Time")]
         public decimal? PerTime { get; set; }
 
 
         [Display(Name = "Personnel  Added ")]
         public string PersonnelManAdded { get; set; }
 
-        [Display(Name ="Role Added")]
+        [Display(Name = "Role Added")]
         public string RoleManAdded { get; set; }
 
 
@@ -224,7 +228,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int Gaid { get; set; }
 
-        [Display(Name ="Name")]
+        [Display(Name = "Name")]
         public string Gname { get; set; }
 
         public string Thesis { get; set; }
@@ -240,10 +244,10 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string StudentName { get; set; }
 
-        [Display(Name="Graduated")]
+        [Display(Name = "Graduated")]
         public bool IsGraduated { get; set; }
 
-        [Display(Name="Undergraduated")]
+        [Display(Name = "Undergraduated")]
         public bool IsUndergraduated { get; set; }
 
 
@@ -257,6 +261,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Facilities { get; set; }
 
+        [Display(Name = "Project Impact")]
         public string Impact { get; set; }
 
 
@@ -271,13 +276,18 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public decimal? Others { get; set; }
 
+        public decimal TotalAmount { get; set; }
+
         public int? Wfsid { get; set; }
 
         public DateTime? Wfupdate { get; set; }
 
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}",ApplyFormatInEditMode = true)]
         public DateTime? StartDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? TerminationDate { get; set; }
 
 
@@ -322,7 +332,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int ProjectNotesId { get; set; }
 
-        [Display (Name="Description")]
+        [Display (Name="Principal Investigator  Comments")]
         public string Comment { get; set; }
 
         [Display(Name =" last Update")]
@@ -334,9 +344,33 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Username { get; set; }
 
-       
+
+        [Display(Name = " Department Director Comments")]
+        public string DepartmentDirectorComments { get; set; }
 
 
+        [Display(Name = " Representative of the\r\nAssociate Dean")]
+        public string DeanComments { get; set; }
+
+
+
+        //Admin Comments...
+        public int AdminOfficerCommentsId { get; set; }
+
+        public string AdComments { get; set; }
+
+        public DateTime? ProjectVigency { get; set; }
+
+        public DateTime? ReviewDate { get; set; }
+
+        public string WorkplanQuantity { get; set; }
+
+        public string FundsComments { get; set; }
+
+
+
+
+        public virtual AdminOfficerComment AdminOfficerComment { get; set; }
 
         public virtual User User { get; set; }
 
@@ -379,6 +413,8 @@ namespace EblueWorkPlan.Models.ViewModels
         public virtual ThesisProject ThesisProject { get; set; }
 
         //Lista de Proyectos Custom
+
+        public IEnumerable<AdminOfficerComment> AdminOfficerComments { get; set; }
         public IEnumerable<Fund>Fundss { get; set; }
         public IEnumerable<Laboratory> laboratories { get; set; }
         public IEnumerable<Analytical> analyticals { get; set; }
@@ -389,5 +425,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public IEnumerable<Project> projects { get; set; }
         public IEnumerable<ProjectNote> projectNotes { get; set; }
         public IList<ProjectFormView> ProjectItem {get; set;}
+
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using EblueWorkPlan.Models.ViewModels;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -76,8 +77,9 @@ namespace EblueWorkPlan.Controllers
                     Text = item.Rname,
                     Value = item.RolesId.ToString()
                 });
-                ViewBag.rolesItems = _roleItems;
+                
             }
+            ViewBag.rolesItems = _roleItems;
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;
             ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId");
@@ -89,16 +91,42 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,Email,Password,RosterId,IsEnabled")] User user)
+        public async Task<IActionResult> Create(/*[Bind("UserId,Email,Password,RosterId,IsEnabled")]*/UserVM Users )
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                string[] roles = new string[Users.SelectedRolesArray.Length];
+                int index = 0;
+                foreach (var items in Users.SelectedRolesArray) {
+                    var consult = (from u in _context.Roles
+                                   where u.RolesId == items
+                                   select u).FirstOrDefault();
+
+                    roles[index] = consult.Rname;
+                    index++;
+                }
+                string rolesString = string.Join(",", roles);
+
+                User users = new User() { 
+                    Email = Users.Email,
+                    Password = Users.Password,
+                    RosterId = Users.RosterId,
+                    RolesId = Users.RolesId,
+                    IsEnabled = Users.IsEnabled,
+                    Roles = rolesString,
+                
+                
+                
+                
+                
+                };
+
+                _context.Add(Users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
-            return View(user);
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", Users.RosterId);
+            return View(Users);
         }
 
         // GET: User/Edit/5
@@ -119,18 +147,45 @@ namespace EblueWorkPlan.Controllers
             }
             ViewBag.rosterItems = _rosterItems;
 
+            var roles = _context.Roles.ToList();
+            _roleItems = new List<SelectListItem>();
+            foreach (var item in roles)
+            {
+                _roleItems.Add(new SelectListItem
+                {
+                    Text = item.Rname,
+                    Value = item.RolesId.ToString()
+                });
+
+            }
+            ViewBag.rolesItems = _roleItems;
+
             if (id == null || _context.Users == null)
             {
                 return NotFound();
             }
 
             var user = await _context.Users.FindAsync(id);
+            UserVM UserVm = new UserVM()
+            {
+                UserId = user.UserId,
+                RosterId= user.RosterId,
+                Email= user.Email,
+                Password= user.Password,
+                Roles= user.Roles,
+                RolesId= user.RolesId,
+
+
+
+
+            };
+
             if (user == null)
             {
                 return NotFound();
             }
             ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
-            return View(user);
+            return View(UserVm);
         }
 
         // POST: User/Edit/5
@@ -138,7 +193,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,Email,Password,RosterId,IsEnabled")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,Email,Password,RosterId,IsEnabled,SelectedRolesArray")] UserVM user)
         {
             if (id != user.UserId)
             {
@@ -147,9 +202,39 @@ namespace EblueWorkPlan.Controllers
 
             if (ModelState.IsValid)
             {
+
+
+
+
                 try
                 {
-                    _context.Update(user);
+                    string[] roles = new string[user.SelectedRolesArray.Length];
+                    int index = 0;
+                    foreach (var items in user.SelectedRolesArray)
+                    {
+                        var consult = (from u in _context.Roles
+                                       where u.RolesId == items
+                                       select u).FirstOrDefault();
+
+                        roles[index] = consult.Rname;
+                        index++;
+                    }
+                    string rolesString = string.Join(",", roles);
+
+
+
+
+                    var query = (from u in _context.Users
+                                where u.UserId == user.UserId
+                                select u).FirstOrDefault();
+
+                    query.Email= user.Email;
+                    query.Password= user.Password;
+                    query.RolesId= user.RolesId;
+                    query.RosterId= user.RosterId;
+                    query.Roles = rolesString;
+
+                    _context.Update(query);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

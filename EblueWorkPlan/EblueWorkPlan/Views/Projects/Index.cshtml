@@ -7,6 +7,14 @@
 
 <h1>Project Area </h1>
 
+@if (TempData["AlertCreate"]!= null)
+{
+    <div class="alert alert-success">
+        @TempData["AlertCreate"]
+       
+    </div>
+}
+
 <p>
     <a class="btn btn-success" asp-action="Create" style="text-decoration:none;">Create New</a>
 </p>
@@ -87,274 +95,20 @@
 </table>
 
 
-                    @*
-
-
-                    <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectPi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SubStationId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateRegister)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectStatusId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Objectives)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ObjWorkPlan)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PresentOutlook)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wp1fieldWork)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wp2id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Workplan2Desc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ResultsAvailable)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facilities)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Impact)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salaries)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Materials)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Equipment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Travel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Abroad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Others)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wfsid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wfupdate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TerminationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FundTypeId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkPlan2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wages)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Benefits)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Assistant)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subcontracts)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IndirectCosts)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContractNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orcid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProcessProjectWayId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PorganizationsId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comm)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FiscalYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgramArea)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectPi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubStationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateRegister)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastUpdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectStatusId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Objectives)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjWorkPlan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PresentOutlook)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wp1fieldWork)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wp2id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Workplan2Desc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResultsAvailable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Facilities)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Impact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salaries)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Materials)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Travel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Abroad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Others)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wfsid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wfupdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TerminationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FundTypeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WorkPlan2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wages)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Benefits)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Assistant)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subcontracts)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IndirectCosts)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContractNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orcid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProcessProjectWayId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PorganizationsId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comm.CommId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.DepartmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FiscalYear.FiscalYearId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramArea.ProgramAreaId)
-            </td>
-            <td>
-
-
-
-                <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-                    *@
+ @section scripts{
+ 
+    <script>
+        window.setTimeout(function(){
+            $(".alert").fadeTo(500,0).slideUp(500,function(){
+                $(this).remove();
+            });
+        
+        
+        },3000);
+    </script>
+ 
+ 
+ 
+ 
+ 
+ } 

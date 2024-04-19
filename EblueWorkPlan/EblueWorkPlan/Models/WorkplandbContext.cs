@@ -15,6 +15,8 @@ public partial class WorkplandbContext : DbContext
     {
     }
 
+    public virtual DbSet<AdminOfficerComment> AdminOfficerComments { get; set; }
+
     public virtual DbSet<Analytical> Analyticals { get; set; }
 
     public virtual DbSet<Commodity> Commodities { get; set; }
@@ -65,6 +67,8 @@ public partial class WorkplandbContext : DbContext
 
     public virtual DbSet<SciProject> SciProjects { get; set; }
 
+    public virtual DbSet<SciRole> SciRoles { get; set; }
+
     public virtual DbSet<Substacion> Substacions { get; set; }
 
     public virtual DbSet<ThesisProject> ThesisProjects { get; set; }
@@ -77,6 +81,27 @@ public partial class WorkplandbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AdminOfficerComment>(entity =>
+        {
+            entity.HasKey(e => e.AdminOfficerCommentsId).HasName("PK__adminOff__83E2C4E3A74A6E2A");
+
+            entity.ToTable("adminOfficerComments");
+
+            entity.Property(e => e.AdminOfficerCommentsId).HasColumnName("adminOfficerCommentsID");
+            entity.Property(e => e.AdComments).HasColumnType("text");
+            entity.Property(e => e.FundsComments).HasColumnType("text");
+            entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+            entity.Property(e => e.ProjectVigency)
+                .HasColumnType("date")
+                .HasColumnName("projectVigency");
+            entity.Property(e => e.ReviewDate).HasColumnType("date");
+            entity.Property(e => e.WorkplanQuantity).HasColumnType("text");
+
+            entity.HasOne(d => d.Project).WithMany(p => p.AdminOfficerComments)
+                .HasForeignKey(d => d.ProjectId)
+                .HasConstraintName("FK__adminOffi__Proje__3429BB53");
+        });
+
         modelBuilder.Entity<Analytical>(entity =>
         {
             entity.HasKey(e => e.AnalyticalId).HasName("PK__Analytic__B1E78B77D97F9138");
@@ -225,6 +250,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.Salaries).HasColumnType("money");
             entity.Property(e => e.Subcontracts).HasColumnType("money");
+            entity.Property(e => e.TotalAmount).HasColumnType("money");
             entity.Property(e => e.Travel).HasColumnType("money");
             entity.Property(e => e.Ufisaccount)
                 .HasMaxLength(50)
@@ -308,6 +334,9 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Areq)
                 .HasMaxLength(255)
                 .HasColumnName("AReq");
+            entity.Property(e => e.CentralLaboratory)
+                .HasColumnType("text")
+                .HasColumnName("centralLaboratory");
             entity.Property(e => e.Descriptions).HasColumnType("text");
             entity.Property(e => e.EstimatedTime).HasColumnType("text");
             entity.Property(e => e.FacilitiesNeeded).HasColumnType("text");
@@ -550,6 +579,8 @@ public partial class WorkplandbContext : DbContext
             entity.HasKey(e => e.ProjectNotesId).HasName("PK__ProjectN__5DBF9709C49AD096");
 
             entity.Property(e => e.Comment).HasColumnType("text");
+            entity.Property(e => e.DeanComments).HasColumnType("text");
+            entity.Property(e => e.DepartmentDirectorComments).HasColumnType("text");
             entity.Property(e => e.LastUpdate).HasColumnType("datetime");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
@@ -640,6 +671,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Credits).HasColumnType("money");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
+            entity.Property(e => e.SciRolesId).HasColumnName("sciRolesID");
             entity.Property(e => e.ThesisProjectId).HasColumnName("thesisProjectId");
             entity.Property(e => e.Tr)
                 .HasColumnType("money")
@@ -654,9 +686,23 @@ public partial class WorkplandbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__sciProjec__Roste__1F63A897");
 
+            entity.HasOne(d => d.SciRoles).WithMany(p => p.SciProjects)
+                .HasForeignKey(d => d.SciRolesId)
+                .HasConstraintName("FK__sciProjec__sciRo__2116E6DF");
+
             entity.HasOne(d => d.ThesisProject).WithMany(p => p.SciProjects)
                 .HasForeignKey(d => d.ThesisProjectId)
                 .HasConstraintName("FK__sciProjec__thesi__2EA5EC27");
+        });
+
+        modelBuilder.Entity<SciRole>(entity =>
+        {
+            entity.HasKey(e => e.SciRolesId).HasName("PK__sciRoles__16C5DC50D6D60DAB");
+
+            entity.ToTable("sciRoles");
+
+            entity.Property(e => e.SciRolesId).HasColumnName("sciRolesID");
+            entity.Property(e => e.SciRoleName).HasColumnType("text");
         });
 
         modelBuilder.Entity<Substacion>(entity =>
@@ -693,10 +739,11 @@ public partial class WorkplandbContext : DbContext
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("isEnabled");
             entity.Property(e => e.Password).HasMaxLength(250);
+            entity.Property(e => e.Roles).HasColumnType("text");
             entity.Property(e => e.RolesId).HasColumnName("RolesID");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
 
-            entity.HasOne(d => d.Roles).WithMany(p => p.Users)
+            entity.HasOne(d => d.RolesNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RolesId)
                 .HasConstraintName("FK__Users__RolesID__0697FACD");
 

@@ -25,9 +25,13 @@ public partial class SciProject
 
     public int? ThesisProjectId { get; set; }
 
+    public int? SciRolesId { get; set; }
+
     public virtual Project Project { get; set; }
 
     public virtual Roster Roster { get; set; }
+
+    public virtual SciRole SciRoles { get; set; }
 
     public virtual ThesisProject ThesisProject { get; set; }
 }

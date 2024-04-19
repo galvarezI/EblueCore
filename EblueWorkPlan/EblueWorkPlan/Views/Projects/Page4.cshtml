@@ -96,9 +96,7 @@
                 <thead>
 
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AnalyticalId)
-                        </th>
+                        
 
                         <th>
                             @Html.DisplayNameFor(model => model.AnalysisRequired)
@@ -117,9 +115,7 @@
                     @foreach (var item in Model.analyticals)
                     {
                         <tr>
-                            <td class="anID">
-                                @Html.DisplayFor(modelItem => item.AnalyticalId)
-                            </td>
+
 
                             <td class="anR">
                                 @Html.DisplayFor(modelItem => item.AnalysisRequired)

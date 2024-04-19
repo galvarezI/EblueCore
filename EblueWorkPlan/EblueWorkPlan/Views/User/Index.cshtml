@@ -4,6 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
+<partial name="_Sidebar2" />
+
 <h1>Index</h1>
 
 <p>
@@ -24,6 +26,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Roster)
             </th>
+            <th>@Html.DisplayNameFor(model => model.Roles)</th>
             <th></th>
         </tr>
     </thead>
@@ -40,8 +43,13 @@
                 @Html.DisplayFor(modelItem => item.IsEnabled)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Roster.RosterId)
+                @Html.DisplayFor(modelItem => item.Roster.RosterName)
             </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Roles)
+                </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |

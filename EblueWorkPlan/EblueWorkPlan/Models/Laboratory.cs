@@ -25,5 +25,7 @@ public partial class Laboratory
 
     public DateTime? TimeEstimated { get; set; }
 
+    public string CentralLaboratory { get; set; }
+
     public virtual Project Project { get; set; }
 }

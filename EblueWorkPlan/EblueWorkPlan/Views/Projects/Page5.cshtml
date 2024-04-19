@@ -47,10 +47,16 @@
                                 <div class="row">
 
 
-                            <div class="form-group">
-                                <label asp-for="RosterId" class="control-label"></label>
-                                <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
-                            </div>
+                                    <div class="form-group">
+                                        <label asp-for="RosterId" class="control-label"></label>
+                                        <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="SciRolesId" class="control-label"></label>
+                                        <select id="scirolesId" asp-for="SciRolesId" class="form-control" asp-items="ViewBag.scirolesItems"></select>
+                                    </div>
+
                                     
                                     <div class="form-group">
                                         <label asp-for="Credits" class="control-label"></label>
@@ -80,7 +86,7 @@
                                 <br />
                                 <div class="form-group">
                                     <input type="submit" value="Add" class="btn btn-primary" />
-                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                                 </div>
 
                             </div>
@@ -108,16 +114,14 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.SciId)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.ProjectId)
-                </th>
+             
 
                 <th>
                     @Html.DisplayNameFor(model => model.Roster)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.SciRolesId)
                 </th>
 
                 <th>
@@ -142,14 +146,14 @@
             @foreach (var item in Model.sciProjects)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SciId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProjectId)
-                    </td>
+                   
                     <td>
                         @Html.DisplayFor(modelItem => item.Roster.RosterName)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SciRoles.SciRoleName)
                     </td>
 
                     <td>
@@ -170,7 +174,7 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.SciId| @item.ProjectId|@item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah"
+                                <button data-id="@item.SciId| @item.ProjectId|@item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah|@item.SciRolesId"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -201,10 +205,14 @@
 
 
             $(".modify").click(function () {
+                $("#btnSubmit").hide();
+                $("#btnSave").show();
+
+
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 7);
+                let campos = item.split("|", );
 
 
 
@@ -215,12 +223,14 @@
                 $('#ca').val(campos[5]);
                 $('#ah').val(campos[6]);
                 $('#projectId').val(campos[1]);
+                $('#scirolesId').val(campos[7]);
             });
 
 
 
             $('#btnSave').click(function () {
-
+                $("#btnSave").hide();
+                $("#btnSubmit").show(); 
 
                 const params = {
                     sciPId: $('#sciPId').val(),
@@ -230,7 +240,7 @@
                     ca: $('#ca').val(),
                     ah: $('#ah').val(),
                     projectId: $('#projectId').val(),
-
+                    SciRolesId: $('#scirolesId').val(),
                 };
 
 

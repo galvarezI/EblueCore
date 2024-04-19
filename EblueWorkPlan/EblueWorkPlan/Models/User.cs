@@ -17,9 +17,11 @@ public partial class User
 
     public int? RolesId { get; set; }
 
+    public string Roles { get; set; }
+
     public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
 
-    public virtual Role Roles { get; set; }
+    public virtual Role RolesNavigation { get; set; }
 
     public virtual Roster Roster { get; set; }
 }

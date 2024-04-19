@@ -17,6 +17,8 @@
 
         public decimal? ah { get; set; }
 
+        public int? SciRolesId { get; set; }
+
         //public bool? AdHonorem { get; set; }
 
         public int? projectId { get; set; }

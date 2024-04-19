@@ -11,9 +11,11 @@ using Microsoft.CodeAnalysis;
 using Microsoft.Build.Execution;
 using Rotativa.AspNetCore;
 using Microsoft.Build.Evaluation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EblueWorkPlan.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private readonly WorkplandbContext _context;
@@ -29,6 +31,7 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _locationsItems;
         private List<SelectListItem> _thesisItems;
         private List<SelectListItem> _gradItems;
+        private List<SelectListItem> _scirolesItems;
 
         public ProjectsController(WorkplandbContext context)
         {
@@ -318,6 +321,8 @@ namespace EblueWorkPlan.Controllers
                     FundTypeName = template.OtherFundtype
 
                 };
+
+                TempData["AlertCreate"] = "Project Created Succesfully!";
 
                 _context.Add(Project);
                 _context.Add(Fundtype);
@@ -1059,8 +1064,9 @@ namespace EblueWorkPlan.Controllers
                     Descriptions = projectTemplate.Descriptions,
                     TimeEstimated = projectTemplate.TimeEstimated,
                     FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
+                    CentralLaboratory= projectTemplate.CentralLaboratory,
                     ProjectId = projectTemplate.ProjectId
-
+                    
 
 
 
@@ -1097,6 +1103,7 @@ namespace EblueWorkPlan.Controllers
                 query.Descriptions = projectTemplate.Descriptions;
                 query.TimeEstimated = projectTemplate.TimeEstimated;
                 query.FacilitiesNeeded = projectTemplate.FacilitiesNeeded;
+                query.CentralLaboratory = projectTemplate.CentralLaboratory;
                 query.ProjectId = projectTemplate.ProjectId;
                 _context.SaveChanges();
 
@@ -1252,6 +1259,21 @@ namespace EblueWorkPlan.Controllers
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;
 
+
+
+            var roles = _context.SciRoles.ToList();
+            _scirolesItems = new List<SelectListItem>();
+            foreach (var item in roles)
+            {
+                _scirolesItems.Add(new SelectListItem
+                {
+                    Text = item.SciRoleName,
+                    Value = item.SciRolesId.ToString()
+                });
+            }
+            ViewBag.scirolesItems = _scirolesItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
             return View(projectTemplate);
         }
 
@@ -1263,14 +1285,14 @@ namespace EblueWorkPlan.Controllers
                 SciProject sciProject = new SciProject() { 
                     //
                     RosterId = (int)projectTemplate.RosterId,
-                    
+                    SciRolesId = projectTemplate.SciRolesId,
                  
                     Tr = projectTemplate.Tr,
                     Ca = projectTemplate.Ca,
                     Ah= projectTemplate.Ah,
                     Credits =projectTemplate.Tr + projectTemplate.Ca + projectTemplate.Ah,
                     ProjectId = projectTemplate.ProjectId
-                
+                    
                 
                 
                 
@@ -1312,7 +1334,6 @@ namespace EblueWorkPlan.Controllers
                 string caFormat = string.Format("{0:0.0000}", projectTemplate.ca);
                 string ahFormat = string.Format("{0:0.0000}", projectTemplate.ah);
 
-
                 query.SciId = projectTemplate.sciPId;
                 query.RosterId = (int)projectTemplate.rosterid;
                 
@@ -1325,7 +1346,7 @@ namespace EblueWorkPlan.Controllers
                 query.Credits = query.Tr + query.Ca + query.Ah;
                 string creditFormaat = string.Format("{0:0.0000}", query.Credits);
                 query.Credits = decimal.Parse(creditFormaat);
-
+                query.SciRolesId= (int)projectTemplate.SciRolesId;
 
                 query.ProjectId = projectTemplate.projectId;
                 _context.SaveChanges();
@@ -1678,6 +1699,8 @@ namespace EblueWorkPlan.Controllers
                   Others= projectTemplate.Others,
                   Ufisaccount= projectTemplate.Ufisaccount,
                   IndirectCosts= projectTemplate.IndirectCosts,
+                  TotalAmount = projectTemplate.Salaries + projectTemplate.Wages + projectTemplate.Subcontracts + projectTemplate.Benefits + projectTemplate.Assistant +projectTemplate.Materials +
+                    projectTemplate.Equipment +projectTemplate.Travel+projectTemplate.Abroad+projectTemplate.Others+projectTemplate.IndirectCosts,
                   ProjectId= project.ProjectId
 
 
@@ -1727,6 +1750,8 @@ namespace EblueWorkPlan.Controllers
                 query.Ufisaccount= projectTemplate.ufisaccount;
                 query.IndirectCosts = projectTemplate.indirectcosts;
                 query.ProjectId = projectTemplate.projectId;
+                query.TotalAmount = projectTemplate.salaries + projectTemplate.wages + projectTemplate.subcontract + projectTemplate.benefit + projectTemplate.assistant + projectTemplate.materials +
+                    projectTemplate.equipment + projectTemplate.travel + projectTemplate.abroad + projectTemplate.others + projectTemplate.indirectcosts;
                 _context.SaveChanges();
 
             }
@@ -1758,7 +1783,7 @@ namespace EblueWorkPlan.Controllers
             ProjectViewModel projectViewModel = new ProjectViewModel() { ProjectNumber = project.ProjectNumber };
             
             projectViewModel.ProjectId = id.Value;
-            projectViewModel.Facilities = project.Facilities;
+            
             projectViewModel.Subcontracts = project.Subcontracts;
             projectViewModel.Impact = project.Impact;
             projectViewModel.Travel = project.Travel;
@@ -1791,7 +1816,7 @@ namespace EblueWorkPlan.Controllers
 
                                  ).FirstOrDefault();
                     
-                    query.Facilities= projectTemplate.Facilities;
+                    
                     query.Impact = projectTemplate.Impact;
                     query.Salaries = projectTemplate.Salaries;
                     query.Benefits = projectTemplate.Benefits;
@@ -1915,6 +1940,151 @@ namespace EblueWorkPlan.Controllers
 
 
             }
+            return View();
+        }
+
+        //Department Director Comments
+
+        [HttpPost]
+        public async Task<IActionResult> Page10DDPost(ProjectNotesVM projectNotesVM) {
+
+            var datos = projectNotesVM;
+
+            var query = (from p in _context.ProjectNotes
+                         where p.ProjectNotesId == projectNotesVM.commentId
+                         select p).FirstOrDefault();
+            try {
+
+                query.DepartmentDirectorComments = projectNotesVM.DepartmentDirector;
+                _context.SaveChanges();
+
+
+
+
+
+            } catch {
+            
+            
+            
+            
+            
+            
+            
+            }
+            
+
+
+
+
+
+
+
+            return Ok();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page10DCommentPost(ProjectNotesVM projectNotesVM)
+        {
+
+            var datos = projectNotesVM;
+
+            var query = (from p in _context.ProjectNotes
+                         where p.ProjectNotesId == projectNotesVM.commentId
+                         select p).FirstOrDefault();
+            try
+            {
+
+                query.DeanComments = projectNotesVM.DeanComments;
+                _context.SaveChanges();
+
+
+
+
+
+            }
+            catch
+            {
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+            return Ok();
+        }
+
+
+
+        //Administrator Comments Page....
+
+        public async Task<IActionResult> Page11(int? id) {
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+
+            var AdminNotes = (from ad in _context.AdminOfficerComments
+                              where ad.ProjectId == id
+                              select ad).ToList();
+            ProjectFormView projectFormView = new ProjectFormView { 
+                ProjectNumber= project.ProjectNumber,
+                AdminOfficerComments = AdminNotes
+            
+            
+            
+            
+            
+            
+            };
+            projectFormView.ProjectId = id.Value;
+
+
+
+            return View(projectFormView);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Page11(int? id, ProjectFormView projectTemplate) {
+
+            if (ModelState.IsValid) {
+
+                AdminOfficerComment Admin = new AdminOfficerComment()
+                {
+                    AdComments = projectTemplate.AdComments,
+                    ProjectVigency = projectTemplate.ProjectVigency,
+                    ReviewDate = projectTemplate.ReviewDate,
+                    WorkplanQuantity= projectTemplate.WorkplanQuantity,
+                    FundsComments= projectTemplate.FundsComments,
+
+
+
+                };
+
+                _context.Add(Admin);
+                await _context.SaveChangesAsync();
+            }
+
+
+
             return View();
         }
 
@@ -2154,167 +2324,173 @@ namespace EblueWorkPlan.Controllers
 
 
 
-      
 
-
-       
-
-
-        [HttpPost]
-        public async Task<IActionResult> Page2Modal(int? id , ProjectFormView projectTemplate)
-        {
-            id = projectTemplate.FieldWorkId;
-
-
-            if(ModelState.IsValid)
-            {
-                var fieldatos = (from f in _context.FieldWorks
-                                 where f.FieldWorkId == id
-                                 select f).FirstOrDefault();
-
-                fieldatos.Wfieldwork = projectTemplate.Wfieldwork;
-                fieldatos.LocationId = projectTemplate.LocationId.Value;
-                fieldatos.Area = projectTemplate.Area;
-                fieldatos.InProgress = projectTemplate.InProgress;
-                fieldatos.ToBeInitiated = projectTemplate.ToBeInitiated;
-                fieldatos.DateStarted = projectTemplate.DateStarted;
-                fieldatos.DateEnded = projectTemplate.DateEnded;
-
-                await _context.SaveChangesAsync();
-                
-               
-                projectTemplate.ProjectId = fieldatos.ProjectId;
-
-
-                return RedirectToAction("Page3", new
-                {
-                    ID = projectTemplate.ProjectId
-                });
-            }
-            
-
-
-            return View();
-        }
-
-        public PartialViewResult Page3Modal(int? id)
-        {
-            var datos = (from l in _context.Laboratories
-                             where l.LabId == id
-                             select l).FirstOrDefault();
-
-
-            var location = _context.Locationns.ToList();
-            _locationsItems = new List<SelectListItem>();
-            
-
-            ProjectFormView fieldView = new ProjectFormView()
-            {
-                WorkPlanned = datos.WorkPlanned,
-                Descriptions = datos.Descriptions,
-                FacilitiesNeeded = datos.FacilitiesNeeded,
-                EstimatedTime = datos.EstimatedTime
-            };
-
-            return PartialView("_Page3Modal", fieldView);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Page3Modal(int? id, ProjectFormView projectTemplate)
-        {
-            id = projectTemplate.LabId;
-
-
-            if (ModelState.IsValid)
-            {
-                var datos = (from l in _context.Laboratories
-                             where l.LabId == id
-                             select l).FirstOrDefault();
-
-                datos.WorkPlanned= projectTemplate.WorkPlanned;
-                datos.Descriptions = projectTemplate.Descriptions;
-                datos.EstimatedTime = projectTemplate.EstimatedTime;
-                datos.FacilitiesNeeded= projectTemplate.FacilitiesNeeded;
-
-                await _context.SaveChangesAsync();
-
-
-                projectTemplate.ProjectId = datos.ProjectId.Value;
-
-
-                return RedirectToAction("Page4", new
-                {
-                    ID = projectTemplate.ProjectId
-                });
-            }
+        #region depreciated
 
 
 
 
-
-                return View();
-        }
-
-
-
-        public PartialViewResult Page4Modal(int? id)
-        {
-            var datos = (from a in _context.Analyticals
-                         where a.AnalyticalId == id
-                         select a).FirstOrDefault();
+        //[HttpPost]
+        //public async Task<IActionResult> Page2Modal(int? id , ProjectFormView projectTemplate)
+        //{
+        //    id = projectTemplate.FieldWorkId;
 
 
-            var location = _context.Locationns.ToList();
-            _locationsItems = new List<SelectListItem>();
+        //    if(ModelState.IsValid)
+        //    {
+        //        var fieldatos = (from f in _context.FieldWorks
+        //                         where f.FieldWorkId == id
+        //                         select f).FirstOrDefault();
+
+        //        fieldatos.Wfieldwork = projectTemplate.Wfieldwork;
+        //        fieldatos.LocationId = projectTemplate.LocationId.Value;
+        //        fieldatos.Area = projectTemplate.Area;
+        //        fieldatos.InProgress = projectTemplate.InProgress;
+        //        fieldatos.ToBeInitiated = projectTemplate.ToBeInitiated;
+        //        fieldatos.DateStarted = projectTemplate.DateStarted;
+        //        fieldatos.DateEnded = projectTemplate.DateEnded;
+
+        //        await _context.SaveChangesAsync();
 
 
-            ProjectFormView fieldView = new ProjectFormView()
-            {   
-                AnalyticalId = datos.AnalyticalId,
-                AnalysisRequired = datos.AnalysisRequired,
-                NumSamples = datos.NumSamples,
-               
-                ProbableDate = datos.ProbableDate
-            };
-
-            return PartialView("_Page4Modal", fieldView);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Page4Modal(int? id, ProjectFormView projectTemplate)
-        {
-            id = projectTemplate.AnalyticalId;
+        //        projectTemplate.ProjectId = fieldatos.ProjectId;
 
 
-            if (ModelState.IsValid)
-            {
-                var datos = (from a in _context.Analyticals
-                             where a.AnalyticalId == id
-                             select a).FirstOrDefault();
-
-                datos.AnalysisRequired = projectTemplate.AnalysisRequired;
-                datos.NumSamples = projectTemplate.NumSamples;
-                datos.ProbableDate = projectTemplate.ProbableDate;
-                
-
-                await _context.SaveChangesAsync();
+        //        return RedirectToAction("Page3", new
+        //        {
+        //            ID = projectTemplate.ProjectId
+        //        });
+        //    }
 
 
-                projectTemplate.ProjectId = datos.ProjectId.Value;
+
+        //    return View();
+        //}
+
+        //public PartialViewResult Page3Modal(int? id)
+        //{
+        //    var datos = (from l in _context.Laboratories
+        //                     where l.LabId == id
+        //                     select l).FirstOrDefault();
 
 
-                return RedirectToAction("Page5", new
-                {
-                    ID = projectTemplate.ProjectId
-                });
-            }
+        //    var location = _context.Locationns.ToList();
+        //    _locationsItems = new List<SelectListItem>();
 
-                return View();
 
-            }
+        //    ProjectFormView fieldView = new ProjectFormView()
+        //    {
+        //        WorkPlanned = datos.WorkPlanned,
+        //        Descriptions = datos.Descriptions,
+        //        FacilitiesNeeded = datos.FacilitiesNeeded,
+        //        EstimatedTime = datos.EstimatedTime
+        //    };
 
-            
-        }
+        //    return PartialView("_Page3Modal", fieldView);
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Page3Modal(int? id, ProjectFormView projectTemplate)
+        //{
+        //    id = projectTemplate.LabId;
+
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var datos = (from l in _context.Laboratories
+        //                     where l.LabId == id
+        //                     select l).FirstOrDefault();
+
+        //        datos.WorkPlanned= projectTemplate.WorkPlanned;
+        //        datos.Descriptions = projectTemplate.Descriptions;
+        //        datos.EstimatedTime = projectTemplate.EstimatedTime;
+        //        datos.FacilitiesNeeded= projectTemplate.FacilitiesNeeded;
+
+        //        await _context.SaveChangesAsync();
+
+
+        //        projectTemplate.ProjectId = datos.ProjectId.Value;
+
+
+        //        return RedirectToAction("Page4", new
+        //        {
+        //            ID = projectTemplate.ProjectId
+        //        });
+        //    }
+
+
+
+
+
+        //        return View();
+        //}
+
+
+
+        //public PartialViewResult Page4Modal(int? id)
+        //{
+        //    var datos = (from a in _context.Analyticals
+        //                 where a.AnalyticalId == id
+        //                 select a).FirstOrDefault();
+
+
+        //    var location = _context.Locationns.ToList();
+        //    _locationsItems = new List<SelectListItem>();
+
+
+        //    ProjectFormView fieldView = new ProjectFormView()
+        //    {   
+        //        AnalyticalId = datos.AnalyticalId,
+        //        AnalysisRequired = datos.AnalysisRequired,
+        //        NumSamples = datos.NumSamples,
+
+        //        ProbableDate = datos.ProbableDate
+        //    };
+
+        //    return PartialView("_Page4Modal", fieldView);
+        //}
+
+        //[HttpPost]
+        //public async Task<IActionResult> Page4Modal(int? id, ProjectFormView projectTemplate)
+        //{
+        //    id = projectTemplate.AnalyticalId;
+
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var datos = (from a in _context.Analyticals
+        //                     where a.AnalyticalId == id
+        //                     select a).FirstOrDefault();
+
+        //        datos.AnalysisRequired = projectTemplate.AnalysisRequired;
+        //        datos.NumSamples = projectTemplate.NumSamples;
+        //        datos.ProbableDate = projectTemplate.ProbableDate;
+
+
+        //        await _context.SaveChangesAsync();
+
+
+        //        projectTemplate.ProjectId = datos.ProjectId.Value;
+
+
+        //        return RedirectToAction("Page5", new
+        //        {
+        //            ID = projectTemplate.ProjectId
+        //        });
+        //    }
+
+        //        return View();
+
+        //    }
+
+
+        #endregion
+
+
+
+
+
+    }
 
 
 }

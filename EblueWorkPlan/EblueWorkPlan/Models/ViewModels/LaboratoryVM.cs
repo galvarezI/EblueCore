@@ -24,6 +24,9 @@ namespace EblueWorkPlan.Models.ViewModels
         [DataType(DataType.Date)]
         public DateTime? TimeEstimated { get; set; }
 
+
+        public string CentralLaboratory { get; set; }
+
         public string FacilitiesNeeded { get; set; }
 
         public virtual Project Project { get; set; }

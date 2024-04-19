@@ -35,6 +35,8 @@ public partial class Fund
 
     public decimal? IndirectCosts { get; set; }
 
+    public decimal? TotalAmount { get; set; }
+
     public virtual Locationn Location { get; set; }
 
     public virtual Project Project { get; set; }

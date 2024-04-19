@@ -74,6 +74,13 @@
                                     <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
                                 </div>
 
+
+                                <div class="col-12">
+                                    <label asp-for="CentralLaboratory" class="control-label"></label>
+                                    <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"></textarea>
+                                    <span asp-validation-for="CentralLaboratory" class="text-danger"></span>
+                                </div>
+
                             </div>
 
                             <br />
@@ -116,9 +123,7 @@
                 <thead>
                     <h1 class="LabId" style="display:none" class="field-id">@Model.LabId </h1>
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LabId)
-                        </th>
+                       
                         <th>
                             @Html.DisplayNameFor(model => model.WorkPlanned)
                         </th>
@@ -132,6 +137,9 @@
                             @Html.DisplayNameFor(model => model.FacilitiesNeeded)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.CentralLaboratory)
+                        </th>
+                        <th>
                             Actions
                         </th>
                     </tr>
@@ -141,9 +149,7 @@
                     {
                         <tr>
                            
-                            <td class="labId">
-                                    @Html.DisplayFor(modelItem => item.LabId)
-                            </td>
+                            
                             
                             <td class="workplanned">
                                 @Html.DisplayFor(modelItem => item.WorkPlanned)
@@ -157,11 +163,16 @@
                             <td class="facili">
                                 @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
                             </td>
+
+                            <td class="facili">
+                                @Html.DisplayFor(modelItem => item.CentralLaboratory)
+                            </td>
+
                             <td>
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-4">
-                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId"
+                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId|@item.CentralLaboratory"
                                                 class="btn  btn-success modify">
                                                 Modify
                                             </button>
@@ -200,7 +211,7 @@
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 6);
+                let campos = item.split("|", 7);
 
                 const estimateDate = new Date(campos[3]).toLocaleDateString('en-US');
 
@@ -210,7 +221,7 @@
                 $('#timeEstimated').val(estimateDate);
                 $('#facilitiesNeeded').val(campos[4]);
                 $('#projectId').val(campos[5]);
-
+                $('#central').val(campos[6]);
             });
 
 
@@ -226,7 +237,7 @@
                     descriptions: $('#descriptions').val(),
                     TimeEstimated: $('#timeEstimated').val(),
                     facilitiesNeeded: $('#facilitiesNeeded').val(),
-                    
+                    CentralLaboratory: $('#central').val()
                 };
 
 

@@ -4,9 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EblueWorkPlan.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -38,106 +43,93 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        public IActionResult Signin()
-        {
+        //public IActionResult Signin()
+        //{
 
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult Signin( UserViewModel _User)
-        {
-            List<User> Users = new List<User>();
-            //var db = new WorkplandbContext();
-            string Email = "";
-            string Pass = "";
-            bool isLogin = false;
+        //[HttpPost]
+        //public async Task <IActionResult> Signin( UserViewModel _User)
+        //{
+        //    Models.User us = new Models.User();
+        //    List<User> Users = new List<User>();
+        //    //var db = new WorkplandbContext();
+        //    string Email = "";
+        //    string Pass = "";
+        //    bool isLogin = false;
 
-            //var  Validacion = (from u in _context.Users
+        //    //var  Validacion = (from u in _context.Users
                               
-            //                  select u).ToList();
+        //    //                  select u).ToList();
 
 
-            if (_context.Users.Any(cd => cd.Email == _User.Email.Trim() && cd.Password == _User.Password.Trim()))
-            {
-                return RedirectToAction("Index", "Projects");
-            }
-            else
-            {
-                return View();
-            }
+        //    if (_context.Users.Any(cd => cd.Email == _User.Email.Trim() && cd.Password == _User.Password.Trim()))
+        //    {
+
+        //        int id;
+        //        var query1 = (from ui in _context.Users
+        //                     where ui.Email == _User.Email
+        //                     select ui).FirstOrDefault();
+
+
+        //        id = query1.UserId;
+        //        //foreach (var use in _context.Users) {
+        //        //    if (_context.Users.Any(cd => cd.Email == _User.Email.Trim() && cd.Password == _User.Password.Trim())) {
+        //        //       id = us.UserId;
+
+
+        //        //    }
+
+        //        //}
+        //        var queryUs = (from u in _context.Users
+        //                      where u.UserId == id
+        //                      select u).FirstOrDefault();
+        //        int rosId = (int)queryUs.RosterId;
+
+        //        var QueryRosterU = (from r in _context.Rosters
+        //                          where r.RosterId == rosId
+        //                          select r).FirstOrDefault();
+
+        //        String username = QueryRosterU.RosterName;
+        //        var claims = new List<Claim> { 
+                
+                
+        //            new Claim(ClaimTypes.Name , username),
+        //            new Claim("Email",queryUs.Email)
+                    
+                
+                
+                
+        //        };
+
+        //        //PENDIENTE PREPARAR ESTRUCTURA DE MÁS DE UN ROL ACA ABAJO....
+
+
+        //        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        //        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+
+
+        //        return RedirectToAction("Index", "Projects");
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
 
             
-            //foreach (var item in Validacion)
-            //{
-            //    if (_User.Email == item.Email && _User.Password == item.Password)
-            //    {
+         
 
-            //        Email = item.Email;
-            //        Pass = item.Password;
-            //        isLogin = true;
-            //    }
-            //    else
-            //    {
-
-            //        isLogin = false;
-            //    }
-            //}
+        //}
 
 
-
-            //List<User> users = new List<User>();
-            //List<User> validateuser = new List<User>();
-            //foreach (var item in users)
-            //{
-
-
-
-            //}
-
-
-            //User ValidateUser(string _email, string _password)
-            //{
-
-            //     user.Where(item => item.Email == _email && item.Password == _password).FirstOrDefault();
-
-
-
-
-
-            //}
-
-            if (_User.Email == Email && _User.Password == Pass)
-            {
-
-               
-                return RedirectToAction("Index", "Projects");
-            }
-            else
-            {
-
-                return View();
-            }
-            //if (isLogin == true)
-            //{
-
-
-            //    return RedirectToAction("Index", "Home");
-            //}
-            //else
-            //{
-
-            //    return View();
-
-            //}
-
-        }
-
-
-        public IActionResult Logout()
-        {
-            return RedirectToAction("Signin", "Home");
-        }
+        //public async Task <IActionResult> Logout()
+        //{
+        //    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //    return RedirectToAction("Signin", "Home");
+        //}
     }
 }

@@ -68,6 +68,8 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Facilities { get; set; }
 
+
+        [Display(Name = "Project Impact")]
         public string Impact { get; set; }
 
         public string Salaries { get; set; }

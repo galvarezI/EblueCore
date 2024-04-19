@@ -65,10 +65,7 @@
                                 <label asp-for="LocationId" class="control-label"></label>
                                 <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="RosterId" class="control-label"></label>
-                                <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
-                            </div>
+
                             <div class="form-group">
                                 <label asp-for="PersonnelManAdded" class="control-label"></label>
                                 <input id="personnelman" asp-for="PersonnelManAdded" class="form-control" />
@@ -83,7 +80,7 @@
 
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" />
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
                         </div>
@@ -117,17 +114,15 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Opid)
-                    </th>
+                    
 
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
                     <th>
-                        <!--
+                        
                         @Html.DisplayNameFor(model => model.PerTime)
-                        -->
+                       
                         
                     </th>
                     <th>
@@ -139,12 +134,11 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Location)
                     </th>
+
                     <th>
-                        @Html.DisplayNameFor(model => model.ProjectId)
+                        Actions
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.RosterId)
-                    </th>
+                   
                     <th></th>
                 </tr>
             </thead>
@@ -155,24 +149,12 @@
                     
 
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Opid)
-                        </td>
+                       
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
 
-                        @{
-                            //Francis :
-                               /*
-                                Favor de revisar esta parte:
-                                
-                                 
-                                
-                                */
-
-                               //rEVISAR Y HACER LA MULTIPLICACION POR 100
-                        }
+                     
                         
 
                         <td>
@@ -188,12 +170,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Location.LocationName)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProjectId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Roster.RosterName)
-                        </td>
+                       
+                        
                         <td>
                             <div class="row">
                                 <div class="col-4">
@@ -221,12 +199,16 @@
 
             $(function () {
 
+
+
                 $("#dateEnded").datepicker();
                 $("#dateStarted").datepicker();
 
 
 
                 $(".modify").click(function () {
+                    $("#btnSubmit").hide();
+                    $("#btnSave").show();
 
                     let item = $(this).attr("data-id");
 
@@ -248,7 +230,8 @@
 
 
                 $('#btnSave').click(function () {
-
+                    $("#btnSave").hide();
+                    $("#btnSubmit").show();
 
                     const params = {
                         Opid: $('#Opid').val(),
