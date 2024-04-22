@@ -232,8 +232,12 @@ namespace EblueWorkPlan.Models.ViewModels
         public string Gname { get; set; }
 
         public string Thesis { get; set; }
+
+        [Display(Name = "Thesis or Project")]
         public int? ThesisProjectId { get; set; }
 
+
+        [Display(Name = "Graduated or Undergraduated")]
         public int? GradoptionId { get; set; }
 
         public int? StudentId { get; set; }

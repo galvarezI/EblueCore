@@ -24,6 +24,7 @@
         <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false" asp-action="Page8" asp-controller="Projects"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link active" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
 
 
 
@@ -121,7 +122,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <input type="hidden" id="commentId">
+                            <input type="hidden" id="commentId" />
                             <label asp-for="DepartmentDirectorComments" class="control-label"></label>
                             <textarea id="departmentDirector" asp-for="DepartmentDirectorComments" rows="3" class="form-control"></textarea>
                             <span asp-validation-for="DepartmentDirectorComments" class="text-danger"></span>
@@ -172,6 +173,20 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Comment)
                     </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartmentDirectorComments)
+                    </th>
+
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeanComments)
+                    </th>
+
+
+
+
                     <th>Action</th>
                 </tr>
             </thead>
@@ -190,6 +205,15 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Comment)
                         </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentDirectorComments)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeanComments)
+                        </td>
+
 
                         <td>
                             <div class="row">
@@ -227,7 +251,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <input type="hidden" id="commentid">
+                            <input type="hidden" id="commentid" />
                             <label asp-for="DeanComments" class="control-label"></label>
                             <textarea id="deanComments" asp-for="DeanComments" rows="3" class="form-control"></textarea>
                             <span asp-validation-for="DeanComments" class="text-danger"></span>
@@ -270,6 +294,17 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Comment)
                 </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.DepartmentDirectorComments)
+                    </th>
+
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeanComments)
+                    </th>
+
             <th>Action</th>
         </tr>
     </thead>
@@ -284,10 +319,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Username)
                 </td>
+
+
+
               
                     <td>
                         @Html.DisplayFor(modelItem => item.Comment)
                     </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartmentDirectorComments)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeanComments)
+                        </td>
+
 
                     <td>
                         <div class="row">
@@ -323,29 +370,26 @@
 
 @section scripts{
     <script type="text/javascript">
-       
             $(function () {
-                $('.comment').click(function (){
-                    
+                $('.comment').click(function () {
+
 
                     let item = $(this).attr('data-id');
-
                     let campos = item.split("|", 2);
-                $('#commentId').val(campos[0]);
-                
-                
-                })
+                    $('#commentId').val(campos[0]);
+
+                });
                 $('#departmentPost').click(function () {
                     const params = {
 
-                        commentId :  $('#commentId').val(),
+                        commentId: $('#commentId').val(),
                         DepartmentDirector: $('#departmentDirector').val()
-                    
-                    
-                    
-                    
+
+
+
+
                     };
-                
+
                     $.ajax({
                         type: "POST",
                         url: '/Projects/Page10DDPost',
@@ -357,54 +401,73 @@
                         dataType: 'json'
                     });
                 
-                   @{   //Dean Comments function..
-                   
-                   
-                   }
+                
+                
+                });
+                  
+                
 
-                       
-
-
-
-
+            @{
+                //Dean Comments function..
 
 
-
-                })
-                 $('.dcomment').click(function () {
-
-
-                            let item = $(this).attr('data-id');
-
-                            let campos = item.split("|", 2);
-                            $('#commentid').val(campos[0]);
-
-
-                        })
-                    $('#deanComments').click(function () {
-                        const params = {
-
-                            commentId: $('#commentid').val(),
-                            DeanComments: $('#deanComments').val()
+            }
 
 
 
 
-                        };
 
-                        $.ajax({
-                            type: "POST",
-                            url: '/Projects/Page10DCommentPost',
-                            data: params,
-                            success: function () {
-                                alert('Entre');
 
-                            },
-                            dataType: 'json'
-                        });
 
-            })
 
+
+                           
+                $('.dcomment').click(function () {
+
+
+                    let item = $(this).attr('data-id');
+
+                    let campos = item.split("|", 2);
+                    $('#commentid').val(campos[0]);
+
+
+                });
+                $('#deanComments').click(function () {
+                    const params = {
+
+                        commentId: $('#commentid').val(),
+                        DeanComments: $('#deanComments').val()
+
+
+
+
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/Page10DCommentPost',
+                        data: params,
+                        success: function () {
+                            alert('Entre');
+
+                        },
+                        dataType: 'json'
+                    });
+
+                });
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+       
+            
 
         
 
@@ -415,7 +478,7 @@
 
 
 
-    </script>
+    
 
 
 
