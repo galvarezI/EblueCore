@@ -10,10 +10,9 @@
 
 <h1>Research Project for: @Model.ProjectNumber</h1>
 
-<h3>Project Notes Page</h3>
+<h3>Comments Page</h3>
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
         <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="ProjectList" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" asp-action="Page2" asp-controller="Projects"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false" asp-action="Page3" asp-controller="Projects"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
@@ -75,6 +74,15 @@
 
 
 
+                    <!--Comments area-->
+
+
+
+
+
+
+
+
                     <div class="card-footer">
                         <div class="btn btn-primary col align-content-center"><a asp-action="Page9" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
 
@@ -85,277 +93,104 @@
 
 
 
+
+
+
+
                 </div>
 
             </form>
 
 
+@*
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                        <div class="card-body p-4">
 
 
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-    </div>
-
-    @if (User.IsInRole("Administrator" ) || User.IsInRole("Research Director or Representative"))
-    
-    {
-        
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProjectId" />
-            <div class="card"  id="cardRD">
-
-                <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
-
-
-                <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <input type="hidden" id="commentId" />
-                            <label asp-for="DepartmentDirectorComments" class="control-label"></label>
-                            <textarea id="departmentDirector" asp-for="DepartmentDirectorComments" rows="3" class="form-control"></textarea>
-                            <span asp-validation-for="DepartmentDirectorComments" class="text-danger"></span>
-                        </div>
-                    </div>
-
-
-                    <br>
-
-
-
-                    <br>
-
-
-                    <div class="form-group">
-                        <input id="departmentPost" type ="submit" value="Send" class="btn btn-primary" />
-                    </div>
-
-
-
-
-
-
-                </div>
-
-
-
-
-
-
-
-
-            </div>
-
-        
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastUpdate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Username)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.Comment)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.DepartmentDirectorComments)
-                    </th>
-
-
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.DeanComments)
-                    </th>
-
-
-
-
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.projectNotes)
-                {
-                    <tr>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastUpdate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Username)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Comment)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DepartmentDirectorComments)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DeanComments)
-                        </td>
-
-
-                        <td>
-                            <div class="row">
-                                <div class="col-4">
-                                    <button data-id="@item.ProjectNotesId | @item.ProjectId"
-                                    class="btn  btn-success comment">
-                                        Comment
-                                    </button>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                                                 height="25" />
+                                            <p class="small mb-0 ms-2">Martha</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up mx-2 fa-xs text-body" style="margin-top: -0.16rem;"></i>
+                                            <p class="small text-muted mb-0">3</p>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
 
-    }
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                                                 height="25" />
+                                            <p class="small mb-0 ms-2">Johny</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up mx-2 fa-xs text-body" style="margin-top: -0.16rem;"></i>
+                                            <p class="small text-muted mb-0">4</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-   
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"
+                                                 height="25" />
+                                            <p class="small mb-0 ms-2">Mary Kate</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center text-body">
+                                            <p class="small mb-0">Upvoted</p>
+                                            <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                                            <p class="small mb-0">2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    @if (User.IsInRole("Project Leader or Project Director"))
-    {
-        
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProjectId" />
-            <div class="card" id="cardDean">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
-                <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
-
-
-                <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <input type="hidden" id="commentid" />
-                            <label asp-for="DeanComments" class="control-label"></label>
-                            <textarea id="deanComments" asp-for="DeanComments" rows="3" class="form-control"></textarea>
-                            <span asp-validation-for="DeanComments" class="text-danger"></span>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                                                 height="25" />
+                                            <p class="small mb-0 ms-2">Johny</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up ms-2 fa-xs text-body" style="margin-top: -0.16rem;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
-                    <br>
-
-
-
-                    <br>
-
-
-
-
-                    <div class="form-group">
-                        <input id="DeanPost" type="submit" value="Send" class="btn btn-primary" />
-                    </div>
-
-
                 </div>
-
-
             </div>
 
-        
+*@
 
-        <table class="table table-bordered">
-    <thead>
-        <tr>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Comment)
-                </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.DepartmentDirectorComments)
-                    </th>
-
-
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.DeanComments)
-                    </th>
-
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.projectNotes)
-        {
-            <tr>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastUpdate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-
-
-
-              
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Comment)
-                    </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DepartmentDirectorComments)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DeanComments)
-                        </td>
-
-
-                    <td>
-                        <div class="row">
-                            <div class="col-4">
-                                <button data-id="@item.ProjectNotesId | @item.ProjectId"
-                                    class="btn  btn-success dcomment">
-                                    Comment
-                                </button>
-                            </div>
-
-                        </div>
-                    </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
-
-
-    }
 
    
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -11,6 +12,7 @@ public partial class Laboratory
 
     public string NoSamples { get; set; }
 
+    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? SamplesDate { get; set; }
 
     public int? ProjectId { get; set; }

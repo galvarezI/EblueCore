@@ -11,7 +11,6 @@
 <br />
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
         <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
@@ -116,7 +115,7 @@
 
 
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" />
+                                <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
                                 <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
@@ -154,7 +153,9 @@
     <table class="table  table-bordered">
         <thead>
             <tr>
-                
+                 <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
 
                 <th>
                     @Html.DisplayNameFor(model => model.Salaries)
@@ -192,9 +193,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.IndirectCosts)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location)
-                </th>
+               
 
                 <th>
                     @Html.DisplayNameFor(model => model.TotalAmount)
@@ -207,7 +206,11 @@
             @foreach (var item in Model.Fundss)
             {
                 <tr>
-                    
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location.LocationName)
+                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Salaries)
                     </td>
@@ -244,9 +247,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.IndirectCosts)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Location.LocationName)
-                    </td>
+                    
 
                     <td>
                         @Html.DisplayFor(modelItem => item.TotalAmount)
@@ -265,6 +266,119 @@
             }
         </tbody>
     </table>
+
+
+    <br />
+
+
+
+
+
+    <table class="table  table-bordered">
+        <thead>
+            <tr>
+               
+
+                <th>
+                    @Html.DisplayNameFor(model => model.TSalaries)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TWages)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TBenefits)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TAssistant)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TMaterials)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TEquipment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TTravel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TAbroad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TSubcontracts)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TOthers)
+                </th>
+                @* <th>
+                @Html.DisplayNameFor(model => model.Ufisaccount)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.TIndirectCosts)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.TTotalAmount)
+                </th>
+
+                
+            </tr>
+        </thead>
+        <tbody>
+          
+                <tr>
+
+                   
+
+                    <td>
+                    @Html.DisplayFor(model => model.TSalaries)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TWages)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TBenefits)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TAssistant)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TMaterials)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TEquipment)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TTravel)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TAbroad)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TSubcontracts)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(model => model.TOthers)
+                    </td>
+                    @*<td>
+                @Html.DisplayFor(modelItem => item.Ufisaccount)
+                </td>*@
+                    <td>
+                    @Html.DisplayFor(model => model.TIndirectCosts)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(model => model.TTotalAmount)
+                    </td>
+
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+
+
 
 </div>
 

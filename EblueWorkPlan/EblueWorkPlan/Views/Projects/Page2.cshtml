@@ -36,12 +36,11 @@
 }
 <h1>Research Project  for: @Model.ProjectNumber</h1>
 
-<h3>Fieldwork Page</h3>
+<h3>Objective Page</h3>
 <br />
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
         <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="ProjectList" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
         <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" asp-action="Page2" asp-controller="Projects"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false" asp-action="Page3" asp-controller="Projects"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
@@ -62,198 +61,88 @@
 
     <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
         <div class="row g-3">
-            <form asp-action="Page2">
+            <form asp-action="ProjectList">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input id="projectId" type="hidden" asp-for="ProjectId" />
-                <input id="fieldWorkId" type="hidden" />
-                
-
+                <input type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
-                    <div class="card-header">WorkPlan - FieldWork </div>
+                    <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
 
 
                     <div class="card-body">
 
                         <div class="row">
-
-
                             <div class="col-12">
-                                <label asp-for="Wfieldwork" class="control-label"></label>
-                                <textarea id="wfieldwork" asp-for="Wfieldwork" rows="3" class="form-control txt-wfieldwork"></textarea>
-                                <span asp-validation-for="Wfieldwork" class="text-danger"></span>
+                                <label asp-for="Objectives" class="control-label"></label>
+                                <textarea asp-for="Objectives" rows="3" class="form-control"></textarea>
+                                @*<select  asp-validation-for="Objectives" class="text-danger"></select>*@
                             </div>
+                        </div>
 
-                            <div class="col-6">
-                                <label asp-for="Area" class="control-label"></label>
-                                <input id="area" asp-for="Area" class="form-control txt-area" />
-                                <span asp-validation-for="Area" class="text-danger"></span>
-                            </div>
 
-                            <div class="col-6">
-                                <label asp-for="LocationId" class="control-label"></label>
-                                <select id="locaionId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
-                            </div>
-                            <div class="col6">
-                                <label asp-for="DateStarted" class="control-label"></label>
-                                <input id="dateStarted"  class="form-control dateStr" />
-                                <span asp-validation-for="DateStarted" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="DateEnded" class="control-label"></label>
-                                <input  id="dateEnded"  class="form-control  />
-                                <span asp-validation-for="DateEnded" class="text-danger"></span>
-                            </div>
-                           
+                        <br>
 
+                        <div class="row">
                             <div class="col-12">
-                                <label asp-for="FieldoptionId" class="control-label"></label>
-                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control" asp-items="ViewBag.fieldItems"></select>
+                                <label asp-for="ObjWorkPlan" class="control-label"></label>
+                                <textarea asp-for="ObjWorkPlan" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="ObjWorkPlan" class="text-danger"></span>
                             </div>
+                        </div>
 
-                            
 
-                            <br />
-                            <div class="form-group">
-                                <input type="submit"  id="btnSubmit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                        <br>
+
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="PresentOutlook" class="control-label"></label>
+                                <textarea asp-for="PresentOutlook" rows="3" class="form-control"></textarea>
+                                <span asp-validation-for="PresentOutlook" class="text-danger"></span>
                             </div>
+                        </div>
 
+                        <br>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
 
                         </div>
 
+
+
+
+
+
                     </div>
 
+
+
                     <div class="card-footer">
-
                         <div class="btn btn-primary col align-content-center"><a asp-action="ProjectList" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
-
-
-
 
                         <div class="btn btn-primary col align-content-end"><a asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
 
                     </div>
 
+
+
+
                 </div>
+
             </form>
         </div>
 
     </div>
 
             
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="myToast" class="toast">
-            <div class="toast-header bg-success">
-                <strong class="me-auto text-light">Update..</strong>
-                <small>Just Now...</small>
-                <button class="close" data-bs-dismiss="toast"> </button>
-
-
-            </div>
-            <div class="toast-body ">
-                Proceso completado satisfactoriamente
-            </div>
-        </div>
-    </div>
+    
 
 
 
     <br />
 
 
-    <table class="table table-bordered" id="fieldTable">
-        <thead>
-            <h1 class="fieldId" style="display:none" class="field-id">@Model.FieldWorkId </h1>
-            <tr>
-
-                
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Wfieldwork)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Area)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.DateStarted)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateEnded)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FieldoptionId)
-                </th>
-                
-                <th>
-                    Location
-                </th>
-               
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.fieldsWork)
-            {
-                <tr>
-                    <td class="FieldId">
-                        @Html.DisplayFor(modelItem => item.FieldWorkId)
-                    </td>
-
-
-                    <td class="Wfieldwork">
-                        @Html.DisplayFor(modelItem => item.Wfieldwork)
-                    </td>
-                    <td class="area">
-                        @Html.DisplayFor(modelItem => item.Area)
-                    </td>
-
-
-                    @*
-                        Francis:
-                        Por favor revisar esta parte:
-                        Al llenar el formulario y presionar el boton Add , las fechas no se envian correctamente,
-                        se envian con un resultado que no es el que se solicitó por el datepicker , dando como valor 1/1/0001,
-                        el formato deseado es MM/dd/yyyy.
-
-
-
-                    *@
-
-                    <td class="dateStarted">
-                        @Html.DisplayFor(modelItem => item.DateStarted)
-                    </td>
-                    <td class="dateEnded">
-                        @Html.DisplayFor(modelItem => item.DateEnded)
-                    </td>
-                    <td class="inProgress">
-                        @Html.DisplayFor(modelItem => item.Fieldoption.OptionName)
-                    </td>
-                    
-                    <td class="location">
-                        @Html.DisplayFor(modelItem => item.Location.LocationName)
-                    </td>
-                    
-                    <td>
-                        <div class="row">
-                            <div class="col-4">
-                                <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.FieldoptionId|@item.ProjectId|@item.LocationId"
-                                    class="btn  btn-success modify">
-                                    Modify
-                                </button>
-                            </div>
-
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-
-</div>
 
 @*
     depreciated

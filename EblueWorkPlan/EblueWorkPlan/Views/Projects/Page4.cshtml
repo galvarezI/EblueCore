@@ -7,11 +7,10 @@
 
 <h1>Research Project for: @Model.ProjectNumber</h1>
 
-<h3>Analitycal Page</h3>
+<h3>Laboratory Page</h3>
 <br />
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link " id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-details" aria-selected="false"><i class="fa-solid fa-0" style="color: #2267dd;"></i></button>
         <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" asp-action="ProjectList" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" asp-action="Page2" asp-controller="Projects"><i class="fa-solid fa-2" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-laboratory-tab" data-bs-toggle="tab" data-bs-target="#nav-laboratory" type="button" role="tab" aria-controls="nav-laboratory" aria-selected="false" asp-action="Page3" asp-controller="Projects"><i class="fa-solid fa-3" style="color: #2267dd;"></i></button>
@@ -32,39 +31,58 @@
     <div class="tab-pane fade show active" id="nav-analytical" role="tabpanel" aria-labelledby="nav-analytical-tab" tabindex="0">
         <div class="row g-3">
 
-            <form asp-action="Page4">
+            <form asp-action="Page3">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="card">
-                    <div class="card-header">
-                        Analytical
-                    </div>
+
+                    <div class="card-header">Laboratory </div>
+
 
                     <div class="card-body">
 
                         <div class="row">
-                            
                             <input id="projectId" type="hidden" asp-for="ProjectId" />
-                            <input id="analitycalId" type="hidden"  />
-                            <div class="form-group">
-                                <label asp-for="AnalysisRequired" class="control-label"></label>
-                                <input id="analysis" asp-for="AnalysisRequired" class="form-control txt-anR" />
-                                <span asp-validation-for="AnalysisRequired" class="text-danger"></span>
+                            <input id="labId" type="hidden" asp-for="LabId" />
+                            <div class="col-12">
+                                <label asp-for="WorkPlanned" class="control-label"></label>
+                                <textarea id="workplanned" asp-for="WorkPlanned" rows="3" class="form-control txt-w"></textarea>
+                                <span asp-validation-for="WorkPlanned" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="NumSamples" class="control-label"></label>
-                                <input id="numSamples" asp-for="NumSamples" class="form-control txt-Num" />
-                                <span asp-validation-for="NumSamples" class="text-danger"></span>
+
+
+                            <div class="row">
+                                <div class="form-group col-4">
+                                    <label asp-for="Descriptions" class="control-label"></label>
+                                    <input id="descriptions" asp-for="Descriptions" class="form-control txt-d" />
+                                    <span asp-validation-for="Descriptions" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label asp-for="TimeEstimated" class="control-label"></label>
+                                    <input id="timeEstimated" class="form-control txt-est" />
+                                    <span asp-validation-for="TimeEstimated" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="form-group col-4">
+                                    <label asp-for="FacilitiesNeeded" class="control-label"></label>
+                                    <input id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn" />
+                                    <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <label asp-for="CentralLaboratory" class="control-label"></label>
+                                    <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"></textarea>
+                                    <span asp-validation-for="CentralLaboratory" class="text-danger"></span>
+                                </div>
+
                             </div>
-                            <div class="form-group">
-                                <label asp-for="ProbableDate" class="control-label"></label>
-                                <input id="pblDate" class="form-control txt-pd" />
-                                <span asp-validation-for="ProbableDate" class="text-danger"></span>
-                            </div>
-                            
+
                             <br />
-                            <div class="form-group">
-                                <input type="submit" id="btnSubmit" value="Add" class="btn btn-primary" />
+                            <div class="form-group" style="padding-top:20px;">
+                                <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
                                 <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
@@ -73,71 +91,86 @@
 
                     </div>
 
-                            <div class="card-footer">
 
-                                <div class="btn btn-primary col align-content-center"><a asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
+                    <div class="card-footer">
+
+                        <div class="btn btn-primary col align-content-center"><a asp-action="Page3" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Back</a></div>
 
 
 
 
-                                <div class="btn btn-primary col align-content-end"><a  asp-action="Page5" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
+                        <div class="btn btn-primary col align-content-end"><a asp-action="Page5" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white;">Next</a></div>
 
-                            </div>
-
+                    </div>
                 </div>
-
             </form>
-
             <br />
 
 
-            
 
-            <table class="table table-bordered" id="analyticTable">
+
+            <table class="table table-bordered " id="labTable">
                 <thead>
-
+                    <h1 class="LabId" style="display:none" class="field-id">@Model.LabId </h1>
                     <tr>
-                        
 
                         <th>
-                            @Html.DisplayNameFor(model => model.AnalysisRequired)
+                            @Html.DisplayNameFor(model => model.WorkPlanned)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NumSamples)
+                            @Html.DisplayNameFor(model => model.Descriptions)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProbableDate)
+                            @Html.DisplayNameFor(model => model.TimeEstimated)
                         </th>
-                        
-                        <th>Actions</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FacilitiesNeeded)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CentralLaboratory)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.analyticals)
+                    @foreach (var item in Model.laboratories)
                     {
                         <tr>
 
 
-                            <td class="anR">
-                                @Html.DisplayFor(modelItem => item.AnalysisRequired)
+
+                            <td class="workplanned">
+                                @Html.DisplayFor(modelItem => item.WorkPlanned)
                             </td>
-                            <td class="numS">
-                                @Html.DisplayFor(modelItem => item.NumSamples)
+                            <td class="dess">
+                                @Html.DisplayFor(modelItem => item.Descriptions)
                             </td>
-                            <td class="pDate">
-                                @Html.DisplayFor(modelItem => item.ProbableDate)
+                            <td class="estimated">
+                                @Html.DisplayFor(modelItem => item.TimeEstimated)
                             </td>
-                            
+                            <td class="facili">
+                                @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
+                            </td>
+
+                            <td class="facili">
+                                @Html.DisplayFor(modelItem => item.CentralLaboratory)
+                            </td>
+
                             <td>
                                 <div class="row">
-                                    <div class="col-4">
-                                        <button data-id="@item.AnalyticalId|@item.AnalysisRequired|@item.NumSamples|@item.ProbableDate|@item.Project.ProjectId"
-                                            class="btn  btn-success modify">
-                                            Modify
-                                        </button>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId|@item.CentralLaboratory"
+                                                class="btn  btn-success modify">
+                                                Modify
+                                            </button>
+                                        </div>
 
                                     </div>
-                            
+
+                                </div>
                             </td>
                         </tr>
                     }
@@ -156,26 +189,28 @@
 
         $(function () {
 
-            $("#pblDate").datepicker();
 
+            $('#timeEstimated').datepicker()
 
 
             $(".modify").click(function () {
                 $("#btnSubmit").hide();
                 $("#btnSave").show();
+
+
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 5);
-                const probableDate = new Date(campos[3]).toLocaleDateString('en-US');
+                let campos = item.split("|", 7);
 
+                const estimateDate = new Date(campos[3]).toLocaleDateString('en-US');
 
-                $('#analitycalId').val(campos[0]);
-                $('#analysis').val(campos[1]);
-                $('#numSamples').val(campos[2]);
-                $('#pblDate').val(probableDate);
-                
-                $('#projectId').val(campos[4]);
-
+                $('#labId').val(campos[0]);
+                $('#workplanned').val(campos[1]);
+                $('#descriptions').val(campos[2]);
+                $('#timeEstimated').val(estimateDate);
+                $('#facilitiesNeeded').val(campos[4]);
+                $('#projectId').val(campos[5]);
+                $('#central').val(campos[6]);
             });
 
 
@@ -185,13 +220,13 @@
                 $("#btnSubmit").show();
 
                 const params = {
-                    analitycalId: $('#analitycalId').val(),
-                    analysis: $('#analysis').val(),
-                    numSamples: $('#numSamples').val(),
-                    pblDate: $('#pblDate').val(),
-
+                    labId: $('#labId').val(),
                     projectId: $('#projectId').val(),
-
+                    workplanned: $('#workplanned').val(),
+                    descriptions: $('#descriptions').val(),
+                    TimeEstimated: $('#timeEstimated').val(),
+                    facilitiesNeeded: $('#facilitiesNeeded').val(),
+                    CentralLaboratory: $('#central').val()
                 };
 
 
@@ -200,7 +235,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: '/Projects/PostPage4Data',
+                    url: '/Projects/PostPage3Data',
                     data: params,
                     success: function () {
                         alert('Entre');

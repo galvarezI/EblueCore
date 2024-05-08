@@ -112,13 +112,13 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
 
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateStarted { get; set; }
 
         public string DateStartedStr { get; set; }
 
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateEnded { get; set; }
 
@@ -240,8 +240,10 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "Graduated or Undergraduated")]
         public int? GradoptionId { get; set; }
 
+
         public int? StudentId { get; set; }
 
+        [Display(Name = "Student ID")]
         public decimal? Amount { get; set; }
 
         public int? RoleId { get; set; }
@@ -266,20 +268,26 @@ namespace EblueWorkPlan.Models.ViewModels
         public string Facilities { get; set; }
 
         [Display(Name = "Project Impact")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public string Impact { get; set; }
 
 
-
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Materials { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Equipment { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Travel { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Abroad { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Others { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal TotalAmount { get; set; }
 
         public int? Wfsid { get; set; }
@@ -298,19 +306,24 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string WorkPlan2 { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Wages { get; set; }
 
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Salaries { get; set; }
 
 
-
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Benefits { get; set; }
 
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        [Display(Name = "Assistanships")]
         public decimal? Assistant { get; set; }
 
 
-
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Subcontracts { get; set; }
 
 
@@ -319,7 +332,59 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Ufisaccount { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? IndirectCosts { get; set; }
+
+
+
+        #region totalfunds
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TSalaries { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TWages { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TBenefits { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TAssistant { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TMaterials { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TEquipment { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TTravel { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TAbroad { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TSubcontracts { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TOthers { get; set; }
+
+        
+      
+
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TIndirectCosts { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public decimal? TTotalAmount { get; set; }
+
+
+
+        #endregion
+
+
+
 
 
         //from Project Status
@@ -336,7 +401,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int ProjectNotesId { get; set; }
 
-        [Display (Name="Principal Investigator  Comments")]
+        [Display (Name="Leave your Comment Here!")]
         public string Comment { get; set; }
 
         [Display(Name =" last Update")]
@@ -361,14 +426,21 @@ namespace EblueWorkPlan.Models.ViewModels
         //Admin Comments...
         public int AdminOfficerCommentsId { get; set; }
 
+
+        [Display(Name = " Administrative Comments")]
         public string AdComments { get; set; }
 
+        [Display(Name = " Project Vigency")]
         public DateTime? ProjectVigency { get; set; }
 
+
+        [Display(Name = " Review Date")]
         public DateTime? ReviewDate { get; set; }
 
+        [Display(Name = " Workplan Quantity")]
         public string WorkplanQuantity { get; set; }
 
+        [Display(Name = " Funds Comments")]
         public string FundsComments { get; set; }
 
 
