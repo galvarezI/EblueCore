@@ -23,6 +23,8 @@ public partial class ProjectNote
 
     public string DeanComments { get; set; }
 
+    public string Roles { get; set; }
+
     public virtual Project Project { get; set; }
 
     public virtual Roster Roster { get; set; }

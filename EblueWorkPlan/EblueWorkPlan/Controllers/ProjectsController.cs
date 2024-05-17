@@ -12,6 +12,9 @@ using Microsoft.Build.Execution;
 using Rotativa.AspNetCore;
 using Microsoft.Build.Evaluation;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -561,6 +564,21 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> ProjectDetails(int? id)
         {
+
+            var query = (from p in _context.Projects
+                         where p.ProjectId == id
+                         select p).FirstOrDefault();
+
+
+            ProjectFormView projectTemplate = new ProjectFormView()
+            {
+                Projects = query,
+                ProjectNumber = query.ProjectNumber
+
+            };
+
+
+
             var rosters = _context.Rosters.ToList();
             _rosterItems = new List<SelectListItem>();
             foreach (var item in rosters)
@@ -619,7 +637,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-            return View(project);
+            return View(projectTemplate);
         }
 
 
@@ -1588,12 +1606,7 @@ namespace EblueWorkPlan.Controllers
                     Gname = projectTemplate.Gname,
                     Thesis = projectTemplate.Thesis,
                     StudentId= projectTemplate.StudentId,
-                    Amount= projectTemplate.Amount,
-                    RoleId= projectTemplate.RoleId,
-                    StudentName= projectTemplate.StudentName,
                     GradoptionId= projectTemplate.GradoptionId,
-                    //IsGraduated= projectTemplate.IsGraduated,
-                    //IsUndergraduated= projectTemplate.IsUndergraduated,
                     ProjectId= project.ProjectId,
                     ThesisProjectId= projectTemplate.ThesisProjectId,
                     
@@ -1635,12 +1648,10 @@ namespace EblueWorkPlan.Controllers
 
                 query.Thesis = projectTemplate.thesis;
                 query.StudentId = projectTemplate.student;
-                query.Amount = projectTemplate.amount;
-                query.StudentName = projectTemplate.studentName;
+          
+               
                 query.GradoptionId = projectTemplate.gradoption;
                 query.ThesisProjectId = projectTemplate.thesisid;
-                //query.IsGraduated = projectTemplate.isGraduated;
-                //query.IsUndergraduated = projectTemplate.isUndergraduated;
                 query.ProjectId = projectTemplate.projectId;
                 _context.SaveChanges();
 
@@ -2009,7 +2020,8 @@ namespace EblueWorkPlan.Controllers
                 ProjectNote notes = new ProjectNote()
                 {
                     Comment = projectForm.Comment,
-                    Username = UserName.RosterName,
+                    Username = User.Identity.Name,
+                    Roles = HttpContext.User.FindAll(ClaimTypes.Role).Select(r => r.Value).FirstOrDefault(),
                     LastUpdate = DateTime.Now,
                     ProjectId = id,
                     RosterId= projectForm.RosterId,
@@ -2022,11 +2034,18 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(notes);
                 await _context.SaveChangesAsync();
 
+                return RedirectToAction("Page11", new
+                {
+                    ID = id,
+                    
+                });
+
+
                 //return RedirectToAction("Index", new
                 //{
                 //    ID = id
 
-                return View();
+                //return View();
 
             
 

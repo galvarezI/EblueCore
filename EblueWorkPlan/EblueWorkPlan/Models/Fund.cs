@@ -9,7 +9,6 @@ public partial class Fund
     public int FundId { get; set; }
 
     public int LocationId { get; set; }
-
     [DisplayFormat(DataFormatString = "{0:N2}")]
     public decimal? Salaries { get; set; }
 
@@ -40,7 +39,7 @@ public partial class Fund
     [DisplayFormat(DataFormatString = "{0:N2}")]
     public decimal? Others { get; set; }
 
-    [DisplayFormat(DataFormatString = "{0:N2}")]
+
     public int ProjectId { get; set; }
 
     [DisplayFormat(DataFormatString = "{0:N2}")]

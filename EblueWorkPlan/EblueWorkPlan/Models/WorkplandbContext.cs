@@ -583,6 +583,7 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.DepartmentDirectorComments).HasColumnType("text");
             entity.Property(e => e.LastUpdate).HasColumnType("datetime");
             entity.Property(e => e.ProjectId).HasColumnName("ProjectID");
+            entity.Property(e => e.Roles).HasColumnType("text");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Username).HasColumnType("text");

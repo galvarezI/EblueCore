@@ -12,7 +12,6 @@ public partial class Laboratory
 
     public string NoSamples { get; set; }
 
-    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? SamplesDate { get; set; }
 
     public int? ProjectId { get; set; }
@@ -25,6 +24,7 @@ public partial class Laboratory
 
     public string FacilitiesNeeded { get; set; }
 
+    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? TimeEstimated { get; set; }
 
     public string CentralLaboratory { get; set; }

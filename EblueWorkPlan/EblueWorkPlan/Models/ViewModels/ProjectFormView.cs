@@ -67,6 +67,8 @@ namespace EblueWorkPlan.Models.ViewModels
         public int? FiscalYearId { get; set; }
 
 
+        public string Substation { get; set; }
+
         [Display(Name = "Project Objective(s)")]
         public string? Objectives { get; set; }
 
