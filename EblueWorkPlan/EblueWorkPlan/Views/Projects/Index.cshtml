@@ -80,12 +80,16 @@
                 </td>
 
                 <td>
-                    @item.ProjectStatusId
+                    @Html.DisplayFor(modelItem => item.ProjectStatusId)
                 </td>
                 <td>
-                    <a asp-action="Page0" asp-route-id="@item.ProjectId">Access</a> |
-                    <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                    <a class="btn btn-primary" asp-action="Page0" asp-route-id="@item.ProjectId">Access</a> |
+                    <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
 
+                    @if (User.IsInRole(" Research Director or Representative") || User.IsInRole("Administrator"))
+                    {
+                        <a class="btn btn-success" asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Approve-Reject</a> 
+                    }
 
                 </td>
             </tr>

@@ -2,7 +2,7 @@
 
 <partial name="_Sidebar2" />
 
-
+<h1>Research Project for: @Model.ProjectId</h1>
 
 
 <div class="tab-content" id="nav-tabContent">
@@ -12,7 +12,7 @@
 
             <form asp-action="ProjectDetails">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ProjectId" />
+                <input type="hidden" id="projectId" asp-for="ProjectId" />
                 <div class="card">
 
                     <div class="card-header">Project Template</div>
@@ -98,12 +98,20 @@
                         </div>
 
 
+
+                        <div class="card aprove-section">
+                            <input data-id="@Model.ProjectId" type="button" id="approve" value="Aprove" class="btn btn-success "  />
+                            <input data-id="@Model.ProjectId" type="button" id="reject" value="Reject" class="btn btn-danger " />
+                        </div>
+
+
+
                     </div>
 
                     <div class="card-footer">
 
                         <div class="form-group">
-                            <input type="submit" value="Next" class="btn btn-primary " asp-route-ProjectId="ProjectId" />
+                            <input type="submit" value="Back Home" class="btn btn-primary " asp-action="Index" asp-controller="Projects" />
                         </div>
                     </div>
 
@@ -111,63 +119,125 @@
             </form>
         </div>
     </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-        <form asp-action="Page2">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProjectId" />
-            <div class="card">
+        
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="myapprove" class="toast">
+                    <div class="toast-header bg-success">
+                        <strong class="me-auto text-light">Update..</strong>
+                        <small>Just Now...</small>
+                        <button class="close" data-bs-dismiss="toast"> </button>
 
-                <div class="card-header">Create Project: @Html.DisplayFor(modelItem => Model.ProjectNumber)</div>
 
-
-                <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-12">
-                            <label asp-for="Objectives" class="control-label"></label>
-                            <input asp-for="Objectives" class="form-control" />
-                            <span asp-validation-for="Objectives" class="text-danger"></span>
-                        </div>
                     </div>
-
-
-                    <div class="row">
-                        <div class="col-12">
-                            <label asp-for="ObjWorkPlan" class="control-label"></label>
-                            <input asp-for="ObjWorkPlan" class="form-control" />
-                            <span asp-validation-for="ObjWorkPlan" class="text-danger"></span>
-                        </div>
+                    <div class="toast-body ">
+                        Approved!
                     </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <label asp-for="PresentOutlook" class="control-label"></label>
-                            <input asp-for="PresentOutlook" class="form-control" />
-                            <span asp-validation-for="PresentOutlook" class="text-danger"></span>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
                 </div>
+            </div>
 
 
 
-                <div class="form-group">
-                    <a class="btn btn-success" asp-action="ProjectList"  asp-route-id ="@Model.ProjectId">Next</a>
-                </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="myreject" class="toast">
+            <div class="toast-header bg-danger">
+                <strong class="me-auto text-light">Update..</strong>
+                <small>Just Now...</small>
+                <button class="close" data-bs-dismiss="toast"> </button>
 
 
             </div>
-        </form>
+            <div class="toast-body ">
+                Rejected!
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     </div>
 </div>
 
+@section scripts{
+    <script>
 
+
+
+
+
+
+        $(function () {
+
+
+
+
+            $("#approve").click(function () {
+
+                let item = $(this).attr("data-id");
+                console.log(item)
+
+
+               const params = {
+                    
+
+
+                    ProjectId: $('#projectId').val(),
+                    
+                };
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostApproveData',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+
+                    },
+                    dataType: 'json'
+                });
+
+
+                $('#myapprove').show();
+            });
+
+
+              $("#reject").click(function () {
+
+                let item = $(this).attr("data-id");
+                console.log(item)
+
+               const params = {
+
+                    
+
+
+                    ProjectId: $('#projectId').val(),
+                    
+                };
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostRejectData',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+
+                    },
+                    dataType: 'json'
+                });
+
+
+                $('#myreject').show();
+            });
+
+
+
+
+
+        });
+
+
+    </script>
+
+}
 
 

@@ -572,9 +572,10 @@ namespace EblueWorkPlan.Controllers
 
             ProjectFormView projectTemplate = new ProjectFormView()
             {
+                ProjectId = query.ProjectId,
                 Projects = query,
                 ProjectNumber = query.ProjectNumber
-
+                ,ProjectTitle = query.ProjectTitle
             };
 
 
@@ -618,21 +619,7 @@ namespace EblueWorkPlan.Controllers
 
             ViewBag.rosterPI = _rosterItems;
 
-            ViewBag.CommoditiesItem = new SelectList(_context.Commodities, "CommId", "CommName");
-            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
-            ViewBag.FiscalYearItem = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName");
-            ViewBag.ProgramAreaItem = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName");
-            ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
-            ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
-            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
-
-
-
-            ViewData["CommId"] = new SelectList(_context.Commodities, "CommId", "CommName", project.CommId);
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "DepartmentId", "DepartmentName", project.DepartmentId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "FiscalYearName", project.FiscalYearId);
-            ViewData["ProgramAreaId"] = new SelectList(_context.ProgramAreas, "ProgramAreaId", "ProgramAreaName", project.ProgramAreaId);
-            ViewData["SubstationId"] = new SelectList(_context.Substacions, "SubStationId", "SubStationName", project.SubStationId);
+           
 
 
 
@@ -687,6 +674,49 @@ namespace EblueWorkPlan.Controllers
                 });
             }
            
+            return View();
+
+
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostApproveData(ProjectDetailsVM projectFormView)
+        {
+
+            int id = int.Parse(projectFormView.ProjectId);
+
+
+            var query = (from p in _context.Projects
+                         where p.ProjectId == id
+                         select p).FirstOrDefault();
+
+
+            query.ProjectStatusId= 11;
+            _context.SaveChanges();
+
+            return View();
+
+
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PostRejectData(ProjectDetailsVM projectFormView)
+        {
+
+
+
+            int id = int.Parse(projectFormView.ProjectId);
+            var query = (from p in _context.Projects
+                         where p.ProjectId == id
+                         select p).FirstOrDefault();
+
+
+            query.ProjectStatusId = 12;
+            _context.SaveChanges();
+
             return View();
 
 

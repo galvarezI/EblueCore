@@ -62,3 +62,24 @@ body {
     font-size: 14px;
     margin-top: 12px
 }
+
+
+
+/**Approve Section*/
+.aprove-section {
+    display: grid;
+    grid-template-columns 2fr 2fr;
+    column-gap: 20px;
+
+}
+
+    .aprove-section .btn-success {
+        grid-column: 1/2;
+        margin-top: 40px;
+    }
+
+
+    .aprove-section .btn-danger {
+        grid-column: 2/3;
+        margin-top: 40px;
+    }
