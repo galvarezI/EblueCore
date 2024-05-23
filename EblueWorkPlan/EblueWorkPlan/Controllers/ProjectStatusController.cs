@@ -33,7 +33,7 @@ namespace EblueWorkPlan.Controllers
             }
 
             var projectStatus = await _context.ProjectStatuses
-                .FirstOrDefaultAsync(m => m.ProjectstatusId == id);
+                .FirstOrDefaultAsync(m => m.ProjectStatusId == id);
             if (projectStatus == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace EblueWorkPlan.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ProjectstatusId,StatusNumber,StatusName")] ProjectStatus projectStatus)
         {
-            if (id != projectStatus.ProjectstatusId)
+            if (id != projectStatus.ProjectStatusId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace EblueWorkPlan.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProjectStatusExists(projectStatus.ProjectstatusId))
+                    if (!ProjectStatusExists(projectStatus.ProjectStatusId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace EblueWorkPlan.Controllers
             }
 
             var projectStatus = await _context.ProjectStatuses
-                .FirstOrDefaultAsync(m => m.ProjectstatusId == id);
+                .FirstOrDefaultAsync(m => m.ProjectStatusId == id);
             if (projectStatus == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace EblueWorkPlan.Controllers
 
         private bool ProjectStatusExists(int id)
         {
-          return _context.ProjectStatuses.Any(e => e.ProjectstatusId == id);
+          return _context.ProjectStatuses.Any(e => e.ProjectStatusId == id);
         }
     }
 }

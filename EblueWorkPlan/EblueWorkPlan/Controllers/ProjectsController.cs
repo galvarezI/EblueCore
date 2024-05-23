@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Net;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -2044,8 +2045,11 @@ namespace EblueWorkPlan.Controllers
         {
             if (ModelState.IsValid)
             {
-                var UserName = (from us in _context.Rosters
-                                where us.RosterId == projectForm.RosterId
+                var email = HttpContext.User.FindAll(ClaimTypes.Email).Select(r => r.Value).FirstOrDefault();
+
+
+                var UserName = (from us in _context.Users
+                                where us.Email == email
                                 select us).FirstOrDefault();
                 ProjectNote notes = new ProjectNote()
                 {
@@ -2054,7 +2058,7 @@ namespace EblueWorkPlan.Controllers
                     Roles = HttpContext.User.FindAll(ClaimTypes.Role).Select(r => r.Value).FirstOrDefault(),
                     LastUpdate = DateTime.Now,
                     ProjectId = id,
-                    RosterId= projectForm.RosterId,
+                    UserId = UserName.UserId
                     
 
 
@@ -2464,7 +2468,8 @@ namespace EblueWorkPlan.Controllers
             return View(reportTemplate);
         }
 
-
+        
+        
 
 
         #region depreciated

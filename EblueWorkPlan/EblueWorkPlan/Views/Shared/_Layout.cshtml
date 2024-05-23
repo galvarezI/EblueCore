@@ -47,6 +47,37 @@
           
         });
 
+        const userAunth = '@User.Identity!.IsAuthenticated' === 'True';
+        const cantidadSegundosDeslog = 3 * 1000;
+
+        if(userAunth){
+            function timerInactivo(){
+
+
+                let timer;
+                document.onmousemove = resetTimer;
+                document.onkeypress = resetearTimer
+
+                function resetTimer(){
+                
+                    clearTimeout(timer);
+                    timer = setTimeout(logout, cantidadSegundosDeslog)
+
+
+                }
+
+                function logout(){
+                
+                    const btnLogout = document.getElementById('btn-logout');
+                    btnLogout.click();
+
+                }
+
+            }
+        
+        
+        }
+
         
     </script>
 

@@ -86,7 +86,7 @@
                     <a class="btn btn-primary" asp-action="Page0" asp-route-id="@item.ProjectId">Access</a> |
                     <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
 
-                    @if (User.IsInRole(" Research Director or Representative") || User.IsInRole("Administrator"))
+                    @if (User.IsInRole(" Research Director or Representative") || User.IsInRole("Administrator") && item.ProjectStatusId == 9)
                     {
                         <a class="btn btn-success" asp-action="ProjectDetails" asp-route-id="@item.ProjectId">Approve-Reject</a> 
                     }

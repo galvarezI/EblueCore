@@ -5,7 +5,7 @@ namespace EblueWorkPlan.Models;
 
 public partial class ProjectStatus
 {
-    public int ProjectstatusId { get; set; }
+    public int ProjectStatusId { get; set; }
 
     public int? StatusNumber { get; set; }
 

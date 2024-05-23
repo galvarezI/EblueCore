@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -24,7 +23,6 @@ public partial class Laboratory
 
     public string FacilitiesNeeded { get; set; }
 
-    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? TimeEstimated { get; set; }
 
     public string CentralLaboratory { get; set; }

@@ -603,11 +603,11 @@ public partial class WorkplandbContext : DbContext
 
         modelBuilder.Entity<ProjectStatus>(entity =>
         {
-            entity.HasKey(e => e.ProjectstatusId).HasName("PK__ProjectS__5D285B23212BDFA7");
+            entity.HasKey(e => e.ProjectStatusId).HasName("PK__ProjectS__5D285B23212BDFA7");
 
             entity.ToTable("ProjectStatus");
 
-            entity.Property(e => e.ProjectstatusId).HasColumnName("projectstatusId");
+            entity.Property(e => e.ProjectStatusId).HasColumnName("ProjectStatusID");
             entity.Property(e => e.StatusName)
                 .HasMaxLength(250)
                 .IsUnicode(false);
