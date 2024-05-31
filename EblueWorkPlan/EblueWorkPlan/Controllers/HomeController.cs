@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using AspNetCore.Reporting;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -41,6 +42,22 @@ namespace EblueWorkPlan.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
+
+
+
+
+        public IActionResult Print()
+        {
+
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            var filepath = @"C:\\Users\\GGJEANZS\\Documents\\Projects.rdl";
+            var local = new LocalReport(filepath);
+            var rpt = local.Execute(RenderType.Pdf );
+
+            return File(rpt.MainStream, "application/pdf");
+        }
 
 
         //public IActionResult Signin()

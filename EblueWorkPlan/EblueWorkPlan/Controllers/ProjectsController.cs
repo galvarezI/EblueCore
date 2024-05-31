@@ -16,6 +16,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Net;
+using AspNetCore.Reporting;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -51,6 +52,7 @@ namespace EblueWorkPlan.Controllers
             var projects = await _context.Projects.Include(p => p.Comm)
                 .Include(p => p.Department)
                 .Include(p => p.FiscalYear)
+                .Include(p => p.ProjectStatus)
                 .Include(p => p.ProgramArea).Include(p => p.Roster).ToListAsync();
                 
                 /*.Include(ps => ps.ProjectStatus)*/;
@@ -109,6 +111,7 @@ namespace EblueWorkPlan.Controllers
                 .Include(p => p.Department)
                 .Include(p => p.FiscalYear)
                 .Include(p => p.ProgramArea)
+                .Include(p => p.ProjectStatus)
                 .FirstOrDefaultAsync(m => m.ProjectId == id);
             if (project == null)
             {
@@ -566,6 +569,13 @@ namespace EblueWorkPlan.Controllers
         public async Task<IActionResult> ProjectDetails(int? id)
         {
 
+          
+
+
+
+
+
+
             var query = (from p in _context.Projects
                          where p.ProjectId == id
                          select p).FirstOrDefault();
@@ -626,6 +636,24 @@ namespace EblueWorkPlan.Controllers
 
 
             return View(projectTemplate);
+        }
+
+        // Report Section
+        public IActionResult Print(int? id)
+        {
+
+            string param = id.ToString();
+
+            Dictionary<string,string> parameters= new Dictionary<string,string>();
+            parameters.Add("projectID", param);
+
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            var filepath = @"C:\Users\GGJEANZS\Documents\Prueba.rdl";
+            var local = new LocalReport(filepath);
+            var rpt = local.Execute(RenderType.Pdf,0,parameters);
+
+            return File(rpt.MainStream, "application/pdf");
         }
 
 
@@ -868,7 +896,7 @@ namespace EblueWorkPlan.Controllers
 
                     query.ObjWorkPlan = project.ObjWorkPlan;
                     query.PresentOutlook = project.PresentOutlook;
-
+                    query.ProjectStatusId = 2;
 
                     _context.SaveChanges();
 
@@ -1001,6 +1029,7 @@ namespace EblueWorkPlan.Controllers
 
                 query.ContractNumber = project.ContractNumber;
                 query.Orcid = project.Orcid;
+                
 
                 _context.SaveChanges();
 
@@ -2048,9 +2077,7 @@ namespace EblueWorkPlan.Controllers
                 var email = HttpContext.User.FindAll(ClaimTypes.Email).Select(r => r.Value).FirstOrDefault();
 
 
-                var UserName = (from us in _context.Users
-                                where us.Email == email
-                                select us).FirstOrDefault();
+                
                 ProjectNote notes = new ProjectNote()
                 {
                     Comment = projectForm.Comment,
@@ -2058,7 +2085,7 @@ namespace EblueWorkPlan.Controllers
                     Roles = HttpContext.User.FindAll(ClaimTypes.Role).Select(r => r.Value).FirstOrDefault(),
                     LastUpdate = DateTime.Now,
                     ProjectId = id,
-                    UserId = UserName.UserId
+                    
                     
 
 

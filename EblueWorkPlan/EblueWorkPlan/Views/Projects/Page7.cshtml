@@ -36,7 +36,7 @@
 
 <h1>Research Project for: @Model.ProjectNumber</h1>
 
-<h3>Graduates Page</h3>
+<h3>Graduate and Undergraduate Assistanships Page </h3>
 <br />
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -77,11 +77,7 @@
                                 <input id="gname" asp-for="Gname" class="form-control" />
                                 <span asp-validation-for="Gname" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="Thesis" class="control-label"></label>
-                                <input id="thesis" asp-for="Thesis" class="form-control" />
-                                <span asp-validation-for="Thesis" class="text-danger"></span>
-                            </div>
+                           
 
 
                             <div class="form-group">
@@ -152,9 +148,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Gname)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Thesis)
-                </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.ThesisProjectId)
                 </th>
@@ -183,9 +177,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Gname)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Thesis)
-                    </td>
+                   
                     <td>
                         @Html.DisplayFor(modelItem => item.ThesisProject.OptionName)
                     </td>
@@ -204,7 +196,7 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.Gaid|@item.Gname|@item.Thesis|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId"
+                                <button data-id="@item.Gaid|@item.Gname|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -250,7 +242,7 @@
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 7);
+                let campos = item.split("|", 6);
 
 
 
@@ -260,13 +252,13 @@
 
                 $('#gradId').val(campos[0]);
                 $('#gname').val(campos[1]);
-                $('#thesis').val(campos[2]);
-                $('#student').val(campos[4]);
+                
+                $('#student').val(campos[3]);
 
-                $('#thesisid').val(campos[3]);
-                $('#gradoption').val(campos[5]);
+                $('#thesisid').val(campos[2]);
+                $('#gradoption').val(campos[4]);
                 //$('#isGraduated').prop('checked', isGraduated)
-                $('#projectId').val(campos[6]);
+                $('#projectId').val(campos[5]);
 
             });
 

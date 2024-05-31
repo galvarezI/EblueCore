@@ -9,7 +9,7 @@
 
 <h1>Research Project for: @Model.ProjectNumber</h1>
 
-<h3>Personel Page</h3>
+<h3>Personnel Page</h3>
 <br />
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -39,7 +39,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="card">
 
-                    <div class="card-header">Other Personel </div>
+                    <div class="card-header">Other Personnel </div>
 
 
                     <div class="card-body">
@@ -66,16 +66,7 @@
                                 <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
 
-                            <div class="form-group">
-                                <label asp-for="PersonnelManAdded" class="control-label"></label>
-                                <input id="personnelman" asp-for="PersonnelManAdded" class="form-control" />
-                                <span asp-validation-for="PersonnelManAdded" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="RoleManAdded" class="control-label"></label>
-                                <input id="roleman" asp-for="RoleManAdded" class="form-control" />
-                                <span asp-validation-for="RoleManAdded" class="text-danger"></span>
-                            </div>
+                           
                                 <br />
 
                             <div class="form-group">
@@ -125,12 +116,7 @@
                        
                         
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PersonnelManAdded)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.RoleManAdded)
-                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.Location)
                     </th>
@@ -161,12 +147,7 @@
                             @*@Html.DisplayFor(modelItem => item.PerTime)*@ @porcent   %
 
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PersonnelManAdded)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RoleManAdded)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(modelItem => item.Location.LocationName)
                         </td>

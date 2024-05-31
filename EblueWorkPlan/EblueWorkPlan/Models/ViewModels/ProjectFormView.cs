@@ -239,7 +239,7 @@ namespace EblueWorkPlan.Models.ViewModels
         public int? ThesisProjectId { get; set; }
 
 
-        [Display(Name = "Graduated or Undergraduated")]
+        [Display(Name = "Graduate or Undergraduate")]
         public int? GradoptionId { get; set; }
 
 
@@ -429,20 +429,20 @@ namespace EblueWorkPlan.Models.ViewModels
         public int AdminOfficerCommentsId { get; set; }
 
 
-        [Display(Name = " Administrative Comments")]
+        [Display(Name = "  Comments")]
         public string AdComments { get; set; }
 
-        [Display(Name = " Project Vigency")]
+        [Display(Name = " Start Date")]
         public DateTime? ProjectVigency { get; set; }
 
 
-        [Display(Name = " Review Date")]
+        [Display(Name = " End Date")]
         public DateTime? ReviewDate { get; set; }
 
-        [Display(Name = " Workplan Quantity")]
+        [Display(Name = "  Budget Distribution")]
         public string WorkplanQuantity { get; set; }
 
-        [Display(Name = " Funds Comments")]
+        [Display(Name = " Total Funding of the Project")]
         public string FundsComments { get; set; }
 
 

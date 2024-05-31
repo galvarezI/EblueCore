@@ -23,8 +23,6 @@ public partial class Project
 
     public DateTime? LastUpdate { get; set; }
 
-    public int ProjectStatusId { get; set; }
-
     public int? FiscalYearId { get; set; }
 
     public string Objectives { get; set; }
@@ -105,6 +103,8 @@ public partial class Project
 
     public string Substation { get; set; }
 
+    public int? ProjectStatusId { get; set; }
+
     public virtual ICollection<AdminOfficerComment> AdminOfficerComments { get; set; } = new List<AdminOfficerComment>();
 
     public virtual ICollection<Analytical> Analyticals { get; set; } = new List<Analytical>();
@@ -134,6 +134,8 @@ public partial class Project
     public virtual ProgramArea ProgramArea { get; set; }
 
     public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
+
+    public virtual ProjectStatus ProjectStatus { get; set; }
 
     public virtual Roster Roster { get; set; }
 

@@ -549,6 +549,10 @@ public partial class WorkplandbContext : DbContext
                 .HasForeignKey(d => d.ProgramAreaId)
                 .HasConstraintName("FK__projects__Progra__76969D2E");
 
+            entity.HasOne(d => d.ProjectStatus).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.ProjectStatusId)
+                .HasConstraintName("FK__projects__Projec__595B4002");
+
             entity.HasOne(d => d.Roster).WithMany(p => p.Projects)
                 .HasForeignKey(d => d.RosterId)
                 .HasConstraintName("FK__projects__Roster__3D2915A8");

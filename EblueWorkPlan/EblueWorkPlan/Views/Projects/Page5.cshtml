@@ -38,7 +38,7 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="card">
 
-                            <div class="card-header">Scientist Working for Project  </div>
+                            <div class="card-header">Scientist Working in Project  </div>
                     <input id="projectId" type="hidden" asp-for="ProjectId" />
                             <input id="sciPId" type="hidden" />
 
@@ -48,7 +48,7 @@
 
 
                                     <div class="form-group">
-                                        <label asp-for="RosterId" class="control-label"></label>
+                                <label class="control-label"> Name of Scientist </label>
                                         <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
                                     </div>
 
