@@ -34,7 +34,7 @@
         <div class="row g-3">
            <form asp-action="Page11">
                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ProjectId" />
+                <input id="projectId" type="hidden" asp-for="ProjectId" />
                     <div class="card">
 
                         <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label asp-for="AdComments" class="control-label"></label>
-                                    <textarea asp-for="AdComments" rows="3" class="form-control"></textarea>
+                                    <textarea id="adComments" asp-for="AdComments" rows="3" class="form-control"></textarea>
                                     <span asp-validation-for="AdComments" class="text-danger"></span>
                                 </div>
 
@@ -54,7 +54,7 @@
 
 
                                     <label asp-for="ProjectVigency" class="control-label"></label>
-                                    <input asp-for="ProjectVigency" class="form-control"></input>
+                                    <input id="txtStart" class="form-control"></input>
                                     <span asp-validation-for="ProjectVigency" class="text-danger"></span>
 
 
@@ -63,21 +63,27 @@
 
                                 <div class="col-6">
                                     <label asp-for="ReviewDate" class="control-label"></label>
-                                    <input asp-for="ReviewDate" class="form-control"></input>
+                                <input id="txtEnd"  class="form-control"></input>
                                     <span asp-validation-for="ReviewDate" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-10">
                                     <label asp-for="WorkplanQuantity" class="control-label"></label>
-                                    <input asp-for="WorkplanQuantity" class="form-control"></input>
+                                    <input id="workplanq" asp-for="WorkplanQuantity" class="form-control"></input>
                                     <span asp-validation-for="WorkplanQuantity" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-12">
                                     <label asp-for="FundsComments" class="control-label"></label>
-                                    <textarea asp-for="FundsComments" rows="3" class="form-control"></textarea>
+                                    <textarea id="fundcomments" asp-for="FundsComments" rows="3" class="form-control"></textarea>
                                     <span asp-validation-for="FundsComments" class="text-danger"></span>
                                 </div>
+
+                            <div class="col-12">
+                                <label asp-for="UserRole" class="control-label"></label>
+                                <input id="txtUserRole" asp-for="UserRole" class="form-control">
+                                <span asp-validation-for="UserRole" class="text-danger"></span>
+                            </div>
 
                             </div>
 
@@ -87,7 +93,7 @@
 
 
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" />
+                                <input id="btnSubmit" type="button" value="Add" class="btn btn-primary" />
                             </div>
 
                         </div>
@@ -125,17 +131,424 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
+
+
+
+
+
+@section scripts{
+
+
+            <script>
+
+                $(function () {
+
+
+                    $("#txtStart").datepicker();
+                    $("#txtEnd").datepicker();
+
+
+
+                    $("#nav-home-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectPL',
+                            data: params,
+                            success: function (response) {
+                                if(response.redirect){
+
+                                    window.location.href = response.url;
+
+                                }else{
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+                    $("#nav-profile-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP2',
+                            data: params,
+                            success: function (response) {
+                                if(response.redirect){
+
+                                    window.location.href = response.url;
+
+                                }else{
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+                $("#nav-laboratory-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP3',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+                $("#nav-analytical-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP4',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+                $("#nav-sciproject-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP5',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+                $("#nav-otherpersonel-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP6',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+
+                $("#nav-gradass-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP7',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+
+
+                $("#nav-fund-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP8',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+                $("#nav-budget-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP9',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+
+                $("#nav-notes-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP10',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+
+
+                $("#nav-adminnotes-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP11',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+
+            $("#btnSubmit").click(function () {
+
+                const params = {
+                    adComments: $('#adComments').val(),
+                    projectId: $('#projectId').val(),
+                    projectVigency: $('#txtStart').val(),
+                    reviewDate: $('#txtEnd').val(),
+                    workplanQuantity: $('#workplanq').val(),
+                    fundsComments: $('#fundcomments').val(),
+                    userRole: $('#txtUserRole').val()
+                };
+
+
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/Page11Post',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+                });
+
+                $('#formClr').find('input[type=text], input[type=email], textarea').val('');
+
+
+
+            });
+
+
+                });
+
+
+
+            </script>
+        }

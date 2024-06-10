@@ -37,7 +37,7 @@
 
         <form asp-action="Page0">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProjectId" />
+            <input id="projectId" type="hidden" asp-for="ProjectId" />
             <div class="card">
 
                 <div class="card-header">Project Template</div>
@@ -153,3 +153,44 @@
         </form>
     </div>
 </div>
+
+
+
+@section scripts{
+
+    <script>
+
+        $(function (){
+            
+            $("#nav-details-tab").click(function() {
+                
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP0',
+                    data: params,
+                    success: function () {
+                        alert('Entre');
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+            
+            });
+        
+        });
+
+
+
+    </script>
+
+
+
+
+}

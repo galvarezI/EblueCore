@@ -19,5 +19,9 @@ public partial class AdminOfficerComment
 
     public int? ProjectId { get; set; }
 
+    public string Username { get; set; }
+
+    public string UserRole { get; set; }
+
     public virtual Project Project { get; set; }
 }

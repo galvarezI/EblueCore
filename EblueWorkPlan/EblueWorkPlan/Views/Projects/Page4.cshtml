@@ -82,7 +82,7 @@
 
                             <br />
                             <div class="form-group" style="padding-top:20px;">
-                                <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
+                                <input type="button" value="Add" class="btn btn-primary" id="btnSubmit" />
                                 <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
@@ -192,6 +192,53 @@
 
             $('#timeEstimated').datepicker()
 
+            $("#btnSubmit").click(function () {
+
+                const params = {
+                    labId: $('#labId').val(),
+                    projectId: $('#projectId').val(),
+                    workplanned: $('#workplanned').val(),
+                    descriptions: $('#descriptions').val(),
+                    TimeEstimated: $('#timeEstimated').val(),
+                    facilitiesNeeded: $('#facilitiesNeeded').val(),
+                    CentralLaboratory: $('#central').val()
+                };
+
+
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/Page4Post',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+                });
+
+                $('#formClr').find('input[type=text], input[type=email], textarea').val('');
+
+
+
+            });
+
+
+
+
+
+
+
 
             $(".modify").click(function () {
                 $("#btnSubmit").hide();
@@ -243,7 +290,362 @@
                     dataType: 'json'
                 });
 
+                $('#formClr').find('input[type=text], input[type=email], textarea').val('');
+
             });
+
+
+             $("#nav-home-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectPL',
+                        data: params,
+                        success: function (response) {
+                            if(response.redirect){
+                            
+                                window.location.href = response.url;
+                            
+                            }else{
+                            
+                            
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+                $("#nav-profile-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP2',
+                        data: params,
+                        success: function (response) {
+                            if(response.redirect){
+                            
+                                window.location.href = response.url;
+                            
+                            }else{
+                            
+                            
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+            $("#nav-laboratory-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP3',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+            $("#nav-analytical-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP4',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+            $("#nav-sciproject-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP5',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+            $("#nav-otherpersonel-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP6',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+            $("#nav-gradass-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP7',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+
+            $("#nav-fund-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP8',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+            $("#nav-budget-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP9',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+            $("#nav-notes-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP10',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+
+            $("#nav-adminnotes-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP11',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
 
         });
 

@@ -15,5 +15,9 @@
     <WebStackScaffolding_ViewDialogWidth>650</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_LayoutPageFile />
+    <ActiveDebugProfile>EblueWorkPlan</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

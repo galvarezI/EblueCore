@@ -4,6 +4,8 @@
     {
 
         public string ProjectId { get; set; }
+        public string comment { get; set; }
+        public string userRole { get; set; }
 
 
     }

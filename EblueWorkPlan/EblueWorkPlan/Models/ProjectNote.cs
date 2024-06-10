@@ -25,6 +25,8 @@ public partial class ProjectNote
 
     public string Roles { get; set; }
 
+    public string UserRole { get; set; }
+
     public virtual Project Project { get; set; }
 
     public virtual Roster Roster { get; set; }

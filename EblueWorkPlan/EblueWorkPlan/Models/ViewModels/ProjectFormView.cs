@@ -411,7 +411,9 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int? UserId { get; set; }
 
-       
+
+        [Display(Name = " Role")]
+        public string userRole { get; set; }
 
         public string Username { get; set; }
 
@@ -445,7 +447,7 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = " Total Funding of the Project")]
         public string FundsComments { get; set; }
 
-
+        public string UserRole { get; set; }
 
 
         public virtual AdminOfficerComment AdminOfficerComment { get; set; }

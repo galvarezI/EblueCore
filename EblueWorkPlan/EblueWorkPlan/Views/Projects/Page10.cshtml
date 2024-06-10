@@ -35,7 +35,7 @@
         <div class="row g-3">
             <form asp-action="Page10">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ProjectId" />
+                <input id="projectId" type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
                     <div class="card-header"> Project Number : @Html.DisplayFor(modelItem => modelItem.ProjectNumber) </div>
@@ -48,6 +48,15 @@
                                 <label asp-for="Comment" class="control-label"></label>
                                 <textarea asp-for="Comment" rows="3" class="form-control"></textarea>
                                 <span asp-validation-for="Comment" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <label asp-for="userRole" class="control-label"></label>
+                                <input asp-for="userRole"  class="form-control">
+                                <span asp-validation-for="userRole" class="text-danger"></span>
                             </div>
                         </div>
 
@@ -117,11 +126,10 @@
                                     <div class="w-100">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex flex-row align-items-center">
-                                                <span class="mr-2">@Html.DisplayFor(modelitem => item.Username) </span>  @if (item.Roles != null)
-                                                {
+                                                <span class="mr-2">@Html.DisplayFor(modelitem => item.Username) </span>  
                                                        
-                                                        <small class="c-badge">@Html.DisplayFor(modelitem => item.Roles)</small>
-                                                    }
+                                                        <small class="c-badge">@Html.DisplayFor(modelitem => item.UserRole)</small>
+                                                    
                                             </div> <small>@Html.DisplayFor(modelitem => item.LastUpdate)</small>
                                         </div>
                                         <p class="text-justify comment-text mb-0">@Html.DisplayFor(modelitem => item.Comment)</p>
@@ -273,19 +281,6 @@
                   
                 
 
-            @{
-                //Dean Comments function..
-
-
-            }
-
-
-
-
-
-
-
-
 
                            
                 $('.dcomment').click(function () {
@@ -298,26 +293,356 @@
 
 
                 });
-                $('#deanComments').click(function () {
-                    const params = {
 
-                        commentId: $('#commentid').val(),
-                        DeanComments: $('#deanComments').val()
+                    $("#nav-home-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectPL',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+                    $("#nav-profile-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP2',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+                    $("#nav-laboratory-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP3',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+                    $("#nav-analytical-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP4',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+                    $("#nav-sciproject-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP5',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+
+                    $("#nav-otherpersonel-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP6',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
 
 
 
 
-                    };
+                    $("#nav-gradass-tab").click(function () {
 
-                    $.ajax({
-                        type: "POST",
-                        url: '/Projects/Page10DCommentPost',
-                        data: params,
-                        success: function () {
-                            alert('Entre');
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
 
-                        },
-                        dataType: 'json'
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP7',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+
+
+
+                    $("#nav-fund-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP8',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+
+                    $("#nav-budget-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP9',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+
+
+                    $("#nav-notes-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP10',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
+                    });
+
+
+
+
+
+                    $("#nav-adminnotes-tab").click(function () {
+
+                        const params = {
+                            ProjectId: $("#projectId").val()
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            url: '/Projects/RedirectP11',
+                            data: params,
+                            success: function (response) {
+                                if (response.redirect) {
+
+                                    window.location.href = response.url;
+
+                                } else {
+
+
+                                    alert('No funciona..');
+                                }
+
+                            },
+                            dataType: 'json'
+
+
+
+                        });
+
                     });
 
                 });

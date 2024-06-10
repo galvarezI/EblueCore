@@ -95,6 +95,8 @@ public partial class WorkplandbContext : DbContext
                 .HasColumnType("date")
                 .HasColumnName("projectVigency");
             entity.Property(e => e.ReviewDate).HasColumnType("date");
+            entity.Property(e => e.UserRole).HasColumnType("text");
+            entity.Property(e => e.Username).HasColumnType("text");
             entity.Property(e => e.WorkplanQuantity).HasColumnType("text");
 
             entity.HasOne(d => d.Project).WithMany(p => p.AdminOfficerComments)
@@ -590,6 +592,9 @@ public partial class WorkplandbContext : DbContext
             entity.Property(e => e.Roles).HasColumnType("text");
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.UserRole)
+                .HasColumnType("text")
+                .HasColumnName("userRole");
             entity.Property(e => e.Username).HasColumnType("text");
 
             entity.HasOne(d => d.Project).WithMany(p => p.ProjectNotes)

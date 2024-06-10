@@ -22,7 +22,7 @@
         <button class="nav-link" id="nav-fund-tab" data-bs-toggle="tab" data-bs-target="#nav-fund" type="button" role="tab" aria-controls="nav-fund" aria-selected="false"><i class="fa-solid fa-8" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
          <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
-        <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> <a asp-action="Page11" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -32,7 +32,7 @@
         <div class="row g-3">
             <form asp-action="Page0">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ProjectId" />
+                <input id="projectId" type="hidden" asp-for="ProjectId" />
                 <div class="card">
 
                     <div class="card-header">Project Template</div>
@@ -141,45 +141,13 @@
                             <input type="submit" value="Next" class="btn btn-primary " asp-route-ProjectId="ProjectId" />
                         </div>
 
-                        @*<a asp-action="ReportView" asp-controller="Projects" class="btn btn-success" asp-route-id="@Model.ProjectId">Report View</a>*@
+                        
                     </div>
 
                 </div>
             </form>
-@*
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Objectives)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ObjWorkPlan)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PresentOutlook)
-                        </th>
-                        
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                        <tr>
-                            <td>
-                            @Html.DisplayFor(modelItem => modelItem.Objectives)
-                            </td>
-                            <td>
-                            @Html.DisplayFor(modelItem => modelItem.ObjWorkPlan)
-                            </td>
-                            <td>
-                            @Html.DisplayFor(modelItem => modelItem.PresentOutlook)
-                            </td>
-                            
-                        </tr>
-                    
-                </tbody>
-            </table>*@
+
+         
 
         </div>
     </div>
@@ -190,22 +158,372 @@
 @section scripts{
 
 
-@*<script>
-    $(document).ready(function(){
-        $('#pageUpdate').on('submit',function(e){
-            e.preventDefault();
-            $.ajax({
-                url:`/ProjectList/${}`
-            
+        <script>
+
+            $(function () {
+
+                $("#nav-home-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectPL',
+                        data: params,
+                        success: function (response) {
+                            if(response.redirect){
+                            
+                                window.location.href = response.url;
+                            
+                            }else{
+                            
+                            
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+                $("#nav-profile-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP2',
+                        data: params,
+                        success: function (response) {
+                            if(response.redirect){
+                            
+                                window.location.href = response.url;
+                            
+                            }else{
+                            
+                            
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+
+            $("#nav-laboratory-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP3',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
             });
 
-        })    
-    });
-</script>
+
+            $("#nav-analytical-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP4',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
 
 
-*@
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+            $("#nav-sciproject-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP5',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+            $("#nav-otherpersonel-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP6',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+            $("#nav-gradass-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP7',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+
+            $("#nav-fund-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP8',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+            $("#nav-budget-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP9',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+            $("#nav-notes-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP10',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+
+
+
+            $("#nav-adminnotes-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP11',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
+
+            });
+
+
+
+        </script>
+
+
+
 
 
 
 }
+

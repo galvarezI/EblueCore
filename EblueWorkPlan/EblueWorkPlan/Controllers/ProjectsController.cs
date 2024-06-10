@@ -58,43 +58,10 @@ namespace EblueWorkPlan.Controllers
                 /*.Include(ps => ps.ProjectStatus)*/;
             //await workplandbContext.ToListAsync())
 
-
-
-
-
-
             return View(projects);
         }
 
-        public IActionResult IndexVM()
-        {
-        //    ProjectFormView template = new ProjectFormView();
-        //    var queryRport = from p in _context.Projects
-        //                     join rs in _context.Rosters on p.RosterId equals rs.RosterId
-
-        //                     select new
-        //                     {
-        //                         RosterName = rs.RosterName,
-
-
-
-        //                     };
-
-        
-
-            
-
-
-
-
-
-
-
-
-
-
-            return View();
-        }
+     
 
 
 
@@ -273,7 +240,6 @@ namespace EblueWorkPlan.Controllers
 
         [ValidateAntiForgeryToken]
 
-        //[Bind("ProjectId,ProjectNumber,ProjectTitle,ProjectPi,DepartmentId,CommId,ProgramAreaId,SubStationId,DateRegister,Salaries,Materials,Equipment,Travel,Abroad,Others,Wfsid,Wfupdate,StartDate,TerminationDate,FundTypeId,ContractNumber,Orcid,PorganizationsId,LocationId")] Project project
 
         public async Task<IActionResult> Create(ProjectViewModel template)
         {
@@ -465,6 +431,158 @@ namespace EblueWorkPlan.Controllers
         }
 
 
+        #region nav
+
+        //Page1
+
+            [HttpPost]
+            public  IActionResult RedirectPL(ProjectDetailsVM detailsVM) {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("ProjectList", "Projects", new{id = id });
+
+                return Json(new {redirect = redirect, url = url });
+            }
+
+
+        //Page2
+        [HttpPost]
+            public IActionResult RedirectP2(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page2", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page3
+
+            [HttpPost]
+            public IActionResult RedirectP3(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page3", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page4
+
+            [HttpPost]
+            public IActionResult RedirectP4(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page4", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page5
+
+            [HttpPost]
+            public IActionResult RedirectP5(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page5", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page6
+
+            [HttpPost]
+            public IActionResult RedirectP6(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page6", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page7
+
+            [HttpPost]
+            public IActionResult RedirectP7(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page7", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page8
+
+            [HttpPost]
+            public IActionResult RedirectP8(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page8", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page9
+
+            [HttpPost]
+            public IActionResult RedirectP9(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page9", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page10
+
+            [HttpPost]
+            public IActionResult RedirectP10(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page10", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        //Page11
+
+            [HttpPost]
+            public IActionResult RedirectP11(ProjectDetailsVM detailsVM)
+            {
+
+                int id = int.Parse(detailsVM.ProjectId);
+                bool redirect = true;
+                string url = Url.Action("Page11", "Projects", new { id = id });
+
+                return Json(new { redirect = redirect, url = url });
+            }
+
+        #endregion
+
+
+
+
+
+
+
 
         //PAGE 0:
 
@@ -568,11 +686,6 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> ProjectDetails(int? id)
         {
-
-          
-
-
-
 
 
 
@@ -721,6 +834,20 @@ namespace EblueWorkPlan.Controllers
                          select p).FirstOrDefault();
 
 
+            ProjectNote note = new ProjectNote() {
+
+                Username = User.Identity.Name,
+                Comment = projectFormView.comment,
+                UserRole= projectFormView.userRole,
+                ProjectId = id,
+                LastUpdate= DateTime.Now,
+                
+            
+            
+            
+            };
+
+            _context.Add(note);
             query.ProjectStatusId= 11;
             _context.SaveChanges();
 
@@ -743,6 +870,24 @@ namespace EblueWorkPlan.Controllers
                          select p).FirstOrDefault();
 
 
+
+            ProjectNote note = new ProjectNote()
+            {
+
+                Username = User.Identity.Name,
+                Comment = projectFormView.comment,
+                UserRole = projectFormView.userRole,
+                ProjectId = id,
+                LastUpdate = DateTime.Now,
+
+
+
+
+            };
+
+            _context.Add(note);
+
+
             query.ProjectStatusId = 12;
             _context.SaveChanges();
 
@@ -751,6 +896,8 @@ namespace EblueWorkPlan.Controllers
 
 
         }
+
+
 
 
 
@@ -840,38 +987,12 @@ namespace EblueWorkPlan.Controllers
             return View(projectTemplate);
         }
 
+
+
+
+        //Project : WorkPlan Page 2, Process 1>
+
         [HttpPost]
-        public async Task<IActionResult> PostFieldWorkData(FieldWorkView fieldWork)
-        {
-            var datos = fieldWork;
-            var query = (from f in _context.FieldWorks
-                         where f.FieldWorkId == fieldWork.fieldWorkId
-                         select f).FirstOrDefault();
-            try {
-                query.FieldWorkId = fieldWork.fieldWorkId;
-                query.Wfieldwork = fieldWork.wfieldwork;
-                query.LocationId = fieldWork.locaionId;
-                query.FieldoptionId = fieldWork.fieldoption;
-                query.Area = fieldWork.area;
-                
-                query.DateStarted = DateTime.Parse(fieldWork.dateStarted);
-                query.DateEnded = DateTime.Parse(fieldWork.dateEnded);
-                //query.InProgress = fieldWork.inProgress;
-                //query.ToBeInitiated = fieldWork.toBeInitiated;
-                _context.SaveChanges();
-
-            }
-            catch{
-            }
-
-           
-            return Ok();
-        }
-
-
-            //Project : WorkPlan Page 2, Process 1>
-
-            [HttpPost]
         [ValidateAntiForgeryToken]
        
         public async Task<IActionResult> Page2(int id,  ProjectFormView template, Models.Project project)
@@ -1143,22 +1264,31 @@ namespace EblueWorkPlan.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Page3(int? id, Models.Project project, ProjectFormView template) {
+        public async Task<IActionResult> Page3( int? id, FieldWorkView fieldWorkView , Models.Project project  ) {
             if (ModelState.IsValid)
             {
                 FieldWork fieldwork = new FieldWork()
                 {
-                    Wfieldwork = template.Wfieldwork,
-                    LocationId = (int)template.LocationId,
-                    DateStarted = template.DateStarted,
-                    DateEnded = template.DateEnded,
-                    FieldoptionId = template.FieldoptionId,
-                    InProgress = template.InProgress,
-                    ToBeInitiated = template.ToBeInitiated,
-                    Area = template.Area,
-                    ProjectId = project.ProjectId
+                    //Wfieldwork = template.Wfieldwork,
+                    //LocationId = (int)template.LocationId,
+                    //DateStarted = template.DateStarted,
+                    //DateEnded = template.DateEnded,
+                    //FieldoptionId = template.FieldoptionId,
+                    //InProgress = template.InProgress,
+                    //ToBeInitiated = template.ToBeInitiated,
+                    //Area = template.Area,
+                    ProjectId = project.ProjectId,
 
 
+                    Wfieldwork = fieldWorkView.wfieldwork,
+                    LocationId = fieldWorkView.locaionId,
+                    DateStarted = DateTime.Parse(fieldWorkView.dateStarted),
+                    DateEnded = DateTime.Parse(fieldWorkView.dateEnded),
+                    FieldoptionId = fieldWorkView.fieldoption,
+                    //InProgress = template.InProgress,
+                    //ToBeInitiated = template.ToBeInitiated,
+                    Area =fieldWorkView.area
+                    
 
 
 
@@ -1167,7 +1297,7 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(fieldwork);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Page4", new
+                return RedirectToAction("Page3", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -1181,6 +1311,85 @@ namespace EblueWorkPlan.Controllers
            
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Page3Post(FieldWorkView fieldWork)
+        {
+            var datos = fieldWork;
+            var query = (from f in _context.FieldWorks
+                         where f.FieldWorkId == fieldWork.fieldWorkId
+                         select f).FirstOrDefault();
+            try
+            {
+                FieldWork fieldwork = new FieldWork()
+                {
+                    
+                    ProjectId = int.Parse(fieldWork.projectId),
+
+
+                    Wfieldwork = fieldWork.wfieldwork,
+                    LocationId = fieldWork.locaionId,
+                    DateStarted = DateTime.Parse(fieldWork.dateStarted),
+                    DateEnded = DateTime.Parse(fieldWork.dateEnded),
+                    FieldoptionId = fieldWork.fieldoption,
+                    Area = fieldWork.area
+
+
+
+
+
+                };
+                _context.Add(fieldwork);
+                await _context.SaveChangesAsync();
+
+            }
+            catch
+            {
+            }
+            int id = int.Parse(fieldWork.projectId);
+            bool redirect = true;
+            string url = Url.Action("Page3", "Projects", new { id = id });
+
+            return Json(new { redirect = redirect, url = url });
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> PostFieldWorkData(FieldWorkView fieldWork)
+        {
+            var datos = fieldWork;
+            var query = (from f in _context.FieldWorks
+                         where f.FieldWorkId == fieldWork.fieldWorkId
+                         select f).FirstOrDefault();
+            try
+            {
+                query.FieldWorkId = fieldWork.fieldWorkId;
+                query.Wfieldwork = fieldWork.wfieldwork;
+                query.LocationId = fieldWork.locaionId;
+                query.FieldoptionId = fieldWork.fieldoption;
+                query.Area = fieldWork.area;
+
+                query.DateStarted = DateTime.Parse(fieldWork.dateStarted);
+                query.DateEnded = DateTime.Parse(fieldWork.dateEnded);
+                //query.InProgress = fieldWork.inProgress;
+                //query.ToBeInitiated = fieldWork.toBeInitiated;
+                _context.SaveChanges();
+
+            }
+            catch
+            {
+            }
+
+
+            return Ok();
+        }
+
+
+        //Edit from Page4
 
         [HttpPost]
         public async Task<IActionResult> PostPage3Data(LaboratoryVM projectTemplate)
@@ -1271,7 +1480,7 @@ namespace EblueWorkPlan.Controllers
                 await _context.SaveChangesAsync();
 
                
-                return RedirectToAction("Page5", new
+                return RedirectToAction("Page4", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectNumber
@@ -1286,6 +1495,44 @@ namespace EblueWorkPlan.Controllers
         
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Page4Post(LaboratoryVM projectTemplate)
+        {
+           
+            try
+            {
+                Laboratory laboratory = new Laboratory()
+                {
+
+
+
+                    WorkPlanned = projectTemplate.WorkPlanned,
+                    Descriptions = projectTemplate.Descriptions,
+                    TimeEstimated = projectTemplate.TimeEstimated,
+                    FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
+                    CentralLaboratory = projectTemplate.CentralLaboratory,
+                    ProjectId = projectTemplate.ProjectId
+
+
+
+
+                };
+                _context.Add(laboratory);
+                await _context.SaveChangesAsync();
+
+            }
+            catch
+            {
+            }
+            int id = projectTemplate.ProjectId.Value;
+            bool redirect = true;
+            string url = Url.Action("Page4", "Projects", new { id = id });
+
+            return Json(new { redirect = redirect, url = url });
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> PostPage4Data(AnalyticalVM projectTemplate)
@@ -1399,7 +1646,7 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(sciProject);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Page6", new
+                return RedirectToAction("Page5", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -1544,7 +1791,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-                return RedirectToAction("Page7", new
+                return RedirectToAction("Page6", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -1679,7 +1926,7 @@ namespace EblueWorkPlan.Controllers
                 };
                 _context.Add(gradAss);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Page8", new
+                return RedirectToAction("Page7", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -1871,7 +2118,7 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(fund);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Page9", new
+                return RedirectToAction("Page8", new
                 {
                     ID = project.ProjectId,
                     projectName = project.ProjectTitle
@@ -1996,7 +2243,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-                    return RedirectToAction("Page10", new
+                    return RedirectToAction("Page9", new
                     {
                         ID = query.ProjectId,
                         projectName = project.ProjectTitle
@@ -2083,6 +2330,7 @@ namespace EblueWorkPlan.Controllers
                     Comment = projectForm.Comment,
                     Username = User.Identity.Name,
                     Roles = HttpContext.User.FindAll(ClaimTypes.Role).Select(r => r.Value).FirstOrDefault(),
+                    UserRole = projectForm.UserRole,
                     LastUpdate = DateTime.Now,
                     ProjectId = id,
                     
@@ -2095,7 +2343,7 @@ namespace EblueWorkPlan.Controllers
                 _context.Add(notes);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Page11", new
+                return RedirectToAction("Page10", new
                 {
                     ID = id,
                     
@@ -2262,241 +2510,66 @@ namespace EblueWorkPlan.Controllers
         }
 
 
-        public async Task<IActionResult>  ReportView(int? id, Models.Project project)
+        [HttpPost]
+        public async Task<IActionResult> Page11Post(CommentsVM template)
         {
-            #region dropdownlist
-            // CARGAMOS EL DropDownList 
-            var rosters = _context.Rosters.ToList();
-            _rosterItems = new List<SelectListItem>();
-            foreach (var item in rosters)
-            {
-                _rosterItems.Add(new SelectListItem
-                {
-                    Text = item.RosterName,
-                    Value = item.RosterId.ToString()
-                });
-            }
-            ViewBag.rosterItems = _rosterItems;
-            ViewData["selectedProjectPI"] = _rosterItems;
+            int id = int.Parse(template.projectId);
+            bool redirect = true;
+            string url = Url.Action("Page11", "Projects", new { id = id });
 
-            var departments = _context.Departments.ToList();
-            _departmentsItems = new List<SelectListItem>();
-            foreach (var item in departments)
-            {
-                _departmentsItems.Add(new SelectListItem
-                {
-                    Text = item.DepartmentName,
-                    Value = item.DepartmentId.ToString()
-                });
-            }
-            ViewBag.departmentItems = _departmentsItems;
+            
 
-            var porganizations = _context.Porganizations.ToList();
-            _porganizationsItems = new List<SelectListItem>();
-            foreach (var item in porganizations)
-            {
-                _porganizationsItems.Add(new SelectListItem
-                {
-                    Text = item.PorganizationName,
-                    Value = item.PorganizationId.ToString()
-                });
-                ViewBag.porganizationItem = _porganizationsItems;
-            }
 
-            var commodity = _context.Commodities.ToList();
-            _commodityItems = new List<SelectListItem>();
-            foreach (var item in commodity)
+
+            try
             {
-                _commodityItems.Add(new SelectListItem
-                {
-                    Text = item.CommName,
-                    Value = item.CommId.ToString()
-                });
-                ViewBag.commodityItems = _commodityItems;
+                AdminOfficerComment Comments = new AdminOfficerComment() { 
+                
+                    AdComments = template.adComments,
+                    ProjectId = id
+                    , ReviewDate = template.reviewDate,
+                    ProjectVigency= template.projectVigency,
+                    WorkplanQuantity = template.workplanQuantity,
+                    FundsComments= template.fundsComments,
+                    Username = User.Identity.Name,
+                    UserRole= template.userRole
+
+
+
+
+                };
+                
+                _context.SaveChanges();
+
+
+
+
+
+            }
+            catch
+            {
+
+
+
+
+
+
+
             }
 
 
 
 
-            var fundtype = _context.FundTypes.ToList();
-            _fundtypeItems = new List<SelectListItem>();
-            foreach (var item in fundtype)
-            {
-                _fundtypeItems.Add(new SelectListItem
-                {
-                    Text = item.FundTypeName,
-                    Value = item.FundTypeId.ToString()
-                });
-                ViewBag.fundtypeItems = _fundtypeItems;
-            }
-
-            var fiscalYear = _context.FiscalYears.ToList();
-            _fiscalYearItems = new List<SelectListItem>();
-            foreach (var item in fiscalYear)
-            {
-                _fiscalYearItems.Add(new SelectListItem
-                {
-                    Text = item.FiscalYearName,
-                    Value = item.FiscalYearId.ToString()
-                });
-                ViewBag.fiscalyearItems = _fiscalYearItems;
-            }
-
-            var substation = _context.Substacions.ToList();
-            _substationItems = new List<SelectListItem>();
-            foreach (var item in substation)
-            {
-                _substationItems.Add(new SelectListItem
-                {
-                    Text = item.SubStationName,
-                    Value = item.SubstationId.ToString()
-                });
-                ViewBag.substationItems = _substationItems;
-            }
-            var programAreas = _context.ProgramAreas.ToList();
-            _programAreaItems = new List<SelectListItem>();
-            foreach (var item in programAreas)
-            {
-                _programAreaItems.Add(new SelectListItem
-                {
-                    Text = item.ProgramAreaName,
-                    Value = item.ProgramAreaId.ToString()
-                });
-                ViewBag.programAreaItems = _programAreaItems;
-            }
-
-            var location = _context.Locationns.ToList();
-            _locationsItems = new List<SelectListItem>();
-            foreach (var item in location)
-            {
-
-                _locationsItems.Add(new SelectListItem
-                {
-                    Text = item.LocationName,
-                    Value = item.LocationId.ToString()
-                });
-                ViewBag.locationsItems = _locationsItems;
-
-
-            }
-
-
-            #endregion
 
 
 
 
-
-
-            if (id == null || _context.Projects == null)
-            {
-                return NotFound();
-            }
-
-             project = await _context.Projects.FindAsync(id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            ProjectFormView template = new ProjectFormView();
-            var queryRport = from p in _context.Projects
-                             join rs in _context.Rosters on p.RosterId equals rs.RosterId
-                             where p.ProjectId == id
-                             select new
-                             {
-                                 RosterName = rs.RosterName,
-
-
-
-                             };
-
-
-            return new ViewAsPdf("ReportView",project)
-            {
-
-
-
-            };
+            return Json(new { redirect = redirect, url = url });
         }
 
-       
-
-        public async Task<IActionResult>ReportViewList(int? id)
-        {
 
 
-            if (id == null || _context.Projects == null)
-            {
-                return NotFound();
-            }
 
-            var project = await _context.Projects.FindAsync(id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            var query = (from p in _context.Projects
-                         where p.ProjectId == id
-                         select
-                         p ).FirstOrDefault();
-            var analytical = (from a in _context.Analyticals
-                              where a.ProjectId == id
-                              select a).ToList();
-
-            var scientist = (from s in _context.SciProjects
-                             where s.ProjectId == id
-                             select s).ToList();
-
-            var funds = (from fu in _context.Funds
-                         where fu.ProjectId == id
-                         select fu).ToList();
-
-            var fieldwork = (from fi in _context.FieldWorks
-                             where fi.ProjectId == id
-                             select fi).ToList();
-
-            var projectNotes = (from pno in _context.ProjectNotes
-                                where pno.ProjectId == id
-                                select pno).ToList();
-
-
-            var Graduas = (from g in _context.GradAsses
-                           where g.ProjectId == id
-                           select g).ToList();
-
-            var otherPersonel = (from op in _context.OtherPersonels
-                                 where op.ProjectId == id
-                                 select op).ToList();
-
-            var laboratory = (from l in _context.Laboratories
-                             where l.ProjectId == id
-                             select l).ToList();
-
-            ProjectFormView reportTemplate = new ProjectFormView() { 
-            
-                analyticals = analytical,
-                sciProjects = scientist,
-                Fundss = funds,
-                fieldsWork= fieldwork,
-                Project = query,
-                gradAsses = Graduas,
-                otherPersonels= otherPersonel,
-                projectNotes= projectNotes,
-                laboratories= laboratory
-
-            
-            
-            };
-
-            reportTemplate.ProjectId = id.Value;
-
-            return View(reportTemplate);
-        }
-
-        
-        
 
 
         #region depreciated

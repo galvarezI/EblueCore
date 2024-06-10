@@ -2,6 +2,7 @@
 {
     public class FieldWorkView
     {
+        public int id { get; set; }
         public int fieldWorkId { get; set; }
         public string projectId { get; set; }
         public string wfieldwork { get; set; }
