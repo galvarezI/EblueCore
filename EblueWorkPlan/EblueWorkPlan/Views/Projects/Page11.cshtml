@@ -103,17 +103,6 @@
 
 
 
-                        
-
-
-
-
-                        
-
-
-
-
-
 
                     </div>
 
@@ -126,6 +115,83 @@
 
                     </div>
             </form>
+
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdComments)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProjectVigency)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReviewDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.WorkplanQuantity)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.FundsComments)
+                        </th>
+
+
+                        <th>@Html.DisplayNameFor(model => model.UserRole)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.AdminOfficerComments)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdComments)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProjectVigency)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReviewDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WorkplanQuantity)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FundsComments)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserRole)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+
+
         </div>
            
 

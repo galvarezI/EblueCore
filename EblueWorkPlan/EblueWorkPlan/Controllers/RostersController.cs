@@ -1,4 +1,7 @@
-﻿using EblueWorkPlan.Models;
+﻿using EblueWorkPlan.Migrations;
+using EblueWorkPlan.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,15 +11,22 @@ namespace EblueWorkPlan.Controllers
     public class RostersController : Controller
     {
         private readonly WorkplandbContext _context;
+        private readonly AddIdntityDB _idntityDB;
+        private readonly UserManager<IdentityUser> userManager;
 
-        public RostersController(WorkplandbContext context)
+        public RostersController(WorkplandbContext context, AddIdntityDB identityDB, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _idntityDB = identityDB;
+            this.userManager = userManager;
         }
 
         // GET: Rosters
         public async Task<IActionResult> Index()
         {
+           var users = userManager.Users.ToList();
+
+            
             return _context.Rosters != null ?
                         View(await _context.Rosters.ToListAsync()) :
                         Problem("Entity set 'WorkplandbContext.Rosters'  is null.");

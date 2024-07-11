@@ -348,9 +348,16 @@
                     type: "POST",
                     url: '/Projects/PostFieldWorkData',
                     data: params,
-                    success: function () {
-                        alert('Entre');
+                    success: function (response) {
+                        if (response.redirect) {
 
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
                     },
                     dataType: 'json'
                 });

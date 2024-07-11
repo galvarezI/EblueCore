@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EblueWorkPlan.Models;
 
-public partial class WorkplandbContext : DbContext
+public partial class WorkplandbContext : IdentityDbContext
 {
     public WorkplandbContext()
     {
@@ -81,6 +82,9 @@ public partial class WorkplandbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<AdminOfficerComment>(entity =>
         {
             entity.HasKey(e => e.AdminOfficerCommentsId).HasName("PK__adminOff__83E2C4E3A74A6E2A");
@@ -766,4 +770,7 @@ public partial class WorkplandbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+
+   
 }

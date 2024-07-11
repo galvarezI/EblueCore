@@ -48,9 +48,10 @@
 
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
-                                <label id="locationId" asp-for="LocationId" class="control-label"></label>
-                                <select asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <label  asp-for="LocationId" class="control-label"></label>
+                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
                             </div>
+
                             <div class="form-group">
                                 <label asp-for="Salaries" class="control-label"></label>
                                 <input id="salaries" asp-for="Salaries" class="form-control" />
@@ -102,11 +103,7 @@
                                 <span asp-validation-for="Others" class="text-danger"></span>
                             </div>
                             
-                            @*<div class="form-group">
-                                <label asp-for="Ufisaccount" class="control-label"></label>
-                                <input id="ufisaccount" asp-for="Ufisaccount" class="form-control" />
-                                <span asp-validation-for="Ufisaccount" class="text-danger"></span>
-                            </div>*@
+                            
                             <div class="form-group">
                                 <label asp-for="IndirectCosts" class="control-label"></label>
                                 <input id="indirectcosts" asp-for="IndirectCosts" class="form-control" />
@@ -187,9 +184,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Others)
                 </th>
-               @* <th>
-                    @Html.DisplayNameFor(model => model.Ufisaccount)
-                </th>*@
+             
                 <th>
                     @Html.DisplayNameFor(model => model.IndirectCosts)
                 </th>
@@ -241,9 +236,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Others)
                     </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Ufisaccount)
-                    </td>*@
+                   
                     <td>
                         @Html.DisplayFor(modelItem => item.IndirectCosts)
                     </td>
@@ -256,7 +249,7 @@
                     <td>
                             <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.Ufisaccount |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
+                                <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -408,7 +401,7 @@
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 15);
+                let campos = item.split("|", 14);
 
 
 
@@ -423,10 +416,9 @@
                 $('#abroad').val(campos[8]);
                 $('#subcontract').val(campos[9]);
                 $('#others').val(campos[10]);
-                $('#ufisaccount').val(campos[11]);
-                $('#indirectcosts').val(campos[12]);
-                $('#projectId').val(campos[14]);
-                $('#locationId').val(campos[13]);
+                $('#indirectcosts').val(campos[11]);
+                $('#projectId').val(campos[13]);
+                $('#locationId').val(campos[12]);
 
             });
 
@@ -450,10 +442,10 @@
                     abroad:     $('#abroad').val(),
                     subcontract: $('#subcontract').val(),
                     others:        $('#others').val(),
-                    ufisaccount:   $('#ufisaccount').val(),
+                    
                     indirectcosts: $('#indirectcosts').val(),
                     projectId:     $('#projectId').val(),
-                    locationId:    $('#locationId').val(),
+                    LocationId:    $('#locationId').val(),
                 };
 
 
@@ -464,8 +456,16 @@
                     type: "POST",
                     url: '/Projects/PostPage8Data',
                     data: params,
-                    success: function () {
-                        alert('Entre');
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
                     },
                     dataType: 'json'
                 });

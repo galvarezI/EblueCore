@@ -8,7 +8,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int fundId { get; set; }
 
-        public int locationId { get; set; }
+        public string LocationId { get; set; }
 
         public decimal? salaries { get; set; }
 
@@ -32,59 +32,59 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int projectId { get; set; }
 
-        public string ufisaccount { get; set; }
+       
 
         public decimal? indirectcosts { get; set; }
 
-        public virtual Locationn Location { get; set; }
+        
 
-        public virtual Project Project { get; set; }
-
-
+        //public virtual Project Project { get; set; }
 
 
 
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Salaries { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Wages { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Benefits { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Assistant { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Materials { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Equipment { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Travel { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Abroad { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Subcontracts { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? Others { get; set; }
 
 
-        public int ProjectId { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Salaries { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public string Ufisaccount { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Wages { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? IndirectCosts { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Benefits { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:N2}")]
-        public decimal? TotalAmount { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Assistant { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Materials { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Equipment { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Travel { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Abroad { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Subcontracts { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? Others { get; set; }
+
+
+        //public int ProjectId { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public string Ufisaccount { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? IndirectCosts { get; set; }
+
+        //[DisplayFormat(DataFormatString = "{0:N2}")]
+        //public decimal? TotalAmount { get; set; }
 
 
 

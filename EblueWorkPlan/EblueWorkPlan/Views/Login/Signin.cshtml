@@ -3,6 +3,15 @@
     ViewData["Title"] = "Signin";
 }
 
+﻿@if (ViewData.Keys.Contains("mensaje"))
+{
+    <p style="color: red">
+        @ViewData["mensaje"]
+    </p>
+}
+
+
+
 @model EblueWorkPlan.Models.ViewModels.UserViewModel
 <div class="text-center">
 
@@ -21,6 +30,9 @@
 
                     <div class="row">
                         <div class="col-12">
+
+                            <a class="btn btn-success" asp-action="LoginExterno" asp-route-proveedor="Microsoft">Continuar con Microsoft</a>
+
                             <div class="form-floating">
                                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" asp-for="Email">
                                 <label for="floatingInput">Email address</label>

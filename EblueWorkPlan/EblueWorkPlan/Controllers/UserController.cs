@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EblueWorkPlan.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace EblueWorkPlan.Controllers
 {
     public class UserController : Controller
     {
         private readonly WorkplandbContext _context;
-       
+        private readonly UserManager<IdentityUser> userManager;
         private List<SelectListItem> _rosterItems;
         private List<SelectListItem> _departmentsItems;
         private List<SelectListItem> _porganizationsItems;
@@ -21,15 +22,18 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _programAreaItems;
         private List<SelectListItem> _locationsItems;
         private List<SelectListItem> _userItems;
-        public UserController(WorkplandbContext context)
+        public UserController(WorkplandbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            this.userManager = userManager;
         }
 
         // GET: User
         public async Task<IActionResult> Index()
         {
             var workplandbContext = _context.Users.Include(u => u.Roster);
+
+
             return View(await workplandbContext.ToListAsync());
 
 
@@ -291,6 +295,15 @@ namespace EblueWorkPlan.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> UserIdentity() {
+
+            var users = userManager.Users.ToList();
+
+            return View();
+        }
+
 
         private bool UserExists(int id)
         {

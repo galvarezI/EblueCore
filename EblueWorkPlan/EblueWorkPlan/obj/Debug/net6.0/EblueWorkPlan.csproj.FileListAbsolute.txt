@@ -1704,6 +1704,12 @@ C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Humanizer.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\MessagePack.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\MessagePack.Annotations.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Build.dll
@@ -1733,6 +1739,8 @@ C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
@@ -1977,3 +1985,4 @@ C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.pdb
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.genruntimeconfig.cache
 C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\ref\EblueWorkPlan.dll
+C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll

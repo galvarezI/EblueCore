@@ -1,4 +1,5 @@
 ﻿using EblueWorkPlan.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +9,14 @@ namespace EblueWorkPlan.Controllers
     public class RolesController : Controller
     {
         private readonly WorkplandbContext _context;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public RolesController(WorkplandbContext context)
+        public RolesController(WorkplandbContext context, UserManager<IdentityUser> userManager , RoleManager<IdentityRole> roleManager)
         {
             _context = context;
+            this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         // GET: Roles
@@ -61,6 +66,7 @@ namespace EblueWorkPlan.Controllers
         {
             if (ModelState.IsValid)
             {
+                await roleManager.CreateAsync(new IdentityRole(role.Rname));
                 _context.Add(role);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -105,6 +111,14 @@ namespace EblueWorkPlan.Controllers
             {
                 try
                 {
+                    var verificarRol = roleManager.RoleExistsAsync(role.Rname);
+
+                    if (await verificarRol == false)
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role.Rname));
+
+                    }
+                    
                     _context.Update(role);
                     await _context.SaveChangesAsync();
                 }

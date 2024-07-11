@@ -80,6 +80,15 @@
                            
 
 
+
+                            <div class="form-group">
+                                <label asp-for="Thesis" class="control-label"></label>
+                                <input id="student" asp-for="Thesis" class="form-control" />
+                                <span asp-validation-for="Thesis" class="text-danger"></span>
+                            </div>
+
+
+
                             <div class="form-group">
                                 <label asp-for="StudentId" class="control-label"></label>
                                 <input id="student" asp-for="StudentId" class="form-control" />
@@ -152,6 +161,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ThesisProjectId)
                 </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Thesis)
+                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.StudentId)
                 </th>
@@ -177,6 +191,11 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.ThesisProject.OptionName)
                     </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thesis)
+                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.StudentId)
                     </td>
@@ -190,7 +209,7 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button data-id="@item.Gaid|@item.Gname|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId"
+                                <button data-id="@item.Gaid|@item.Gname|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId|@item.Thesis"
                                     class="btn  btn-success modify">
                                     Modify
                                 </button>
@@ -236,7 +255,7 @@
 
                 let item = $(this).attr("data-id");
 
-                let campos = item.split("|", 6);
+                let campos = item.split("|", 7);
 
 
 
@@ -246,7 +265,7 @@
 
                 $('#gradId').val(campos[0]);
                 $('#gname').val(campos[1]);
-                
+                $('#thesis').val(campos[6])
                 $('#student').val(campos[3]);
 
                 $('#thesisid').val(campos[2]);
@@ -280,8 +299,16 @@
                     type: "POST",
                     url: '/Projects/PostPage7Data',
                     data: params,
-                    success: function () {
-                        alert('Entre');
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
                     },
                     dataType: 'json'
                 });

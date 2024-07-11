@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Net;
 using AspNetCore.Reporting;
+using System.Security.Policy;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -1372,7 +1373,7 @@ namespace EblueWorkPlan.Controllers
                 query.LocationId = fieldWork.locaionId;
                 query.FieldoptionId = fieldWork.fieldoption;
                 query.Area = fieldWork.area;
-
+                query.ProjectId = int.Parse(fieldWork.projectId);
                 query.DateStarted = DateTime.Parse(fieldWork.dateStarted);
                 query.DateEnded = DateTime.Parse(fieldWork.dateEnded);
                 //query.InProgress = fieldWork.inProgress;
@@ -1385,7 +1386,10 @@ namespace EblueWorkPlan.Controllers
             }
 
 
-            return Ok();
+            int id = query.ProjectId;
+            bool redirect = true;
+            string url = Url.Action("Page3", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
         }
 
 
@@ -1413,9 +1417,12 @@ namespace EblueWorkPlan.Controllers
             catch
             {
             }
+            int id = query.ProjectId.Value;
+            bool redirect = true;
+            string url = Url.Action("Page5", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
 
-
-            return Ok();
+           
         }
 
 
@@ -1534,33 +1541,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        [HttpPost]
-        public async Task<IActionResult> PostPage4Data(AnalyticalVM projectTemplate)
-        {
-            var datos = projectTemplate;
-            var query = (from f in _context.Analyticals
-                         where f.AnalyticalId == projectTemplate.analitycalId
-                         select f).FirstOrDefault();
-            
-            try
-            {
-                string dateFormat = string.Format("{0:dd/MM/yyyy}", projectTemplate.pblDate);
-                query.AnalyticalId = projectTemplate.analitycalId;
-                query.AnalysisRequired = projectTemplate.analysis;
-                query.NumSamples = projectTemplate.numSamples;
-                query.ProbableDate = DateTime.Parse(dateFormat);
-                
-                query.ProjectId = projectTemplate.ProjectId;
-                _context.SaveChanges();
-
-            }
-            catch
-            {
-            }
-
-
-            return Ok();
-        }
+        
 
 
 
@@ -1674,8 +1655,24 @@ namespace EblueWorkPlan.Controllers
 
             try
             {
+                if (projectTemplate.ca is null)
+                {
+                    projectTemplate.ca = 0;
 
-                
+                }
+                if (projectTemplate.tr is null)
+                {
+                    projectTemplate.tr = 0;
+
+                }
+
+                if (projectTemplate.ah is null)
+                {
+                    projectTemplate.ah = 0;
+
+                }
+
+
                 string trFormat = string.Format("{0:0.0000}",projectTemplate.tr);
                 string caFormat = string.Format("{0:0.0000}", projectTemplate.ca);
                 string ahFormat = string.Format("{0:0.0000}", projectTemplate.ah);
@@ -1695,15 +1692,24 @@ namespace EblueWorkPlan.Controllers
                 query.SciRolesId= (int)projectTemplate.SciRolesId;
 
                 query.ProjectId = projectTemplate.projectId;
+
+               
+               
+                
+
+                
+
+
                 _context.SaveChanges();
 
             }
             catch
             {
             }
-
-
-            return Ok();
+            int id = query.ProjectId.Value;
+            bool redirect = true;
+            string url = Url.Action("Page5", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
         }
 
         public async Task<IActionResult> Page6(int? id ) {
@@ -1834,8 +1840,10 @@ namespace EblueWorkPlan.Controllers
             {
             }
 
-
-            return Ok();
+            int id = query.ProjectId.Value;
+            bool redirect = true;
+            string url = Url.Action("Page6", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
         }
         public async Task<IActionResult> Page7(int? id) {
 
@@ -1967,8 +1975,10 @@ namespace EblueWorkPlan.Controllers
             {
             }
 
-
-            return Ok();
+            int id = query.ProjectId.Value;
+            bool redirect = true;
+            string url = Url.Action("Page7", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
         }
 
 
@@ -2134,32 +2144,32 @@ namespace EblueWorkPlan.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostPage8Data(FundVM projectTemplate)
+        public async Task<IActionResult> PostPage8Data(FundVM datos)
         {
-            var datos = projectTemplate;
+            //var datos = projectTemplate;
             var query = (from f in _context.Funds
-                         where f.FundId == projectTemplate.fundId
+                         where f.FundId == datos.fundId
                          select f).FirstOrDefault();
             try
             {
-                query.FundId = projectTemplate.fundId;
-                query.LocationId = projectTemplate.locationId;
+                query.FundId = datos.fundId;
+                query.LocationId = int.Parse( datos.LocationId);
 
-                query.Salaries = projectTemplate.salaries;
-                query.Wages = projectTemplate.wages;
-                query.Benefits = projectTemplate.benefit;
-                query.Assistant = projectTemplate.assistant;
-                query.Materials = projectTemplate.materials;
-                query.Equipment = projectTemplate.equipment;
-                query.Travel = projectTemplate.travel;
-                query.Abroad= projectTemplate.abroad;
-                query.Subcontracts = projectTemplate.subcontract;
-                query.Others = projectTemplate.others;
-                query.Ufisaccount= projectTemplate.ufisaccount;
-                query.IndirectCosts = projectTemplate.indirectcosts;
-                query.ProjectId = projectTemplate.projectId;
-                query.TotalAmount = projectTemplate.salaries + projectTemplate.wages + projectTemplate.subcontract + projectTemplate.benefit + projectTemplate.assistant + projectTemplate.materials +
-                    projectTemplate.equipment + projectTemplate.travel + projectTemplate.abroad + projectTemplate.others + projectTemplate.indirectcosts;
+                query.Salaries = datos.salaries;
+                query.Wages = datos.wages;
+                query.Benefits = datos.benefit;
+                query.Assistant = datos.assistant;
+                query.Materials = datos.materials;
+                query.Equipment = datos.equipment;
+                query.Travel = datos.travel;
+                query.Abroad= datos.abroad;
+                query.Subcontracts = datos.subcontract;
+                query.Others = datos.others;
+                
+                query.IndirectCosts = datos.indirectcosts;
+                query.ProjectId = datos.projectId;
+                query.TotalAmount = datos.salaries + datos.wages + datos.subcontract + datos.benefit + datos.assistant + datos.materials +
+                    datos.equipment + datos.travel + datos.abroad + datos.others + datos.indirectcosts;
                 _context.SaveChanges();
 
             }
@@ -2167,8 +2177,10 @@ namespace EblueWorkPlan.Controllers
             {
             }
 
-
-            return Ok();
+            int id = query.ProjectId;
+            bool redirect = true;
+            string url = Url.Action("Page8", "Projects", new { id = id });
+            return Json(new { redirect = redirect, url = url });
         }
 
 
@@ -2495,7 +2507,7 @@ namespace EblueWorkPlan.Controllers
                     ReviewDate = projectTemplate.ReviewDate,
                     WorkplanQuantity= projectTemplate.WorkplanQuantity,
                     FundsComments= projectTemplate.FundsComments,
-
+                    ProjectId= projectTemplate.ProjectId
 
 
                 };

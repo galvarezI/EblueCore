@@ -233,6 +233,7 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "Name")]
         public string Gname { get; set; }
 
+        [Display(Name = "Thesis title")]
         public string Thesis { get; set; }
 
         [Display(Name = "Thesis or Project")]
