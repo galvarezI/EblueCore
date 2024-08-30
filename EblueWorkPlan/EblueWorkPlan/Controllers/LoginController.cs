@@ -105,7 +105,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("login", routeValues: new { mensaje });
             }
 
-            var usuario = new IdentityUser() { Email = email, UserName = email };
+            var usuario = new IdentityUser() { Email = email, UserName = info.Principal.Identity.Name };
 
             var resultadoCrearUsuario = await userManager.CreateAsync(usuario);
             if (!resultadoCrearUsuario.Succeeded)

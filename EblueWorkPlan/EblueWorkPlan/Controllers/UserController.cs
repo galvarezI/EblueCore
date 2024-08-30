@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EblueWorkPlan.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -11,6 +12,7 @@ namespace EblueWorkPlan.Controllers
     {
         private readonly WorkplandbContext _context;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private List<SelectListItem> _rosterItems;
         private List<SelectListItem> _departmentsItems;
         private List<SelectListItem> _porganizationsItems;
@@ -22,10 +24,11 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _programAreaItems;
         private List<SelectListItem> _locationsItems;
         private List<SelectListItem> _userItems;
-        public UserController(WorkplandbContext context, UserManager<IdentityUser> userManager)
+        public UserController(WorkplandbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         // GET: User
@@ -308,6 +311,55 @@ namespace EblueWorkPlan.Controllers
         private bool UserExists(int id)
         {
             return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
+        }
+
+
+
+        public async Task<IActionResult> UserInfo() {
+
+            
+
+
+            IdentityUserRoleVM model = new IdentityUserRoleVM() {
+
+                Users = userManager.Users.ToList(),
+                Roles =  roleManager.Roles.ToList()
+
+            };
+            
+            return View(model);
+        }
+
+        [Authorize(Roles ="Administrator")]
+        public async Task<IActionResult> AddRole(string Id ) {
+            var user = await userManager.FindByIdAsync(Id);
+            
+            IdentityUserRoleVM model = new IdentityUserRoleVM()
+            {
+                Id= Id,
+                Username = user.UserName,
+                Roles = roleManager.Roles.ToList(),
+                UserRoles = roleManager.Roles.Select(x => new SelectListItem (x.Name, x.Id ))
+                
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddRole(string Id, IdentityUserRoleVM identityUser) {
+
+            var user = await userManager.FindByIdAsync(Id);
+            var roleQuery = (from r in roleManager.Roles
+                            where r.Id == identityUser.role
+                            select r).FirstOrDefault();
+
+            identityUser.role = roleQuery.Name;
+            await userManager.AddToRoleAsync(user, identityUser.role);
+
+
+            return RedirectToAction("UserInfo");
         }
     }
 }

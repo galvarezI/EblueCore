@@ -2480,12 +2480,7 @@ namespace EblueWorkPlan.Controllers
             ProjectFormView projectFormView = new ProjectFormView { 
                 ProjectNumber= project.ProjectNumber,
                 AdminOfficerComments = AdminNotes
-            
-            
-            
-            
-            
-            
+             
             };
             projectFormView.ProjectId = id.Value;
 
@@ -2550,8 +2545,9 @@ namespace EblueWorkPlan.Controllers
 
 
                 };
-                
-                _context.SaveChanges();
+                _context.Add(Comments);
+
+                 _context.SaveChanges();
 
 
 

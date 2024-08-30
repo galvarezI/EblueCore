@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -7,22 +8,29 @@ public partial class Project
 {
     public int ProjectId { get; set; }
 
+    [Display(Name = "Project Number")]
     public string ProjectNumber { get; set; }
 
+    [Display(Name = "Project Short Title")]
     public string ProjectTitle { get; set; }
 
+    [Display(Name = "Department")]
     public int? DepartmentId { get; set; }
 
+    [Display(Name = "Commodity")]
     public int? CommId { get; set; }
 
+    [Display(Name = "Program Area")]
     public int? ProgramAreaId { get; set; }
 
+    [Display(Name = "Substation")]
     public int? SubStationId { get; set; }
 
     public DateTime? DateRegister { get; set; }
 
     public DateTime? LastUpdate { get; set; }
 
+    [Display(Name = "Fiscal Year")]
     public int? FiscalYearId { get; set; }
 
     public string Objectives { get; set; }
@@ -79,6 +87,7 @@ public partial class Project
 
     public string ContractNumber { get; set; }
 
+    [Display(Name = "Account Number")]
     public string Orcid { get; set; }
 
     public int? ProcessProjectWayId { get; set; }

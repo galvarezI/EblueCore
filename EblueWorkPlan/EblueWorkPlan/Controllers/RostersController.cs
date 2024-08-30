@@ -11,20 +11,19 @@ namespace EblueWorkPlan.Controllers
     public class RostersController : Controller
     {
         private readonly WorkplandbContext _context;
-        private readonly AddIdntityDB _idntityDB;
+        //private readonly AddIdntityDB _idntityDB;
         private readonly UserManager<IdentityUser> userManager;
 
-        public RostersController(WorkplandbContext context, AddIdntityDB identityDB, UserManager<IdentityUser> userManager)
+        public RostersController(WorkplandbContext context/* AddIdntityDB identityDB*/ /*UserManager<IdentityUser> userManager*/)
         {
             _context = context;
-            _idntityDB = identityDB;
-            this.userManager = userManager;
+            //_idntityDB = identityDB;
+            //this.userManager = userManager;
         }
 
         // GET: Rosters
         public async Task<IActionResult> Index()
         {
-           var users = userManager.Users.ToList();
 
             
             return _context.Rosters != null ?
@@ -94,6 +93,10 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.RoleItem = new SelectList(_context.Roles, "RolesId", "Rname");
             return View(roster);
         }
 
@@ -146,7 +149,9 @@ namespace EblueWorkPlan.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.DepartmentItem = new SelectList(_context.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            ViewBag.RoleItem = new SelectList(_context.Roles, "RolesId", "Rname");
             return View(roster);
         }
 

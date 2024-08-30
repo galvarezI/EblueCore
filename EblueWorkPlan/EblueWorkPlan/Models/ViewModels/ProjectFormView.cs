@@ -435,9 +435,12 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "  Comments")]
         public string AdComments { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+
         [Display(Name = " Start Date")]
         public DateTime? ProjectVigency { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
 
         [Display(Name = " End Date")]
         public DateTime? ReviewDate { get; set; }
@@ -492,6 +495,8 @@ namespace EblueWorkPlan.Models.ViewModels
         public virtual GradOption Gradoption { get; set; }
 
         public virtual ThesisProject ThesisProject { get; set; }
+
+        
 
         //Lista de Proyectos Custom
 
