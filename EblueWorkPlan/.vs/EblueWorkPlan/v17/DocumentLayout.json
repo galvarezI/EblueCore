@@ -30,8 +30,12 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -40,14 +44,10 @@
               "RelativeDocumentMoniker": "EblueWorkPlan\\appsettings.json",
               "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\appsettings.json",
               "RelativeToolTip": "EblueWorkPlan\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-04-11T16:49:55.731Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
@@ -71,8 +71,7 @@
               "RelativeToolTip": "EblueWorkPlan\\Controllers\\UserController.cs",
               "ViewState": "AgIAAFsBAAAAAAAAAAAqwG0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:29:24.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-03T14:29:24.813Z"
             },
             {
               "$type": "Document",
