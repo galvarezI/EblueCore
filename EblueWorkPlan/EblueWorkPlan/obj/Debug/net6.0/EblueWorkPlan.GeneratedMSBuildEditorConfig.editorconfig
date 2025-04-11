@@ -10,11 +10,15 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EblueWorkPlan
 build_property.RootNamespace = EblueWorkPlan
 build_property.ProjectDir = C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\GGJEANZS\Desktop\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 6.0
+build_property.EnableCodeStyleSeverity = 
 
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Analyticals/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNhbHNcQ3JlYXRlLmNzaHRtbA==
@@ -440,6 +444,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/IndexVM.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXhWTS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/Page0.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUGFnZTAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -490,6 +498,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ProjectList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUmVwb3J0Vmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/ReportViewList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUmVwb3J0Vmlld0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page2Modal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2UyTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page3Modal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2UzTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Projects/_Page4Modal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcX1BhZ2U0TW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Roles/Create.cshtml]
@@ -584,6 +612,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNpZGVCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_Page5Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdlNUVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Shared/_RotativaLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Sb3RhdGl2YUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -638,6 +670,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/ThesisProjects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlc2lzUHJvamVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/GGJEANZS/Desktop/InfosypWorkPlan/EblueWorkPlan/EblueWorkPlan/Views/User/AddRole.cshtml]
