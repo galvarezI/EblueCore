@@ -11,7 +11,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         [Display(Name = "Project Number")]
-        public string ProjectNumber { get; set; }
+        public string? ProjectNumber { get; set; }
 
         [Display(Name = "Project Short Title")]
         public string? ProjectTitle { get; set; }
@@ -308,24 +308,24 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         public string WorkPlan2 { get; set; }
-
+        [Required(ErrorMessage = "This field is required")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Wages { get; set; }
 
-
+        [Required(ErrorMessage = "This field is required")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Salaries { get; set; }
 
-
+        [Required(ErrorMessage = "This field is required")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Benefits { get; set; }
-
+        [Required(ErrorMessage = "This field is required")]
 
         [DisplayFormat(DataFormatString = "{0:N2}")]
         [Display(Name = "Assistanships")]
         public decimal? Assistant { get; set; }
 
-
+        [Required(ErrorMessage = "This field is required")]
         [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Subcontracts { get; set; }
 
@@ -404,6 +404,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int ProjectNotesId { get; set; }
 
+        [Required(ErrorMessage = "This field is required")]
         [Display (Name="Leave your Comment Here!")]
         public string Comment { get; set; }
 
@@ -414,6 +415,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
 
         [Display(Name = " Role")]
+        [Required(ErrorMessage = "This field is required")]
         public string userRole { get; set; }
 
         public string Username { get; set; }
@@ -431,26 +433,31 @@ namespace EblueWorkPlan.Models.ViewModels
         //Admin Comments...
         public int AdminOfficerCommentsId { get; set; }
 
-
+        [Required(ErrorMessage = "This field is required")]
         [Display(Name = "  Comments")]
         public string AdComments { get; set; }
-
+        [Required(ErrorMessage = "This field is required")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
 
+        
         [Display(Name = " Start Date")]
         public DateTime? ProjectVigency { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
 
+        [Required(ErrorMessage = "This field is required")]
         [Display(Name = " End Date")]
         public DateTime? ReviewDate { get; set; }
 
+        [Required(ErrorMessage = "This field is required")]
         [Display(Name = "  Budget Distribution")]
         public string WorkplanQuantity { get; set; }
 
+        [Required(ErrorMessage = "This field is required")]
         [Display(Name = " Total Funding of the Project")]
         public string FundsComments { get; set; }
 
+        [Required(ErrorMessage = "This field is required")]
         public string UserRole { get; set; }
 
 

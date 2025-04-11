@@ -19,6 +19,8 @@ public partial class Roster
 
     public int? RoleId { get; set; }
 
+    public string Email { get; set; }
+
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
 
     public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();

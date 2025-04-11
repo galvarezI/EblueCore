@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EblueWorkPlan.Models;
 
-public partial class WorkplandbContext : IdentityDbContext
+public partial class WorkplandbContext : DbContext
 {
     public WorkplandbContext()
     {
@@ -19,6 +18,18 @@ public partial class WorkplandbContext : IdentityDbContext
     public virtual DbSet<AdminOfficerComment> AdminOfficerComments { get; set; }
 
     public virtual DbSet<Analytical> Analyticals { get; set; }
+
+    public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+
+    public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+
+    public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+
+    public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+
+    public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+
+    public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
 
     public virtual DbSet<Commodity> Commodities { get; set; }
 
@@ -82,9 +93,6 @@ public partial class WorkplandbContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
-        base.OnModelCreating(modelBuilder);
-
         modelBuilder.Entity<AdminOfficerComment>(entity =>
         {
             entity.HasKey(e => e.AdminOfficerCommentsId).HasName("PK__adminOff__83E2C4E3A74A6E2A");
@@ -129,6 +137,67 @@ public partial class WorkplandbContext : IdentityDbContext
             entity.HasOne(d => d.Project).WithMany(p => p.Analyticals)
                 .HasForeignKey(d => d.ProjectId)
                 .HasConstraintName("FK__Analytica__Proje__2B0A656D");
+        });
+
+        modelBuilder.Entity<AspNetRole>(entity =>
+        {
+            entity.Property(e => e.Name).HasMaxLength(256);
+            entity.Property(e => e.NormalizedName).HasMaxLength(256);
+        });
+
+        modelBuilder.Entity<AspNetRoleClaim>(entity =>
+        {
+            entity.Property(e => e.RoleId)
+                .IsRequired()
+                .HasMaxLength(450);
+
+            entity.HasOne(d => d.Role).WithMany(p => p.AspNetRoleClaims).HasForeignKey(d => d.RoleId);
+        });
+
+        modelBuilder.Entity<AspNetUser>(entity =>
+        {
+            entity.Property(e => e.Email).HasMaxLength(256);
+            entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+            entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+            entity.Property(e => e.UserName).HasMaxLength(256);
+
+            entity.HasMany(d => d.Roles).WithMany(p => p.Users)
+                .UsingEntity<Dictionary<string, object>>(
+                    "AspNetUserRole",
+                    r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
+                    l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
+                    j =>
+                    {
+                        j.HasKey("UserId", "RoleId");
+                        j.ToTable("AspNetUserRoles");
+                    });
+        });
+
+        modelBuilder.Entity<AspNetUserClaim>(entity =>
+        {
+            entity.Property(e => e.UserId)
+                .IsRequired()
+                .HasMaxLength(450);
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserClaims).HasForeignKey(d => d.UserId);
+        });
+
+        modelBuilder.Entity<AspNetUserLogin>(entity =>
+        {
+            entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
+
+            entity.Property(e => e.UserId)
+                .IsRequired()
+                .HasMaxLength(450);
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserLogins).HasForeignKey(d => d.UserId);
+        });
+
+        modelBuilder.Entity<AspNetUserToken>(entity =>
+        {
+            entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserTokens).HasForeignKey(d => d.UserId);
         });
 
         modelBuilder.Entity<Commodity>(entity =>
@@ -663,6 +732,9 @@ public partial class WorkplandbContext : IdentityDbContext
             entity.Property(e => e.RosterId).HasColumnName("RosterID");
             entity.Property(e => e.CanBePi).HasColumnName("CanBePI");
             entity.Property(e => e.DepartmentId).HasColumnName("DepartmentID");
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.LocationId).HasColumnName("LocationID");
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.RosterName).HasMaxLength(250);
@@ -770,7 +842,4 @@ public partial class WorkplandbContext : IdentityDbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-
-   
 }
