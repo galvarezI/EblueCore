@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9FcwonghcD8=",
+  "dgSpecHash": "nTEVdfUe584=",
   "success": true,
-  "projectFilePath": "C:\\Users\\GGJEANZS\\Desktop\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
+  "projectFilePath": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\EblueWorkPlan.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GGJEANZS\\.nuget\\packages\\aspnetcore.reporting\\2.1.0\\aspnetcore.reporting.2.1.0.nupkg.sha512",
     "C:\\Users\\GGJEANZS\\.nuget\\packages\\aspnetcore.reportingservices\\2.1.0\\aspnetcore.reportingservices.2.1.0.nupkg.sha512",

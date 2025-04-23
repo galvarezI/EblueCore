@@ -75,17 +75,12 @@ namespace EblueWorkPlan.Controllers
                 });
             }
 
-            var roles = _context.Roles.ToList();
-            _roleItems = new List<SelectListItem>();
-            foreach (var item in roles)
+            var roles = roleManager.Roles.ToList();
+            var _roleItems = roles.Select(r => new SelectListItem
             {
-                _roleItems.Add(new SelectListItem
-                {
-                    Text = item.Rname,
-                    Value = item.RolesId.ToString()
-                });
-                
-            }
+                Text = r.Name,
+                Value = r.Name
+            }).ToList();
             ViewBag.rolesItems = _roleItems;
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;
@@ -96,104 +91,169 @@ namespace EblueWorkPlan.Controllers
         // POST: User/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        #region depreciated
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(/*[Bind("UserId,Email,Password,RosterId,IsEnabled")]*/UserVM Users )
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        string[] roles = new string[Users.SelectedRolesArray.Length];
+        //        int index = 0;
+        //        foreach (var items in Users.SelectedRolesArray) {
+        //            var consult = (from u in _context.Roles
+        //                           where u.RolesId == items
+        //                           select u).FirstOrDefault();
+
+        //            roles[index] = consult.Rname;
+        //            index++;
+        //        }
+        //        string rolesString = string.Join(",", roles);
+
+        //        User users = new User() { 
+        //            Email = Users.Email,
+        //            Password = Users.Password,
+        //            RosterId = Users.RosterId,
+        //            RolesId = Users.RolesId,
+        //            IsEnabled = Users.IsEnabled,
+        //            Roles = rolesString,
+
+
+
+
+
+        //        };
+
+        //        _context.Add(Users);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", Users.RosterId);
+        //    return View(Users);
+        //}
+
+        //// GET: User/Edit/5
+        //public async Task<IActionResult> Edit(int? id)
+
+
+        //{
+
+        //    var rosters = _context.Rosters.ToList();
+        //    _rosterItems = new List<SelectListItem>();
+        //    foreach (var item in rosters)
+        //    {
+        //        _rosterItems.Add(new SelectListItem
+        //        {
+        //            Text = item.RosterName,
+        //            Value = item.RosterId.ToString()
+        //        });
+        //    }
+        //    ViewBag.rosterItems = _rosterItems;
+
+        //    var roles = _context.Roles.ToList();
+        //    _roleItems = new List<SelectListItem>();
+        //    foreach (var item in roles)
+        //    {
+        //        _roleItems.Add(new SelectListItem
+        //        {
+        //            Text = item.Rname,
+        //            Value = item.RolesId.ToString()
+        //        });
+
+        //    }
+        //    ViewBag.rolesItems = _roleItems;
+
+        //    if (id == null || _context.Users == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var user = await _context.Users.FindAsync(id);
+        //    UserVM UserVm = new UserVM()
+        //    {
+        //        UserId = user.UserId,
+        //        RosterId= user.RosterId,
+        //        Email= user.Email,
+        //        Password= user.Password,
+        //        Roles= user.Roles,
+        //        RolesId= user.RolesId,
+
+
+
+
+        //    };
+
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
+        //    return View(UserVm);
+        //}
+        #endregion
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(/*[Bind("UserId,Email,Password,RosterId,IsEnabled")]*/UserVM Users )
+        public async Task<IActionResult> Create(UserVM model)
         {
+            
+
+
+
             if (ModelState.IsValid)
             {
-                string[] roles = new string[Users.SelectedRolesArray.Length];
-                int index = 0;
-                foreach (var items in Users.SelectedRolesArray) {
-                    var consult = (from u in _context.Roles
-                                   where u.RolesId == items
-                                   select u).FirstOrDefault();
 
-                    roles[index] = consult.Rname;
-                    index++;
-                }
-                string rolesString = string.Join(",", roles);
+                //metodo para traer nombre del roster
 
-                User users = new User() { 
-                    Email = Users.Email,
-                    Password = Users.Password,
-                    RosterId = Users.RosterId,
-                    RolesId = Users.RolesId,
-                    IsEnabled = Users.IsEnabled,
-                    Roles = rolesString,
-                
-                
-                
-                
-                
+                var consult = (from u in _context.Rosters
+                               where u.RosterId == model.RosterId
+                               select u).FirstOrDefault();
+
+                var user = new IdentityUser
+                {
+                    UserName = consult.RosterName,
+                    Email = model.Email,
+                    EmailConfirmed = true
                 };
 
-                _context.Add(Users);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    
+
+                    // Guardar información adicional como RosterId en una tabla auxiliar
+                    var customUser = new User
+                    {
+                        Email = model.Email,
+                        Password = model.Password, // ⚠️ Puedes omitir guardar el password plano por seguridad
+                        RosterId = model.RosterId,
+                        //IsEnabled = model.IsEnabled,
+                        //Roles = string.Join(",", model.SelectedRolesArray),
+                        //RolesId = 0 // si aplica, o elimina este campo si ya no se usa
+                    };
+
+                    _context.Users.Add(customUser);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction("UserInfo","User");
+                }
+
+                // Mostrar errores de Identity
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", Users.RosterId);
-            return View(Users);
+
+            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterName", model.RosterId);
+            return View(model);
         }
 
-        // GET: User/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-
-
-        {
-
-            var rosters = _context.Rosters.ToList();
-            _rosterItems = new List<SelectListItem>();
-            foreach (var item in rosters)
-            {
-                _rosterItems.Add(new SelectListItem
-                {
-                    Text = item.RosterName,
-                    Value = item.RosterId.ToString()
-                });
-            }
-            ViewBag.rosterItems = _rosterItems;
-
-            var roles = _context.Roles.ToList();
-            _roleItems = new List<SelectListItem>();
-            foreach (var item in roles)
-            {
-                _roleItems.Add(new SelectListItem
-                {
-                    Text = item.Rname,
-                    Value = item.RolesId.ToString()
-                });
-
-            }
-            ViewBag.rolesItems = _roleItems;
-
-            if (id == null || _context.Users == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users.FindAsync(id);
-            UserVM UserVm = new UserVM()
-            {
-                UserId = user.UserId,
-                RosterId= user.RosterId,
-                Email= user.Email,
-                Password= user.Password,
-                Roles= user.Roles,
-                RolesId= user.RolesId,
 
 
 
 
-            };
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-            ViewData["RosterId"] = new SelectList(_context.Rosters, "RosterId", "RosterId", user.RosterId);
-            return View(UserVm);
-        }
 
         // POST: User/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

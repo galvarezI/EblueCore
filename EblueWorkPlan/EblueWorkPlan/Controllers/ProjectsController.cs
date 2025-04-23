@@ -252,7 +252,6 @@ namespace EblueWorkPlan.Controllers
 
             if (ModelState.IsValid)
             {
-                
                 string[] substacion = new string[template.SubStationSelectedArray.Length];
                 int index = 0;
                 foreach (var item in template.SubStationSelectedArray) {
@@ -321,7 +320,7 @@ namespace EblueWorkPlan.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return View(template);
         }
 
 
@@ -1020,7 +1019,7 @@ namespace EblueWorkPlan.Controllers
                     query.ObjWorkPlan = project.ObjWorkPlan;
                     query.PresentOutlook = project.PresentOutlook;
                     query.ProjectStatusId = 2;
-                    project.ProjectNumber = query.ProjectNumber;
+
                     _context.SaveChanges();
 
 
@@ -1801,7 +1800,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("Page6", new
                 {
                     ID = project.ProjectId,
-                    projectName = project.ProjectNumber
+                    projectName = project.ProjectTitle
                 });
 
 
@@ -1938,7 +1937,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("Page7", new
                 {
                     ID = project.ProjectId,
-                    projectName = project.ProjectNumber
+                    projectName = project.ProjectTitle
                 });
 
 
@@ -2132,7 +2131,7 @@ namespace EblueWorkPlan.Controllers
                 return RedirectToAction("Page8", new
                 {
                     ID = project.ProjectId,
-                    projectName = project.ProjectNumber
+                    projectName = project.ProjectTitle
                 });
 
             }
@@ -2237,7 +2236,7 @@ namespace EblueWorkPlan.Controllers
 
                                  ).FirstOrDefault();
 
-                    //projectTemplate.ProjectNumber = query.ProjectNumber;
+                    projectTemplate.ProjectNumber = query.ProjectNumber;
                     query.Impact = projectTemplate.Impact;
                     query.Salaries = projectTemplate.Salaries;
                     query.Benefits = projectTemplate.Benefits;
@@ -2259,7 +2258,7 @@ namespace EblueWorkPlan.Controllers
                     return RedirectToAction("Page9", new
                     {
                         ID = query.ProjectId,
-                        projectName = project.ProjectNumber
+                        projectName = project.ProjectTitle
                     });
 
 
@@ -2440,7 +2439,19 @@ namespace EblueWorkPlan.Controllers
             catch
             {
 
+
+
+
+
+
+
             }
+
+
+
+
+
+
 
 
             return Ok();

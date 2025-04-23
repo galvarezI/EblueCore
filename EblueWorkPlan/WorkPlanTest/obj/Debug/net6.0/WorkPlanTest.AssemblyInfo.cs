@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WorkPlanTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b9d650b9394a48c2b377db2d778c455a709ce2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("WorkPlanTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WorkPlanTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

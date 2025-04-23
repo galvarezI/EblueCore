@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EblueWorkPlan.Models;
 
@@ -9,8 +10,10 @@ public partial class AdminOfficerComment
 
     public string AdComments { get; set; }
 
+    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? ProjectVigency { get; set; }
 
+    [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
     public DateTime? ReviewDate { get; set; }
 
     public string WorkplanQuantity { get; set; }

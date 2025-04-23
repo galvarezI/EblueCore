@@ -2,6 +2,7 @@ using EblueWorkPlan.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,9 +22,22 @@ builder.Services.AddDbContext<WorkplandbContext>(
       options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
 
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(opciones =>
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    opciones.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = false;
+    // Relaja las reglas del nombre de usuario
+    options.User.AllowedUserNameCharacters = null; // Permite todos los caracteres
+    options.User.RequireUniqueEmail = false; // (Opcional) Requiere emails únicos
+
+    // Relaja las reglas de la contraseña (opcional)
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 4;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+
+
+
 })
                .AddEntityFrameworkStores<WorkplandbContext>()
                .AddDefaultTokenProviders();

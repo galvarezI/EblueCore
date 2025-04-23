@@ -12,13 +12,14 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public int? RosterId { get; set; }
 
+        [NotMapped]
         public bool? IsEnabled { get; set; }
-
+        [NotMapped]
         public int? RolesId { get; set; }
 
         [NotMapped]
         public int[] SelectedRolesArray { get; set; }
-
+        [NotMapped]
         public string Roles { get; set; }
 
         public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
