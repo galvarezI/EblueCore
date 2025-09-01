@@ -35,6 +35,7 @@ public partial class Project
 
     public string Objectives { get; set; }
 
+    [Display(Name = "Objective of Work Planned for the Year")]
     public string ObjWorkPlan { get; set; }
 
     public string PresentOutlook { get; set; }

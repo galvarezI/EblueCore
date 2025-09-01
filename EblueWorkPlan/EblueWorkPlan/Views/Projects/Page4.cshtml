@@ -22,6 +22,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -51,34 +52,33 @@
                             </div>
 
 
-                            <div class="row">
-                                <div class="form-group col-4">
-                                    <label asp-for="Descriptions" class="control-label"></label>
-                                    <input id="descriptions" asp-for="Descriptions" class="form-control txt-d" />
-                                    <span asp-validation-for="Descriptions" class="text-danger"></span>
-                                </div>
-                                <div class="form-group col-4">
-                                    <label asp-for="TimeEstimated" class="control-label"></label>
-                                    <input id="timeEstimated" class="form-control txt-est" />
-                                    <span asp-validation-for="TimeEstimated" class="text-danger"></span>
-                                </div>
-
-
-
-                                <div class="form-group col-4">
-                                    <label asp-for="FacilitiesNeeded" class="control-label"></label>
-                                    <input id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn" />
-                                    <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
-                                </div>
-
-
-                                <div class="col-12">
-                                    <label asp-for="CentralLaboratory" class="control-label"></label>
-                                    <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"></textarea>
-                                    <span asp-validation-for="CentralLaboratory" class="text-danger"></span>
-                                </div>
-
+                            <div class="form-group col-12">
+                                <label asp-for="Descriptions" class="control-label"></label>
+                                <textarea id="descriptions" asp-for="Descriptions" class="form-control txt-d" ></textarea>
+                                <span asp-validation-for="Descriptions" class="text-danger"></span>
                             </div>
+
+
+                            <div class="form-group col-12">
+                                <label asp-for="TimeEstimated" class="control-label"></label>
+                                <input id="timeEstimated" class="form-control txt-est" />
+                                <span asp-validation-for="TimeEstimated" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label asp-for="FacilitiesNeeded" class="control-label"></label>
+                                <textarea id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn" ></textarea>
+                                <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
+                            </div>
+
+
+
+                            <div class="col-12">
+                                <label asp-for="CentralLaboratory" class="control-label"></label>
+                                <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"></textarea>
+                                <span asp-validation-for="CentralLaboratory" class="text-danger"></span>
+                            </div>
+                           
 
                             <br />
                             <div class="form-group" style="padding-top:20px;">
@@ -164,10 +164,16 @@
                                         <div class="col-4">
                                             <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId|@item.CentralLaboratory"
                                                 class="btn  btn-success modify">
-                                                Modify
+                                                <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
                                             </button>
                                         </div>
 
+                                        <div class="col-4">
+                                            <button data-id="@item.LabId|@item.WorkPlanned|@item.Descriptions|@item.TimeEstimated|@item.FacilitiesNeeded|@item.ProjectId|@item.CentralLaboratory"
+                                                    class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
+                                            </button>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -182,6 +188,8 @@
 
 
 </div>
+
+<partial name="_Page2Modal" />
 
 
 @section scripts{
@@ -301,6 +309,83 @@
                 $('#formClr').find('input[type=text], input[type=email], textarea').val('');
 
             });
+
+
+
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+                
+
+                let campos = item.split("|", 7);
+
+                const estimateDate = new Date(campos[3]).toLocaleDateString('en-US');
+
+                $('#labId').val(campos[0]);
+                $('#workplanned').val(campos[1]);
+                $('#descriptions').val(campos[2]);
+                $('#timeEstimated').val(estimateDate);
+                $('#facilitiesNeeded').val(campos[4]);
+                $('#projectId').val(campos[5]);
+                $('#central').val(campos[6]);
+
+              const params = {
+                    labId: $('#labId').val(),
+                    projectId: $('#projectId').val(),
+                    workplanned: $('#workplanned').val(),
+                    descriptions: $('#descriptions').val(),
+                    TimeEstimated: $('#timeEstimated').val(),
+                    facilitiesNeeded: $('#facilitiesNeeded').val(),
+                    CentralLaboratory: $('#central').val()
+                };
+                // console.log(params);
+
+            });
+
+            $('#btnConfirmDelete').click(function() {
+               const params = {
+                    labId: $('#labId').val(),
+                    projectId: $('#projectId').val(),
+                    workplanned: $('#workplanned').val(),
+                    descriptions: $('#descriptions').val(),
+                    TimeEstimated: $('#timeEstimated').val(),
+                    facilitiesNeeded: $('#facilitiesNeeded').val(),
+                    CentralLaboratory: $('#central').val()
+                };
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage4',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
 
 
              $("#nav-home-tab").click(function () {
@@ -653,6 +738,37 @@
                 });
 
             });
+
+
+                 $("#nav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
 
 
         });

@@ -23,6 +23,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
          <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> <a asp-action="Page11" asp-controller="Projects"></a> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -57,7 +58,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label asp-for="RosterId" class="control-label"></label>
+                                <label asp-for="RosterId" class="control-label">Principal Investigator</label>
                                 <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems" disabled></select>
                             </div>
                         </div>
@@ -103,7 +104,7 @@
 
                         <div class="row">
                             <div class="col-6">
-                                <label asp-for="ContractNumber" class="control-label"></label>
+                                <label asp-for="ContractNumber" class="control-label">Contract Number</label>
                                 <input asp-for="ContractNumber" class="form-control" />
                                 <span asp-validation-for="ContractNumber" class="text-danger"></span>
                             </div>
@@ -122,13 +123,13 @@
 
 
                         <div class="form-group">
-                            <label asp-for="FundTypeId" class="control-label"></label>
+                            <label asp-for="FundTypeId" class="control-label">Type of Funds</label>
                             <select asp-for="FundTypeId" class="form-control" asp-items="ViewBag.FundTypeItem" disabled></select>
                         </div>
 
 
                         <div class="form-group">
-                            <label asp-for="PorganizationsId" class="control-label"></label>
+                            <label asp-for="PorganizationsId" class="control-label">Performing Organization</label>
                             <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.POrganizationItem" disabled></select>
                         </div>
 
@@ -512,6 +513,38 @@
                 });
 
             });
+
+
+             $("#nav-projectreview-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP12',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
+
+            });
+
 
 
             });

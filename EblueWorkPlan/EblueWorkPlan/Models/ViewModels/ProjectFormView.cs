@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EblueWorkPlan.Models.ViewModels
 {
-    public class ProjectFormView
+    public class ProjectFormView:IValidatableObject
     {
         public Project oProject { get; set; }
         public int ProjectId { get; set; }
@@ -116,12 +116,16 @@ namespace EblueWorkPlan.Models.ViewModels
 
         
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = " Date Started")]
+
         public DateTime DateStarted { get; set; }
 
         public string DateStartedStr { get; set; }
 
         
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = " Date Ended")]
+
         public DateTime DateEnded { get; set; }
 
         public string DateEndedStr { get; set; }
@@ -144,12 +148,16 @@ namespace EblueWorkPlan.Models.ViewModels
         public string NoSamples { get; set; }
 
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
 
         public DateTime? SamplesDate { get; set; }
 
         [Display(Name = " Work Planned (2) ")]
         public string WorkPlanned { get; set; }
 
+
+
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = " \tEstimated Time in Which Results\r\nwill be Available.")]
         public DateTime? TimeEstimated { get; set; }
 
@@ -159,6 +167,8 @@ namespace EblueWorkPlan.Models.ViewModels
         public string Descriptions { get; set; }
 
         public string EstimatedTime { get; set; }
+
+        [Display(Name = " Facilities Needed")]
 
         public string FacilitiesNeeded { get; set; }
 
@@ -176,6 +186,7 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = " # of Samples")]
         public string NumSamples { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
 
         public DateTime? ProbableDate { get; set; }
 
@@ -213,15 +224,16 @@ namespace EblueWorkPlan.Models.ViewModels
         public int Opid { get; set; }
 
         public string Name { get; set; }
+        //[Range(double.MinValue,1,ErrorMessage = "The Value must be from 0 to 1")]
         [Display(Name = "% of Time")]
-        public decimal? PerTime { get; set; }
+        public decimal PerTime { get; set; }
 
 
         [Display(Name = "Personnel  Added ")]
-        public string PersonnelManAdded { get; set; }
+        public string? PersonnelManAdded { get; set; }
 
         [Display(Name = "Role Added")]
-        public string RoleManAdded { get; set; }
+        public string? RoleManAdded { get; set; }
 
 
 
@@ -243,10 +255,10 @@ namespace EblueWorkPlan.Models.ViewModels
         [Display(Name = "Graduate or Undergraduate")]
         public int? GradoptionId { get; set; }
 
+        [Display(Name = "Student ID")]
 
         public int? StudentId { get; set; }
 
-        [Display(Name = "Student ID")]
         public decimal? Amount { get; set; }
 
         public int? RoleId { get; set; }
@@ -500,6 +512,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         //Lista de Proyectos Custom
 
+
         public IEnumerable<AdminOfficerComment> AdminOfficerComments { get; set; }
         public IEnumerable<Fund>Fundss { get; set; }
         public IEnumerable<Laboratory> laboratories { get; set; }
@@ -512,6 +525,14 @@ namespace EblueWorkPlan.Models.ViewModels
         public IEnumerable<ProjectNote> projectNotes { get; set; }
         public IList<ProjectFormView> ProjectItem {get; set;}
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (PerTime.ToString().Length > 1 || PerTime > 1) {
 
+                yield return new ValidationResult("", new[] { nameof(PerTime) });
+            }
+
+            
+        }
     }
 }

@@ -22,6 +22,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -49,7 +50,10 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label  asp-for="LocationId" class="control-label"></label>
-                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                    <option selected>Select a location  here...</option>
+
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -151,7 +155,7 @@
         <thead>
             <tr>
                  <th>
-                    @Html.DisplayNameFor(model => model.Location)
+                    @Html.DisplayNameFor(model => model.Location.LocationName)
                 </th>
 
                 <th>
@@ -248,13 +252,24 @@
                     
                     <td>
                             <div class="row">
-                            <div class="col-4">
-                                <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
-                                    class="btn  btn-success modify">
-                                    Modify
-                                </button>
+                                <div class="col-4">
+                                    <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
+                                        class="btn  btn-success modify">
+                                        <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
+
+                                    </button>
+                                </div>
+
+
+                                <div class="col-4">
+                                    <button data-id="@item.FundId|@item.Salaries|@item.Wages|@item.Benefits|@item.Assistant|@item.Materials|@item.Equipment|@item.Travel |@item.Abroad |@item.Subcontracts |@item.Others |@item.IndirectCosts |@item.LocationId | @item.ProjectId"
+                                        class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
+
+                                    </button>
+                                </div>
                             </div>
-                            </td>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -264,6 +279,7 @@
     <br />
 
 
+    <partial name="_Page2Modal" />
 
 
 
@@ -399,11 +415,13 @@
                 $("#btnSave").show();
 
 
+                // let item = $(this).attr("data-id");
+
+                // let campos = item.split("|", 14);
                 let item = $(this).attr("data-id");
+                let campos = item.split("|").map(s => s.trim());
 
-                let campos = item.split("|", 14);
-
-
+                console.log("locationId:", campos[12]);
 
                 $('#fundId').val(campos[0]);
                 $('#salaries').val(campos[1]);
@@ -473,6 +491,116 @@
                 $('#formClr').find('input[type=text], input[type=email], textarea').val('');
 
             });
+
+
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+                    let campos = item.split("|").map(s => s.trim());
+
+                       console.log("locationId:", campos[12]);
+
+                       $('#fundId').val(campos[0]);
+                       $('#salaries').val(campos[1]);
+                       $('#wages').val(campos[2]);
+                       $('#benefit').val(campos[3]);
+                       $('#assistant').val(campos[4]);
+                       $('#materials').val(campos[5]);
+                       $('#equipment').val(campos[6]);
+                       $('#travel').val(campos[7]);
+                       $('#abroad').val(campos[8]);
+                       $('#subcontract').val(campos[9]);
+                       $('#others').val(campos[10]);
+                       $('#indirectcosts').val(campos[11]);
+                       $('#projectId').val(campos[13]);
+                       $('#locationId').val(campos[12]);
+
+                const params = {
+
+
+                    fundId: $('#fundId').val(),
+                    salaries:  $('#salaries').val(),
+                    wages:     $('#wages').val(),
+                    benefit:   $('#benefit').val(),
+                    assistant:  $('#assistant').val(),
+                    materials:  $('#materials').val(),
+                    equipment:  $('#equipment').val(),
+                    travel:     $('#travel').val(),
+                    abroad:     $('#abroad').val(),
+                    subcontract: $('#subcontract').val(),
+                    others:        $('#others').val(),
+
+                    indirectcosts: $('#indirectcosts').val(),
+                    projectId:     $('#projectId').val(),
+                    LocationId:    $('#locationId').val(),
+                };
+
+
+
+            });
+
+            $('#btnConfirmDelete').click(function() {
+
+               
+                const params = {
+
+
+                    fundId: $('#fundId').val(),
+                    salaries:  $('#salaries').val(),
+                    wages:     $('#wages').val(),
+                    benefit:   $('#benefit').val(),
+                    assistant:  $('#assistant').val(),
+                    materials:  $('#materials').val(),
+                    equipment:  $('#equipment').val(),
+                    travel:     $('#travel').val(),
+                    abroad:     $('#abroad').val(),
+                    subcontract: $('#subcontract').val(),
+                    others:        $('#others').val(),
+
+                    indirectcosts: $('#indirectcosts').val(),
+                    projectId:     $('#projectId').val(),
+                    LocationId:    $('#locationId').val(),
+                };
+
+
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage8',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
              $("#nav-home-tab").click(function () {
 
@@ -826,6 +954,35 @@
             });
 
 
+                 $("#nav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
 
 
 

@@ -1,0 +1,1024 @@
+﻿@model EblueWorkPlan.Models.ViewModels.ProjectFormView
+
+
+<partial name="_Sidebar2" />
+
+
+@{
+    ViewData["Title"] = "Project Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h1 class="text-center"> Project report section</h1>
+
+<br />
+<br />
+<br />
+<div class="card">
+    <div class="card-header">
+        <h5>Project Review For: @Model.ProjectNumber</h5>
+
+    </div>
+
+    <div class="card-body">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="mt-5">
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProjectTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProjectNumber)
+                        </th>
+                    </tr>
+
+                    
+                    
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>
+                            @Html.DisplayFor(model => model.ProjectTitle)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.ProjectNumber)
+                        </td>
+                    </tr>
+
+                    
+                </tbody>
+            </table>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Project.Comm.CommName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.ProgramArea.ProgramAreaName)
+                    </th>
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.Comm.CommName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.ProgramArea.ProgramAreaName)
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.Department.DepartmentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.FundType.FundTypeName)
+                    </th>
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.Department.DepartmentName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.FundType.FundTypeName)
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.Porganizations.PorganizationName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.SubStation.SubStationName)
+                    </th>
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.Porganizations.PorganizationName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.SubStation.SubStationName)
+                    </td>
+                </tr>
+
+
+
+
+            </tbody>
+
+
+        </table>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContractNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Orcid)
+                    </th>
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.ContractNumber)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.Orcid)
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.Roster.RosterName)
+                    </th>
+                    
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.Roster.RosterName)
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        
+    </div>
+
+    @* <div class="card-footer">
+
+    </div *@>
+</div>
+
+<br />
+<div class="mt-5"></div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Objective Page</h5>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.Objectives)
+                    </th>
+                    
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.Objectives)
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.PresentOutlook)
+                    </th>
+                    
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.PresentOutlook)
+                    </td>
+
+                    
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr class="mt-5">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Projects.ObjWorkPlan)
+                    </th>
+                    
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Projects.ObjWorkPlan)
+                    </td>
+
+                    
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+        <br />
+        <div class="mt-5"></div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5> Fieldwork Page</h5>
+
+            </div>
+
+            <div class="card-body">
+
+
+                <table class="table table-bordered" id="fieldTable">
+                    <thead>
+                        <h1 class="fieldId" style="display:none" class="field-id">@Model.FieldWorkId </h1>
+                        <tr>
+
+
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Wfieldwork)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Area)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateStarted)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateEnded)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FieldoptionId)
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.fieldsWork)
+                        {
+                            <tr>
+
+
+
+                                <td class="Wfieldwork">
+                                    @Html.DisplayFor(modelItem => item.Wfieldwork)
+                                </td>
+                                <td class="area">
+                                    @Html.DisplayFor(modelItem => item.Area)
+                                </td>
+
+
+                   
+
+                                <td class="dateStarted">
+                                    @Html.DisplayFor(modelItem => item.DateStarted)
+                                </td>
+                                <td class="dateEnded">
+                                    @Html.DisplayFor(modelItem => item.DateEnded)
+                                </td>
+                                <td class="inProgress">
+                                    @Html.DisplayFor(modelItem => item.Fieldoption.OptionName)
+                                </td>
+
+                                <td class="location">
+                                    @Html.DisplayFor(modelItem => item.Location.LocationName)
+                                </td>
+
+                                                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+
+    @* <div class="card-footer">
+
+    </div >*@
+
+
+
+</div>
+
+
+        <br />
+        <div class="mt-5"></div>
+
+        <div class="card">
+            <div class="card-header">
+                
+                <h5>Laboratory Page</h5>
+
+            </div>
+
+            <div class="card-body">
+
+
+                <table class="table table-bordered " id="labTable">
+                    <thead>
+                        <h1 class="LabId" style="display:none" class="field-id">@Model.LabId </h1>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.WorkPlanned)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descriptions)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TimeEstimated)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FacilitiesNeeded)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CentralLaboratory)
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.laboratories)
+                        {
+                            <tr>
+
+
+
+                                <td class="workplanned">
+                                    @Html.DisplayFor(modelItem => item.WorkPlanned)
+                                </td>
+                                <td class="dess">
+                                    @Html.DisplayFor(modelItem => item.Descriptions)
+                                </td>
+                                <td class="estimated">
+                                    @Html.DisplayFor(modelItem => item.TimeEstimated)
+                                </td>
+                                <td class="facili">
+                                    @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
+                                </td>
+
+                                <td class="facili">
+                                    @Html.DisplayFor(modelItem => item.CentralLaboratory)
+                                </td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <br />
+            <div class="mt-5"></div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Scientist Page</h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Roster)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SciRolesId)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Credits)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Tr)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ca)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ah)
+                                </th>
+
+
+
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.sciProjects)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Roster.RosterName)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SciRoles.SciRoleName)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Credits)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tr)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ca)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ah)
+                                    </td>
+
+
+
+                             </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+
+
+                <br />
+                <div class="mt-5"></div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            Other Personnel Page
+                        </h5>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+
+                                        @Html.DisplayNameFor(model => model.PerTime)
+
+
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Location)
+                                    </th>
+
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.otherPersonels)
+                                {
+                                    var porcent = Convert.ToInt32(item.PerTime * 100);
+
+
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+
+
+
+
+                                        <td>
+                                            @*@Html.DisplayFor(modelItem => item.PerTime)*@ @porcent   %
+
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Location.LocationName)
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                        <br />
+                        <div class="mt-5"></div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Graduates Page</h5>
+
+                            </div>
+
+                            <div class="card-body">
+
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Gname)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.ThesisProjectId)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Thesis)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.StudentId)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.GradoptionId)
+                                            </th>
+
+
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.gradAsses)
+                                        {
+                                            <tr>
+
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Gname)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ThesisProject.OptionName)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Thesis)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.StudentId)
+                                                </td>
+
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Gradoption.GradOptionName)
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+                    </div>
+
+
+
+
+
+                   <br />
+                   <div class="mt-5"></div>
+
+                    <div class="card">
+                        <div class="card-header">
+                                <h5>Funds Page</h5>
+
+                        </div>
+
+                        <div class="card-body">
+
+
+                                <table class="table  table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Location)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Salaries)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Wages)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Benefits)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Assistant)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Materials)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Equipment)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Travel)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Abroad)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Subcontracts)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Others)
+                                            </th>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.IndirectCosts)
+                                            </th>
+
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.TotalAmount)
+                                            </th>
+>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Fundss)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Location.LocationName)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Salaries)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Wages)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Benefits)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Assistant)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Materials)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Equipment)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Travel)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Abroad)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Subcontracts)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Others)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.IndirectCosts)
+                                                </td>
+
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+
+                                <br />
+
+
+
+
+
+                        </div>
+
+
+
+
+                        <br />
+                        <div class="mt-5"></div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                    <h5>Budget Description Page</h5>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Impact)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Salaries)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Impact)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Salaries)
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Wages)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Benefits)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Wages)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Benefits)
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Assistant)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Materials)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Assistant)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Materials)
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Project.Equipment)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Travel)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Equipment)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Travel)
+                                                </td>
+                                            </tr>
+
+
+
+
+                                        </tbody>
+
+
+                                    </table>
+
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Abroad)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Subcontracts)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Abroad)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Subcontracts)
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="mt-5">
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.IndirectCosts)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Projects.Others)
+                                                </th>
+                                            </tr>
+
+
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.IndirectCosts)
+                                                </td>
+
+                                                <td>
+                                                    @Html.DisplayFor(model => model.Projects.Others)
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                    <div class="card-footer">
+                                        <div class="form-group">
+                                            <div class="btn btn-primary"><a asp-action="Page11" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white">Back</a></div>
+
+                                        </div>
+
+
+                                    </div>
+                            </div>
+
+
+
+
+
+

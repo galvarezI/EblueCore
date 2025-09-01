@@ -37,12 +37,12 @@
                 <div class="row">
                     <div class="col-6">
                         
-                        <label asp-for="ProjectNumber" class="control-label"></label>
+                        <label asp-for="ProjectNumber" class="control-label" ></label>
                         <div class="badge bg-danger text-wrap text-white">
                             Mandatory
                         </div>
 
-                        <input asp-for="ProjectNumber" class="form-control" />
+                        <input asp-for="ProjectNumber" class="form-control " placeholder="Select a Project Number here..." />
                        
                         <span asp-validation-for="ProjectNumber" class="text-danger"></span>
 
@@ -55,7 +55,10 @@
                     <div class="col-6">
                         <label asp-for="RosterId" class="control-label"></label>
                        
-                        <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                        <select asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems" placeholder="Select a investigator here...">
+                            <option selected>Select Investigator here...</option>
+
+                        </select>
                        
                     </div>
                 </div>
@@ -64,18 +67,27 @@
 
                 <div class="form-group">
                     <label asp-for="DepartmentId" class="control-label"></label>
-                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.departmentItems"></select>
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.departmentItems" placeholder="Select a Department here...">
+                                <option selected>Select Department here...</option>
+
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="CommId" class="control-label"></label>
-                    <select asp-for="CommId" class="form-control" asp-items="ViewBag.commodityItems"></select>
+                    <select asp-for="CommId" class="form-control" asp-items="ViewBag.commodityItems">
+                                <option selected>Select Commodity here...</option>
+
+                    </select>
 
                 </div>
 
                 <div class="form-group">
                     <label asp-for="ProgramAreaId" class="control-label"></label>
-                    <select asp-for="ProgramAreaId" class="form-control" asp-items="ViewBag.programAreaItems"></select>
+                    <select asp-for="ProgramAreaId" class="form-control" asp-items="ViewBag.programAreaItems" data-placeholder="Select a program area..">
+                                <option selected>Select a Program Area  here...</option>
+
+                    </select>
                         
 
                     
@@ -91,7 +103,10 @@
 
                 <div class="form-group">
                     <label asp-for="FiscalYearId" class="control-label"></label>
-                    <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.fiscalyearItems"></select>
+                    <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.fiscalyearItems">
+                        <option selected>Select a  Fiscal Year here...</option>
+
+                    </select>
                     
 
 
@@ -110,20 +125,26 @@
 
                 <div class="form-group">
                     <label asp-for="FundTypeId" class="control-label"></label>
-                    <select asp-for="FundTypeId" class="form-control" id="selectfund" asp-items="ViewBag.fundtypeItems"></select>
+                    <select asp-for="FundTypeId" class="form-control" id="selectfund" asp-items="ViewBag.fundtypeItems">
+                                <option selected>Select a  Fund Type here...</option>
 
-                    <label asp-for ="OtherFundtype" class="control-label">
+                    </select>
+
+                    @* <label asp-for ="OtherFundtype" class="control-label">
                         If you select "OTHER"
                     </label>
 
-                    <input asp-for="OtherFundtype" type="text" id="otherfundtype" class="form-control" />
+                    <input asp-for="OtherFundtype" type="text" id="otherfundtype" class="form-control" /> *@
                 </div>
               
 
                 <div class="form-group">
                     <label asp-for="PorganizationsId" class="control-label"></label>
   
-                    <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.porganizationItem"></select>
+                    <select asp-for="PorganizationsId" class="form-control" asp-items="ViewBag.porganizationItem">
+                        <option selected>Select a  Performing Organization here...</option>
+
+                    </select>
 
                 </div>
 

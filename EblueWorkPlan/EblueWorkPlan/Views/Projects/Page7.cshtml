@@ -51,6 +51,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
          <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -83,7 +84,7 @@
 
                             <div class="form-group">
                                 <label asp-for="Thesis" class="control-label"></label>
-                                <input id="student" asp-for="Thesis" class="form-control" />
+                                <input id="thesis" asp-for="Thesis" class="form-control" />
                                 <span asp-validation-for="Thesis" class="text-danger"></span>
                             </div>
 
@@ -99,26 +100,22 @@
 
                             <div class="form-group">
                                 <label asp-for="ThesisProjectId" class="control-label"></label>
-                                <select id="thesisid" asp-for="ThesisProjectId" class="form-control" asp-items="ViewBag.thesisItems "></select>
+                                <select id="thesisid" asp-for="ThesisProjectId" class="form-control" asp-items="ViewBag.thesisItems ">
+                                    <option selected>Select a  option here...</option>
+
+                                </select>
                             </div>
 
 
                             <div class="form-group">
                                 <label asp-for="GradoptionId" class="control-label"></label>
-                                <select id="gradoption" asp-for="GradoptionId" class="form-control" asp-items="ViewBag.gradItems "></select>
+                                <select id="gradoption" asp-for="GradoptionId" class="form-control" asp-items="ViewBag.gradItems ">
+                                    <option selected>Select a  option here...</option>
+
+                                </select>
                             </div>
 
-                            @*  <div class="form-group form-check">
-                            <label class="form-check-label">
-                            <input id="isGraduated" class="form-check-input" asp-for="IsGraduated" /> @Html.DisplayNameFor(model => model.IsGraduated)
-                            </label>
-                            </div>
-
-                            <div class="form-group form-check">
-                            <label  class="form-check-label">
-                            <input id="isUndergraduated"  class="form-check-input" asp-for="IsUndergraduated" /> @Html.DisplayNameFor(model => model.IsUndergraduated)
-                            </label>
-                            </div>*@
+                           
 
                             <br />
                         </div>
@@ -211,7 +208,16 @@
                             <div class="col-4">
                                 <button data-id="@item.Gaid|@item.Gname|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId|@item.Thesis"
                                     class="btn  btn-success modify">
-                                    Modify
+                                  <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
+
+                                </button>
+                            </div>
+
+                             <div class="col-4">
+                                <button data-id="@item.Gaid|@item.Gname|@item.ThesisProjectId|@item.StudentId|@item.GradoptionId|@item.ProjectId|@item.Thesis"
+                                    class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                  <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
+
                                 </button>
                             </div>
 
@@ -222,8 +228,9 @@
         </tbody>
     </table>
 
-
-
+    
+<!-- Modal -->
+     <partial name="_Page2Modal" />
 
 
 
@@ -316,6 +323,89 @@
                 $('#formClr').find('input[type=text], input[type=email], textarea').val('');
 
             });
+
+            
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+                
+                let campos = item.split("|", 7);
+
+
+
+
+                //let isGraduated = campos[6] === 'True' ? true : false;
+                //let isUndergraduated = campos[7] === 'True' ? true : false;
+
+                $('#gradId').val(campos[0]);
+                $('#gname').val(campos[1]);
+                $('#thesis').val(campos[6])
+                $('#student').val(campos[3]);
+
+                $('#thesisid').val(campos[2]);
+                $('#gradoption').val(campos[4]);
+                //$('#isGraduated').prop('checked', isGraduated)
+                $('#projectId').val(campos[5]);
+
+                const params = {
+                    gradId: $('#gradId').val(),
+                    gname: $('#gname').val(),
+                    thesis: $('#thesis').val(),
+                    student: $('#student').val(),
+                    gradoption: $('#gradoption').val(),
+                    thesisid: $('#thesisid').val(),
+                    projectId: $('#projectId').val()
+                };
+
+
+            });
+
+            $('#btnConfirmDelete').click(function() {
+             
+                const params = {
+                    gradId: $('#gradId').val(),
+                    gname: $('#gname').val(),
+                    thesis: $('#thesis').val(),
+                    student: $('#student').val(),
+                    gradoption: $('#gradoption').val(),
+                    thesisid: $('#thesisid').val(),
+                    projectId: $('#projectId').val()
+                };
+
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage7',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
 
              $("#nav-home-tab").click(function () {
 
@@ -668,6 +758,35 @@
 
             });
 
+                 $("#nav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
 
 
 

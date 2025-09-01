@@ -9,25 +9,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<WorkplandbContext>(
+      options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
 
-//Add Client ID and Secrets here....
 builder.Services.AddAuthentication().AddMicrosoftAccount(opciones => 
 {
     opciones.ClientId = builder.Configuration["MicrosoftClientId"]!;
     opciones.ClientSecret = builder.Configuration["MicrosoftSecretId"]!;
 });
-//var constring = builder.Configuration.GetConnectionString("WorkPlanContext");
 
-builder.Services.AddDbContext<WorkplandbContext>(
-      options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
+
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
     // Relaja las reglas del nombre de usuario
-    options.User.AllowedUserNameCharacters = null; // Permite todos los caracteres
-    options.User.RequireUniqueEmail = false; // (Opcional) Requiere emails únicos
+    options.User.AllowedUserNameCharacters = null;
+    options.User.RequireUniqueEmail = false; 
 
     // Relaja las reglas de la contraseña (opcional)
     options.Password.RequireDigit = false;
@@ -51,16 +50,7 @@ builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.Ap
 
 
 
-#region depreciated
-//builder.Services.AddDbContext<WorkplandbContext>(options =>
-//{
 
-
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext"));
-
-//});
-
-#endregion
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
@@ -74,7 +64,16 @@ var app = builder.Build();
 
 
 
+#region depreciated
+//builder.Services.AddDbContext<WorkplandbContext>(options =>
+//{
 
+
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext"));
+
+//});
+
+#endregion
 
 
 

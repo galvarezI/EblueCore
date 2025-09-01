@@ -23,6 +23,7 @@
         <button class="nav-link active" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="true"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -134,7 +135,7 @@
                                 <input type="submit" value="Save" class="btn btn-primary" />
                             </div>
 
-
+                            
 
                         </div>
 
@@ -526,6 +527,36 @@
 
             });
 
+
+            });
+
+             $("#nav-projectreview-tab").click(function () {
+
+                const params = {
+                    ProjectId: $("#projectId").val()
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/RedirectP12',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+
+
+
+                });
 
             });
 

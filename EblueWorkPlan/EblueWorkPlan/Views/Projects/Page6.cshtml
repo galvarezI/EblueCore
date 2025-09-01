@@ -24,6 +24,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -57,20 +58,23 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="PerTime" class="control-label"></label>
-                                <input id="pertime" asp-for="PerTime" class="form-control" min="0.0000" step="0.0001" max="1" />
+                                <input id="pertime" asp-for="PerTime" class="form-control" @* min="0.0000"  max="1" *@ />
                                 <span asp-validation-for="PerTime" class="text-danger"></span>
                             </div>
                            
                             <div class="form-group">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                    <option selected>Select a location  here...</option>
+
+                                </select>
                             </div>
 
                            
                                 <br />
 
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
+                                <input  type="button" value="Add" class="btn btn-primary" id="btnSubmit" />
                                 <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
                             </div>
 
@@ -158,10 +162,20 @@
                                 <div class="col-4">
                                     <button data-id="@item.Opid|@item.Name|@item.PerTime|@item.PersonnelManAdded|@item.RoleManAdded|@item.LocationId|@item.ProjectId|@item.RosterId"
                                         class="btn  btn-success modify">
-                                        Modify
+                                        <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
+
                                     </button>
 
                                 </div>
+
+                                <div class="col-4">
+                                    <button data-id="@item.Opid|@item.Name|@item.PerTime|@item.PersonnelManAdded|@item.RoleManAdded|@item.LocationId|@item.ProjectId|@item.RosterId"
+                                            class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
+
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 }
@@ -172,6 +186,7 @@
 </div>
 
 
+    <partial name="_Page2Modal" />
 
 
 
@@ -184,6 +199,60 @@
 
                 $("#dateEnded").datepicker();
                 $("#dateStarted").datepicker();
+
+
+            $("#btnSubmit").click(function () {
+
+                const params = {
+                    Opid: $('#Opid').val(),
+                        perName: $('#perName').val(),
+                        pertime: $('#pertime').val(),
+                        locationid: $('#locationid').val(),
+                        rosterid: $('#rosterid').val(),
+                        personnelman: $('#personnelman').val(),
+                        roleman: $('#roleman').val(),
+                        projectId: $('#projectId').val(),
+
+
+
+                };
+
+
+                console.log(params);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage6Data',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+
+                    },
+                    dataType: 'json'
+                });
+
+                $('#formClr').find('input[type=text], input[type=email], textarea').val('');
+
+
+
+            });
+
+
+
+
+
+
+
+
 
 
 
@@ -230,18 +299,112 @@
                     console.log(params);
 
 
-                    $.ajax({
-                        type: "POST",
-                        url: '/Projects/PostPage6Data',
-                        data: params,
-                        success: function () {
-                            alert('Entre');
-                        },
-                        dataType: 'json'
-                    });
+
+                $.ajax({
+                    type: "POST",
+                    url: '/Projects/PostPage6Data',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
                     $('#formClr').find('input[type=text], input[type=email], textarea').val('');
 
                 });
+
+
+
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+
+
+                    let campos = item.split("|", 9);
+
+
+
+                    $('#Opid').val(campos[0]);
+                    $('#perName').val(campos[1]);
+                    $('#pertime').val(campos[2]);
+                    $('#locationid').val(campos[5]);
+                    $('#rosterid').val(campos[7]);
+                    $('#personnelman').val(campos[3]);
+                    $('#roleman').val(campos[4])
+                    $('#projectId').val(campos[6]);
+
+
+             const params = {
+                        Opid: $('#Opid').val(),
+                        perName: $('#perName').val(),
+                        pertime: $('#pertime').val(),
+                        locationid: $('#locationid').val(),
+                        rosterid: $('#rosterid').val(),
+                        personnelman: $('#personnelman').val(),
+                        roleman: $('#roleman').val(),
+                        projectId: $('#projectId').val(),
+
+                    };
+
+            });
+
+            $('#btnConfirmDelete').click(function() {
+             const params = {
+                        Opid: $('#Opid').val(),
+                        perName: $('#perName').val(),
+                        pertime: $('#pertime').val(),
+                        locationid: $('#locationid').val(),
+                        rosterid: $('#rosterid').val(),
+                        personnelman: $('#personnelman').val(),
+                        roleman: $('#roleman').val(),
+                        projectId: $('#projectId').val(),
+
+                    };
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage6',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
+
 
 
                 $("#nav-home-tab").click(function () {
@@ -574,6 +737,36 @@
                     $.ajax({
                         type: "POST",
                         url: '/Projects/RedirectP11',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
+
+                     $("#nav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
                         data: params,
                         success: function (response) {
                             if (response.redirect) {

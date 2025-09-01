@@ -24,6 +24,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link active" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
 
@@ -52,13 +53,24 @@
                         </div>
 
 
+
+                        <div class="form-group">
+                            <label @* asp-for="UserRole" *@ class="control-label"> User Role</label>
+                            <select  asp-for="userRole" class="form-control" asp-items="ViewBag.roleItems">
+                                <option selected>Select a  option here...</option>
+
+                            </select>
+                        </div>
+
+
+@* 
                         <div class="row">
                             <div class="col-12">
-                                <label asp-for="userRole" class="control-label"></label>
+                                <label asp-for="userRole" class="control-label">Comment Role</label>
                                 <input asp-for="userRole"  class="form-control">
                                 <span asp-validation-for="userRole" class="text-danger"></span>
                             </div>
-                        </div>
+                        </div> *@
 
 
 
@@ -110,42 +122,64 @@
 
                 </div>
 
+
+
+
+
+
+
             </form>
 
-            <div class="container mt-5 mb-5">
-                <div class="row height d-flex justify-content-center align-items-center">
-                    <div class="col-md-7">
-                        <div class="card">
-                            <div class="p-3">
-                                <h6>Comments</h6>
-                            </div>
-                            @foreach  (var item in Model.projectNotes)
-                            {
-                                <div class="d-flex flex-row p-3">
-                                    <i class='bx bx-user-check rounded-circle mr-3' width="40" height="40"></i>
-                                    <div class="w-100">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex flex-row align-items-center">
-                                                <span class="mr-2">@Html.DisplayFor(modelitem => item.Username) </span>  
-                                                       
-                                                        <small class="c-badge">@Html.DisplayFor(modelitem => item.UserRole)</small>
-                                                    
-                                            </div> <small>@Html.DisplayFor(modelitem => item.LastUpdate)</small>
-                                        </div>
-                                        <p class="text-justify comment-text mb-0">@Html.DisplayFor(modelitem => item.Comment)</p>
-                                        
-                                    </div>
-                                </div>
 
-                            }
-                            
-                                
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Username)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.userRole)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comment)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastUpdate)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.projectNotes)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserRole)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comment)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastUpdate)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
 
 
@@ -647,9 +681,38 @@
 
                 });
 
-    
-    
-    
+
+                $("#nav-projectreview-tab").click(function () {
+
+                           const params = {
+                               ProjectId: $("#projectId").val()
+                           }
+
+                           $.ajax({
+                               type: "POST",
+                               url: '/Projects/RedirectP12',
+                               data: params,
+                               success: function (response) {
+                                   if (response.redirect) {
+
+                                       window.location.href = response.url;
+
+                                   } else {
+
+
+                                       alert('No funciona..');
+                                   }
+
+                               },
+                               dataType: 'json'
+
+
+
+                           });
+
+                       });
+
+            
     
     
     

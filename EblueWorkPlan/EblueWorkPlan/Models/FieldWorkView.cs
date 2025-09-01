@@ -10,8 +10,8 @@
         public string dateStarted { get; set; }
         public string dateEnded { get; set; }
         public bool inProgress { get; set; }
-        public bool toBeInitiated { get; set; }
-        public int locaionId { get; set; }
+        //public bool toBeInitiated { get; set; }
+        public int LocationId { get; set; }
 
         public int fieldoption { get; set; }
     }

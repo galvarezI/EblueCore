@@ -23,6 +23,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" ><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -64,8 +65,12 @@
 
                             <div class="col-6">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select id="locaionId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"></select>
+                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                    <option value="">-- Select a location here... --</option>
+                                </select>
+                                <span asp-validation-for="LocationId" class="text-danger"></span>
                             </div>
+
                             <div class="col6">
                                 <label asp-for="DateStarted" class="control-label"></label>
                                 <input id="dateStarted" class="form-control dateStr" />
@@ -80,7 +85,10 @@
 
                             <div class="col-12">
                                 <label asp-for="FieldoptionId" class="control-label"></label>
-                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control" asp-items="ViewBag.fieldItems"></select>
+                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control" asp-items="ViewBag.fieldItems">
+                                    <option selected>Select a status here...</option>
+
+                                </select>
                             </div>
 
 
@@ -214,8 +222,17 @@
                                     <div class="col-4">
                                         <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.FieldoptionId|@item.ProjectId|@item.LocationId"
                                             class="btn  btn-success modify">
-                                            Modify
+                                           <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
                                         </button>
+
+                                    </div>
+
+                                    <div class="col-4">
+                                        <button data-id="@item.FieldWorkId|@item.Wfieldwork|@item.Area|@item.DateStarted|@item.DateEnded|@item.FieldoptionId|@item.ProjectId|@item.LocationId"
+                                            class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
+                                        </button>
+
                                     </div>
 
                                 </div>
@@ -231,6 +248,9 @@
 
 
 </div>
+
+
+<partial name="_Page2Modal" />
 
 
 @section scripts{
@@ -258,7 +278,7 @@
                     dateEnded: $('#dateEnded').val(),
                     
                     fieldoption: $('#fieldoption').val(),
-                    locaionId: $('#locaionId').val()
+                    locationId: $('#locationId').val()
 
 
 
@@ -308,15 +328,15 @@
 
                 //let isProgress = campos[6] === 'True' ? true : false;
                 //let toBeInitiated = campos[5] === 'True' ? true : false;
-
+                console.log("LocationId:", campos[7]);
                 $('#fieldWorkId').val(campos[0]);
                 $('#wfieldwork').val(campos[1]);
                 $('#area').val(campos[2]);
                 $('#dateStarted').val(dateStarted);
                 $('#dateEnded').val(dateEnded);
                 $('#fieldoption').val(campos[5]);
-                $('#toBeInitiated').prop('checked', toBeInitiated)
-                $('#locaionId').val(campos[7]);
+               
+                $('#locationId').val(campos[7]);
 
             });
 
@@ -333,7 +353,7 @@
                     dateEnded: $('#dateEnded').val(),
                     
                     fieldoption: $('#fieldoption').val(),
-                    locaionId: $('#locaionId').val()
+                    locationId: $('#locationId').val()
 
 
 
@@ -366,6 +386,110 @@
 
 
             });
+
+            
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|", 8);
+
+                const dateStarted = new Date(campos[3]).toLocaleDateString('en-US');
+                const dateEnded = new Date(campos[4]).toLocaleDateString('en-US');
+
+
+                //let isProgress = campos[6] === 'True' ? true : false;
+                //let toBeInitiated = campos[5] === 'True' ? true : false;
+                console.log("LocationId:", campos[7]);
+                $('#fieldWorkId').val(campos[0]);
+                $('#wfieldwork').val(campos[1]);
+                $('#area').val(campos[2]);
+                $('#dateStarted').val(dateStarted);
+                $('#dateEnded').val(dateEnded);
+                $('#fieldoption').val(campos[5]);
+               
+                $('#locationId').val(campos[7]);
+
+
+
+               const params = {
+                    fieldWorkId: $('#fieldWorkId').val(),
+                    projectId: $('#projectId').val(),
+                    wfieldwork: $('#wfieldwork').val(),
+                    area: $('#area').val(),
+                    dateStarted: $('#dateStarted').val(),
+                    dateEnded: $('#dateEnded').val(),
+                    
+                    fieldoption: $('#fieldoption').val(),
+                    locationId: $('#locationId').val()
+
+
+
+
+                };
+
+                // console.log(params);
+            
+            });
+
+            $('#btnConfirmDelete').click(function() {
+                const params = {
+                    fieldWorkId: $('#fieldWorkId').val(),
+                    projectId: $('#projectId').val(),
+                    wfieldwork: $('#wfieldwork').val(),
+                    area: $('#area').val(),
+                    dateStarted: $('#dateStarted').val(),
+                    dateEnded: $('#dateEnded').val(),
+                    
+                    fieldoption: $('#fieldoption').val(),
+                    locationId: $('#locationId').val()
+
+
+
+
+                };
+
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage3',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
              $("#nav-home-tab").click(function () {
 
@@ -721,6 +845,35 @@
 
 
 
+                 $("#Snav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
 
 
         });

@@ -259,11 +259,6 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\o
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.RazorAssemblyInfo.cache
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWorkPlan.RazorAssemblyInfo.cs
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets\msbuild.EblueWorkPlan.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets\msbuild.build.EblueWorkPlan.props
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.EblueWorkPlan.props
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.EblueWorkPlan.props
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
@@ -2016,6 +2011,10 @@ C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\b
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.build.endpoints.json
-C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets\msbuild.EblueWorkPlan.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
 C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\EblueWor.4D1B8517.Up2Date
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\rpswa.dswa.cache.json
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\rjimswa.dswa.cache.json
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\rjsmrazor.dswa.cache.json
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\rjsmcshtml.dswa.cache.json
+C:\Users\GGJEANZS\Desktop\Proyects\InfosypWorkPlan\EblueWorkPlan\EblueWorkPlan\obj\Debug\net6.0\staticwebassets.build.json.cache

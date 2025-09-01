@@ -23,6 +23,7 @@
         <button class="nav-link" id="nav-budget-tab" data-bs-toggle="tab" data-bs-target="#nav-budget" type="button" role="tab" aria-controls="nav-budget" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-9" style="color: #2267dd;"></i></button>
         <button class="nav-link" id="nav-notes-tab" data-bs-toggle="tab" data-bs-target="#nav-notes" type="button" role="tab" aria-controls="nav-notes" aria-selected="false" asp-action="Page9" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-0" style="color: #2267dd;"></i> </button>
         <button class="nav-link " id="nav-adminnotes-tab" data-bs-toggle="tab" data-bs-target="#nav-adminnotes" type="button" role="tab" aria-controls="nav-adminnotes" aria-selected="false" asp-action="Page11" asp-controller="Projects"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-1" style="color: #2267dd;"></i> </button>
+        <button class="nav-link " id="nav-projectreview-tab" data-bs-toggle="tab" data-bs-target="#nav-projectreview" type="button" role="tab" aria-controls="nav-projectreview" aria-selected="false"><i class="fa-solid fa-1" style="color: #2267dd;"></i><i class="fa-solid fa-2" style="color: #2267dd;"></i> <a asp-action="ProjectReview" asp-controller="Projects"></a> </button>
 
 
     </div>
@@ -44,44 +45,66 @@
 
                             <div class="card-body">
 
-                                <div class="row">
+                                <div class="row mb-2">
 
 
                                     <div class="form-group">
                                 <label class="control-label"> Name of Scientist </label>
-                                        <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems"></select>
+                                        <select id="rosterid" asp-for="RosterId" class="form-control" asp-items="ViewBag.rosterItems">
+                                        <option selected>Select a investigator here...</option>
+
+                                </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label asp-for="SciRolesId" class="control-label"></label>
-                                        <select id="scirolesId" asp-for="SciRolesId" class="form-control" asp-items="ViewBag.scirolesItems"></select>
+                                        <label @* asp-for="SciRolesId" *@ class="control-label">Scientist Role</label>
+                                        <select id="scirolesId" asp-for="SciRolesId" class="form-control" asp-items="ViewBag.scirolesItems">
+                                        <option selected>Select a  role here...</option>
+
+                                </select>
                                     </div>
 
                                     
-                                    <div class="form-group">
+                                  @*   <div class="form-group">
                                         <label asp-for="Credits" class="control-label"></label>
-                                <input id="credit" asp-for="Credits" class="form-control"  min="0.0000" step="0.0001" />
-                                        <span asp-validation-for="Credits" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="Tr" class="control-label"></label>
-                                <input id="tr" asp-for="Tr" class="form-control" min="0.0000" step="0.0001"  />
-                                        <span asp-validation-for="Tr" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="Ca" class="control-label"></label>
-                                <input id="ca" asp-for="Ca" class="form-control" min="0.0000" step="0.0001"  />
-                                        <span asp-validation-for="Ca" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="Ah" class="control-label"></label>
-                                    <input id="ah" asp-for="Ah" class="form-control" min="0.0000" step="0.0001"  />
-                                        <span asp-validation-for="Ah" class="text-danger"></span>
-                                    </div>
+                                        <input id="credit" asp-for="Credits" class="form-control"  min="0.0000" step="0.0001" />
+                                                <span asp-validation-for="Credits" class="text-danger"></span>
+                                    </div> *@
+
+
+
+                                   
                                    
                                     
 
                                 </div>
+
+
+                                <div class="card">
+                                    <div class="card-header">Credits</div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label asp-for="Tr" class="control-label"></label>
+                                            <input id="tr" asp-for="Tr" class="form-control" min="0.0000" step="0.0001" />
+                                            <span asp-validation-for="Tr" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Ca" class="control-label"></label>
+                                            <input id="ca" asp-for="Ca" class="form-control" min="0.0000" step="0.0001" />
+                                            <span asp-validation-for="Ca" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Ah" class="control-label"></label>
+                                            <input id="ah" asp-for="Ah" class="form-control" min="0.0000" step="0.0001" />
+                                            <span asp-validation-for="Ah" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    @* <div class="card-footer">
+
+                                                </div> *@
+                                </div>
+
+
 
                                 <br />
                                 <div class="form-group">
@@ -176,7 +199,15 @@
                             <div class="col-4">
                                 <button data-id="@item.SciId| @item.ProjectId|@item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah|@item.SciRolesId"
                                     class="btn  btn-success modify">
-                                    Modify
+                                    <i class="fa-regular fa-copy fa-2xs" style="color: #ffffff;"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="col-4">
+                                <button data-id="@item.SciId| @item.ProjectId|@item.RosterId|@item.Credits|@item.Tr|@item.Ca|@item.Ah|@item.SciRolesId"
+                                        class="btn  btn-danger delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fa-regular fa-circle-xmark fa-2xs" style="color: #f7f7f7;"></i>
                                 </button>
 
                             </div>
@@ -191,6 +222,7 @@
 
         </div>
 
+<partial name="_Page2Modal" />
 
 
 
@@ -224,6 +256,8 @@
                 $('#ah').val(campos[6]);
                 $('#projectId').val(campos[1]);
                 $('#scirolesId').val(campos[7]);
+
+                console.log(item);
             });
 
 
@@ -265,6 +299,66 @@
                     dataType: 'json'
                 });
                 $('#formClr').find('input[type=text], input[type=email], textarea').val('');
+
+            });
+
+            $('.delete').click(function() {
+                let item = $(this).attr("data-id");
+
+                let campos = item.split("|",8 );
+
+
+
+                $('#sciPId').val(campos[0]);
+                $('#rosterid').val(campos[2]);
+                $('#credit').val(campos[3]);
+                $('#tr').val(campos[4]);
+                $('#ca').val(campos[5]);
+                $('#ah').val(campos[6]);
+                $('#projectId').val(campos[1]);
+                $('#scirolesId').val(campos[7]);
+
+
+
+                const params = {
+                    sciPId: $('#sciPId').val(),
+                    projectId: $('#projectId').val(),
+                    SciRolesId: $('#scirolesId').val(),
+                };
+
+                // console.log(params);
+            
+            });
+
+            $('#btnConfirmDelete').click(function() {
+                const params = {
+                    sciPId: $('#sciPId').val(),
+                    projectId: $('#projectId').val(),
+                    SciRolesId: $('#scirolesId').val(),
+                };
+
+                console.log(params);
+
+                 $.ajax({
+                    type: "POST",
+                    url: '/Projects/DeletePage5',
+                    data: params,
+                    success: function (response) {
+                        if (response.redirect) {
+
+                            window.location.href = response.url;
+
+                        } else {
+
+
+                            alert('No funciona..');
+                        }
+                    },
+                    dataType: 'json'
+                });
+
+
+
 
             });
 
@@ -619,6 +713,37 @@
                 });
 
             });
+
+
+                 $("#nav-projectreview-tab").click(function () {
+
+                    const params = {
+                        ProjectId: $("#projectId").val()
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Projects/RedirectP12',
+                        data: params,
+                        success: function (response) {
+                            if (response.redirect) {
+
+                                window.location.href = response.url;
+
+                            } else {
+
+
+                                alert('No funciona..');
+                            }
+
+                        },
+                        dataType: 'json'
+
+
+
+                    });
+
+                });
 
 
         });
