@@ -206,7 +206,7 @@
 
     @* <div class="card-footer">
 
-    </div *@>
+    </div >*@
 </div>
 
 <br />
@@ -267,7 +267,7 @@
 
             </tbody>
         </table>
-
+    
 
         <table class="table table-bordered">
             <thead>
@@ -293,8 +293,9 @@
 
             </tbody>
         </table>
+    </div>
 
-
+</div>
 
         <br />
         <div class="mt-5"></div>
@@ -371,7 +372,7 @@
                                     @Html.DisplayFor(modelItem => item.Location.LocationName)
                                 </td>
 
-                                                            </tr>
+                             </tr>
                         }
                     </tbody>
                 </table>
@@ -456,6 +457,7 @@
 
 
             </div>
+</div>
 
             <br />
             <div class="mt-5"></div>
@@ -537,6 +539,7 @@
 
 
                 </div>
+            </div>
 
 
                 <br />
@@ -572,7 +575,7 @@
                                     </th>
 
 
-                                    <th></th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -604,6 +607,8 @@
                                 }
                             </tbody>
                         </table>
+                     </div>
+                    </div>
 
 
                         <br />
@@ -691,7 +696,7 @@
                    <br />
                    <div class="mt-5"></div>
 
-                    <div class="card">
+                    <div class="card table-responsive">
                         <div class="card-header">
                                 <h5>Funds Page</h5>
 
@@ -811,6 +816,7 @@
 
 
                         </div>
+                    </div>
 
 
 
@@ -1009,7 +1015,8 @@
                                     </table>
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <div class="btn btn-primary"><a asp-action="Page11" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white">Back</a></div>
+                                            <div class="btn btn-primary no-print"><a asp-action="Page11" asp-controller="Projects" asp-route-id="@Model.ProjectId" style="text-decoration:none; color:white">Back</a></div>
+                                            <button type="button" class="btn btn-success no-print" onclick="printPage()">Imprimir</button>
 
                                         </div>
 
@@ -1021,4 +1028,11 @@
 
 
 
-
+                                   @section scripts{
+                                        <script>
+                                            function printPage() {
+                                                window.print();
+                                            }
+                                        </script>   
+                                        
+                                        }

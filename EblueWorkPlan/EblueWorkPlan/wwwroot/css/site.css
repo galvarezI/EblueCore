@@ -83,3 +83,45 @@ body {
         grid-column: 2/3;
         margin-top: 40px;
     }
+
+
+    /*Print Section*/
+
+@media print {
+
+    /* Ocultar botones */
+    button, .btn, .no-print {
+        display: none !important;
+    }
+
+    /* Quitar exceso de containers / cards */
+    .card, .container, .panel, .box {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Ajustar la tabla para impresión limpia */
+    .table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+
+        .table th, .table td {
+            border: 1px solid #000 !important;
+            padding: 6px !important;
+            font-size: 12px !important;
+        }
+
+    /* Evitar que las tablas se corten entre páginas */
+    table, tr, td, th {
+        page-break-inside: avoid !important;
+    }
+
+    /* Forzar blanco y negro (opcional) */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
