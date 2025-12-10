@@ -53,18 +53,21 @@
                             <input id="Opid" type="hidden" />
                             <div class="form-group">
                                 <label asp-for="Name" class="control-label"></label>
-                                <input id="perName" asp-for="Name" class="form-control" />
+                                <input id="perName" asp-for="Name" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="PerTime" class="control-label"></label>
-                                <input id="pertime" asp-for="PerTime" class="form-control" @* min="0.0000"  max="1" *@ />
+                                <input id="pertime" asp-for="PerTime" class="form-control" @* min="0.0000"  max="1" *@ 
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="PerTime" class="text-danger"></span>
                             </div>
                            
                             <div class="form-group">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                <select id="locationid" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")">
                                     <option selected>Select a location  here...</option>
 
                                 </select>
@@ -74,8 +77,15 @@
                                 <br />
 
                             <div class="form-group">
-                                <input  type="button" value="Add" class="btn btn-primary" id="btnSubmit" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                }
+
+                                @if (ViewBag.Permissions.PuedeEditar)
+                                {
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                }
                             </div>
 
                         </div>

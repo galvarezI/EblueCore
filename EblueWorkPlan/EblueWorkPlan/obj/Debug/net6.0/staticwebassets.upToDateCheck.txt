@@ -1,7 +1,10 @@
 wwwroot\css\Chosen\chosen-sprite.png
 wwwroot\css\Chosen\chosen.min.css
 wwwroot\css\sidebar.css
+wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\Escudo.jpg
+wwwroot\img\Logo.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -62,4 +65,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\site.css

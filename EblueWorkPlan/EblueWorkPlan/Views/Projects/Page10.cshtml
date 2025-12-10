@@ -47,7 +47,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label asp-for="Comment" class="control-label"></label>
-                                <textarea asp-for="Comment" rows="3" class="form-control"></textarea>
+                                <textarea asp-for="Comment" rows="3" class="form-control"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="Comment" class="text-danger"></span>
                             </div>
                         </div>
@@ -56,7 +57,8 @@
 
                         <div class="form-group">
                             <label @* asp-for="UserRole" *@ class="control-label"> User Role</label>
-                            <select  asp-for="userRole" class="form-control" asp-items="ViewBag.roleItems">
+                            <select  asp-for="userRole" class="form-control" asp-items="ViewBag.roleItems"
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")">
                                 <option selected>Select a  option here...</option>
 
                             </select>
@@ -85,7 +87,12 @@
 
                       
                         <div class="form-group">
-                            <input type="submit" value="Add" class="btn btn-primary" />
+                            
+
+                            @if (ViewBag.Permissions.PuedeCrear)
+                            {
+                                <input type="submit" value="Add" class="btn btn-primary" />
+                            }
                         </div>
 
 

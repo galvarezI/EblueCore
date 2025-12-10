@@ -31,6 +31,10 @@
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
         <div class="row g-3">
+
+            @{
+            
+
             <form asp-action="Page0">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input id="projectId" type="hidden" asp-for="ProjectId" />
@@ -105,12 +109,15 @@
                         <div class="row">
                             <div class="col-6">
                                 <label asp-for="ContractNumber" class="control-label">Contract Number</label>
-                                <input asp-for="ContractNumber" class="form-control" />
+                                <input asp-for="ContractNumber"
+                                       class="form-control"
+                                           disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="ContractNumber" class="text-danger"></span>
                             </div>
                             <div class="col-6">
                                 <label asp-for="Orcid" class="control-label"></label>
-                                <input asp-for="Orcid" class="form-control" />
+                                <input asp-for="Orcid" class="form-control"
+                                           disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Orcid" class="text-danger"></span>
                             </div>
 
@@ -144,11 +151,11 @@
 
                         
                     </div>
-
+                        
                 </div>
             </form>
 
-         
+         }
 
         </div>
     </div>

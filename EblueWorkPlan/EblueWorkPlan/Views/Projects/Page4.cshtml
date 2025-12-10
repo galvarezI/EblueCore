@@ -47,27 +47,31 @@
                             <input id="labId" type="hidden" asp-for="LabId" />
                             <div class="col-12">
                                 <label asp-for="WorkPlanned" class="control-label"></label>
-                                <textarea id="workplanned" asp-for="WorkPlanned" rows="3" class="form-control txt-w"></textarea>
+                                <textarea id="workplanned" asp-for="WorkPlanned" rows="3" class="form-control txt-w"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="WorkPlanned" class="text-danger"></span>
                             </div>
 
 
                             <div class="form-group col-12">
                                 <label asp-for="Descriptions" class="control-label"></label>
-                                <textarea id="descriptions" asp-for="Descriptions" class="form-control txt-d" ></textarea>
+                                <textarea id="descriptions" asp-for="Descriptions" class="form-control txt-d"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="Descriptions" class="text-danger"></span>
                             </div>
 
 
                             <div class="form-group col-12">
                                 <label asp-for="TimeEstimated" class="control-label"></label>
-                                <input id="timeEstimated" class="form-control txt-est" />
+                                <input id="timeEstimated" class="form-control txt-est"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="TimeEstimated" class="text-danger"></span>
                             </div>
 
                             <div class="form-group col-12">
                                 <label asp-for="FacilitiesNeeded" class="control-label"></label>
-                                <textarea id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn" ></textarea>
+                                <textarea id="facilitiesNeeded" asp-for="FacilitiesNeeded" class="form-control txt-fn"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="FacilitiesNeeded" class="text-danger"></span>
                             </div>
 
@@ -75,15 +79,27 @@
 
                             <div class="col-12">
                                 <label asp-for="CentralLaboratory" class="control-label"></label>
-                                <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"></textarea>
+                                <textarea id="central" asp-for="CentralLaboratory" rows="3" class="form-control txt-w"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="CentralLaboratory" class="text-danger"></span>
                             </div>
                            
 
                             <br />
                             <div class="form-group" style="padding-top:20px;">
-                                <input type="button" value="Add" class="btn btn-primary" id="btnSubmit" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input type="button" value="Add" class="btn btn-primary" id="btnSubmit" />
+                                }
+
+                                @if (ViewBag.Permissions.PuedeEditar)
+                                {
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                }
+
+                                
+                                
                             </div>
 
 

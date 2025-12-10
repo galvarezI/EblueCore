@@ -47,20 +47,23 @@
 
                             <div class="form-group col-12">
                                 <label asp-for="Impact" class="control-label"></label>
-                                <textarea asp-for="Impact" rows="3" class="form-control"></textarea>
+                                <textarea asp-for="Impact" rows="3" class="form-control"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="Impact" class="text-danger"></span>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-6">
                                     <label asp-for="Salaries" class="control-label"></label>
-                                    <textarea asp-for="Salaries" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Salaries" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Salaries" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Wages" class="control-label"></label>
-                                    <textarea asp-for="Wages" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Wages" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Wages" class="text-danger"></span>
                                 </div>
                             </div>
@@ -68,7 +71,8 @@
 
                             <div class="form-group col-12">
                                 <label asp-for="Benefits" class="control-label"></label>
-                                <textarea asp-for="Benefits" rows="3" class="form-control"></textarea>
+                                <textarea asp-for="Benefits" rows="3" class="form-control"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                 <span asp-validation-for="Benefits" class="text-danger"></span>
                             </div>
 
@@ -76,36 +80,42 @@
                             <div class="row">
                                 <div class="form-group col-6">
                                     <label asp-for="Assistant" class="control-label"></label>
-                                    <textarea asp-for="Assistant" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Assistant" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Assistant" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Materials" class="control-label"></label>
-                                    <textarea asp-for="Materials" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Materials" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Materials" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Equipment" class="control-label"></label>
-                                    <textarea asp-for="Equipment" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Equipment" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Equipment" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-6">
                                     <label asp-for="Travel" class="control-label"></label>
-                                    <textarea asp-for="Travel" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Travel" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Travel" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Abroad" class="control-label"></label>
-                                    <textarea asp-for="Abroad" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Abroad" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Abroad" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Subcontracts" class="control-label"></label>
-                                    <textarea asp-for="Subcontracts" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Subcontracts" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Subcontracts" class="text-danger"></span>
                                 </div>
 
@@ -113,13 +123,15 @@
 
                                 <div class="form-group col-6">
                                     <label asp-for="IndirectCosts" class="control-label"></label>
-                                    <textarea asp-for="IndirectCosts" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="IndirectCosts" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="IndirectCosts" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label asp-for="Others" class="control-label"></label>
-                                    <textarea asp-for="Others" rows="3" class="form-control"></textarea>
+                                    <textarea asp-for="Others" rows="3" class="form-control"
+                                              disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="Others" class="text-danger"></span>
                                 </div>
 
@@ -132,7 +144,10 @@
                            
 
                             <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-primary" />
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                }
                             </div>
 
                             

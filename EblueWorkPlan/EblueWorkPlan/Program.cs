@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using EblueWorkPlan.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<PermissionService>();
+builder.Services.AddScoped<PermissionAccessService>();
 builder.Services.AddDbContext<WorkplandbContext>(
       options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
 
@@ -44,7 +46,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
     option =>
     {
-        option.LoginPath = "/Login/Signin"; ;
+        option.LoginPath = "/Login/Signin"; 
         option.AccessDeniedPath = "/Home/Privacy";
     });
 

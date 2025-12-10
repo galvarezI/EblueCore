@@ -24,9 +24,11 @@ namespace EblueWorkPlan.Controllers
         // GET: Rosters
         public async Task<IActionResult> Index()
         {
-
             
-            return _context.Rosters != null ?
+            
+            return _context.Rosters.Include(r => r.Departments)
+                .Include(r => r.Location)
+                        != null ?
                         View(await _context.Rosters.ToListAsync()) :
                         Problem("Entity set 'WorkplandbContext.Rosters'  is null.");
 
@@ -66,7 +68,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RosterId,RosterSegSoc,RosterName,DepartmentId,LocationId,CanBePi,RoleId")] Roster roster)
+        public async Task<IActionResult> Create([Bind("RosterId,RosterSegSoc,RosterName,DepartmentId,LocationId,CanBePi,RoleId,Email")] Roster roster)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +107,7 @@ namespace EblueWorkPlan.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RosterId,RosterSegSoc,RosterName,DepartmentId,LocationId,CanBePi,RoleId")] Roster roster)
+        public async Task<IActionResult> Edit(int id, [Bind("RosterId,RosterSegSoc,RosterName,DepartmentId,LocationId,CanBePi,RoleId,Email")] Roster roster)
         {
             if (id != roster.RosterId)
             {
@@ -154,25 +156,42 @@ namespace EblueWorkPlan.Controllers
             ViewBag.RoleItem = new SelectList(_context.Roles, "RolesId", "Rname");
             return View(roster);
         }
-
-        // POST: Rosters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Rosters == null)
+            // 1. Eliminar SciProjects que dependen directamente del Roster
+            var sciFromRoster = await _context.SciProjects
+                .Where(s => s.RosterId == id)
+                .ToListAsync();
+
+            _context.SciProjects.RemoveRange(sciFromRoster);
+
+            // 2. Cargar roster con todos sus Projects y dependencias
+            var roster = await _context.Rosters
+                .Include(r => r.Projects)
+                    .ThenInclude(p => p.SciProjects)
+                // (resto de includes)
+                .FirstOrDefaultAsync(r => r.RosterId == id);
+
+            if (roster == null)
+                return NotFound();
+
+            // 3. Eliminar dependencias de Projects (como ya te había configurado)
+            foreach (var project in roster.Projects.ToList())
             {
-                return Problem("Entity set 'WorkplandbContext.Rosters'  is null.");
+                _context.SciProjects.RemoveRange(project.SciProjects);
+                // ...
+                _context.Projects.Remove(project);
             }
-            var roster = await _context.Rosters.FindAsync(id);
-            if (roster != null)
-            {
-                _context.Rosters.Remove(roster);
-            }
+
+            // 4. Eliminar el roster
+            _context.Rosters.Remove(roster);
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool RosterExists(int id)
         {

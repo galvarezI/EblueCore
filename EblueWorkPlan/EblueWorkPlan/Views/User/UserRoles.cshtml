@@ -1,0 +1,27 @@
+﻿@model EblueWorkPlan.Models.ViewModels.IdentityUserRoleVM
+
+<h2>Roles del Usuario: @Model.UserName</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rol</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.UserRole)
+        {
+            <tr>
+                <td>@role</td>
+                <td>
+                    <form asp-action="RemoveUserRole" method="post">
+                        <input type="hidden" name="userId" value="@Model.Id" />
+                        <input type="hidden" name="roleName" value="@role" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

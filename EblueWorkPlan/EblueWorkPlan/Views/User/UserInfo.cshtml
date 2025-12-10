@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using EblueWorkPlan.Models.ViewModels;
-@model IdentityUserRoleVM
+@model List<EblueWorkPlan.Models.ViewModels.IdentityUserRoleVM>
+
 
 
 @{
@@ -18,22 +19,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+               UserName
+            
             </th>
+
+            <th>
+                Rol/roles
+            </th>
+
             <th>
                 Action
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Users)
+        @foreach (var item in Model)
         {
             <tr>
                  <td>
@@ -45,9 +52,31 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserRole)
+                </td>
+
+
                 <td>
                    <a asp-action="AddRole" asp-route-id ="@item.Id" class="btn btn-success">Add Role</a>
+                    
+
                 </td>
+
+                <td>
+                    <a asp-action="UserRoles" asp-route-id="@item.Id" class="btn btn-warning">Remove Role</a>
+
+
+                </td>
+
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Remove User</a>
+
+
+                </td>
+
+               
             </tr>
         }
     </tbody>

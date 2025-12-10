@@ -18,6 +18,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Net;
 using AspNetCore.Reporting;
 using System.Security.Policy;
+using EblueWorkPlan.Services;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -25,6 +26,8 @@ namespace EblueWorkPlan.Controllers
     public class ProjectsController : Controller
     {
         private readonly WorkplandbContext _context;
+        private readonly PermissionService permissionService;
+        private readonly PermissionAccessService _accessService;
         private List<SelectListItem> _rosterItems;
         private List<SelectListItem> _departmentsItems;
         private List<SelectListItem> _porganizationsItems;
@@ -39,31 +42,125 @@ namespace EblueWorkPlan.Controllers
         private List<SelectListItem> _gradItems;
         private List<SelectListItem> _scirolesItems;
 
-        public ProjectsController(WorkplandbContext context)
+        public ProjectsController(WorkplandbContext context, PermissionService permissionService, PermissionAccessService accessService)
         {
             _context = context;
+            this.permissionService = permissionService;
+            this._accessService = accessService;
         }
 
         // GET: Projects
 
         public async Task<IActionResult> Index()
         {
+            //check, esto va para el servidor...
+
+          var  roleId = permissionService.GetCurrentUserRoleId(User);
+            var permissions = permissionService.GetPermissionsForRole(roleId);
+            
+            ViewBag.Permissions = permissions;
+
+            //Not Filtered Version
+
+            //var projects = await _context.Projects.Include(p => p.Comm)
+            //    .Include(p => p.Department)
+            //    .Include(p => p.FiscalYear)
+            //    .Include(p => p.ProjectStatus)
+            //    .Include(p => p.ProgramArea).Include(p => p.Roster).ToListAsync();
+
+            //filtered version
 
 
-            var projects = await _context.Projects.Include(p => p.Comm)
-                .Include(p => p.Department)
-                .Include(p => p.FiscalYear)
-                .Include(p => p.ProjectStatus)
-                .Include(p => p.ProgramArea).Include(p => p.Roster).ToListAsync();
-                
-                /*.Include(ps => ps.ProjectStatus)*/;
+            // Filtra SOLO los proyectos que el usuario puede ver
+            var proyectosFiltrados = _accessService
+       .FilterProjectsForUser(User)
+       .Include(p => p.Department)
+       .Include(p => p.Comm)
+       .Include(p => p.FiscalYear)
+       .Include(p => p.ProjectStatus)
+       .Include(p => p.ProgramArea)
+       .Include(p => p.Roster);
+
+            var lista = await proyectosFiltrados.ToListAsync();
+
+            return View(lista);
+
+            /*.Include(ps => ps.ProjectStatus)*/
+            ;
             //await workplandbContext.ToListAsync())
 
-            return View(projects);
+            //return View(projects);
         }
 
-     
 
+
+        public async Task<IActionResult> ProjectDetails(int? id)
+        {
+
+
+
+            var query = (from p in _context.Projects
+                         where p.ProjectId == id
+                         select p).FirstOrDefault();
+
+
+            ProjectFormView projectTemplate = new ProjectFormView()
+            {
+                ProjectId = query.ProjectId,
+                Projects = query,
+                ProjectNumber = query.ProjectNumber
+                ,
+                ProjectTitle = query.ProjectTitle
+            };
+
+
+
+            var rosters = _context.Rosters.ToList();
+            _rosterItems = new List<SelectListItem>();
+            foreach (var item in rosters)
+            {
+                _rosterItems.Add(new SelectListItem
+                {
+                    Text = item.RosterName,
+                    Value = item.RosterId.ToString()
+                });
+            }
+            ViewBag.rosterItems = _rosterItems;
+            ViewData["selectedProjectPI"] = _rosterItems;
+
+            var substation = _context.Substacions.ToList();
+            _substationItems = new List<SelectListItem>();
+            foreach (var item in substation)
+            {
+                _substationItems.Add(new SelectListItem
+                {
+                    Text = item.SubStationName,
+                    Value = item.SubstationId.ToString()
+                });
+                ViewBag.substationItems = _substationItems;
+            }
+
+
+            if (id == null || _context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var project = await _context.Projects.FindAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.rosterPI = _rosterItems;
+
+
+
+
+
+
+            return View(projectTemplate);
+        }
 
 
         // GET: Projects/Details/5
@@ -696,72 +793,6 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        public async Task<IActionResult> ProjectDetails(int? id)
-        {
-
-
-
-            var query = (from p in _context.Projects
-                         where p.ProjectId == id
-                         select p).FirstOrDefault();
-
-
-            ProjectFormView projectTemplate = new ProjectFormView()
-            {
-                ProjectId = query.ProjectId,
-                Projects = query,
-                ProjectNumber = query.ProjectNumber
-                ,ProjectTitle = query.ProjectTitle
-            };
-
-
-
-            var rosters = _context.Rosters.ToList();
-            _rosterItems = new List<SelectListItem>();
-            foreach (var item in rosters)
-            {
-                _rosterItems.Add(new SelectListItem
-                {
-                    Text = item.RosterName,
-                    Value = item.RosterId.ToString()
-                });
-            }
-            ViewBag.rosterItems = _rosterItems;
-            ViewData["selectedProjectPI"] = _rosterItems;
-
-            var substation = _context.Substacions.ToList();
-            _substationItems = new List<SelectListItem>();
-            foreach (var item in substation)
-            {
-                _substationItems.Add(new SelectListItem
-                {
-                    Text = item.SubStationName,
-                    Value = item.SubstationId.ToString()
-                });
-                ViewBag.substationItems = _substationItems;
-            }
-
-
-            if (id == null || _context.Projects == null)
-            {
-                return NotFound();
-            }
-
-            var project = await _context.Projects.FindAsync(id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            ViewBag.rosterPI = _rosterItems;
-
-           
-
-
-
-
-            return View(projectTemplate);
-        }
 
         // Report Section
         public IActionResult Print(int? id)
@@ -896,6 +927,16 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Page2(int? id, Models.Project project)
         {
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
+
+
+
             var projects = await _context.Projects.FindAsync(id);
 
 
@@ -1064,6 +1105,15 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> ProjectList(int? id)
         {
+
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
+
             var rosters = _context.Rosters.ToList();
             _rosterItems = new List<SelectListItem>();
             foreach (var item in rosters)
@@ -1166,7 +1216,10 @@ namespace EblueWorkPlan.Controllers
         // Page 3:
         public async Task<IActionResult> Page3(int? id ) {
 
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
 
+            ViewBag.Permissions = permisos;
 
             var project = await _context.Projects.FindAsync(id);
 
@@ -1450,6 +1503,13 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Page4(int? id ) {
 
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
             if (id == null || _context.Projects == null)
             {
                 return NotFound();
@@ -1593,6 +1653,13 @@ namespace EblueWorkPlan.Controllers
 
 
         public async Task<IActionResult> Page5(int? id) {
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
 
             if (id == null || _context.Projects == null)
             {
@@ -1791,6 +1858,14 @@ namespace EblueWorkPlan.Controllers
 
 
         public async Task<IActionResult> Page6(int? id ) {
+
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
             if (id == null || _context.Projects == null)
             {
                 return NotFound();
@@ -2004,7 +2079,10 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Page7(int? id) {
 
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
 
+            ViewBag.Permissions = permisos;
 
             if (id == null || _context.Projects == null)
             {
@@ -2162,6 +2240,13 @@ namespace EblueWorkPlan.Controllers
 
 
         public async Task<IActionResult> Page8(int? id ) {
+
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
 
             if (id == null || _context.Projects == null)
             {
@@ -2398,8 +2483,11 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Page9(int? id, ProjectFormView projectTemplate )
         {
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
 
-            
+            ViewBag.Permissions = permisos;
+
             if (id == null || _context.Projects == null)
             {
                 return NotFound();
@@ -2501,6 +2589,11 @@ namespace EblueWorkPlan.Controllers
 
         public async Task<IActionResult> Page10(int? id)
         {
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
 
             if (id == null || _context.Projects == null)
             {
@@ -2678,6 +2771,14 @@ namespace EblueWorkPlan.Controllers
         //Administrator Comments Page....
 
         public async Task<IActionResult> Page11(int? id) {
+
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            ViewBag.Permissions = permisos;
+
+
+
             if (id == null || _context.Projects == null)
             {
                 return NotFound();

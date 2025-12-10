@@ -181,5 +181,133 @@ namespace EblueWorkPlan.Controllers
         {
             return (_context.Roles?.Any(e => e.RolesId == id)).GetValueOrDefault();
         }
-    }
+
+
+        [HttpGet]
+        //public async Task<IActionResult> EditPermissions(int id, string roleId)
+        //{
+        //    if (string.IsNullOrEmpty(roleId))
+        //        return BadRequest("El ID del rol es requerido.");
+
+        //    var role = await roleManager.FindByIdAsync(roleId);
+        //    if (role == null)
+        //        return NotFound("Rol no encontrado.");
+
+        //    // Buscar permisos existentes
+        //    var permisos = await _context.Permissions
+        //        .Where(p => p.RoleId == roleId)
+        //        .ToListAsync();
+
+        //    // Si no hay permisos definidos, crear una plantilla base
+        //    if (!permisos.Any())
+        //    {
+        //        permisos.Add(new Permissions
+        //        {
+        //            RoleId = roleId,
+        //            PuedeVer = true
+        //        });
+        //    }
+
+        //    ViewBag.RoleName = role.Name;
+        //    return View(permisos);
+        //}
+
+        [HttpGet]
+        public async Task<IActionResult> EditPermissions(int id)
+        {
+            // Buscar el rol en tu base local (tabla Role: RolesId, Rname, etc.)
+            var roleLocal = await _context.Roles
+                .FirstOrDefaultAsync(r => r.RolesId == id);
+
+            if (roleLocal == null)
+                return NotFound("El rol no existe en la base de datos interna.");
+
+            // Buscar el rol REAL de Identity por nombre
+            var roleIdentity = await roleManager.Roles
+                .FirstOrDefaultAsync(r => r.Name == roleLocal.Rname);
+
+            if (roleIdentity == null)
+                return NotFound("El rol no existe en AspNetRoles.");
+
+            string roleId = roleIdentity.Id;
+
+            // Buscar permisos por RoleId (AspNet Identity)
+            var permisos = await _context.Permissions
+                .Where(p => p.RoleId == roleId)
+                .ToListAsync();
+
+            if (!permisos.Any())
+            {
+                permisos.Add(new Permissions
+                {
+                    RoleId = roleId,
+                    PuedeVer = true
+                });
+            }
+
+            ViewBag.RoleName = roleLocal.Rname;
+            ViewBag.RoleIdentityId = roleId;
+
+            return View(permisos);
+        }
+
+
+
+
+
+
+
+
+        // ---------------------------------------------------------
+        // POST: Guardar o actualizar permisos de un rol
+        // ---------------------------------------------------------
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPermissions(List<Permissions> permisos)
+        {
+            if (permisos == null || !permisos.Any())
+                return BadRequest("No se enviaron permisos válidos.");
+
+            foreach (var permiso in permisos)
+            {
+                var existente = await _context.Permissions
+                    .FirstOrDefaultAsync(p => p.RoleId == permiso.RoleId);
+
+                if (existente != null)
+                {
+                    //  Actualizar los permisos existentes
+                    existente.PuedeCrear = permiso.PuedeCrear;
+                    existente.PuedeEditar = permiso.PuedeEditar;
+                    existente.PuedeEliminar = permiso.PuedeEliminar;
+                    existente.PuedeVer = permiso.PuedeVer;
+                    existente.PuedeAprobar = permiso.PuedeAprobar;
+                    existente.PuedeRechazar = permiso.PuedeRechazar;
+                    existente.PuedeComentar = permiso.PuedeComentar;
+                    existente.PuedeAsignarRoles = permiso.PuedeAsignarRoles;
+                    existente.PuedeAdministrarTodo = permiso.PuedeAdministrarTodo;
+                    existente.PuedeReenviar = permiso.PuedeReenviar;
+                    existente.PuedeModificarTrasRechazo = permiso.PuedeModificarTrasRechazo;
+
+                    _context.Permissions.Update(existente);
+                }
+                else
+                {
+                    //  Crear un nuevo registro de permisos
+                    _context.Permissions.Add(permiso);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            TempData["Success"] = "Permisos actualizados correctamente.";
+
+            return RedirectToAction(nameof(Index));
+
+
+
+
+
+
+        }
+
+        }
 }

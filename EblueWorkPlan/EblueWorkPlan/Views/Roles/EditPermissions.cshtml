@@ -1,0 +1,51 @@
+﻿@model List<EblueWorkPlan.Models.Permissions>
+@{
+    ViewData["Title"] = "Editar Permisos";
+}
+
+
+<partial name="_Sidebar2" />
+
+
+
+<h3>Permisos del rol: @ViewBag.RoleName</h3>
+
+<form asp-action="EditPermissions" method="post">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Crear</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+                <th>Ver</th>
+                <th>Aprobar</th>
+                <th>Rechazar</th>
+                <th>Comentar</th>
+                <th>Asignar Roles</th>
+                <th>Administrar Todo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <input type="hidden" asp-for="@Model[i].Id" />
+                    <input type="hidden" asp-for="@Model[i].RoleId" />
+
+                    <td><input asp-for="@Model[i].PuedeCrear" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeEditar" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeEliminar" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeVer" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeAprobar" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeRechazar" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeComentar" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeAsignarRoles" type="checkbox" /></td>
+                    <td><input asp-for="@Model[i].PuedeAdministrarTodo" type="checkbox" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

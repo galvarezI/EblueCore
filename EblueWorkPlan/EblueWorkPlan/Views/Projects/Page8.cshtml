@@ -50,7 +50,8 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label  asp-for="LocationId" class="control-label"></label>
-                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems"
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")">
                                     <option selected>Select a location  here...</option>
 
                                 </select>
@@ -58,66 +59,84 @@
 
                             <div class="form-group">
                                 <label asp-for="Salaries" class="control-label"></label>
-                                <input id="salaries" asp-for="Salaries" class="form-control" />
+                                <input id="salaries" asp-for="Salaries" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Salaries" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Wages" class="control-label"></label>
-                                <input id="wages" asp-for="Wages" class="form-control" />
+                                <input id="wages" asp-for="Wages" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Wages" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Benefits" class="control-label"></label>
-                                <input id="benefit" asp-for="Benefits" class="form-control" />
+                                <input id="benefit" asp-for="Benefits" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Benefits" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Assistant" class="control-label"></label>
-                                <input id="assistant" asp-for="Assistant" class="form-control" />
+                                <input id="assistant" asp-for="Assistant" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Assistant" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Materials" class="control-label"></label>
-                                <input id="materials" asp-for="Materials" class="form-control" />
+                                <input id="materials" asp-for="Materials" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Materials" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Equipment" class="control-label"></label>
-                                <input id="equipment" asp-for="Equipment" class="form-control" />
+                                <input id="equipment" asp-for="Equipment" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Equipment" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Travel" class="control-label"></label>
-                                <input id="travel" asp-for="Travel" class="form-control" />
+                                <input id="travel" asp-for="Travel" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Travel" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Abroad" class="control-label"></label>
-                                <input id="abroad" asp-for="Abroad" class="form-control" />
+                                <input id="abroad" asp-for="Abroad" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Abroad" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Subcontracts" class="control-label"></label>
-                                <input id="subcontract" asp-for="Subcontracts" class="form-control" />
+                                <input id="subcontract" asp-for="Subcontracts" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Subcontracts" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Others" class="control-label"></label>
-                                <input id="others" asp-for="Others" class="form-control" />
+                                <input id="others" asp-for="Others" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Others" class="text-danger"></span>
                             </div>
                             
                             
                             <div class="form-group">
                                 <label asp-for="IndirectCosts" class="control-label"></label>
-                                <input id="indirectcosts" asp-for="IndirectCosts" class="form-control" />
+                                <input id="indirectcosts" asp-for="IndirectCosts" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="IndirectCosts" class="text-danger"></span>
                             </div>
 
 
                             <div class="form-group">
-                                <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                }
+
+                                @if (ViewBag.Permissions.PuedeEditar)
+                                {
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                }
                             </div>
 
                         </div>

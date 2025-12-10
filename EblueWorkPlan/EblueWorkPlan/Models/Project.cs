@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EblueWorkPlan.Models;
 
@@ -99,6 +100,8 @@ public partial class Project
 
     public string ProjectPi { get; set; }
 
+
+    [Column("RosterID")]
     public int? RosterId { get; set; }
 
     public string Objectives2 { get; set; }

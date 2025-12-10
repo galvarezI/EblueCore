@@ -46,7 +46,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label asp-for="AdComments" class="control-label"></label>
-                                    <textarea id="adComments" asp-for="AdComments" rows="3" class="form-control"></textarea>
+                                    <textarea id="adComments" asp-for="AdComments" rows="3" class="form-control"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="AdComments" class="text-danger"></span>
                                 </div>
 
@@ -55,7 +56,8 @@
 
 
                                     <label asp-for="ProjectVigency" class="control-label"></label>
-                                    <input id="txtStart" class="form-control"></input>
+                                    <input id="txtStart" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></input>
                                     <span asp-validation-for="ProjectVigency" class="text-danger"></span>
 
 
@@ -64,25 +66,29 @@
 
                                 <div class="col-6">
                                     <label asp-for="ReviewDate" class="control-label"></label>
-                                <input id="txtEnd"  class="form-control"></input>
+                                <input id="txtEnd"  class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></input>
                                     <span asp-validation-for="ReviewDate" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-10">
                                     <label asp-for="WorkplanQuantity" class="control-label"></label>
-                                    <input id="workplanq" asp-for="WorkplanQuantity" class="form-control"></input>
+                                    <input id="workplanq" asp-for="WorkplanQuantity" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></input>
                                     <span asp-validation-for="WorkplanQuantity" class="text-danger"></span>
                                 </div>
 
                                 <div class="col-12">
                                     <label asp-for="FundsComments" class="control-label"></label>
-                                    <textarea id="fundcomments" asp-for="FundsComments" rows="3" class="form-control"></textarea>
+                                    <textarea id="fundcomments" asp-for="FundsComments" rows="3" class="form-control"
+                                          disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"></textarea>
                                     <span asp-validation-for="FundsComments" class="text-danger"></span>
                                 </div>
 
                             <div class="col-12">
                                 <label asp-for="UserRole" class="control-label"></label>
-                                <input id="txtUserRole" asp-for="UserRole" class="form-control">
+                                <input id="txtUserRole" asp-for="UserRole" class="form-control"
+                                       disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")">
                                 <span asp-validation-for="UserRole" class="text-danger"></span>
                             </div>
 
@@ -94,7 +100,13 @@
 
 
                             <div class="form-group">
-                                <input id="btnSubmit" type="button" value="Add" class="btn btn-primary" />
+
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input id="btnSubmit" type="button" value="Add" class="btn btn-primary" />
+                                }
+
+                                
                             </div>
 
                         </div>

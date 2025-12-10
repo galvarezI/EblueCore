@@ -48,6 +48,8 @@ public partial class WorkplandbContext : IdentityDbContext
 
     public virtual DbSet<Porganization> Porganizations { get; set; }
 
+    public DbSet<Permissions> Permissions { get; set; }
+
     public virtual DbSet<PrincipalLocation> PrincipalLocations { get; set; }
 
     public virtual DbSet<ProcessProjectWay> ProcessProjectWays { get; set; }
@@ -84,6 +86,18 @@ public partial class WorkplandbContext : IdentityDbContext
     {
 
         base.OnModelCreating(modelBuilder);
+
+                modelBuilder.Entity<Project>()
+                .Property(p => p.RosterId)
+                .HasColumnName("RosterID");
+
+                modelBuilder.Entity<Roster>()
+                    .Property(r => r.RosterId)
+                    .HasColumnName("RosterID");
+
+
+
+
 
         modelBuilder.Entity<AdminOfficerComment>(entity =>
         {
@@ -568,7 +582,21 @@ public partial class WorkplandbContext : IdentityDbContext
                 .HasConstraintName("FK__projects__SubSta__3C34F16F");
         });
 
-        modelBuilder.Entity<ProjectAssent>(entity =>
+        modelBuilder.Entity<Permissions>(entity =>
+        {
+            entity.ToTable("Permissions");
+            entity.HasKey(p => p.Id);
+
+            // Configuración de la relación con AspNetRoles
+            entity.HasOne(p => p.Role)
+                  .WithMany()
+                  .HasForeignKey(p => p.RoleId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+
+
+            modelBuilder.Entity<ProjectAssent>(entity =>
         {
             entity.HasKey(e => e.PassentsId).HasName("PK__projectA__A852A60925D0FE56");
 

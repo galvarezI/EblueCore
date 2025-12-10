@@ -75,7 +75,10 @@
                             <input id="gradId" type="hidden" asp-for='Gaid' />
                             <div class="form-group">
                                 <label asp-for="Gname" class="control-label"></label>
-                                <input id="gname" asp-for="Gname" class="form-control" />
+                                <input id="gname" asp-for="Gname" class="form-control" 
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"
+                                    
+                                />
                                 <span asp-validation-for="Gname" class="text-danger"></span>
                             </div>
                            
@@ -84,7 +87,9 @@
 
                             <div class="form-group">
                                 <label asp-for="Thesis" class="control-label"></label>
-                                <input id="thesis" asp-for="Thesis" class="form-control" />
+                                <input id="thesis" asp-for="Thesis" class="form-control" 
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"
+                                />
                                 <span asp-validation-for="Thesis" class="text-danger"></span>
                             </div>
 
@@ -92,7 +97,9 @@
 
                             <div class="form-group">
                                 <label asp-for="StudentId" class="control-label"></label>
-                                <input id="student" asp-for="StudentId" class="form-control" />
+                                <input id="student" asp-for="StudentId" class="form-control" 
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"
+                                />
                                 <span asp-validation-for="StudentId" class="text-danger"></span>
                             </div>
 
@@ -100,7 +107,9 @@
 
                             <div class="form-group">
                                 <label asp-for="ThesisProjectId" class="control-label"></label>
-                                <select id="thesisid" asp-for="ThesisProjectId" class="form-control" asp-items="ViewBag.thesisItems ">
+                                <select id="thesisid" asp-for="ThesisProjectId" class="form-control" asp-items="ViewBag.thesisItems "
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")"
+                                    >
                                     <option selected>Select a  option here...</option>
 
                                 </select>
@@ -109,7 +118,8 @@
 
                             <div class="form-group">
                                 <label asp-for="GradoptionId" class="control-label"></label>
-                                <select id="gradoption" asp-for="GradoptionId" class="form-control" asp-items="ViewBag.gradItems ">
+                                <select id="gradoption" asp-for="GradoptionId" class="form-control" asp-items="ViewBag.gradItems "
+                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")">
                                     <option selected>Select a  option here...</option>
 
                                 </select>
@@ -119,10 +129,17 @@
 
                             <br />
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Add" class="btn btn-primary" id="btnSubmit" />
-                            <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
 
+                        <div class="form-group">
+                            @if (ViewBag.Permissions.PuedeCrear)
+                            {
+                                <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                            }
+
+                            @if (ViewBag.Permissions.PuedeEditar)
+                            {
+                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                            }
                         </div>
 
                     </div>

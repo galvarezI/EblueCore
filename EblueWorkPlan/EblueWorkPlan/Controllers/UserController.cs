@@ -1,10 +1,11 @@
-﻿using EblueWorkPlan.Models;
+﻿using AspNetCore.ReportingServices.ReportProcessing.ReportObjectModel;
+using EblueWorkPlan.Models;
+using EblueWorkPlan.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EblueWorkPlan.Models.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 
 namespace EblueWorkPlan.Controllers
 {
@@ -216,6 +217,29 @@ namespace EblueWorkPlan.Controllers
                     EmailConfirmed = true
                 };
 
+                var emailExists = await userManager.FindByEmailAsync(model.Email);
+                if (emailExists != null)
+                {
+                    ModelState.AddModelError("Email", "Ya existe un usuario con este correo.");
+                    return View(model);
+                }
+
+                // Validar duplicado de UserName basado en RosterName
+                var consulta = await _context.Rosters.FindAsync(model.RosterId);
+                var rosterName = consult.RosterName;
+
+                var usernameExists = await userManager.FindByNameAsync(rosterName);
+                if (usernameExists != null)
+                {
+                    ModelState.AddModelError("RosterId", "Ya existe un usuario asignado a este roster.");
+                    return View(model);
+                }
+
+
+
+
+
+
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -223,7 +247,7 @@ namespace EblueWorkPlan.Controllers
                     
 
                     // Guardar información adicional como RosterId en una tabla auxiliar
-                    var customUser = new User
+                    var customUser = new Models.User
                     {
                         Email = model.Email,
                         Password = model.Password, // ⚠️ Puedes omitir guardar el password plano por seguridad
@@ -301,6 +325,18 @@ namespace EblueWorkPlan.Controllers
                     query.RosterId= user.RosterId;
                     query.Roles = rolesString;
 
+
+
+
+
+
+
+
+
+
+
+
+
                     _context.Update(query);
                     await _context.SaveChangesAsync();
                 }
@@ -322,42 +358,137 @@ namespace EblueWorkPlan.Controllers
         }
 
         // GET: User/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        //public async Task<IActionResult> Delete(string UserId,  int? id)
+        //{
+        //    if (id == null || _context.Users == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var user = await _context.Users
+        //        .Include(u => u.Roster)
+        //        .FirstOrDefaultAsync(m => m.UserId == id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(user);
+        //}
+
+        // GET: User/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Users == null)
-            {
+            if (string.IsNullOrEmpty(id))
                 return NotFound();
-            }
 
-            var user = await _context.Users
+            // Buscar el usuario de Identity
+            var identityUser = await userManager.FindByIdAsync(id);
+            if (identityUser == null)
+                return NotFound();
+
+            // Buscar el usuario custom usando el email
+            var customUser = await _context.Users
                 .Include(u => u.Roster)
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+                .FirstOrDefaultAsync(u => u.Email == identityUser.Email);
 
-            return View(user);
+            return View(customUser);
         }
 
-        // POST: User/Delete/5
+
+
+
+
+
+        #region depreciated
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    // Buscar registro en tu tabla Users
+        //    var customUser = await _context.Users.FindAsync(id);
+        //    if (customUser == null)
+        //        return NotFound();
+
+        //    // Buscar el IdentityUser por email
+        //    var identityUser = await userManager.FindByEmailAsync(customUser.Email);
+
+        //    // 1. Eliminar de IdentityUser (AspNetUsers, AspNetUserRoles, Claims, Tokens)
+        //    if (identityUser != null)
+        //    {
+        //        var result = await userManager.DeleteAsync(identityUser);
+
+        //        if (!result.Succeeded)
+        //        {
+        //            ModelState.AddModelError("", "No se pudo eliminar el usuario de Identity.");
+        //            return View(customUser);
+        //        }
+        //    }
+
+        //    // 2. Eliminar registro en tabla Users
+        //    _context.Users.Remove(customUser);
+        //    await _context.SaveChangesAsync();
+
+        //    TempData["Success"] = "Usuario eliminado correctamente.";
+        //    return RedirectToAction(nameof(Index));
+        //}
+        #endregion
+
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Users == null)
+            if (string.IsNullOrEmpty(id))
+                return NotFound();
+
+            // 1. Buscar IdentityUser
+            var identityUser = await userManager.FindByIdAsync(id);
+            if (identityUser == null)
+                return NotFound();
+
+            // 2. Buscar CustomUser asociado (por Email)
+            var customUser = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == identityUser.Email);
+
+            // A. Eliminar roles del IdentityUser
+            var roles = await userManager.GetRolesAsync(identityUser);
+            foreach (var role in roles)
+                await userManager.RemoveFromRoleAsync(identityUser, role);
+
+            // B. Eliminar claims
+            var claims = await userManager.GetClaimsAsync(identityUser);
+            foreach (var claim in claims)
+                await userManager.RemoveClaimAsync(identityUser, claim);
+
+            // C. Eliminar tokens
+            await userManager.RemoveAuthenticationTokenAsync(identityUser, "Default", "RefreshToken");
+
+            // D. Eliminar usuario Identity
+            var result = await userManager.DeleteAsync(identityUser);
+            if (!result.Succeeded)
             {
-                return Problem("Entity set 'WorkplandbContext.Users'  is null.");
-            }
-            var user = await _context.Users.FindAsync(id);
-            if (user != null)
-            {
-                _context.Users.Remove(user);
+                ModelState.AddModelError("", "Error eliminando el usuario de Identity.");
+                return View(customUser);
             }
 
-            await _context.SaveChangesAsync();
+            // E. Eliminar usuario custom (si existe)
+            if (customUser != null)
+            {
+                _context.Users.Remove(customUser);
+                await _context.SaveChangesAsync();
+            }
+
+            TempData["Success"] = "Usuario eliminado correctamente.";
             return RedirectToAction(nameof(Index));
         }
+
+
+
+
+
+
+
 
 
         public async Task<IActionResult> UserIdentity() {
@@ -375,19 +506,42 @@ namespace EblueWorkPlan.Controllers
 
 
 
-        public async Task<IActionResult> UserInfo() {
+        public async Task<IActionResult> UserInfo()
+        {
 
-            
 
 
-            IdentityUserRoleVM model = new IdentityUserRoleVM() {
 
-                Users = userManager.Users.ToList(),
-                Roles =  roleManager.Roles.ToList()
+            var users = await userManager.Users.ToListAsync();
 
-            };
-            
-            return View(model);
+            var userRolesList = new List<IdentityUserRoleVM>();
+
+            foreach (var user in users)
+            {
+                var roles = await userManager.GetRolesAsync(user);
+
+                userRolesList.Add(new IdentityUserRoleVM
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    UserRole = roles.ToList()
+                });
+
+
+                //IdentityUserRoleVM model = new IdentityUserRoleVM()
+                //{
+
+                //    Users = userManager.Users.ToList(),
+                //    UserRole = await userManager.GetRolesAsync(usuarios)
+                //    Roles = roleManager.Roles.ToList()
+
+                //};
+
+
+                
+            }
+            return View(userRolesList);
         }
 
         [Authorize(Roles ="Administrator")]
@@ -421,5 +575,53 @@ namespace EblueWorkPlan.Controllers
 
             return RedirectToAction("UserInfo");
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> UserRoles(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return BadRequest("El ID del usuario es requerido.");
+
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return NotFound("Usuario no encontrado.");
+
+            var roles = await userManager.GetRolesAsync(user);
+
+            var model = new IdentityUserRoleVM
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                UserRole = roles.ToList()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveUserRole(string userId, string roleName)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound();
+
+            var result = await userManager.RemoveFromRoleAsync(user, roleName);
+
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "No se pudo eliminar el rol.";
+                return RedirectToAction(nameof(UserRoles), new { id = userId });
+            }
+
+            TempData["Success"] = $"El rol '{roleName}' fue eliminado.";
+            return RedirectToAction(nameof(UserInfo), new { id = userId });
+        }
+
+
+
+
     }
 }

@@ -15,14 +15,19 @@
     </div>
 }
 
-<p>
+@* <p>
     <a class="btn btn-success" asp-action="Create" style="text-decoration:none;">Create New</a>
-</p>
-
-@{
+</p> *@
+@* 
+@if(){
    
     
 
+} *@
+
+@if (ViewBag.Permissions.PuedeEditar)
+{
+    <a class="btn btn-success" asp-action="Create" style="text-decoration:none;">Create New</a>
 }
 
 

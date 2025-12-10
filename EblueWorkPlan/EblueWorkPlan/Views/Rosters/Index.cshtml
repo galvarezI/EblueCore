@@ -12,28 +12,31 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="templateTable" class="table table-bordered">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RosterSegSoc)
+               Investigator SecSoc
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RosterName)
+               Investigator Name
+            </th>
+
+            <th>
+                Email
+            </th>
+
+            <th>
+               Department
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartmentId)
+                Location Or Region
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LocationId)
+               Can be PI
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CanBePi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoleId)
-            </th>
-            <th></th>
+           
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +48,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RosterName)
             </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.DepartmentId)
             </td>
@@ -54,15 +64,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CanBePi)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleId)
-            </td>
+           
             <td>
                 <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.RosterId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RosterId">Details</a> |
+                
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.RosterId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+@section scripts{
+
+    <script>
+        
+
+        $(document).ready(function (){
+            $('#templateTable').DataTable();
+
+
+        })
+    </script>
+
+
+
+
+
+}

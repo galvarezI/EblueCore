@@ -19,6 +19,7 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public IEnumerable<SelectListItem> UserRoles { get; set; }
 
+        public List<string> UserRole { get; set; } = new List<string>();
 
         public IEnumerable<IdentityUser> Users { get; set; }
         public IEnumerable<IdentityRole> Roles { get; set; }

@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EblueWorkPlan.Models;
 
 public partial class Roster
 {
+    [Column("RosterID")]
     public int RosterId { get; set; }
 
     public string RosterSegSoc { get; set; }
 
     public string RosterName { get; set; }
+
+
+    public string Email { get; set; }
 
     public int DepartmentId { get; set; }
 
@@ -20,6 +25,10 @@ public partial class Roster
     public int? RoleId { get; set; }
 
     public virtual ICollection<OtherPersonel> OtherPersonels { get; set; } = new List<OtherPersonel>();
+
+    public virtual ICollection<Department> Departments { get; set; } = new List<Department>();
+
+    public virtual ICollection<Locationn> Location { get; set; } = new List<Locationn>();
 
     public virtual ICollection<ProjectNote> ProjectNotes { get; set; } = new List<ProjectNote>();
 

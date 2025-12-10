@@ -3,44 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\projectreview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\projectreview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\services\\permissionaccessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\services\\permissionaccessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\shared\\_sidebar2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\shared\\_sidebar2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\services\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\services\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\rosters\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\rosters\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\page6.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\page6.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\rosters\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\rosters\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\page7.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\page7.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\page8.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\page8.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\page4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\page4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\_page2modal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\_page2modal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\projectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\projectlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|c:\\users\\ggjeanzs\\desktop\\proyects\\infosypworkplan\\eblueworkplan\\eblueworkplan\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3086FA0F-16E7-414B-AB8E-84998435A772}|EblueWorkPlan\\EblueWorkPlan.csproj|solutionrelative:eblueworkplan\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +54,150 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "EblueWorkPlan\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAowFUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T13:04:01.878Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Sidebar2.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Shared\\_Sidebar2.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Shared\\_Sidebar2.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Shared\\_Sidebar2.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Shared\\_Sidebar2.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAABUAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-02T13:18:10.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "EblueWorkPlan\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAAwFwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-09-02T13:15:41.918Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProjectReview.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\ProjectReview.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\ProjectReview.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\ProjectReview.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\ProjectReview.cshtml",
-              "ViewState": "AgIAAPADAAAAAAAAAAAAAPkDAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-01T12:42:18.627Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Page6.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page6.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\Page6.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page6.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\Page6.cshtml",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAAALwAAAADAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Rosters\\Create.cshtml",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Rosters\\Create.cshtml",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Rosters\\Create.cshtml",
+              "RelativeToolTip": "EblueWorkPlan\\Views\\Rosters\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-12T13:02:06.048Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_Page2Modal.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\_Page2Modal.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\_Page2Modal.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\_Page2Modal.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\_Page2Modal.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-12T12:58:08.432Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProjectsController.cs",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\ProjectsController.cs",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Controllers\\ProjectsController.cs",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\ProjectsController.cs",
-              "RelativeToolTip": "EblueWorkPlan\\Controllers\\ProjectsController.cs",
-              "ViewState": "AgIAANcKAAAAAAAAAAAgwOkKAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T12:54:14.636Z",
+              "WhenOpened": "2025-12-10T05:21:22.936Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Page4.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page4.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\Page4.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page4.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\Page4.cshtml",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAmwHwBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-12T12:30:34.421Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Page7.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page7.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\Page7.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page7.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\Page7.cshtml",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAiwOgAAAAEAAAAAAAAAA==",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Rosters\\Edit.cshtml",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Rosters\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Rosters\\Edit.cshtml",
+              "RelativeToolTip": "EblueWorkPlan\\Views\\Rosters\\Edit.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACUAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-12T07:43:20.797Z"
+              "WhenOpened": "2025-12-10T05:20:59.28Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Page8.cshtml",
-              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page8.cshtml",
-              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\Page8.cshtml",
-              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Page8.cshtml",
-              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\Page8.cshtml",
-              "ViewState": "AgIAADYBAAAAAAAAAAAiwCACAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-12T05:53:46.525Z"
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\appsettings.json",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\appsettings.json",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\appsettings.json",
+              "RelativeToolTip": "EblueWorkPlan\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-10T03:44:36.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
               "Title": "LoginController.cs",
               "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "EblueWorkPlan\\Controllers\\LoginController.cs",
               "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\LoginController.cs",
               "RelativeToolTip": "EblueWorkPlan\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwEYAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwEYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T13:08:42.452Z",
+              "WhenOpened": "2025-12-04T15:58:25.632Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PermissionService.cs",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Services\\PermissionService.cs",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Services\\PermissionService.cs",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Services\\PermissionService.cs",
+              "RelativeToolTip": "EblueWorkPlan\\Services\\PermissionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T13:47:19.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "EblueWorkPlan\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAPwAAAAAAAAAAADgvwoBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T12:04:21.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PermissionAccessService.cs",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Services\\PermissionAccessService.cs",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Services\\PermissionAccessService.cs",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Services\\PermissionAccessService.cs",
+              "RelativeToolTip": "EblueWorkPlan\\Services\\PermissionAccessService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T13:28:56.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProjectList.cshtml",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\ProjectList.cshtml",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\ProjectList.cshtml",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\ProjectList.cshtml",
+              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\ProjectList.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAHEAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-01T12:06:41.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Index.cshtml",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Views\\Projects\\Index.cshtml",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Views\\Projects\\Index.cshtml",
+              "RelativeToolTip": "EblueWorkPlan\\Views\\Projects\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-01T08:12:02.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Program.cs",
+              "RelativeDocumentMoniker": "EblueWorkPlan\\Program.cs",
+              "ToolTip": "C:\\Users\\GGJEANZS\\Desktop\\Proyects\\InfosypWorkPlan\\EblueWorkPlan\\EblueWorkPlan\\Program.cs",
+              "RelativeToolTip": "EblueWorkPlan\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-01T07:43:57.71Z"
             }
           ]
         },

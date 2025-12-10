@@ -150,8 +150,13 @@ namespace EblueWorkPlan.Migrations
                     b.Property<int?>("RosterDepartmentDirectorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RosterId")
+                        .HasColumnType("int");
+
                     b.HasKey("DepartmentId")
                         .HasName("PK__Departme__B2079BCD83D4441F");
+
+                    b.HasIndex("RosterId");
 
                     b.ToTable("Departments");
                 });
@@ -530,8 +535,13 @@ namespace EblueWorkPlan.Migrations
                         .HasColumnType("int")
                         .HasColumnName("LocationOldID");
 
+                    b.Property<int?>("RosterId")
+                        .HasColumnType("int");
+
                     b.HasKey("LocationId")
                         .HasName("PK__Location__E7FEA4779DCBB781");
+
+                    b.HasIndex("RosterId");
 
                     b.ToTable("Locationn", (string)null);
                 });
@@ -584,6 +594,58 @@ namespace EblueWorkPlan.Migrations
                     b.HasIndex("RosterId");
 
                     b.ToTable("OtherPersonel", (string)null);
+                });
+
+            modelBuilder.Entity("EblueWorkPlan.Models.Permissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("PuedeAdministrarTodo")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeAprobar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeAsignarRoles")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeComentar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeCrear")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeEditar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeEliminar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeModificarTrasRechazo")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeRechazar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeReenviar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PuedeVer")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Permissions", (string)null);
                 });
 
             modelBuilder.Entity("EblueWorkPlan.Models.Porganization", b =>
@@ -1064,6 +1126,9 @@ namespace EblueWorkPlan.Migrations
                         .HasColumnType("int")
                         .HasColumnName("DepartmentID");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LocationId")
                         .HasColumnType("int")
                         .HasColumnName("LocationID");
@@ -1465,6 +1530,13 @@ namespace EblueWorkPlan.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("EblueWorkPlan.Models.Department", b =>
+                {
+                    b.HasOne("EblueWorkPlan.Models.Roster", null)
+                        .WithMany("Departments")
+                        .HasForeignKey("RosterId");
+                });
+
             modelBuilder.Entity("EblueWorkPlan.Models.FieldWork", b =>
                 {
                     b.HasOne("EblueWorkPlan.Models.FieldOption", "Fieldoption")
@@ -1555,6 +1627,13 @@ namespace EblueWorkPlan.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("EblueWorkPlan.Models.Locationn", b =>
+                {
+                    b.HasOne("EblueWorkPlan.Models.Roster", null)
+                        .WithMany("Location")
+                        .HasForeignKey("RosterId");
+                });
+
             modelBuilder.Entity("EblueWorkPlan.Models.OtherPersonel", b =>
                 {
                     b.HasOne("EblueWorkPlan.Models.Locationn", "Location")
@@ -1577,6 +1656,17 @@ namespace EblueWorkPlan.Migrations
                     b.Navigation("Project");
 
                     b.Navigation("Roster");
+                });
+
+            modelBuilder.Entity("EblueWorkPlan.Models.Permissions", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("EblueWorkPlan.Models.ProcessProjectWay", b =>
@@ -1886,6 +1976,10 @@ namespace EblueWorkPlan.Migrations
 
             modelBuilder.Entity("EblueWorkPlan.Models.Roster", b =>
                 {
+                    b.Navigation("Departments");
+
+                    b.Navigation("Location");
+
                     b.Navigation("OtherPersonels");
 
                     b.Navigation("ProjectNotes");

@@ -29,6 +29,8 @@
     </div>
 </nav>
 
+
+
 <div id="showModal">
 </div>
 
@@ -40,7 +42,7 @@
                 <input id="projectId" type="hidden" asp-for="ProjectId" />
                 <input id="fieldWorkId" type="hidden" />
 
-
+                @{
                 <div class="card">
 
                     <div class="card-header">WorkPlan - FieldWork </div>
@@ -53,19 +55,23 @@
 
                             <div class="col-12">
                                 <label asp-for="Wfieldwork" class="control-label"></label>
-                                <textarea id="wfieldwork" asp-for="Wfieldwork" rows="3" class="form-control txt-wfieldwork"></textarea>
+                                <textarea id="wfieldwork" asp-for="Wfieldwork" rows="3" class="form-control txt-wfieldwork"
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" ></textarea>
                                 <span asp-validation-for="Wfieldwork" class="text-danger"></span>
                             </div>
 
                             <div class="col-6">
                                 <label asp-for="Area" class="control-label"></label>
-                                <input id="area" asp-for="Area" class="form-control txt-area" />
+                                <input id="area" asp-for="Area" class="form-control txt-area" 
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="Area" class="text-danger"></span>
                             </div>
 
                             <div class="col-6">
                                 <label asp-for="LocationId" class="control-label"></label>
-                                <select id="locationId" asp-for="LocationId" class="form-control" asp-items="ViewBag.locationsItems">
+                                <select id="locationId" asp-for="LocationId" class="form-control" 
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" 
+                                    asp-items="ViewBag.locationsItems">
                                     <option value="">-- Select a location here... --</option>
                                 </select>
                                 <span asp-validation-for="LocationId" class="text-danger"></span>
@@ -73,30 +79,48 @@
 
                             <div class="col6">
                                 <label asp-for="DateStarted" class="control-label"></label>
-                                <input id="dateStarted" class="form-control dateStr" />
+                                <input id="dateStarted" class="form-control dateStr" 
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="DateStarted" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="DateEnded" class="control-label"></label>
-                                <input id="dateEnded" class="form-control   />
+                                <input id="dateEnded" class="form-control"   
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
                                 <span asp-validation-for="DateEnded" class="text-danger"></span>
                             </div>
 
 
                             <div class="col-12">
                                 <label asp-for="FieldoptionId" class="control-label"></label>
-                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control" asp-items="ViewBag.fieldItems">
+                                <select id="fieldoption" asp-for="FieldoptionId" class="form-control"
+                                    disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" 
+                                    asp-items="ViewBag.fieldItems">
                                     <option selected>Select a status here...</option>
 
                                 </select>
                             </div>
 
 
+                            @if (ViewBag.Permissions.PuedeEditar)
+                            {
+                                
+                            }
 
                             <br />
                             <div class="form-group">
-                                <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
-                                <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                @if (ViewBag.Permissions.PuedeCrear)
+                                {
+                                    <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                }
+
+                                 @if (ViewBag.Permissions.PuedeEditar)
+                                {
+                                    <input id="btnSave" type="button" value="Save" class="btn btn-success btn-save" style="display:none;" />
+                                }
+
+                                
+                                
                             </div>
 
 
@@ -116,7 +140,9 @@
                     </div>
 
                 </div>
-            </form>
+            
+                }
+                </form>
 
             @{
 
