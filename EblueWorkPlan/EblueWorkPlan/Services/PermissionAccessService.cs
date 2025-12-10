@@ -27,27 +27,25 @@ namespace EblueWorkPlan.Services
         // Devuelve SOLO los proyectos visibles para el usuario
         public IQueryable<Project> FilterProjectsForUser(ClaimsPrincipal user)
         {
-            var roleId = _permissionService.GetCurrentUserRoleId(user);
-            var perms = _permissionService.GetPermissionsForRole(roleId);
-
-            // Si tiene permiso global, no filtramos
-            if (perms.PuedeVer)
-                return _context.Projects;
-
             var rosterId = _permissionService.GetRosterIdForIdentity(user);
+
+            // Usuario sin roster → no puede ver proyectos
             if (rosterId == null)
-                return Enumerable.Empty<Project>().AsQueryable();
+                return _context.Projects.Where(p => false);
 
-            // 1) Proyectos donde es PI
-            var asPI = _context.Projects.Where(p => p.RosterId == rosterId);
+            // 1. Proyectos donde es PI
+            var asPI = _context.Projects
+                .Where(p => p.RosterId == rosterId);
 
-            // 2) Proyectos donde aparece en SciProjects (Page5)
-            var asSciRole = _context.SciProjects
+            // 2. Proyectos donde aparece en Page5
+            var asSci = _context.SciProjects
                 .Where(sp => sp.RosterId == rosterId)
-                .Include(sp => sp.Project)
                 .Select(sp => sp.Project);
 
-            return asPI.Union(asSciRole).Distinct();
+            // Unión final
+            return asPI.Union(asSci).Distinct();
         }
+
+
     }
 }

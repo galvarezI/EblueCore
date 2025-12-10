@@ -84,19 +84,15 @@ namespace EblueWorkPlan.Services
         // 6. Regla central de acceso para un proyecto
         public bool CanViewProject(int projectId, ClaimsPrincipal user)
         {
-            var roleId = GetCurrentUserRoleId(user);
-            var perms = GetPermissionsForRole(roleId);
-
-            // Ajusta el nombre según tu modelo (PuedeVer / PuedeVerProyectos / etc.)
-            if (perms.PuedeVer)
-                return true; // permiso global
-
+            // 1. Verificar si es PI del proyecto
             if (IsProjectPI(projectId, user))
                 return true;
 
+            // 2. Verificar si fue asignado en Page5 (SciProjects)
             if (HasSciAccess(projectId, user))
                 return true;
 
+            // 3. En cualquier otro caso, NO TIENE PERMISO
             return false;
         }
     }
