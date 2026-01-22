@@ -943,6 +943,53 @@ namespace EblueWorkPlan.Migrations
                     b.ToTable("projects", (string)null);
                 });
 
+            modelBuilder.Entity("EblueWorkPlan.Models.ProjectApprovalHistory", b =>
+                {
+                    b.Property<int>("ProjectApprovalHistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectApprovalHistoryId"));
+
+                    b.Property<int>("Action")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ActionDateUtc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RosterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProjectApprovalHistoryId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("RosterId");
+
+                    b.ToTable("ProjectApprovalHistories");
+                });
+
             modelBuilder.Entity("EblueWorkPlan.Models.ProjectAssent", b =>
                 {
                     b.Property<int>("PassentsId")
@@ -1751,6 +1798,23 @@ namespace EblueWorkPlan.Migrations
                     b.Navigation("Roster");
 
                     b.Navigation("SubStation");
+                });
+
+            modelBuilder.Entity("EblueWorkPlan.Models.ProjectApprovalHistory", b =>
+                {
+                    b.HasOne("EblueWorkPlan.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EblueWorkPlan.Models.Roster", "Roster")
+                        .WithMany()
+                        .HasForeignKey("RosterId");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("Roster");
                 });
 
             modelBuilder.Entity("EblueWorkPlan.Models.ProjectNote", b =>

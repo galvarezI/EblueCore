@@ -18,6 +18,8 @@ public partial class WorkplandbContext : IdentityDbContext
 
     public virtual DbSet<AdminOfficerComment> AdminOfficerComments { get; set; }
 
+    public virtual DbSet<ProjectApprovalHistory> ProjectApprovalHistories { get; set; }
+
     public virtual DbSet<Analytical> Analyticals { get; set; }
 
     public virtual DbSet<Commodity> Commodities { get; set; }

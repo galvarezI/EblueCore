@@ -43,19 +43,43 @@ namespace EblueWorkPlan.Services
         }
 
         // 3. RosterId asociado al usuario Identity (por Email)
+        //public int? GetRosterIdForIdentity(ClaimsPrincipal user)
+        //{
+        //    var identityUser = _userManager.GetUserAsync(user).Result;
+        //    if (identityUser == null) return null;
+
+        //    var email = identityUser.Email;
+        //    if (string.IsNullOrEmpty(email)) return null;
+
+        //    return _context.Rosters
+        //        .Where(r => r.Email == email)
+        //        .Select(r => (int?)r.RosterId)
+        //        .FirstOrDefault();
+        //}
+        public Permissions GetCurrentUserPermissions(ClaimsPrincipal user)
+        {
+            var roleId = GetCurrentUserRoleId(user);
+
+            if (string.IsNullOrEmpty(roleId))
+                return new Permissions(); // todo en false
+
+            return GetPermissionsForRole(roleId) ?? new Permissions();
+        }
+
+
+
+
         public int? GetRosterIdForIdentity(ClaimsPrincipal user)
         {
-            var identityUser = _userManager.GetUserAsync(user).Result;
-            if (identityUser == null) return null;
-
-            var email = identityUser.Email;
-            if (string.IsNullOrEmpty(email)) return null;
+            var email = _userManager.GetEmailAsync(
+                            _userManager.GetUserAsync(user).Result).Result;
 
             return _context.Rosters
                 .Where(r => r.Email == email)
                 .Select(r => (int?)r.RosterId)
                 .FirstOrDefault();
         }
+
 
         // 4. Verifica si el usuario está en SciProjects (Page5)
         public bool HasSciAccess(int projectId, ClaimsPrincipal user)

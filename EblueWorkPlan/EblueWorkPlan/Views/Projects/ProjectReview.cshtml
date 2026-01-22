@@ -439,7 +439,7 @@
                                     @Html.DisplayFor(modelItem => item.Descriptions)
                                 </td>
                                 <td class="estimated">
-                                    @Html.DisplayFor(modelItem => item.TimeEstimated)
+                                    @Html.DisplayFor(modelItem => item.EstimatedTime)
                                 </td>
                                 <td class="facili">
                                     @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
@@ -696,127 +696,88 @@
                    <br />
                    <div class="mt-5"></div>
 
-                    <div class="card table-responsive">
-                        <div class="card-header">
-                                <h5>Funds Page</h5>
 
-                        </div>
+<div class="card">
+    <div class="card-header">
+        <h5>Funds Page</h5>
+    </div>
 
-                        <div class="card-body">
+    <div class="card-body">
+        <div class="row g-4">
 
+            <!-- TABLA 1 -->
+            <div class="col-12 col-lg-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm funds-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Location</th>
+                                <th>Salaries</th>
+                                <th>Wages</th>
+                                <th>Benefits</th>
+                                <th>Assistant</th>
+                                <th>Materials</th>
+                                <th>Equipment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Fundss)
+                            {
+                                <tr>
+                                    <td>@item.Location.LocationName</td>
+                                    <td>@item.Salaries</td>
+                                    <td>@item.Wages</td>
+                                    <td>@item.Benefits</td>
+                                    <td>@item.Assistant</td>
+                                    <td>@item.Materials</td>
+                                    <td>@item.Equipment</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                                <table class="table  table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Location)
-                                            </th>
+            <!-- TABLA 2 -->
+            <div class="col-12 col-lg-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm funds-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Travel</th>
+                                <th>Abroad</th>
+                                <th>Subcontracts</th>
+                                <th>Others</th>
+                                <th>Indirect Costs</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Fundss)
+                            {
+                                <tr>
+                                    <td>@item.Travel</td>
+                                    <td>@item.Abroad</td>
+                                    <td>@item.Subcontracts</td>
+                                    <td>@item.Others</td>
+                                    <td>@item.IndirectCosts</td>
+                                    <td class="fw-bold">@item.TotalAmount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Salaries)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Wages)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Benefits)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Assistant)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Materials)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Equipment)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Travel)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Abroad)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Subcontracts)
-                                            </th>
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.Others)
-                                            </th>
-
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.IndirectCosts)
-                                            </th>
-
-
-                                            <th>
-                                                @Html.DisplayNameFor(model => model.TotalAmount)
-                                            </th>
->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Fundss)
-                                        {
-                                            <tr>
-
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Location.LocationName)
-                                                </td>
-
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Salaries)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Wages)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Benefits)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Assistant)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Materials)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Equipment)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Travel)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Abroad)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Subcontracts)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Others)
-                                                </td>
-
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.IndirectCosts)
-                                                </td>
-
-
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.TotalAmount)
-                                                </td>
-
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-
-
-                                <br />
+        </div>
+    </div>
+</div>
 
 
 
 
 
-                        </div>
-                    </div>
+
 
 
 
@@ -1076,3 +1037,8 @@
                                         </script>   
                                         
                                         }
+
+
+@section Styles {
+        <link rel="stylesheet" href="~/css/reports.css" />
+}

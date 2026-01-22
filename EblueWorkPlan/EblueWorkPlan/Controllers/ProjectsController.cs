@@ -22,6 +22,7 @@ using EblueWorkPlan.Services;
 
 namespace EblueWorkPlan.Controllers
 {
+    [ServiceFilter(typeof(PermissionViewBagFilter))]
     [Authorize]
     public class ProjectsController : Controller
     {
@@ -47,6 +48,7 @@ namespace EblueWorkPlan.Controllers
             _context = context;
             this.permissionService = permissionService;
             this._accessService = accessService;
+            
         }
 
         // GET: Projects
@@ -62,24 +64,22 @@ namespace EblueWorkPlan.Controllers
 
             //Not Filtered Version
 
-            //var projects = await _context.Projects.Include(p => p.Comm)
-            //    .Include(p => p.Department)
-            //    .Include(p => p.FiscalYear)
-            //    .Include(p => p.ProjectStatus)
-            //    .Include(p => p.ProgramArea).Include(p => p.Roster).ToListAsync();
+          
 
             //filtered version
 
+            
+ 
 
             // Filtra SOLO los proyectos que el usuario puede ver
             var proyectosFiltrados = _accessService
-       .FilterProjectsForUser(User)
-       .Include(p => p.Department)
-       .Include(p => p.Comm)
-       .Include(p => p.FiscalYear)
-       .Include(p => p.ProjectStatus)
-       .Include(p => p.ProgramArea)
-       .Include(p => p.Roster);
+               .FilterProjectsForUser(User)
+               .Include(p => p.Department)
+               .Include(p => p.Comm)
+               .Include(p => p.FiscalYear)
+               .Include(p => p.ProjectStatus)
+               .Include(p => p.ProgramArea)
+               .Include(p => p.Roster);
 
             var lista = await proyectosFiltrados.ToListAsync();
 
@@ -92,6 +92,14 @@ namespace EblueWorkPlan.Controllers
             //return View(projects);
         }
 
+        private void LoadPermissions()
+        {
+            var roleId = permissionService.GetCurrentUserRoleId(User);
+            var permisos = permissionService.GetPermissionsForRole(roleId);
+
+            var permissions = permissionService.GetCurrentUserPermissions(User);
+            ViewBag.Permissions = permissions;
+        }
 
 
         public async Task<IActionResult> ProjectDetails(int? id)
@@ -155,7 +163,7 @@ namespace EblueWorkPlan.Controllers
             ViewBag.rosterPI = _rosterItems;
 
 
-
+            LoadPermissions();
 
 
 
@@ -752,7 +760,10 @@ namespace EblueWorkPlan.Controllers
             ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
             ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
             ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            LoadPermissions();
             return View(project);
+
+
         }
 
         //GET WORKPLAN PAGE 1:
@@ -778,7 +789,7 @@ namespace EblueWorkPlan.Controllers
                 });
             }
 
-
+            LoadPermissions();
 
 
 
@@ -837,7 +848,8 @@ namespace EblueWorkPlan.Controllers
                     projectName = project.ProjectTitle
                 });
             }
-           
+            LoadPermissions();
+
             return View();
 
 
@@ -1013,7 +1025,7 @@ namespace EblueWorkPlan.Controllers
 
             }
 
-
+            LoadPermissions();
 
 
             return View(projectTemplate);
@@ -1083,8 +1095,8 @@ namespace EblueWorkPlan.Controllers
                 
                
             }
+            LoadPermissions();
 
-           
             return View();
 
 
@@ -1169,6 +1181,7 @@ namespace EblueWorkPlan.Controllers
             ViewBag.POrganizationItem = new SelectList(_context.Porganizations, "PorganizationId", "PorganizationName");
             ViewBag.FundTypeItem = new SelectList(_context.FundTypes, "FundTypeId", "FundTypeName");
             ViewBag.LocationItem = new SelectList(_context.Locationns, "LocationId", "LocationName");
+            LoadPermissions();
             return View(project);
         }
 
@@ -1203,7 +1216,7 @@ namespace EblueWorkPlan.Controllers
             }
 
 
-
+            LoadPermissions();
 
 
             return View();
@@ -1292,7 +1305,7 @@ namespace EblueWorkPlan.Controllers
 
 
             }
-
+            LoadPermissions();
 
             return View(template);
         }
@@ -1344,8 +1357,8 @@ namespace EblueWorkPlan.Controllers
 
 
             }
+            LoadPermissions();
 
-           
             return View();
         }
 
@@ -1386,6 +1399,7 @@ namespace EblueWorkPlan.Controllers
             int id = int.Parse(fieldWork.projectId);
             bool redirect = true;
             string url = Url.Action("Page3", "Projects", new { id = id });
+            LoadPermissions();
 
             return Json(new { redirect = redirect, url = url });
         }
@@ -1478,7 +1492,7 @@ namespace EblueWorkPlan.Controllers
                 query.LabId = projectTemplate.LabId;
                 query.WorkPlanned = projectTemplate.WorkPlanned;
                 query.Descriptions = projectTemplate.Descriptions;
-                query.TimeEstimated = projectTemplate.TimeEstimated;
+                query.EstimatedTime = projectTemplate.TimeEstimated;
                 query.FacilitiesNeeded = projectTemplate.FacilitiesNeeded;
                 query.CentralLaboratory = projectTemplate.CentralLaboratory;
                 query.ProjectId = projectTemplate.ProjectId;
@@ -1490,7 +1504,7 @@ namespace EblueWorkPlan.Controllers
             }
             int id = query.ProjectId.Value;
             bool redirect = true;
-            string url = Url.Action("Page5", "Projects", new { id = id });
+            string url = Url.Action("Page4", "Projects", new { id = id });
             return Json(new { redirect = redirect, url = url });
 
            
@@ -1535,6 +1549,8 @@ namespace EblueWorkPlan.Controllers
 
             projectTemplate.ProjectId = id.Value;
             projectTemplate.ProjectNumber = project.ProjectNumber;
+
+            LoadPermissions();
             return View(projectTemplate);
         }
 
@@ -1554,7 +1570,7 @@ namespace EblueWorkPlan.Controllers
 
                     WorkPlanned = projectTemplate.WorkPlanned,
                     Descriptions = projectTemplate.Descriptions,
-                    TimeEstimated = projectTemplate.TimeEstimated,
+                    EstimatedTime = projectTemplate.EstimatedTime,
                     FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
                     CentralLaboratory = projectTemplate.CentralLaboratory,
                     ProjectId = projectTemplate.ProjectId
@@ -1575,11 +1591,11 @@ namespace EblueWorkPlan.Controllers
                 });
 
             }
-        
-        
-        
-        
-        
+
+
+
+            LoadPermissions();
+
             return View();
         }
 
@@ -1594,7 +1610,7 @@ namespace EblueWorkPlan.Controllers
 
                     WorkPlanned = projectTemplate.WorkPlanned,
                     Descriptions = projectTemplate.Descriptions,
-                    TimeEstimated = DateTime.Parse(projectTemplate.TimeEstimated.ToString()),
+                    EstimatedTime = projectTemplate.TimeEstimated,
 
                     
                     FacilitiesNeeded = projectTemplate.FacilitiesNeeded,
@@ -1715,6 +1731,7 @@ namespace EblueWorkPlan.Controllers
             ViewBag.scirolesItems = _scirolesItems;
             ViewData["selectedProjectPI"] = _rosterItems;
 
+            LoadPermissions();
             return View(projectTemplate);
         }
 
@@ -1749,11 +1766,11 @@ namespace EblueWorkPlan.Controllers
 
 
             }
-        
-        
-        
-        
-        
+
+
+
+
+            LoadPermissions();
             return View();
         }
 
@@ -1929,6 +1946,8 @@ namespace EblueWorkPlan.Controllers
             ViewBag.rosterItems = _rosterItems;
             ViewData["selectedProjectPI"] = _rosterItems;
 
+            LoadPermissions();
+
             return View(projectTemplate);
         }
 
@@ -1969,7 +1988,7 @@ namespace EblueWorkPlan.Controllers
 
 
             }
-
+            LoadPermissions();
             return View(projectTemplate);
 
 
@@ -2081,8 +2100,8 @@ namespace EblueWorkPlan.Controllers
 
             var roleId = permissionService.GetCurrentUserRoleId(User);
             var permisos = permissionService.GetPermissionsForRole(roleId);
-
-            ViewBag.Permissions = permisos;
+            LoadPermissions();
+            //ViewBag.Permissions = permisos;
 
             if (id == null || _context.Projects == null)
             {
@@ -2133,6 +2152,7 @@ namespace EblueWorkPlan.Controllers
             };
             
             projectTemplate.ProjectId = id.Value;
+            
             return View(projectTemplate);
 
 
@@ -2141,9 +2161,9 @@ namespace EblueWorkPlan.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Page7(int? id, Models.Project project, ProjectFormView projectTemplate) {
-            
 
-            if(ModelState.IsValid)
+            LoadPermissions();
+            if (ModelState.IsValid)
             {
                 GradAss gradAss = new GradAss() { 
                 
@@ -2165,8 +2185,8 @@ namespace EblueWorkPlan.Controllers
 
 
             }
-        
-        
+            
+
             return View();
         }
 
@@ -2244,7 +2264,7 @@ namespace EblueWorkPlan.Controllers
             var roleId = permissionService.GetCurrentUserRoleId(User);
             var permisos = permissionService.GetPermissionsForRole(roleId);
 
-            ViewBag.Permissions = permisos;
+            LoadPermissions();
 
 
 
@@ -2351,6 +2371,7 @@ namespace EblueWorkPlan.Controllers
 
             
             projectTemplate.ProjectId = id.Value;
+            
             return View(projectTemplate);
 
         }
@@ -2486,7 +2507,7 @@ namespace EblueWorkPlan.Controllers
             var roleId = permissionService.GetCurrentUserRoleId(User);
             var permisos = permissionService.GetPermissionsForRole(roleId);
 
-            ViewBag.Permissions = permisos;
+            LoadPermissions();
 
             if (id == null || _context.Projects == null)
             {
@@ -2500,20 +2521,22 @@ namespace EblueWorkPlan.Controllers
             }
             ProjectViewModel projectViewModel = new ProjectViewModel() { ProjectNumber = projectTemplate.ProjectNumber };
             
-            projectViewModel.ProjectId = id.Value;
-            projectViewModel.ProjectNumber = project.ProjectNumber;
-            projectViewModel.Subcontracts = project.Subcontracts;
-            projectViewModel.Impact = project.Impact;
-            projectViewModel.Travel = project.Travel;
-            projectViewModel.Wages = project.Wages;
-            projectViewModel.Salaries = project.Salaries;
-            projectViewModel.Materials = project.Materials;
-            projectViewModel.Equipment= project.Equipment;
-            projectViewModel.Abroad = project.Abroad;
-            projectViewModel.IndirectCosts= project.IndirectCosts;
-            projectViewModel.Benefits= project.Benefits;
-            projectViewModel.Assistant= project.Assistant;
-            projectViewModel.Others= project.Others;
+                projectViewModel.ProjectId = id.Value;
+                projectViewModel.ProjectNumber = project.ProjectNumber;
+                projectViewModel.Subcontracts = project.Subcontracts;
+                projectViewModel.Impact = project.Impact;
+                projectViewModel.Travel = project.Travel;
+                projectViewModel.Wages = project.Wages;
+                projectViewModel.Salaries = project.Salaries;
+                projectViewModel.Materials = project.Materials;
+                projectViewModel.Equipment= project.Equipment;
+                projectViewModel.Abroad = project.Abroad;
+                projectViewModel.IndirectCosts= project.IndirectCosts;
+                projectViewModel.Benefits= project.Benefits;
+                projectViewModel.Assistant= project.Assistant;
+                projectViewModel.Others= project.Others;
+
+            
             return View(projectViewModel);
         }
 
@@ -2572,6 +2595,8 @@ namespace EblueWorkPlan.Controllers
                         throw;
                     }
                 }
+
+                LoadPermissions();
                 return View();
 
 
@@ -2647,6 +2672,7 @@ namespace EblueWorkPlan.Controllers
 
             projectViewModel.ProjectId = id.Value;
 
+            LoadPermissions();
             return View(projectViewModel);
 
         }
@@ -2802,7 +2828,7 @@ namespace EblueWorkPlan.Controllers
             projectFormView.ProjectId = id.Value;
 
 
-
+            LoadPermissions();
             return View(projectFormView);
         }
 
@@ -2935,6 +2961,7 @@ namespace EblueWorkPlan.Controllers
                 laboratories = await _context.Laboratories.Where(l => l.ProjectId == id).ToListAsync(),
 
                 sciProjects = await _context.SciProjects
+                .Include(s => s.Roster)
                 .Include(s => s.SciRoles)
                 .Where(s => s.ProjectId == id).ToListAsync(),
 
@@ -2950,7 +2977,7 @@ namespace EblueWorkPlan.Controllers
                 .Include(fu => fu.Location)
                 .Where(fu => fu.ProjectId == id).ToListAsync()
             };
-
+            LoadPermissions();
             return View(template);
         }
 

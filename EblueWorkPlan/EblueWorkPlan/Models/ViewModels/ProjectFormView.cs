@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EblueWorkPlan.Models.ViewModels
 {
-    public class ProjectFormView:IValidatableObject
+    public class ProjectFormView: BaseViewModel, IValidatableObject
     {
         public Project oProject { get; set; }
         public int ProjectId { get; set; }

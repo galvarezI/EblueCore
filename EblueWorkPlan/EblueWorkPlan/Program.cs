@@ -11,6 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PermissionService>();
 builder.Services.AddScoped<PermissionAccessService>();
+builder.Services.AddScoped<PermissionViewBagFilter>();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<PermissionViewBagFilter>();
+});
+
 builder.Services.AddDbContext<WorkplandbContext>(
       options => options.UseSqlServer(builder.Configuration.GetConnectionString("WorkPlanContext")));
 

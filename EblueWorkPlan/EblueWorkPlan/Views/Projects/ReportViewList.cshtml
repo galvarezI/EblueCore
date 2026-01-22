@@ -475,6 +475,8 @@
     </tbody>
 </table>
 
+#<!-- #region section 8 -->
+
 <h1>Section 8</h1>
 
 <table class="table  table-bordered">
@@ -572,12 +574,125 @@
                     @Html.DisplayFor(modelItem => item.Project.ProjectId)
                 </td>
                 <td>
-                   
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+<!-- #endregion -->
+
+
+
+<h1>Section 8</h1>
+
+<table class="table  table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Salaries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Benefits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assistant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materials)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Travel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abroad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subcontracts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Others)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ufisaccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IndirectCosts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fundss)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salaries)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Benefits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assistant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Materials)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Travel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abroad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subcontracts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Others)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ufisaccount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IndirectCosts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectId)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
 
 <h1>Section 9</h1>
 

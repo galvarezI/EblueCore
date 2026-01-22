@@ -25,26 +25,41 @@ namespace EblueWorkPlan.Services
         }
 
         // Devuelve SOLO los proyectos visibles para el usuario
+        //public IQueryable<Project> FilterProjectsForUser(ClaimsPrincipal user)
+        //{
+        //    var rosterId = _permissionService.GetRosterIdForIdentity(user);
+
+        //    // Usuario sin roster → no puede ver proyectos
+        //    if (rosterId == null)
+        //        return _context.Projects.Where(p => false);
+
+        //    // 1. Proyectos donde es PI
+        //    var asPI = _context.Projects
+        //        .Where(p => p.RosterId == rosterId);
+
+        //    // 2. Proyectos donde aparece en Page5
+        //    var asSci = _context.SciProjects
+        //        .Where(sp => sp.RosterId == rosterId)
+        //        .Select(sp => sp.Project);
+
+        //    // Unión final
+        //    return asPI.Union(asSci).Distinct();
+        //}
+
         public IQueryable<Project> FilterProjectsForUser(ClaimsPrincipal user)
         {
             var rosterId = _permissionService.GetRosterIdForIdentity(user);
 
-            // Usuario sin roster → no puede ver proyectos
             if (rosterId == null)
                 return _context.Projects.Where(p => false);
 
-            // 1. Proyectos donde es PI
-            var asPI = _context.Projects
-                .Where(p => p.RosterId == rosterId);
-
-            // 2. Proyectos donde aparece en Page5
-            var asSci = _context.SciProjects
-                .Where(sp => sp.RosterId == rosterId)
-                .Select(sp => sp.Project);
-
-            // Unión final
-            return asPI.Union(asSci).Distinct();
+            return _context.Projects
+                .Where(p =>
+                    p.RosterId == rosterId ||
+                    p.SciProjects.Any(sp => sp.RosterId == rosterId)
+                );
         }
+
 
 
     }

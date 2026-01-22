@@ -62,10 +62,10 @@
 
 
                             <div class="form-group col-12">
-                                <label asp-for="TimeEstimated" class="control-label"></label>
+                                <label asp-for="EstimatedTime" class="control-label"></label>
                                 <input id="timeEstimated" class="form-control txt-est"
                                        disabled="@(ViewBag.Permissions.PuedeEditar ? null : "disabled")" />
-                                <span asp-validation-for="TimeEstimated" class="text-danger"></span>
+                                <span asp-validation-for="EstimatedTime" class="text-danger"></span>
                             </div>
 
                             <div class="form-group col-12">
@@ -137,7 +137,7 @@
                             @Html.DisplayNameFor(model => model.Descriptions)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TimeEstimated)
+                            @Html.DisplayNameFor(model => model.EstimatedTime)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FacilitiesNeeded)
@@ -164,7 +164,7 @@
                                 @Html.DisplayFor(modelItem => item.Descriptions)
                             </td>
                             <td class="estimated">
-                                @Html.DisplayFor(modelItem => item.TimeEstimated)
+                                @Html.DisplayFor(modelItem => item.EstimatedTime)
                             </td>
                             <td class="facili">
                                 @Html.DisplayFor(modelItem => item.FacilitiesNeeded)
@@ -214,7 +214,7 @@
         $(function () {
 
 
-            $('#timeEstimated').datepicker()
+            
 
             $("#btnSubmit").click(function () {
 

@@ -5,7 +5,7 @@
 }
 <partial name="_Sidebar2" />
 
-
+<p>Permissions is null: @(ViewBag.Permissions == null)</p>
 <h1>Research Project for: @Model.ProjectNumber</h1>
 
 <h3>Budget Description Page</h3>
@@ -144,9 +144,9 @@
                            
 
                             <div class="form-group">
-                                @if (ViewBag.Permissions.PuedeCrear)
+                                @if (ViewBag.Permissions?.PuedeCrear == true)
                                 {
-                                    <input type="button" id="btnSubmit" value="Add" class="btn btn-primary" />
+                                    <input type="submit" id="btnSubmit" value="Add" class="btn btn-primary" />
                                 }
                             </div>
 

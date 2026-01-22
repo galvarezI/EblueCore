@@ -1,5 +1,6 @@
 wwwroot\css\Chosen\chosen-sprite.png
 wwwroot\css\Chosen\chosen.min.css
+wwwroot\css\report.css
 wwwroot\css\sidebar.css
 wwwroot\css\site.css
 wwwroot\favicon.ico

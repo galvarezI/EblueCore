@@ -21,8 +21,8 @@ namespace EblueWorkPlan.Models.ViewModels
 
         public string Descriptions { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime? TimeEstimated { get; set; }
+        
+        public string TimeEstimated { get; set; }
 
 
         public string CentralLaboratory { get; set; }
